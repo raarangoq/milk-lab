@@ -12,6 +12,9 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use Session;
 
+
+
+
 class AuthController extends Controller
 {
     /*
@@ -57,11 +60,26 @@ class AuthController extends Controller
 
         if ($this->auth->attempt($credentials, $request->has('remember')))
         {
-            return view("welcome");
-        }
+            //$data = $request->session()->all();
+            //$request['correo'];
+            //$usr=Usuario::all();
+            
+/*
+            $usr =Usuario::where('correo', $request['correo'])
+               ->take(10)
+               ->get();
+foreach ($usr as $u) {
+    echo $u->rol;
 
+//print_r($usr[0]['nombre']);
+print_r($usr['0']['cedula']);
+}
+*/
+            return view("home");
+        }else{
         return "credenciales incorrectas";
     }
+}
 
     protected function getRegister()
     {

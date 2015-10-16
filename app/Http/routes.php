@@ -25,4 +25,14 @@ Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout
 Route::get('register', 'Auth\AuthController@getRegister');
 Route::post('register', ['as' => 'auth/register', 'uses' => 'Auth\AuthController@postRegister']);
 Route::get('/', 'HomeController@index');
-Route::get('home', 'HomeController@index');
+//Route::get('home', 'HomeController@index');
+Route::get('home', function () {
+    return view('home');
+});
+
+
+Route::get('registrarUsuario', function () {
+    return view('registrarUsuario');
+});
+
+
