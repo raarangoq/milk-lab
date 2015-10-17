@@ -20,5 +20,12 @@ class Cava extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombre', 'tipo', 'temperatura_minima', 'temperatura_maxima', 'usuario_registrador'];
+    protected $fillable = [
+    	'nombre', 
+    	'tipo', 
+    	'temperatura_minima', 
+    	'temperatura_maxima', 
+    	'en_uso', 
+    	'usuario_registrador'
+    ];
 }

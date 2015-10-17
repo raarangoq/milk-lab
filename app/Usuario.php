@@ -30,7 +30,15 @@ class Usuario extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['cedula', 'correo', 'password', 'nombre', 'rol', 'habilitado', 'usuario_creador'];
+    protected $fillable = [
+        'cedula', 
+        'correo', 
+        'password', 
+        'nombre', 
+        'rol', 
+        'habilitado', 
+        'usuario_creador'
+    ];
 
     /**
      * The attributes excluded from the model's JSON form.

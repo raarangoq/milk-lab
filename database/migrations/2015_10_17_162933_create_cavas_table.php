@@ -17,7 +17,7 @@ class CreateCavasTable extends Migration
             $table->enum('tipo', ['Congelamiento', 'Maduración', 'Producto terminado']);
             $table->decimal('temperatura_minima', 6, 3);
             $table->decimal('temperatura_maxima', 6, 3);
-
+            $table->boolean('en_uso')->default(true);
             $table->string('usuario_registrador', 60);
 
             $table->timestamps();
