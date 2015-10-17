@@ -69,7 +69,7 @@ textarea {
   -webkit-transition: all 0.2s ease-out;
           transition: all 0.2s ease-out;
 }
-label:hover, input:hover,
+label:hover, input:hover,select:hover,
 textarea:hover {
   -webkit-transition: all 0.2s ease-in;
           transition: all 0.2s ease-in;
@@ -148,6 +148,7 @@ textarea:focus {
 input:focus + label, input.active + label,
 textarea:focus + label,textarea.active + label,
 select:focus + label,select.active + label 
+
 {
   background: black;
   -webkit-transform: translateX(-20%) translateY(-50%);
