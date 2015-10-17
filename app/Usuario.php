@@ -23,12 +23,14 @@ class Usuario extends Model implements AuthenticatableContract,
      */
     protected $table = 'usuarios';
 
+    protected $primaryKey = 'correo';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['cedula', 'correo', 'password', 'nombre', 'rol', 'habilitado', 'usuario_creador', 'usuario_editor'];
+    protected $fillable = ['cedula', 'correo', 'password', 'nombre', 'rol', 'habilitado', 'usuario_creador'];
 
     /**
      * The attributes excluded from the model's JSON form.
