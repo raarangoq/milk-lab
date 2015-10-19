@@ -87,7 +87,7 @@ class AuthController extends Controller
         $user->password = bcrypt($data['password']);
         $user->cedula = $data['cedula'];
         $user->rol = $data['rol'];
-        $user->usuario_creador = 'raarangoq@unal.edu.co';
+        $user->usuario_creador = 'meossasa@unal.edu.co';
 
         if($user->save())
             return "se ha registrado correctamente el usuario";   
