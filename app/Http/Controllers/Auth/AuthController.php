@@ -10,7 +10,7 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use Session;
-
+use Input;
 class AuthController extends Controller {
     /*
       |--------------------------------------------------------------------------
@@ -54,30 +54,18 @@ use AuthenticatesAndRegistersUsers,
 
 
         if ($this->auth->attempt($credentials, $request->has('remember'))) {
-            //$data = $request->session()->all();
-            //$request['correo'];
-            //$usr=Usuario::all();
 
-            /*
-              $usr =Usuario::where('correo', $request['correo'])
-              ->take(10)
-              ->get();
-              foreach ($usr as $u) {
-              echo $u->rol;
 
-              //print_r($usr[0]['nombre']);
-              print_r($usr['0']['cedula']);
-             * 
-             * 
-              }$_SESSION=$usr =Usuario::where('correo', $request['correo'])
-              ->take(10)
-              ->get();
-            print_r($_SESSION);
-             *///session()->regenerate();
-             //$value = $request->session()->get('nombre');
-             //print_r($value);
-            
-            return view("home");
+ 
+             // $user = $this->auth;
+
+          //$user=$request->session()->get('correo');
+              return view("home",compact('user'));
+
+
+
+
+            //return view("home");
             
         } else {
             return "credenciales incorrectas";
@@ -184,7 +172,16 @@ use AuthenticatesAndRegistersUsers,
 
 
 
+protected function getAjax() {
 
+$correo=Input::get('correo');
+
+$usuarioSeleccionado=Usuario::where('correo',$correo)->get();
+
+
+return $usuarioSeleccionado;
+ //return Reponse::json($usuarioSeleccionado);
+}
 
 
 

@@ -15,6 +15,9 @@
 
             @import url(css/2.ESTRUCTURA_PRINCIPAL/4.SECTION/css/section_style.css);
             /*@import url(4.SECTION/css/reset.css);*/    
+
+            @import url(css/2.ESTRUCTURA_PRINCIPAL/5.FOOTER/css/footer_style.css);
+
           body {
                 font-size: 19px;
                 line-height: 1.3em;
@@ -29,6 +32,10 @@
 
         <script src='css/2.ESTRUCTURA_PRINCIPAL/3.ASIDE/js/jquery.min.js'></script>
         <script src="css/2.ESTRUCTURA_PRINCIPAL/3.ASIDE/js/index.js"></script>
+        <script src="libs/jQuery/jquery-1.9.1.js"></script>
+
+        @yield('ajaxEditar')
+        
     </head>
     
 
@@ -104,19 +111,22 @@
                     </ul>
                 </li>
 
-                <li >
-                    <div class="link"><i class="fa fa-code"></i>Desarrollo front-end<i class="fa fa-chevron-down"></i></div>
+                    <li>
+                    <div class="link"><i class="fa fa"><img src="css/iconos/analisis.png"></i>PRUEBAS<i class="fa fa-chevron-down"></i></div>
                     <ul class="submenu">
-                        <li><a href="#">Javascript</a></li>
-                        <li><a href="#">jQuery</a></li>
-                        <li><a href="#">Frameworks javascript</a></li>
+                        <li><a href="registrarBodega">Prueba de producto</a></li>
+                        <li><a href="#"></a></li>
                     </ul>
                 </li>
 
+                
             </ul>
 
          
         </aside>
+
+       
+
 
 
         <!--CONTENIDO-->
@@ -127,6 +137,11 @@
 
         
         <!---FIN DE CONTENIDO-->
+
+         @yield('footer')
+
+
+
 
     </body>
 </html>
