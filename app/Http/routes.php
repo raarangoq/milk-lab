@@ -13,7 +13,7 @@
 
 
 Route::get('login', 'Auth\AuthController@getLogin');
-Route::post('login', 'AuthController@postLogin');
+Route::post('login', ['as' =>'login', 'uses' => 'Auth\AuthController@postLogin']);
 
 Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
  
@@ -27,7 +27,7 @@ Route::get('/', 'Auth\AuthController@getLogin');
 Route::get('home', function () {
     return view('home');
 });
-
+//USUARIO
 
 Route::get('registrarUsuario', 'Auth\AuthController@getRegistrarUsuario');
 Route::get('editarUsuario', 'Auth\AuthController@getEditarUsuario');
