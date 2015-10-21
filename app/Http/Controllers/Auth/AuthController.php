@@ -59,8 +59,10 @@ use AuthenticatesAndRegistersUsers,
  
              // $user = $this->auth;
 
+            // AGARRAR VARIABLE DE SESSION 
+
           //$user=$request->session()->get('correo');
-              return view("home",compact('user'));
+             return view("home",compact('user'));
 
 
 
@@ -93,7 +95,7 @@ use AuthenticatesAndRegistersUsers,
         $user->password = bcrypt($data['password']);
         $user->cedula = $data['cedula'];
         $user->rol = $data['rol'];
-        $user->usuario_creador = 'meossasa@unal.edu.co';
+        $user->usuario_creador = 'raarangoq@unal.edu.co';
 
         if ($user->save())
             return "se ha registrado correctamente el usuario";

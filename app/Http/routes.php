@@ -13,15 +13,20 @@
 
 
 Route::get('login', 'Auth\AuthController@getLogin');
-Route::post('login', ['as' =>'login', 'uses' => 'Auth\AuthController@postLogin']);
+Route::post('login', [
+	'as' =>'login', 
+	'uses' => 'Auth\AuthController@postLogin']);
 
-Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
+Route::get('logout', [
+	'as' => 'logout', 
+	'uses' => 'Auth\AuthController@getLogout']);
  
 // Registration routes...
 Route::get('register', 'Auth\AuthController@getRegister');
 
-Route::post('register', ['as' => 'auth/register', 'uses' => 'Auth\AuthController@postRegister']);
-
+Route::post('register', [
+	'as' => 'auth/register', 
+	'uses' => 'Auth\AuthController@postRegister']);
 
 Route::get('/', 'Auth\AuthController@getLogin');
 Route::get('home', function () {
@@ -33,10 +38,7 @@ Route::get('registrarUsuario', 'Auth\AuthController@getRegistrarUsuario');
 Route::get('editarUsuario', 'Auth\AuthController@getEditarUsuario');
 Route::get('/ajax', 'Auth\AuthController@getAjax');
 
-
-
 Route::get('registrarCava', 'Auth\AuthController@getRegistrarCava');
-
 
 Route::get('registrarBodega', 'Auth\AuthController@getRegistrarBodega');
 
