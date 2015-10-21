@@ -11,6 +11,8 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use Session;
 use Input;
+
+
 class AuthController extends Controller {
     /*
       |--------------------------------------------------------------------------
@@ -61,6 +63,8 @@ use AuthenticatesAndRegistersUsers,
 
             // AGARRAR VARIABLE DE SESSION 
 
+     print_r(Session::get('user'));
+
           //$user=$request->session()->get('correo');
              return view("home",compact('user'));
 
@@ -74,32 +78,7 @@ use AuthenticatesAndRegistersUsers,
         }
     }
 
-    protected function getRegister() {
-        return view("registro");
-    }
 
-    protected function postRegister(Request $request) {
-        $this->validate($request, [
-            'nombre' => 'required',
-            'correo' => 'required',
-            'password' => 'required',
-            'cedula' => 'required',
-            'rol' => 'required',
-        ]);
-
-        $data = $request;
-
-        $user = new Usuario;
-        $user->nombre = $data['nombre'];
-        $user->correo = $data['correo'];
-        $user->password = bcrypt($data['password']);
-        $user->cedula = $data['cedula'];
-        $user->rol = $data['rol'];
-        $user->usuario_creador = 'raarangoq@unal.edu.co';
-
-        if ($user->save())
-            return "se ha registrado correctamente el usuario";
-    }
 
 //para terminar sesión
     protected function getLogout() {

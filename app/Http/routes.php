@@ -42,6 +42,8 @@ Route::get('registrarCava', 'Auth\AuthController@getRegistrarCava');
 
 Route::get('registrarBodega', 'Auth\AuthController@getRegistrarBodega');
 
+//Controlador de USUARIO 
 
+Route::resource('registro','usuarioController');
 
 
