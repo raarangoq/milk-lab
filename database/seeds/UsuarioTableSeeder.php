@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class UserTableSeeder extends Seeder
+class UsuarioTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,7 +17,16 @@ class UserTableSeeder extends Seeder
             'password' => bcrypt('secret'),
         	'nombre' => 'Ricardo Antonio Arango Quiroz',
         	'rol' => 'Director',
-        	'usuario_creador' => 'raarangoq@unal.edu.co',
+            'usuario_creador' => 'raarangoq@unal.edu.co',
+        ]);
+
+        DB::table('usuarios')->insert([
+            'cedula' => 1015215391,
+            'correo' => 'omar@unal.edu.co',
+            'password' => bcrypt('secret'),
+            'nombre' => 'Omar Romero',
+            'rol' => 'Técnico operativo',
+            'usuario_creador' => 'raarangoq@unal.edu.co',
         ]);
     }
 }
