@@ -8,7 +8,7 @@
             <div id="stage" class="stage">
 
 
-                <form action="register" method="post" data-reactid=".0">
+                <form action="editarUsuario" method="post" data-reactid=".0">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"> 
 
 
@@ -19,7 +19,7 @@
 
 
 
-<select id="idCorreoBuscar" data-reactid=".0.0.1.0" class="seleccionar active"> 
+<select id="idCorreoBuscar" data-reactid=".0.0.1.0" class="active buscar"> 
 
 
 
@@ -48,7 +48,7 @@
                         <div class="control" data-reactid=".0.0.2">
 
 
-                            <input  id="idcedula" name="cedula" type="number" placeholder="ceudla:" required="" data-reactid=".0.0.2.0" class="active">
+                            <input  id="idcedula" name="cedula" type="number"  required="" readOnly data-reactid=".0.0.2.0" class="active bloqueado">
 
                             <label data-reactid=".0.0.2.1">Cedula</label>
                         </div>
@@ -56,7 +56,7 @@
                         <div class="control" data-reactid=".0.0.3">
 
 
-                            <input id="idcorreo" readOnly name="correo" type="email" id="name" placeholder="em@il / correo de usuario@unal.edu.co" required="" data-reactid=".0.0.3.0" class="active">
+                            <input id="idcorreo" readOnly name="correo" type="email" id="name"  required="" data-reactid=".0.0.3.0" class="active bloqueado">
 
 
                             <label data-reactid=".0.0.3.1">Correo de Usuario</label>
