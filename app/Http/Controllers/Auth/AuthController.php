@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Usuario;
+use App\Models\Usuario;
 use Validator;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ControllerSession;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Contracts\Auth\Guard;
@@ -41,6 +42,8 @@ use AuthenticatesAndRegistersUsers,
         $this->middleware('guest', ['except' => 'getLogout']);
     }
 
+
+
     public function getLogin() {
         return view("login");
     }
@@ -54,24 +57,24 @@ use AuthenticatesAndRegistersUsers,
         $credentials = $request->only('correo', 'password');
         //$credentials["habilitado"] = 1;  
 
-
         if ($this->auth->attempt($credentials, $request->has('remember'))) {
 
-
- 
-             // $user = $this->auth;
-
-            // AGARRAR VARIABLE DE SESSION 
-
-     print_r(Session::get('user'));
-
-          //$user=$request->session()->get('correo');
-             return view("home",compact('user'));
+          $correo=$request['correo']; 
+          $user=Usuario::where('correo',$correo)->get();
 
 
+          $usuario['correo']=$user['0']['correo'];
+          $usuario['nombre']=$user['0']['nombre'];
+          $usuario['cedula']=$user['0']['cedula'];
+          $usuario['rol']=$user['0']['rol'];
+          $usuario['password']=$user['0']['password'];
+          $usuario['habilitado']=$user['0']['habilitado'];
+          $usuario['usuario_creador']=$user['0']['usuario_creador'];
 
 
-            //return view("home");
+          Session::put('usuario',$usuario);
+          
+           return view("home");
             
         } else {
             return "credenciales incorrectas";
@@ -79,8 +82,10 @@ use AuthenticatesAndRegistersUsers,
     }
 
 
+    
 
-//para terminar sesión
+    //para terminar sesión
+
     protected function getLogout() {
         $this->auth->logout();
 
@@ -88,6 +93,8 @@ use AuthenticatesAndRegistersUsers,
 
         return redirect('login');
     }
+
+
 
     /**
      * Get a validator for an incoming registration request.
@@ -103,6 +110,8 @@ use AuthenticatesAndRegistersUsers,
         ]);
     }
 
+
+
     /**
      * Create a new user instance after a valid registration.
      *
@@ -116,54 +125,6 @@ use AuthenticatesAndRegistersUsers,
                     'password' => bcrypt($data['password']),
         ]);
     }
-
-
-    protected function getRegistrarUsuario() {
-
-     $roles=Usuario::distinct()->select('rol')->get();
-
-
-        return view("registrarUsuario", compact('roles'));
-    }
-
-    protected function getEditarUsuario() {
-        //return view("editarUsuario")->with('nombre', 'alejo');;
-      $usuarios=Usuario::all();
-     
-         return view('editarUsuario', compact('usuarios'));
-    }
-
-
-
-
- protected function getRegistrarCava() {
-
-        return view("registrarCava");
-    }
-
-
-
-
- protected function getRegistrarBodega() {
-
-        return view("registrarBodega");
-    }
-
-
-
-
-
-protected function getAjax() {
-
-$correo=Input::get('correo');
-
-$usuarioSeleccionado=Usuario::where('correo',$correo)->get();
-
-
-return $usuarioSeleccionado;
- //return Reponse::json($usuarioSeleccionado);
-}
-
 
 
 }

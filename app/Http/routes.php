@@ -1,49 +1,68 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
 
 
+//--------> LOGIN (rutas) <--------------------------
 Route::get('login', 'Auth\AuthController@getLogin');
-Route::post('login', [
-	'as' =>'login', 
-	'uses' => 'Auth\AuthController@postLogin']);
 
-Route::get('logout', [
-	'as' => 'logout', 
-	'uses' => 'Auth\AuthController@getLogout']);
+Route::post('login', ['as' =>'login', 'uses' => 'Auth\AuthController@postLogin']);
+
+Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
  
 // Registration routes...
 Route::get('register', 'Auth\AuthController@getRegister');
 
-Route::post('register', [
-	'as' => 'auth/register', 
-	'uses' => 'Auth\AuthController@postRegister']);
+Route::post('register', ['as' => 'auth/register', 'uses' => 'Auth\AuthController@postRegister']);
 
 Route::get('/', 'Auth\AuthController@getLogin');
+
+
+
+//--------> HOME (rutas) <--------------------------
 Route::get('home', function () {
     return view('home');
 });
 //USUARIO
 
-Route::get('registrarUsuario', 'Auth\AuthController@getRegistrarUsuario');
-Route::get('editarUsuario', 'Auth\AuthController@getEditarUsuario');
-Route::get('/ajax', 'Auth\AuthController@getAjax');
+//------> USUARIOS (rutas) <--------------------------
 
-Route::get('registrarCava', 'Auth\AuthController@getRegistrarCava');
+//CREAR USUARIO
+Route::get('registrarUsuario', 'UsuarioControlador@getRegistrarUsuario');
+Route::post('registrarUsuario', ['as' => 'registrarUsuario', 'uses' => 'UsuarioControlador@postRegistrarUsuario']);
+//EDITAR USUARIO
+Route::get('editarUsuario', 'UsuarioControlador@getEditarUsuario');
+Route::post('editarUsuario', ['as' => 'editarUsuario', 'uses' => 'UsuarioControlador@postEditarUsuario']);
+Route::get('/ajax', 'UsuarioControlador@getAjax');
+//EDITAR PERFIL
+Route::get('editarPerfil', 'UsuarioControlador@getEditarPerfil');
 
-Route::get('registrarBodega', 'Auth\AuthController@getRegistrarBodega');
-
-//Controlador de USUARIO 
-
-Route::resource('registro','usuarioController');
 
 
+
+
+
+//------> CAVA (rutas) <------------------------------
+
+//CREAR CAVA
+Route::get('registrarCava', 'CavaControlador@getRegistrarCava');
+
+
+
+
+//------> BODEGA (rutas) <----------------------------
+
+//CREAR BODEGA
+Route::get('registrarBodega', 'BodegaControlador@getRegistrarBodega');
+
+
+
+//------> PROVEEDOR (rutas) <----------------------------
+
+
+//CREAR PROVEEDOR
+Route::get('registrarProveedor', 'ProveedorControlador@getRegistrarProveedor');
+
+
+//------> FICHA REACTIVO (rutas) <----------------------------
+Route::get('registrarReactivo', 'ReactivoControlador@getRegistrarReactivo');
+Route::post('registrarReactivo', ['as' => 'registrarReactivo', 'uses' => 'ReactivoControlador@postRegistrarReactivo']);
