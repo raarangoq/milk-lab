@@ -36,7 +36,7 @@ use AuthenticatesAndRegistersUsers,
      */
     public function __construct(Guard $auth) {
         $this->auth = $auth;
-        $this->middleware('guest', ['except' => 'getLogout']);
+        //$this->middleware('guest', ['except' => 'getLogout']);
     }
 
     public function getLogin() {
@@ -138,6 +138,7 @@ use AuthenticatesAndRegistersUsers,
 
 
     protected function getRegistrarUsuario() {
+      dd(Auth::session);
 
      $roles=Usuario::distinct()->select('rol')->get();
 
