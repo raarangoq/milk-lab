@@ -32,13 +32,14 @@ form {
 
   border-radius: 66px;
   background: -webkit-linear-gradient(left, #18222d, #1a2530);
+  background: -moz-linear-gradient(left, #18222d, #1a2530);
   background: linear-gradient(left, #18222d, #1a2530);
   box-shadow: inset 3px 3px 15px -5px rgba(0, 0, 0, 0.1);
   padding: 3em;
   display: block;
 }
 
-[type="submit"] {
+[type="submit"]{
   background: #1a2530;
   display: inline-block;
   padding: 0.3em 1em 0.5em;
@@ -63,6 +64,37 @@ form {
   background: #1a2530;
   color: white;
 }
+
+[type="button"]{
+  background: #1a2530;
+  display: inline-block;
+  padding: 0.3em 1em 0.5em;
+  cursor: pointer;
+  background: -webkit-linear-gradient(left, #18222d, #1a2530);
+  background: -moz-linear-gradient(left, #18222d, #1a2530);
+  background: linear-gradient(left, #18222d, #1a2530);
+  box-shadow: inset 3px 3px 15px -5px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  color: #27ae60;
+  border: 12px solid rgba(41, 128, 185, 0.3);
+  font-size: 80%;
+    -webkit-border-radius: 20;
+  -moz-border-radius: 20;
+  border-radius: 20px;
+  -webkit-box-shadow: 5px 3px 30px #70f205;
+  -moz-box-shadow: 5px 3px 30px #70f205;
+  width: 270px;
+    max-width: 230px;
+   min-width: 20%;
+
+
+}
+
+[type="button"]:hover {
+  background: red;
+  color: white;
+}
+
 
 label, input,select,
 textarea {
@@ -156,6 +188,8 @@ select:focus + label,select.active + label
           transform: translateX(-20%) translateY(-50%);
 }
 
+
+
 ::-webkit-input-placeholder {
   color: rgba(41, 128, 185, 0.3);
 }
@@ -197,3 +231,12 @@ textarea.active {
 
 
 }
+
+.bloqueado{
+background: red;
+}
+
+.buscar{
+background: darkslateblue;
+}
+

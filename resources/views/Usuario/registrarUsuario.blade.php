@@ -7,7 +7,7 @@
         <section>
             <div id="stage" class="stage">
 
-                <form action="register" method="post" data-reactid=".0">
+                <form action="registrarUsuario" method="post" data-reactid=".0">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"> 
 
                     <fieldset data-reactid=".0.0">
