@@ -19,7 +19,7 @@ class ReactivoControlador extends Controller {
 
      protected function getRegistrarReactivo() {
 
-          return view('registrarFichaReactivo');
+          return view('FichaReactivo.registrarFichaReactivo');
       }
 
      protected function postRegistrarReactivo(Request $request) {

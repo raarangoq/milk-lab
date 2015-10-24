@@ -18,7 +18,9 @@ Route::get('/', 'Auth\AuthController@getLogin');
 
 
 
-//--------> HOME (rutas) <--------------------------
+
+
+//--------> HOME (rutas) <----------------------------
 Route::get('home', function () {
     return view('home');
 });
@@ -46,7 +48,8 @@ Route::get('editarPerfil', 'UsuarioControlador@getEditarPerfil');
 //CREAR CAVA
 Route::get('registrarCava', 'CavaControlador@getRegistrarCava');
 
-
+//EDITAR CAVA
+Route::get('editarCava', 'CavaControlador@getEditarCava');
 
 
 //------> BODEGA (rutas) <----------------------------
