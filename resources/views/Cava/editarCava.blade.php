@@ -52,12 +52,19 @@
                             <input name="nueva_temperatura_maxima "     type="number" id="name" placeholder="nueva_temperatura_maxima max °C" required="" data-reactid=".0.0.4.0" class="active">
                             <label data-reactid=".0.0.4.1">* Nueva temperatura </label>
                         </div>
-
-                
+                         <div class="control" data-reactid=".0.0.3.0">
+                            <input name="tipo"  type="number" id="name" placeholder="congelamiento" required="" data-reactid=".0.0.3.0" class="active">
+                            <label data-reactid=".0.0.3.1">* tipo</label>
+                        </div>               
 
                         <div class="control" data-reactid=".0.0.5.0">
                             <input name="nuevo_tipo"     type="number" id="name" placeholder="nuevo_tipo" required="" data-reactid=".0.0.4.0" class="active">
                             <label data-reactid=".0.0.5.1">* Nuevo tipo</label>
+                        </div>
+
+                         <div class="control" data-reactid=".0.0.5">
+                            <input name=""     type="number" id="name" placeholder="" required="" data-reactid=".0.0.4.0" class="active">
+                            <label data-reactid=".0.0.5.1">en uso??????</label>
                         </div>
 
                                           
