@@ -13,7 +13,7 @@ class Cava extends Model
      */
     protected $table = 'cavas';
 
-    protected $primaryKey = 'nombre';
+    protected $primaryKey = 'id';
 
     /**
      * The attributes that are mass assignable.
@@ -21,7 +21,7 @@ class Cava extends Model
      * @var array
      */
     protected $fillable = [
-    	'nombre', 
+    	'id', 
     	'tipo', 
     	'temperatura_minima', 
     	'temperatura_maxima', 

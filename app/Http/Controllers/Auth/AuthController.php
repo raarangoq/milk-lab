@@ -39,7 +39,7 @@ use AuthenticatesAndRegistersUsers,
      */
     public function __construct(Guard $auth) {
         $this->auth = $auth;
-        $this->middleware('guest', ['except' => 'getLogout']);
+        //$this->middleware('guest', ['except' => 'getLogout']);
     }
 
 
