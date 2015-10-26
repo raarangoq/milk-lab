@@ -11,6 +11,8 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use Session;
 use Input;
+//use Illuminate\Pipeline\Pipeline;
+use Illuminate\Support\ServiceProvider;
 
 
 class UsuarioControlador extends Controller {
@@ -106,6 +108,37 @@ return "CONSULTA UPDATE";
 
 
 
+protected function postEditarPerfil(Request $request) {
+
+      
+      $this->validate($request, [
+            'nombre' => 'required',
+            'cedula' => 'required',
+            'correo' => 'required',
+        ]);
+
+
+        $nombreNuevo = $request['nombre'];
+        $cedulaNuevo = $request['cedula'];
+        $correoNuevo = $request['correo'];
+
+        $correo= Session::get('usuario.correo');
+
+        $usuario=Usuario::where('correo',$correo)
+                        ->update(['nombre'=>  $nombreNuevo,
+                                  'cedula'=>  $cedulaNuevo,
+                                  'correo'=>  $correoNuevo,
+
+                          ]);
+
+        Session::put('usuario.correo',$correoNuevo);
+        Session::put('usuario.cedula',$cedulaNuevo);
+        Session::put('usuario.nombre',$nombreNuevo);
+
+        return  "OK";
+          
+    }
+
      //FUNCION DE AJAX PARA EDITAR USUARIO
      protected function getAjax() {
 
@@ -114,6 +147,16 @@ return "CONSULTA UPDATE";
 
        return $usuarioSeleccionado;//ENVIAR TODOS LOS DATOS DE USUARIO
       }
+
+
+    protected function getListarrUsuario() {
+
+      $usuarioSession = Session::get('usuario.correo');
+      $usuarios=Usuario::where('correo','!=',$usuarioSession)->get();
+     
+         return view('Usuario/editarUsuario', compact('usuarios'));
+    }
+    
 
 
 
