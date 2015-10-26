@@ -65,9 +65,10 @@
                 <li>
                     <div class="link"><i class="fa fa"><img src="css/iconos/usuario.png"></i>USUARIOS<i class="fa fa-chevron-down"></i></div>
                     <ul class="submenu">
-                        <li><a href="editarPerfil">Editar MI Perfil</a></li>
+                        <li><a href="editarPerfil">Editar mi Perfil</a></li>
                         <li><a href="registrarUsuario">Registrar Usuario</a></li>
                         <li><a href="editarUsuario">Editar Usuario</a></li>
+                        <li><a href="listarrUsuario">Listar Usuarios</a></li>
                     </ul>
                 </li>
 
