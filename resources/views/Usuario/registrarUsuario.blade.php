@@ -2,9 +2,15 @@
 
 @section('contenido')
 <!-- Contenido  xxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+                      
 <main>
     <article>
         <section>
+            @if(Session::has('success'))
+                           <div class="alert alert-success">
+                                   {{Session::get("success")}}
+                            </div>
+                        @endif
             <div id="stage" class="stage">
 
                 <form action="registrarUsuario" method="post" data-reactid=".0">
@@ -53,6 +59,8 @@
                         </div>                      
 
                         <input type="submit" value="registrar usuario" data-reactid=".0.0.7">
+
+                        
 
                     </fieldset>
                 </form>

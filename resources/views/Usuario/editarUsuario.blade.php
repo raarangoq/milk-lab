@@ -95,6 +95,12 @@
 
                         <input type="submit" value="editar usuario" data-reactid=".0.0.7">
 
+                        @if(Session::has('success'))
+                           <div class="alert alert-success">
+                                   {{Session::get("success")}}
+                            </div>
+                        @endif
+                        
                     </fieldset>
                 </form>
             </div>

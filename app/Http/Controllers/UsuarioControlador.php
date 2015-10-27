@@ -54,8 +54,10 @@ class UsuarioControlador extends Controller {
         $usuarioCreador=Session::get('usuario.correo');
         $user->usuario_creador = $usuarioCreador;
 
+         
+   
           if ($user->save())
-            return "se ha registrado correctamente el usuario";
+              Session::flash('success',"se ha registrado correctamente el usuario");
           }else{
             return "escribir bien dos veces el PASSWORD";
           }
@@ -92,7 +94,8 @@ class UsuarioControlador extends Controller {
 //Usuario::update('update usuarios set nombre = aa where correo = ?', [$correo]);
 //$affected = Usuario::update('update usuarios set cedula = 1 where correo = ?', ['xxx']);
 
-return "CONSULTA UPDATE";
+//return "CONSULTA UPDATE";
+Session::flash('success',"CONSULTA UPDATE");
       //$usuarios=Usuario::where('correo','!=',$usuarioSession)->get();
      
          //return view('Usuario/editarUsuario', compact('usuarios'));
