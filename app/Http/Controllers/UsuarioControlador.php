@@ -63,39 +63,52 @@ class UsuarioControlador extends Controller {
 
 
     //MOSTRAR VISTA DE EDITAR USUARIO
-    protected function getEditarUsuario() {
+/*    protected function getEditarUsuario() {
 
       $usuarioSession = Session::get('usuario.correo');
-      $usuarios=Usuario::where('correo','!=',$usuarioSession)->get();
-     
-         return view('Usuario/editarUsuario', compact('usuarios'));
+      $usuarios=Usuario::where('correo','!=',$usuarioSession)->get();     
+         return view('Usuario/editarUsuario', compact('usuarios')); 
     }
+*/
+    protected function getEditarUsuario(Request $request) {
+
+      $correoUsuario= $request['correo'];
+
+      $usuarioSeleccionado=Usuario::where('correo',$correoUsuario)->get();
+      $usuario=$usuarioSeleccionado[0];
+
+      return view('Usuario/editarUsuario', compact('usuario'));
+
+    }
+
 
     protected function postEditarUsuario(Request $request) {
 
       
       $this->validate($request, [
-            'nombre' => 'required',
+            'correo' => 'required',
             'rol' => 'required',
             'habilitado' => 'required',
         ]);
 
 
-        $nombreNuevo = $request['nombre'];
         $rolNuevo = $request['rol'];
-        $estadoNuevo = $request['estado'];
+        $estadoNuevo = $request['habilitado'];
 
         $usuarioEditor = Session::get('usuario.correo');
-        $correo=Input::get('correo');//COJER CORREO DE LISTA DE SELECT
+        $correo= $request['correo'];
 
-//CONSULTA UPDATE
-//Usuario::update('update usuarios set nombre = aa where correo = ?', [$correo]);
-//$affected = Usuario::update('update usuarios set cedula = 1 where correo = ?', ['xxx']);
+        $usuarioActualizado=Usuario::where('correo',$correo)
+                        ->update(['rol'=>  $rolNuevo,
+                                  'habilitado'=>  $estadoNuevo,
+                                  'usuario_editor'=>  $usuarioEditor,
 
-return "CONSULTA UPDATE";
-      //$usuarios=Usuario::where('correo','!=',$usuarioSession)->get();
-     
-         //return view('Usuario/editarUsuario', compact('usuarios'));
+                          ]);
+
+
+  return $this->getListarUsuario();
+
+
     }
 
     //MOSTRAR VISTA DE EDITAR PERFIL
@@ -149,14 +162,14 @@ protected function postEditarPerfil(Request $request) {
       }
 
 
-    protected function getListarrUsuario() {
+    protected function getListarUsuario() {
 
       $usuarioSession = Session::get('usuario.correo');
       $usuarios=Usuario::where('correo','!=',$usuarioSession)->get();
      
-         return view('Usuario/editarUsuario', compact('usuarios'));
+         return view('Usuario/listarUsuario', compact('usuarios'));
     }
-    
+
 
 
 

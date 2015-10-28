@@ -18,6 +18,8 @@
 
             @import url(css/2.ESTRUCTURA_PRINCIPAL/5.FOOTER/css/footer_style.css);
 
+            
+
           body {
                 font-size: 19px;
                 line-height: 1.3em;
@@ -67,8 +69,7 @@
                     <ul class="submenu">
                         <li><a href="editarPerfil">Editar mi Perfil</a></li>
                         <li><a href="registrarUsuario">Registrar Usuario</a></li>
-                        <li><a href="editarUsuario">Editar Usuario</a></li>
-                        <li><a href="listarrUsuario">Listar Usuarios</a></li>
+                        <li><a href="listarUsuario">Listar Usuarios</a></li>
                     </ul>
                 </li>
 
