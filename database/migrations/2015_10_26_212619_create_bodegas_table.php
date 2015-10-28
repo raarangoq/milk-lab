@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCavasTable extends Migration
+class CreateBodegasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,17 +12,15 @@ class CreateCavasTable extends Migration
      */
     public function up()
     {
-        Schema::create('cavas', function (Blueprint $table) {
-            $table->increments('id', 60);
-            $table->enum('tipo', ['Congelamiento', 'Maduración', 'Producto terminado']);
-            $table->decimal('temperatura_minima', 6, 3);
-            $table->decimal('temperatura_maxima', 6, 3);
+        Schema::create('bodegas', function (Blueprint $table) {
+            $table->string('codigo', 20);
+            $table->enum('tipo', ['Reactivo', 'Materia prima']);
             $table->boolean('en_uso')->default(true);
             $table->string('usuario_registrador', 60);
 
             $table->timestamps();
 
-            //$table->primary('id');
+            $table->primary('codigo');
             $table->foreign('usuario_registrador')
                 ->references('correo')
                 ->on('usuarios');  
@@ -36,6 +34,6 @@ class CreateCavasTable extends Migration
      */
     public function down()
     {
-        Schema::drop('cavas');
+        Schema::drop('bodegas');
     }
 }
