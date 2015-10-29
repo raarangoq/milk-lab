@@ -54,10 +54,10 @@ class UsuarioControlador extends Controller {
         $usuarioCreador=Session::get('usuario.correo');
         $user->usuario_creador = $usuarioCreador;
 
-         
-   
+        if($user->save())   
          return redirect('registrarUsuario')->with('success', 'registrado correctamente'); 
               //Session::flash('success',"se ha registrado correctamente el usuario");
+         
           }
       }
 
