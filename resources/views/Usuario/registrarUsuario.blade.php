@@ -2,16 +2,18 @@
 
 @section('contenido')
 <!-- Contenido  xxxxxxxxxxxxxxxxxxxxxxxxxxx -->
-                      
-<main>
-    <article>
-        <section>
-            @if(Session::has('success'))
+       @if(Session::has('success'))
                            <div class="alert alert-success">
                                    {{Session::get("success")}}
                             </div>
-                        @endif
+                        @endif                
+<main>
+    <article>
+        <section>
+           
             <div id="stage" class="stage">
+
+                
 
                 <form action="registrarUsuario" method="post" data-reactid=".0">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"> 

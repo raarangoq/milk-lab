@@ -15,8 +15,11 @@
                     <fieldset data-reactid=".0.0">
                         <legend data-reactid=".0.0.0">EDITAR USUARIO</legend>
 
+                        
+
                         <div class="control" data-reactid=".0.0.1">
 
+                       
 
 
 <select id="idCorreoBuscar" data-reactid=".0.0.1.0" class="active buscar"> 
@@ -89,18 +92,17 @@
 
                             </select>
                             <label data-reactid=".0.0.7.1">Estado</label>
-                        </div>  
+                        </div> 
 
-                                          
+                                                 
 
                         <input type="submit" value="editar usuario" data-reactid=".0.0.7">
-
                         @if(Session::has('success'))
-                           <div class="alert alert-success">
-                                   {{Session::get("success")}}
-                            </div>
-                        @endif
-                        
+                             <div class="alert alert-success text= center">
+                                     {{Session::get("success")}}
+                              </div>
+                        @endif 
+                  
                     </fieldset>
                 </form>
             </div>

@@ -32,12 +32,12 @@ class UsuarioControlador extends Controller {
     //RECIBIR DATOS DE VISTA (REGISTRAR USUARIO) PARA CREAR USUARIO
     protected function postRegistrarUsuario(Request $request) {
         $this->validate($request, [
-            'nombre' => 'required',
-            'correo' => 'required',
-            'password' => 'required',
+            'nombre'    => 'required',
+            'correo'    => 'required',
+            'password'  => 'required',
             'password2' => 'required',
-            'cedula' => 'required',
-            'rol' => 'required',
+            'cedula'    => 'required',
+            'rol'       => 'required',
         ]);
 
         if($request['password']==$request['password2']){
@@ -56,10 +56,8 @@ class UsuarioControlador extends Controller {
 
          
    
-          if ($user->save())
-              Session::flash('success',"se ha registrado correctamente el usuario");
-          }else{
-            return "escribir bien dos veces el PASSWORD";
+         return redirect('registrarUsuario')->with('success', 'registrado correctamente'); 
+              //Session::flash('success',"se ha registrado correctamente el usuario");
           }
       }
 
@@ -77,28 +75,33 @@ class UsuarioControlador extends Controller {
 
       
       $this->validate($request, [
-            'nombre' => 'required',
-            'rol' => 'required',
+            'nombre'     => 'required',
+            'rol'        => 'required',
             'habilitado' => 'required',
         ]);
 
 
         $nombreNuevo = $request['nombre'];
-        $rolNuevo = $request['rol'];
+        $rolNuevo    = $request['rol'];
         $estadoNuevo = $request['estado'];
 
         $usuarioEditor = Session::get('usuario.correo');
+
         $correo=Input::get('correo');//COJER CORREO DE LISTA DE SELECT
+      //prueba
+       
+
 
 //CONSULTA UPDATE
 //Usuario::update('update usuarios set nombre = aa where correo = ?', [$correo]);
 //$affected = Usuario::update('update usuarios set cedula = 1 where correo = ?', ['xxx']);
 
-//return "CONSULTA UPDATE";
-Session::flash('success',"CONSULTA UPDATE");
+   // return "CONSULTA UPDATE";
+       // Session::flash('success',"CONSULTA UPDATE");
       //$usuarios=Usuario::where('correo','!=',$usuarioSession)->get();
-     
-         //return view('Usuario/editarUsuario', compact('usuarios'));
+    
+          redirect('editarUsuario')->with('success','Consulta actualizada');
+           
     }
 
     //MOSTRAR VISTA DE EDITAR PERFIL
@@ -138,7 +141,10 @@ protected function postEditarPerfil(Request $request) {
         Session::put('usuario.cedula',$cedulaNuevo);
         Session::put('usuario.nombre',$nombreNuevo);
 
-        return  "OK";
+
+       Session::flash('success',"Perfil editado correctamente");
+       // return  "OK";
+
           
     }
 
