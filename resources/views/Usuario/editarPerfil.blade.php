@@ -42,10 +42,21 @@
                             <label data-reactid=".0.0.3.1">* Nombre</label>
 
                         </div>
+
+
                         <div class="control" data-reactid=".0.0.3">
 
 
-                            <input id="idpasswordAnterior"  name="passwordAnterior" type="password"  required="" data-reactid=".0.0.3.0" class="active ">
+                            <h4>Si quiere cambiar su contraseña ingresar los siquientes datos: </h4>
+
+                        </div>
+
+
+
+                        <div class="control" data-reactid=".0.0.3">
+
+
+                            <input id="idpasswordAnterior"  name="passwordAnterior" type="password" data-reactid=".0.0.3.0" placeholder="actual password" class="active ">
 
                             <label data-reactid=".0.0.3.1">Password Actual</label>
 

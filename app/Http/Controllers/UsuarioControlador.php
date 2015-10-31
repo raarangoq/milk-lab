@@ -13,10 +13,16 @@ use Session;
 use Input;
 //use Illuminate\Pipeline\Pipeline;
 use Illuminate\Support\ServiceProvider;
+use Redirect;
 
 
 class UsuarioControlador extends Controller {
 
+
+    public function __construct(Guard $auth) {
+        $this->auth = $auth;
+        //$this->middleware('guest', ['except' => 'getLogout']);
+    }
 
 
     //MOSTRAR VISTA DE REGISTRAR USUARIO
@@ -55,21 +61,17 @@ class UsuarioControlador extends Controller {
         $user->usuario_creador = $usuarioCreador;
 
           if ($user->save())
-            return "se ha registrado correctamente el usuario";
+            //return "se ha registrado correctamente el usuario";
+            //Session::flash('success',"se ha registrado correctamente el usuario");
+            return redirect('registrarUsuario')->with('success','usuario registrado correctamente');
           }else{
             return "escribir bien dos veces el PASSWORD";
+            //return redirect('registrarUsuario')->with('error','usuario NO registrado correctamente');
           }
       }
 
 
-    //MOSTRAR VISTA DE EDITAR USUARIO
-/*    protected function getEditarUsuario() {
 
-      $usuarioSession = Session::get('usuario.correo');
-      $usuarios=Usuario::where('correo','!=',$usuarioSession)->get();     
-         return view('Usuario/editarUsuario', compact('usuarios')); 
-    }
-*/
     protected function getEditarUsuario(Request $request) {
 
       $correoUsuario= $request['correo'];
@@ -98,16 +100,23 @@ class UsuarioControlador extends Controller {
         $usuarioEditor = Session::get('usuario.correo');
         $correo= $request['correo'];
 
-        $usuarioActualizado=Usuario::where('correo',$correo)
+        if($usuarioActualizado=Usuario::where('correo',$correo)
                         ->update(['rol'=>  $rolNuevo,
                                   'habilitado'=>  $estadoNuevo,
                                   'usuario_editor'=>  $usuarioEditor,
 
-                          ]);
+                          ])){
+
+ return redirect('listarUsuario')->with('success','usuario editado correctamente');
+
+        }else{
+return redirect('listarUsuario')->with('error','usuario NO editado correctamente');
+        }
 
 
-  return $this->getListarUsuario();
-
+  //return $this->getListarUsuario();
+//return Redirect::to('listarUsuario');
+// return redirect('registrarUsuario')->with('success','usuario registrado correctamente');
 
     }
 
@@ -123,7 +132,13 @@ class UsuarioControlador extends Controller {
 
 protected function postEditarPerfil(Request $request) {
 
-      
+     
+        
+if($request['passwordAnterior']==="") {
+//NO CAMBIAR PASSWORD
+
+
+ 
       $this->validate($request, [
             'nombre' => 'required',
             'cedula' => 'required',
@@ -134,7 +149,7 @@ protected function postEditarPerfil(Request $request) {
         $nombreNuevo = $request['nombre'];
         $cedulaNuevo = $request['cedula'];
         $correoNuevo = $request['correo'];
-
+        
         $correo= Session::get('usuario.correo');
 
         $usuario=Usuario::where('correo',$correo)
@@ -148,7 +163,54 @@ protected function postEditarPerfil(Request $request) {
         Session::put('usuario.cedula',$cedulaNuevo);
         Session::put('usuario.nombre',$nombreNuevo);
 
-        return  "OK";
+        return "SE ACTULIZO NOMBRE,CORREO Y CEDULA";
+
+
+}else{
+//CAMBIAR PASSWORD
+
+
+      $this->validate($request, [
+            'nombre' => 'required',
+            'cedula' => 'required',
+            'correo' => 'required',
+            'passwordAnterior' => 'required',
+            'password' => 'required',
+            'password2' => 'required',
+        ]);
+
+
+
+//1-VERIFICAR SI PASSWORD = PASSWORD2
+//2-VERIFICAR PASSWORD ANTERIOR
+//3-ACTUALIZAR USUARIO
+//4-ACTUALIZAR VARIABLE DE SESSION 
+
+      if($request['password']==$request['password2']){
+
+        $correoAnterior= Session::get('usuario.correo');
+
+
+        if ($this->auth->attempt($credentials, $request->has('remember'))) {
+
+          return "password anterior igual";
+
+
+        }else{
+
+          return "error password anterior DIFERENTE";
+        }
+      }
+
+
+
+
+
+      }//ELSE ERROR CAMPOS INCOMPLETOS
+
+
+
+      
           
     }
 
