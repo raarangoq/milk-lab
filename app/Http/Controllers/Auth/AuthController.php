@@ -12,6 +12,7 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use Session;
 use Input;
+use Redirect;
 
 
 class AuthController extends Controller {
@@ -75,7 +76,8 @@ use AuthenticatesAndRegistersUsers,
            return view("home");
             
         } else {
-            return "credenciales incorrectas";
+            //return "credenciales incorrectas";
+            return Redirect::to('login')->withErrors("XXXXXX");
         }
     }
 
