@@ -1,6 +1,11 @@
 @extends('layout.principal')
 
 @section('contenido')
+ @if(Session::has('success'))
+                           <div class="alert alert-success ">
+                                   {{Session::get("success")}}
+                            </div>
+        @endif   
 
 <main>
     <article>

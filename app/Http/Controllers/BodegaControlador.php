@@ -26,6 +26,11 @@ class BodegaControlador extends Controller {
         //return print_r($user['0']['cedula']);
         //return print_r($user2);
       }
+      protected function postRegistrarBodega(Request $request){
+
+
+      	
+      }
 
 
 

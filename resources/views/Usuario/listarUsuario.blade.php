@@ -2,105 +2,171 @@
 
 @section('contenido')
 <!-- Contenido  xxxxxxxxxxxxxxxxxxxxxxxxxxx -->
-<main>
-    <article>
-        <section>
-            <div id="stage" class="stage">
 
+<style>
+    @import url(css/3.TABLAS/css/style.css);
+</style>
+           
 
-                <form action="editarUsuario" method="post" data-reactid=".0">
-                    <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"> 
+<div class="wrapper">
+  
+    <div class="table">
 
+      <div class="row header blue">
+        <div class="cell">
+        FILTRAR USURIO
+        </div>
 
-                    <fieldset data-reactid=".0.0">
-                        <legend data-reactid=".0.0.0">EDITAR USUARIO</legend>
+      </div>
 
-                        <div class="control" data-reactid=".0.0.1">
+      <div class="row">
 
+        <div class="cell">
+       Nombre
+        </div>
+      <div class="cell">
+       <input placeholder="filtrar nombre" class="active" type="text">
+      </div>
 
-
-<select id="idCorreoBuscar" data-reactid=".0.0.1.0" class="active buscar"> 
-
-
-
-@foreach($usuarios as $user)
-
-<option value={{$user->correo}} > {{$user->nombre}} -- {{$user->rol}} -- {{$user->correo}}</option>
-
-@endforeach
-
-
-</select>  
-
-                           
-
-
-                            <label data-reactid=".0.0.1.1">BUSCAR usuario</label>
-                        </div><br/>
-
-                           <div class="control" data-reactid=".0.0.2">
-
-
-                            <input  id="idnombre" name="nombre" type="text" id="cedula" placeholder="nombre:" required="" data-reactid=".0.0.2.0" class="active">
-
-                            <label data-reactid=".0.0.2.1">Nombre</label>
-                        </div>
-                        <div class="control" data-reactid=".0.0.2">
-
-
-                            <input  id="idcedula" name="cedula" type="number"  required="" readOnly data-reactid=".0.0.2.0" class="active bloqueado">
-
-                            <label data-reactid=".0.0.2.1">Cedula</label>
-                        </div>
-
-                        <div class="control" data-reactid=".0.0.3">
-
-
-                            <input id="idcorreo" readOnly name="correo" type="email" id="name"  required="" data-reactid=".0.0.3.0" class="active bloqueado">
-
-
-                            <label data-reactid=".0.0.3.1">Correo de Usuario</label>
-
-
-                        </div>
-                       
-                        <div class="control" data-reactid=".0.0.6">
-                            <select id="idrol" name="rol" data-reactid=".0.0.6.0" class="active"> 
-                               
-
+      <div class="cell">
+       Rol
+        </div>
+      <div class="cell">
+       <select name="rol" data-reactid=".0.0.´6.0" class="active">
+                              <option>--seleccionar rol--</option>
                               <option>Director</option>
                               <option>Estudiante</option>
                               <option>Microbiólogo</option>
                               <option>Operario</option>
                               <option>Profesor</option>
-                              <option>Técnico operativo</option>                         
-
-
+                              <option>Técnico operativo</option>
                             </select>
-                            <label data-reactid=".0.0.6.1">Tipo de Rol</label>
-                        </div>  
+      </div>
 
-                        <div class="control" data-reactid=".0.0.7">
-                            <select id="idhabilitado" name="habilitado" data-reactid=".0.0.7.0" class="active"> 
+      </div>
+
+      <div class="row">
+        <div class="cell">
+       Correo
+        </div>
+      <div class="cell">
+       <input placeholder="filtrar correo" class="active" type="text">
+      </div>
+
+      <div class="cell">
+       Estado
+        </div>
+      <div class="cell">
+       <select id="idhabilitado" name="habilitado" data-reactid=".0.0.7.0" class="active"> 
                                
+          <option>-seleccionar estado-</option>
+          <option>Habilitado</option>
+          <option>Inhabilitado</option>                      
 
-                              <option>Habilitado</option>
-                              <option>Inhabilitado</option>                      
+        </select>
+      </div>
 
-                            </select>
-                            <label data-reactid=".0.0.7.1">Estado</label>
-                        </div>  
 
-                                          
+      </div>
 
-                        <input type="submit" value="editar usuario" data-reactid=".0.0.7">
+      <div class="row">
+        <div class="cell">
+       Cedula
+        </div>
+      <div class="cell">
+       <input placeholder="filtrar cedula" class="active" type="text">
+      </div>
 
-                    </fieldset>
-                </form>
-            </div>
-        </section>
-    </article>
-</main>
+
+      <div class="cell">
+       <input value="filtrar" class="active" type="submit">
+      </div>
+      <div class="cell">
+       
+      </div>
+
+      </div>
+
+
+
+  </div>
+
+ </div>
+             
+
+
+
+             <div class="wrapper">
+  
+             <div class="table">
+
+             <div class="row header blue">
+      <div class="cell">
+        Nombre
+      </div>
+      <div class="cell">
+        Correo
+      </div>
+      <div class="cell">
+        Cedula
+      </div>
+      <div class="cell">
+        Rol
+      </div>
+      <div class="cell">
+        Estado
+      </div>
+      <div class="cell">
+        Editar
+      </div>
+    </div>
+
+
+
+   
+@foreach($usuarios as $user)
+
+
+<div class="row">
+      <div class="cell">
+        {{$user->nombre}}
+      </div>
+      <div class="cell">
+        {{$user->correo}}
+      </div>
+      <div class="cell">
+        {{$user->cedula}}
+      </div>
+      <div class="cell">
+        {{$user->rol}}
+      </div>
+
+
+
+@if ($user->habilitado === 1)
+      <div class="cell">
+       Habilitado
+@else
+      <div class="cell red">    
+       Inhabilitado
+@endif
+ 
+      </div>
+      <div class="cell">
+        <input class="inputEditar" type="submit" id={{$user->correo}} value="editar usuario" data-reactid=".0.0.7" >
+      </div>
+    </div>
+
+@endforeach
+
+
+
+             </div>
+             </div>
+
+
+
+
 <!-- FIN Contenido -->
 
 @endsection
@@ -114,32 +180,14 @@
 
 $(document).ready(function(){
 
-    $('#idCorreoBuscar').on('change',function(e){
-   
-    var correo = $('#idCorreoBuscar').val();
-
-        $.get('/ajax?correo=' + correo,function(data){  
-
-
-          $('#idcorreo').val(data[0]['correo']);
-          $('#idnombre').val(data[0]['nombre']);
-          $('#idcedula').val(data[0]['cedula']);
-          $('#idrol').val(data[0]['rol']);
+$(".inputEditar").click(function(e){
+ var id = e.target.id;
+//alert(id);
+document.location.href = "editarUsuario?correo=" + id;
 
 
-          if((data[0]['habilitado'])==1){
-          $('#idhabilitado').val('Habilitado');
-          }else{
-          $('#idhabilitado').val('Inhabilitado');
-          }
+});
 
-          
-
-
-         });
-
-     });
-            
 });
 
 </script>

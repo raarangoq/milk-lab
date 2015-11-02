@@ -57,51 +57,84 @@ class UsuarioControlador extends Controller {
         if($user->save())   
          return redirect('registrarUsuario')->with('success', 'registrado correctamente'); 
               //Session::flash('success',"se ha registrado correctamente el usuario");
-         
+         else{
+          return  "ingresar password correctos ";
+         }
           }
       }
 
 
     //MOSTRAR VISTA DE EDITAR USUARIO
-    protected function getEditarUsuario() {
+/*    protected function getEditarUsuario() {
 
       $usuarioSession = Session::get('usuario.correo');
-      $usuarios=Usuario::where('correo','!=',$usuarioSession)->get();
-     
-         return view('Usuario/editarUsuario', compact('usuarios'));
+      $usuarios=Usuario::where('correo','!=',$usuarioSession)->get();     
+         return view('Usuario/editarUsuario', compact('usuarios')); 
     }
+*/
+    protected function getEditarUsuario(Request $request) {
+
+      $correoUsuario= $request['correo'];
+
+      $usuarioSeleccionado=Usuario::where('correo',$correoUsuario)->get();
+      $usuario=$usuarioSeleccionado[0];
+
+      return view('Usuario/editarUsuario', compact('usuario'));
+
+    }
+
 
     protected function postEditarUsuario(Request $request) {
 
       
       $this->validate($request, [
-            'nombre'     => 'required',
+
+            'nombre'     => 'required',    
             'rol'        => 'required',
             'habilitado' => 'required',
         ]);
 
 
+
         $nombreNuevo = $request['nombre'];
         $rolNuevo    = $request['rol'];
-        $estadoNuevo = $request['estado'];
+        $estadoNuevo = $request['habilitado'];
 
-        $usuarioEditor = Session::get('usuario.correo');
-
+        
         $correo=Input::get('correo');//COJER CORREO DE LISTA DE SELECT
       //prueba
        
 
+        $usuarioEditor = Session::get('usuario.correo');
+        $correo= $request['correo'];
 
-//CONSULTA UPDATE
-//Usuario::update('update usuarios set nombre = aa where correo = ?', [$correo]);
-//$affected = Usuario::update('update usuarios set cedula = 1 where correo = ?', ['xxx']);
+        if($usuarioActualizado=Usuario::where('correo',$correo)
+                        ->update(['rol'=>  $rolNuevo,
+                                  'habilitado'=>  $estadoNuevo,
+                                  'usuario_editor'=>  $usuarioEditor,
+
+                          ])){
+          return redirect('editarUsuario')->with('success','Consulta actualizada');
+
+        }
+        else{
+          return "error";
+        }
+
+
+  //return $this->getListarUsuario();
+
+
+
 
    // return "CONSULTA UPDATE";
        // Session::flash('success',"CONSULTA UPDATE");
       //$usuarios=Usuario::where('correo','!=',$usuarioSession)->get();
     
-          redirect('editarUsuario')->with('success','Consulta actualizada');
+       
+         
            
+
     }
 
     //MOSTRAR VISTA DE EDITAR PERFIL
@@ -130,19 +163,26 @@ protected function postEditarPerfil(Request $request) {
 
         $correo= Session::get('usuario.correo');
 
-        $usuario=Usuario::where('correo',$correo)
+       if( $usuario=Usuario::where('correo',$correo)
                         ->update(['nombre'=>  $nombreNuevo,
                                   'cedula'=>  $cedulaNuevo,
                                   'correo'=>  $correoNuevo,
 
-                          ]);
+                          ])){
+
+       return redirect('editarUsuario')->with('success','Perfil actualizado');
+
+        }
+        else{
+          return "error";
+        }
 
         Session::put('usuario.correo',$correoNuevo);
         Session::put('usuario.cedula',$cedulaNuevo);
         Session::put('usuario.nombre',$nombreNuevo);
 
 
-       Session::flash('success',"Perfil editado correctamente");
+       //Session::flash('success',"Perfil editado correctamente");
        // return  "OK";
 
           
@@ -158,14 +198,14 @@ protected function postEditarPerfil(Request $request) {
       }
 
 
-    protected function getListarrUsuario() {
+    protected function getListarUsuario() {
 
       $usuarioSession = Session::get('usuario.correo');
       $usuarios=Usuario::where('correo','!=',$usuarioSession)->get();
      
-         return view('Usuario/editarUsuario', compact('usuarios'));
+         return view('Usuario/listarUsuario', compact('usuarios'));
     }
-    
+
 
 
 
