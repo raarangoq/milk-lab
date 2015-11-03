@@ -2,6 +2,12 @@
 
 @section('contenido')
 <!-- Contenido  xxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+
+   @if(Session::has('success'))
+                           <div class="alert alert-success text= center">
+                                   {{Session::get("success")}}
+                            </div>
+    @endif      
 <main>
     <article>
         <section>
@@ -66,11 +72,7 @@
                             <label data-reactid=".0.0.3.1">Confirmar Password</label>
 
                         </div>    
-                        @if(Session::has('success'))
-                           <div class="alert alert-success text= center">
-                                   {{Session::get("success")}}
-                            </div>
-                        @endif      
+                     
                     
                         <input type="submit" value="editar perfil" data-reactid=".0.0.7">
 
