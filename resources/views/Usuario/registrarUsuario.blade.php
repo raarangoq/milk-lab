@@ -1,12 +1,36 @@
 @extends('layout.principal')
 
+<style>
+    
+    @import url(css/4.MENSAJES/style.css);
+</style>
+
 @section('contenido')
 <!-- Contenido  xxxxxxxxxxxxxxxxxxxxxxxxxxx -->
-       @if(Session::has('success'))
-                           <div class="alert alert-success ">
-                                   {{Session::get("success")}}
-                            </div>
-        @endif                
+
+
+@if(Session::has('success'))
+    
+<div class="alert alert-success mensajeVerde">
+    
+{{Session::get("success")}}
+</div>
+
+
+@elseif(Session::has('error'))
+    
+<div class="alert alert-error mensajeRojo">
+    
+{{Session::get("error")}}
+</div>
+
+
+
+@endif
+
+
+
+
 <main>
     <article>
         <section>

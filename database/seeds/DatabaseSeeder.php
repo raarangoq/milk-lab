@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(UsuarioTableSeeder::class);
         $this->call(CavaTableSeeder::class);
+        $this->call(BodegaTableSeeder::class);
 
         Model::reguard();
     }
