@@ -2,26 +2,10 @@
 
 @section('contenido')
 <!-- Contenido  xxxxxxxxxxxxxxxxxxxxxxxxxxx -->
-
-@if(Session::has('success'))
-    
-<div class="alert alert-success">
-    
-{{Session::get("success")}}
-</div>
-
-
-@endif
-
 <main>
-
     <article>
         <section>
             <div id="stage" class="stage">
-
-            <a href="listarUsuario">
-              <img src="css/iconos/atras.png">
-            </a>
 
 
                 <form action="editarUsuario" method="post" data-reactid=".0">
@@ -31,19 +15,40 @@
                     <fieldset data-reactid=".0.0">
                         <legend data-reactid=".0.0.0">EDITAR USUARIO</legend>
 
-                       
+                        <div class="control" data-reactid=".0.0.1">
+
+
+
+<select id="idCorreoBuscar" data-reactid=".0.0.1.0" class="active buscar"> 
+
+
+
+@foreach($usuarios as $user)
+
+<option value={{$user->correo}} > {{$user->nombre}} -- {{$user->rol}} -- {{$user->correo}}</option>
+
+@endforeach
+
+
+</select>  
+
+                           
+
+
+                            <label data-reactid=".0.0.1.1">BUSCAR usuario</label>
+                        </div><br/>
 
                            <div class="control" data-reactid=".0.0.2">
 
 
-                            <input  id="idnombre" name="nombre" type="text" readOnly  required data-reactid=".0.0.2.0" class="active bloqueado" value={{$usuario->nombre}}>
+                            <input  id="idnombre" name="nombre" type="text" id="cedula" placeholder="nombre:" required="" data-reactid=".0.0.2.0" class="active">
 
                             <label data-reactid=".0.0.2.1">Nombre</label>
                         </div>
                         <div class="control" data-reactid=".0.0.2">
 
 
-                            <input  id="idcedula" name="cedula" type="number"  required readOnly data-reactid=".0.0.2.0" class="active bloqueado" value={{$usuario->cedula}}>
+                            <input  id="idcedula" name="cedula" type="number"  required="" readOnly data-reactid=".0.0.2.0" class="active bloqueado">
 
                             <label data-reactid=".0.0.2.1">Cedula</label>
                         </div>
@@ -51,7 +56,7 @@
                         <div class="control" data-reactid=".0.0.3">
 
 
-                            <input id="idcorreo" readOnly name="correo" type="email" required readOnly data-reactid=".0.0.3.0" class="active bloqueado"  value={{$usuario->correo}}>
+                            <input id="idcorreo" readOnly name="correo" type="email" id="name"  required="" data-reactid=".0.0.3.0" class="active bloqueado">
 
 
                             <label data-reactid=".0.0.3.1">Correo de Usuario</label>
@@ -60,16 +65,16 @@
                         </div>
                        
                         <div class="control" data-reactid=".0.0.6">
-                            <select id="idrol" name="rol" data-reactid=".0.0.6.0" class="active"  value={{$usuario->rol}}> 
+                            <select id="idrol" name="rol" data-reactid=".0.0.6.0" class="active"> 
                                
-                              <option>{{$usuario->rol}}</option>
 
                               <option>Director</option>
                               <option>Estudiante</option>
                               <option>Microbiólogo</option>
                               <option>Operario</option>
                               <option>Profesor</option>
-                              <option>Técnico operativo</option>      
+                              <option>Técnico operativo</option>                         
+
 
                             </select>
                             <label data-reactid=".0.0.6.1">Tipo de Rol</label>
@@ -78,13 +83,9 @@
                         <div class="control" data-reactid=".0.0.7">
                             <select id="idhabilitado" name="habilitado" data-reactid=".0.0.7.0" class="active"> 
                                
-@if ($usuario->habilitado === 1)
-   <option value="1">Habilitado</option>
-   <option value="0">Inhabilitado</option>
-@else
-    <option value="0">Inhabilitado</option>
-     <option value="1">Habilitado</option> 
-@endif                  
+
+                              <option>Habilitado</option>
+                              <option>Inhabilitado</option>                      
 
                             </select>
                             <label data-reactid=".0.0.7.1">Estado</label>
