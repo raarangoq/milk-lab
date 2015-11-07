@@ -26,13 +26,13 @@ class UsuarioControlador extends Controller {
 
 
     //MOSTRAR VISTA DE REGISTRAR USUARIO
-    protected function getRegistrarUsuario(Request $request) {
-// !!! *** verificar que el usuario logueado esta habilitado y sea un director -> carga combox de roles
-
-
+    protected function getRegistrarUsuario() {
+// !!! *** verificacion del usuario logueado esta habilitado y sea un director -> carga combox de roles
 
      
      $roles=Usuario::distinct()->select('rol')->get();
+
+     if((Session::get('usuario.rol') == "Director") && (Session::get('usuario.habilitado'))
 
 
       return view("Usuario/registrarUsuario", compact('roles'));
@@ -49,7 +49,6 @@ class UsuarioControlador extends Controller {
             'password2' => 'required',
             'cedula'    => 'required',
             'rol'       => 'required',
-            'habilitado'=> 'habilitado',
         ]);
 
         if($request['password']==$request['password2']){
@@ -241,9 +240,7 @@ if($request['passwordAnterior']==="") {
 
       }//ELSE ERROR CAMPOS INCOMPLETOS
 
-
-
-      
+    
 
           
     }
