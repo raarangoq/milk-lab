@@ -21,7 +21,7 @@ class Cava extends Model
      * @var array
      */
     protected $fillable = [
-    	'id', 
+    	'codigo', 
     	'tipo', 
     	'temperatura_minima', 
     	'temperatura_maxima', 
