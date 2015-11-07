@@ -32,6 +32,6 @@ class ControlDeCava extends Model
     	'fecha',
     	'humedad',
     	'temperatura',
-    	'usuario_registrador'
+    	'usuario_realizador'
     ];
 }

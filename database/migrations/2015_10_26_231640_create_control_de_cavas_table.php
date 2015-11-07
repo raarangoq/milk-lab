@@ -18,14 +18,14 @@ class CreateControlDeCavasTable extends Migration
             // de 0 a 100, un porcentaje
             $table->double('humedad', 6, 3);
             $table->decimal('temperatura', 6, 3);
-            $table->string('usuario_registrador', 60);
+            $table->string('usuario_realizador', 60);
 
             $table->primary('fecha', 'cava');
 
             $table->foreign('cava')
                 ->references('codigo')
                 ->on('cavas');
-            $table->foreign('usuario_registrador')
+            $table->foreign('usuario_realizador')
                 ->references('correo')
                 ->on('usuarios');  
         });
