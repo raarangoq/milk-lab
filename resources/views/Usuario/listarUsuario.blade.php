@@ -18,8 +18,6 @@
 {{Session::get("error")}}
 </div>
 
-
-
 @endif
 
 <style>
@@ -163,7 +161,7 @@
 
 
 
-@if ($user->habilitado === 1)
+@if ($user->habilitado == 1)
       <div class="cell">
        Habilitado
 @else
@@ -181,7 +179,7 @@
 
 
 
-             </div>
+</div>
              </div>
 
 

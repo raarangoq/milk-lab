@@ -16,15 +16,12 @@
 {{Session::get("success")}}
 </div>
 
-
 @elseif(Session::has('error'))
     
 <div class="alert alert-error mensajeRojo">
     
 {{Session::get("error")}}
-</div>
-
-
+</div> 
 
 @endif
 

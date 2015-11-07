@@ -26,17 +26,22 @@ class UsuarioControlador extends Controller {
 
 
     //MOSTRAR VISTA DE REGISTRAR USUARIO
-    protected function getRegistrarUsuario() {
+    protected function getRegistrarUsuario(Request $request) {
+// !!! *** verificar que el usuario logueado esta habilitado y sea un director -> carga combox de roles
 
+
+
+     
      $roles=Usuario::distinct()->select('rol')->get();
 
 
-        return view("Usuario/registrarUsuario", compact('roles'));
+      return view("Usuario/registrarUsuario", compact('roles'));
     }
 
 
     //RECIBIR DATOS DE VISTA (REGISTRAR USUARIO) PARA CREAR USUARIO
     protected function postRegistrarUsuario(Request $request) {
+     //!!! *** verifica que no exista otro usuario con el mismo correo ni otro usuario con la misma cédula  
         $this->validate($request, [
             'nombre'    => 'required',
             'correo'    => 'required',
@@ -44,6 +49,7 @@ class UsuarioControlador extends Controller {
             'password2' => 'required',
             'cedula'    => 'required',
             'rol'       => 'required',
+            'habilitado'=> 'habilitado',
         ]);
 
         if($request['password']==$request['password2']){
@@ -56,14 +62,13 @@ class UsuarioControlador extends Controller {
         $user->cedula = $data['cedula'];
         $user->rol = $data['rol'];
 
-        //$user->usuario_creador = 'raarangoq@unal.edu.co';
         $usuarioCreador=Session::get('usuario.correo');
         $user->usuario_creador = $usuarioCreador;
 
 
           if ($user->save())
            
-            return redirect('registrarUsuario')->with('success','usuario registrado correctamente');
+            return redirect('registrarUsuario')->with('success','usuario creado correctamente');
           }else{
             return "escribir bien dos veces el PASSWORD";
             //return redirect('registrarUsuario')->with('error','usuario NO registrado correctamente');
@@ -78,7 +83,9 @@ class UsuarioControlador extends Controller {
       $correoUsuario= $request['correo'];
 
       $usuarioSeleccionado=Usuario::where('correo',$correoUsuario)->get();
-      $usuario=$usuarioSeleccionado[0];
+    $usuario=$usuarioSeleccionado[0];
+
+       $usuario = Session::get('usuario');
 
       return view('Usuario/editarUsuario', compact('usuario'));
 
@@ -95,14 +102,12 @@ class UsuarioControlador extends Controller {
             'habilitado' => 'required',
         ]);
 
-
-
-        $nombreNuevo = $request['nombre'];
+      //  $nombreNuevo = $request['nombre'];
         $rolNuevo    = $request['rol'];
         $estadoNuevo = $request['habilitado'];
 
         
-        $correo=Input::get('correo');//COJER CORREO DE LISTA DE SELECT
+        //$correo=Input::get('correo');//COJER CORREO DE LISTA DE SELECT
       //prueba
        
 
@@ -117,10 +122,10 @@ class UsuarioControlador extends Controller {
                           ])){
 
 
- return redirect('listarUsuario')->with('success','usuario editado correctamente');
+            return redirect('listarUsuario')->with('success','usuario editado correctamente');
 
         }else{
-return redirect('listarUsuario')->with('error','usuario NO editado correctamente');
+           return redirect('listarUsuario')->with('error','usuario NO editado correctamente');
 
         }
 
@@ -172,6 +177,10 @@ if($request['passwordAnterior']==="") {
 
                           ])){
 
+        Session::put('usuario.correo',$correoNuevo);
+        Session::put('usuario.cedula',$cedulaNuevo);
+        Session::put('usuario.nombre',$nombreNuevo);
+
        return redirect('editarUsuario')->with('success','Perfil actualizado');
 
         }
@@ -179,9 +188,7 @@ if($request['passwordAnterior']==="") {
           return "error";
         }
 
-        Session::put('usuario.correo',$correoNuevo);
-        Session::put('usuario.cedula',$cedulaNuevo);
-        Session::put('usuario.nombre',$nombreNuevo);
+     
 
 
 

@@ -8,7 +8,6 @@
                                    {{Session::get("success")}}
                             </div>
                  @endif  
-
 <main>
 
     <article>
@@ -46,9 +45,7 @@
 @endforeach
 
 
-</select>  
-
-                           
+</select>                            
 
 
                             <label data-reactid=".0.0.1.1">BUSCAR usuario</label>
@@ -100,7 +97,7 @@
                         <div class="control" data-reactid=".0.0.7">
                             <select id="idhabilitado" name="habilitado" data-reactid=".0.0.7.0" class="active"> 
                                
-@if ($usuario->habilitado === 1)
+@if ($usuario->habilitado == 1)
    <option value="1">Habilitado</option>
    <option value="0">Inhabilitado</option>
 @else
