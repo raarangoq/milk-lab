@@ -28,5 +28,14 @@ class UsuarioTableSeeder extends Seeder
             'rol' => 'Técnico operativo',
             'usuario_creador' => 'raarangoq@unal.edu.co',
         ]);
+
+        DB::table('usuarios')->insert([
+            'cedula' => 1013875731,
+            'correo' => 'uriel@unal.edu.co',
+            'password' => bcrypt('secret'),
+            'nombre' => 'Uriel Valencia',
+            'rol' => 'Profesor',
+            'usuario_creador' => 'raarangoq@unal.edu.co',
+        ]);
     }
 }
