@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
+use App\Http\Requests\UsuarioCreadoRequest;
 use Session;
 use Input;
 //use Illuminate\Pipeline\Pipeline;
@@ -32,16 +33,16 @@ class UsuarioControlador extends Controller {
      
      $roles=Usuario::distinct()->select('rol')->get();
 
-     if((Session::get('usuario.rol') == "Director") && (Session::get('usuario.habilitado'))
+    // if((Session::get('usuario.rol') == "Director") && (Session::get('usuario.habilitado'))
 
 
-      return view("Usuario/registrarUsuario", compact('roles'));
+      return view("Usuario/registrarUsuario");
     }
 
 
     //RECIBIR DATOS DE VISTA (REGISTRAR USUARIO) PARA CREAR USUARIO
-    protected function postRegistrarUsuario(Request $request) {
-     //!!! *** verifica que no exista otro usuario con el mismo correo ni otro usuario con la misma cédula  
+    protected function postRegistrarUsuario(UsuarioCreadoRequest $request) {
+     //!!! *** verifica que no exista otro usuario con el mismo correo ni otro usuario con la misma cédula  --> request !!
         $this->validate($request, [
             'nombre'    => 'required',
             'correo'    => 'required',
@@ -67,7 +68,7 @@ class UsuarioControlador extends Controller {
 
           if ($user->save())
            
-            return redirect('registrarUsuario')->with('success','usuario creado correctamente');
+            return redirect('registrarUsuario')->with('message','store');
           }else{
             return "escribir bien dos veces el PASSWORD";
             //return redirect('registrarUsuario')->with('error','usuario NO registrado correctamente');

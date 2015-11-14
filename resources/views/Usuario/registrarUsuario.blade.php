@@ -7,9 +7,9 @@
 
 @section('contenido')
 <!-- Contenido  xxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+@include('alerts.request')
 
-
-@if(Session::has('success'))
+<!-- @if(Session::has('success'))
     
 <div class="alert alert-success mensajeVerde">
     
@@ -23,9 +23,23 @@
 {{Session::get("error")}}
 </div> 
 
-@endif
+@endif  -->
 
+<!-- segunda forma de validación -->
 
+<!-- @if(count($errors) > 0)
+<div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" date-dismiss="alert" aria-label="Close"><span aria-hidden="true">&time;</span>
+        
+    </button>
+    <ul>
+        @foreach($errors->all() as $error)
+        <li>{!!error!!}</li>
+        @endforeach
+    </ul>
+    
+</div>
+@endif  -->
 
 
 <main>
