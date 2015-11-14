@@ -9,13 +9,14 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
-use App\Http\Requests\UsuarioCreadoRequest;
 use Session;
 use Input;
 //use Illuminate\Pipeline\Pipeline;
 use Illuminate\Support\ServiceProvider;
 use Redirect;
 
+use App\Http\Requests\UsuarioCreadoRequest;
+use App\Http\Requests\EditarPerfilRequest;
 
 class UsuarioControlador extends Controller {
 
@@ -148,7 +149,7 @@ class UsuarioControlador extends Controller {
 
 
 
-protected function postEditarPerfil(Request $request) {
+protected function postEditarPerfil(EditarPerfilRequest $request) {
 
      
         

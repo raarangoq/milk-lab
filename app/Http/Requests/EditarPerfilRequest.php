@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class UsuarioCreadoRequest extends Request
+class EditarPerfilRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,9 +13,7 @@ class UsuarioCreadoRequest extends Request
      */
     public function authorize()
     {
-       return true;
-
-            
+        return true;
     }
 
     /**
@@ -26,14 +24,9 @@ class UsuarioCreadoRequest extends Request
     public function rules()
     {
         return [
-            'nombre'    => 'required',
-            'correo'    => 'required|primary:usuarios',
-            'password'  => 'required',
-            'password2' => 'required',
-            'cedula'    => 'required|unique:usuarios',
-            //'rol'       => 'required',
-
-
+            'nombre' => 'required',
+            'cedula' => 'required||unique:usuarios',
+            'correo' => 'required',
         ];
     }
 }

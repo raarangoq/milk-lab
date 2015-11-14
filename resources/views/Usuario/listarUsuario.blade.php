@@ -3,27 +3,12 @@
 @section('contenido')
 
 
-@if(Session::has('success'))
-    
-<div class="alert alert-success mensajeVerde">
-    
-{{Session::get("success")}}
-</div>
+@include('alerts.request')
 
-
-@elseif(Session::has('error'))
-    
-<div class="alert alert-success mensajeRojo">
-    
-{{Session::get("error")}}
-</div>
-
-@endif
-
-<style>
+<!-- <style>
     @import url(css/3.TABLAS/css/style.css);
     @import url(css/4.MENSAJES/style.css);
-</style>
+</style> -->
            
 
 <div class="wrapper">

@@ -5,10 +5,8 @@
 @section('contenido')
 <!-- Contenido  xxxxxxxxxxxxxxxxxxxxxxxxxxx -->
 @include('alerts.request')
-<style>
-    
-    @import url(css/4.MENSAJES/style.css);
-</style>
+
+
 
 
 <main>
