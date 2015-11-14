@@ -13,9 +13,9 @@ class UsuarioCreadoRequest extends Request
      */
     public function authorize()
     {
-        if((Session::get('usuario.rol') == "Director") && (Session::get('usuario.habilitado'))
+       return true;
 
-            return true; 
+            
     }
 
     /**
@@ -27,7 +27,7 @@ class UsuarioCreadoRequest extends Request
     {
         return [
             'nombre'    => 'required',
-            'correo'    => 'required|primary:usuarios',
+            'correo'    => 'required',
             'password'  => 'required',
             'password2' => 'required',
             'cedula'    => 'required|unique:usuarios',

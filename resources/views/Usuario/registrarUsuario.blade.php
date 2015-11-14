@@ -1,45 +1,14 @@
 @extends('layout.principal')
 
-<style>
-    
-    @import url(css/4.MENSAJES/style.css);
-</style>
+
 
 @section('contenido')
 <!-- Contenido  xxxxxxxxxxxxxxxxxxxxxxxxxxx -->
 @include('alerts.request')
-
-<!-- @if(Session::has('success'))
+<style>
     
-<div class="alert alert-success mensajeVerde">
-    
-{{Session::get("success")}}
-</div>
-
-@elseif(Session::has('error'))
-    
-<div class="alert alert-error mensajeRojo">
-    
-{{Session::get("error")}}
-</div> 
-
-@endif  -->
-
-<!-- segunda forma de validación -->
-
-<!-- @if(count($errors) > 0)
-<div class="alert alert-danger alert-dismissible" role="alert">
-    <button type="button" class="close" date-dismiss="alert" aria-label="Close"><span aria-hidden="true">&time;</span>
-        
-    </button>
-    <ul>
-        @foreach($errors->all() as $error)
-        <li>{!!error!!}</li>
-        @endforeach
-    </ul>
-    
-</div>
-@endif  -->
+    @import url(css/4.MENSAJES/style.css);
+</style>
 
 
 <main>
