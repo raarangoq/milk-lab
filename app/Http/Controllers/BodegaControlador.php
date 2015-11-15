@@ -32,6 +32,11 @@ class BodegaControlador extends Controller {
       	
       }
 
+      protected function getEditarBodega() {
+
+        return view("Bodega/editarBodega");
+        
+      }
 
 
 }

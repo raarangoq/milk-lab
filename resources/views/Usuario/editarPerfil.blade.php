@@ -13,14 +13,9 @@
 
                 <form action="editarPerfil" method="post" data-reactid=".0">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"> 
-
-
                     <fieldset data-reactid=".0.0">
                         <legend data-reactid=".0.0.0">EDITAR PERFIL</legend>
-
-                        
-
-                       
+                                           
                         <div class="control" data-reactid=".0.0.2">
 
 

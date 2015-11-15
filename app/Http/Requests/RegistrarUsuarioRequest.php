@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class UsuarioCreadoRequest extends Request
+class RegistrarUsuarioRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,7 +27,7 @@ class UsuarioCreadoRequest extends Request
     {
         return [
             'nombre'    => 'required',
-            'correo'    => 'required|primary:usuarios',
+            'correo'    => 'required|unique:usuarios',
             'password'  => 'required',
             'password2' => 'required',
             'cedula'    => 'required|unique:usuarios',

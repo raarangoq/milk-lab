@@ -15,7 +15,7 @@ use Input;
 use Illuminate\Support\ServiceProvider;
 use Redirect;
 
-use App\Http\Requests\UsuarioCreadoRequest;
+use App\Http\Requests\RegistrarUsuarioRequest;
 use App\Http\Requests\EditarPerfilRequest;
 
 class UsuarioControlador extends Controller {
@@ -42,7 +42,7 @@ class UsuarioControlador extends Controller {
 
 
     //RECIBIR DATOS DE VISTA (REGISTRAR USUARIO) PARA CREAR USUARIO
-    protected function postRegistrarUsuario(UsuarioCreadoRequest $request) {
+    protected function postRegistrarUsuario(RegistrarUsuarioRequest $request) {
      //!!! *** verifica que no exista otro usuario con el mismo correo ni otro usuario con la misma cédula  --> request !!
         $this->validate($request, [
             'nombre'    => 'required',
@@ -69,12 +69,9 @@ class UsuarioControlador extends Controller {
 
           if ($user->save())
            
-            return redirect('registrarUsuario')->with('message','store');
-          }else{
-            return "escribir bien dos veces el PASSWORD";
-            //return redirect('registrarUsuario')->with('error','usuario NO registrado correctamente');
+            return redirect('registrarUsuario')->with('success','usuario registrado correctamente');
 
-          }
+                    }
       }
 
 
@@ -170,21 +167,11 @@ if($request['passwordAnterior']==="") {
 
         Session::put('usuario.correo',$correoNuevo);
         Session::put('usuario.cedula',$cedulaNuevo);
-        Session::put('usuario.nombre',$nombreNuevo);
-
-       
+        Session::put('usuario.nombre',$nombreNuevo);       
        
         return redirect('editarPerfil')->with('success','usuario editado correctamente');
      
        }
-
-
-       //Session::flash('success',"Perfil editado correctamente");
-       // return  "OK";
-
-
-      //  return "SE ACTULIZO NOMBRE,CORREO Y CEDULA";
-
 
 }else{
 //CAMBIAR PASSWORD
@@ -222,14 +209,7 @@ if($request['passwordAnterior']==="") {
         }
       }
 
-
-
-
-
       }//ELSE ERROR CAMPOS INCOMPLETOS
-
-    
-
           
     }
 
@@ -242,7 +222,6 @@ if($request['passwordAnterior']==="") {
        return $usuarioSeleccionado;//ENVIAR TODOS LOS DATOS DE USUARIO
       }
 
-
     protected function getListarUsuario() {
 
       $usuarioSession = Session::get('usuario.correo');
@@ -250,8 +229,6 @@ if($request['passwordAnterior']==="") {
      
          return view('Usuario/listarUsuario', compact('usuarios'));
     }
-
-
 
 
 }

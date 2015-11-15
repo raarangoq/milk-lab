@@ -17,9 +17,6 @@ Route::post('register', ['as' => 'auth/register', 'uses' => 'Auth\AuthController
 Route::get('/', 'Auth\AuthController@getLogin');
 
 
-
-
-
 //--------> HOME (rutas) <----------------------------
 Route::get('home', function () {
     return view('home');
@@ -59,7 +56,8 @@ Route::get('editarCava', 'CavaControlador@getEditarCava');
 //CREAR BODEGA
 Route::get('registrarBodega', 'BodegaControlador@getRegistrarBodega');
 
-
+//EDITAR BODEGA 
+Route::get('editarBodega', 'BodegaControlador@getEditarBodega');
 
 //------> PROVEEDOR (rutas) <----------------------------
 

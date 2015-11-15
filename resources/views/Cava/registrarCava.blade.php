@@ -39,9 +39,17 @@
                             <label data-reactid=".0.0.4.1">* Temperatura max °C</label>
                         </div>
 
-                         <div class="control" data-reactid=".0.0.5">
-                            <input name=""     type="number" id="name" placeholder="" required="" data-reactid=".0.0.4.0" class="active">
-                            <label data-reactid=".0.0.5.1">en uso??????</label>
+                          <div class="control" data-reactid=".0.0.1">
+
+                            <select name"tipo" data-reactid=".0.0.1.0" class="active">
+                             
+                             <option> Si</option>
+                              <option>No </option>
+                              
+
+                            </select>
+                            
+                            <label data-reactid=".0.0.1.1">* En uso</label>
                         </div>
                     
 
