@@ -111,6 +111,8 @@ $(document).ready(function(){
           $('#idnombre').val(data[0]['nombre']);
           $('#idcedula').val(data[0]['cedula']);
           $('#idrol').val(data[0]['rol']);
+
+          
           if((data[0]['habilitado'])==1){
           $('#idhabilitado').val('Habilitado');
           }else{

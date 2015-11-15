@@ -86,7 +86,7 @@ class UsuarioControlador extends Controller {
       $usuarioSeleccionado=Usuario::where('correo',$correoUsuario)->get();
     $usuario=$usuarioSeleccionado[0];
 
-       $usuario = Session::get('usuario');
+       //$usuario = Session::get('usuario');
 
       return view('Usuario/editarUsuario', compact('usuario'));
 
@@ -125,11 +125,7 @@ class UsuarioControlador extends Controller {
 
             return redirect('listarUsuario')->with('success','usuario editado correctamente');
 
-        }else{
-           return redirect('listarUsuario')->with('error','usuario NO editado correctamente');
-
         }
-
 
   //return $this->getListarUsuario();
 
@@ -149,14 +145,10 @@ class UsuarioControlador extends Controller {
 
 
 
-protected function postEditarPerfil(EditarPerfilRequest $request) {
-
-     
+protected function postEditarPerfil(EditarPerfilRequest $request) {     
         
 if($request['passwordAnterior']==="") {
 //NO CAMBIAR PASSWORD
-
-
  
       $this->validate($request, [
             'nombre' => 'required',
@@ -164,33 +156,27 @@ if($request['passwordAnterior']==="") {
             'correo' => 'required',
         ]);
 
-
         $nombreNuevo = $request['nombre'];
         $cedulaNuevo = $request['cedula'];
         $correoNuevo = $request['correo'];
         
         $correo= Session::get('usuario.correo');
 
-       if( $usuario=Usuario::where('correo',$correo)
+        if($usuario=Usuario::where('correo',$correo)
                         ->update(['nombre'=>  $nombreNuevo,
                                   'cedula'=>  $cedulaNuevo,
                                   'correo'=>  $correoNuevo,
-
                           ])){
 
         Session::put('usuario.correo',$correoNuevo);
         Session::put('usuario.cedula',$cedulaNuevo);
         Session::put('usuario.nombre',$nombreNuevo);
 
-       return redirect('editarUsuario')->with('success','Perfil actualizado');
-
-        }
-        else{
-          return "error";
-        }
-
+       
+       
+        return redirect('editarPerfil')->with('success','usuario editado correctamente');
      
-
+       }
 
 
        //Session::flash('success',"Perfil editado correctamente");

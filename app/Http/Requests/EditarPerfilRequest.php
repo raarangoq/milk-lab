@@ -25,7 +25,7 @@ class EditarPerfilRequest extends Request
     {
         return [
             'nombre' => 'required',
-            'cedula' => 'required||unique:usuarios',
+            'cedula' => 'required',
             'correo' => 'required',
         ];
     }

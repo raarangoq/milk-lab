@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class UsuarioActualizadoRequest extends Request
+class EditarUsuarioRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
