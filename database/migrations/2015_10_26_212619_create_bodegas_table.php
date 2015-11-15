@@ -23,7 +23,8 @@ class CreateBodegasTable extends Migration
             $table->primary('codigo');
             $table->foreign('usuario_registrador')
                 ->references('correo')
-                ->on('usuarios');  
+                ->on('usuarios')
+                ->onUpdate('cascade');  
         });
     }
 

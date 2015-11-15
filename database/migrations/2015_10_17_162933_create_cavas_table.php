@@ -24,7 +24,8 @@ class CreateCavasTable extends Migration
 
             $table->foreign('usuario_registrador')
                 ->references('correo')
-                ->on('usuarios');  
+                ->on('usuarios')
+                ->onUpdate('cascade');  
         });
     }
 
