@@ -20,11 +20,7 @@ class BodegaControlador extends Controller {
      protected function getRegistrarBodega() {
 
         return view("Bodega/registrarBodega");
-        // $user2 = Session::get('usuario');
-        //$user2 = Session::get('usuario.correo');
-        //return $user;
-        //return print_r($user['0']['cedula']);
-        //return print_r($user2);
+       
       }
       protected function postRegistrarBodega(Request $request){
 
@@ -37,6 +33,24 @@ class BodegaControlador extends Controller {
         return view("Bodega/editarBodega");
         
       }
+      protected function postEditarBodega(Request $request){
+
+
+        
+      }
+
+     protected function getAjax() {
+
+      
+      }
+
+    protected function getListarBodega() {
+
+     $usuarioSession = Session::get('usuario.correo');
+      $usuarios=Usuario::where('correo','!=',$usuarioSession)->get();
+     
+         return view('Bodega/listarBodega', compact('usuarios'));
+    }
 
 
 }

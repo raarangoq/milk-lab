@@ -39,9 +39,6 @@ Route::get('editarPerfil', 'UsuarioControlador@getEditarPerfil');
 Route::post('editarPerfil', ['as' => 'editarPerfil', 'uses' => 'UsuarioControlador@postEditarPerfil']);
 
 
-
-
-
 //------> CAVA (rutas) <------------------------------
 
 //CREAR CAVA
@@ -49,15 +46,21 @@ Route::get('registrarCava', 'CavaControlador@getRegistrarCava');
 
 //EDITAR CAVA
 Route::get('editarCava', 'CavaControlador@getEditarCava');
+Route::post('editarCava', ['as' => 'editarCava', 'uses' => 'CavaControlador@postEditarCava']);
+//LISTAR CAVA
+Route::get('listarCava', 'CavaControlador@getListarCava');
 
 
 //------> BODEGA (rutas) <----------------------------
 
 //CREAR BODEGA
 Route::get('registrarBodega', 'BodegaControlador@getRegistrarBodega');
-
 //EDITAR BODEGA 
 Route::get('editarBodega', 'BodegaControlador@getEditarBodega');
+Route::post('editarBodega', ['as' => 'editarBodega', 'uses' => 'CavaControlador@postEditarBodega']);
+//LISTAR BODEGA
+Route::get('listarBodega', 'BodegaControlador@getListarBodega');
+
 
 //------> PROVEEDOR (rutas) <----------------------------
 

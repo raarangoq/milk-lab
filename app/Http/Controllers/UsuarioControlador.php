@@ -34,7 +34,7 @@ class UsuarioControlador extends Controller {
      
      $roles=Usuario::distinct()->select('rol')->get();
 
-    // if((Session::get('usuario.rol') == "Director") && (Session::get('usuario.habilitado'))
+    if((Session::get('usuario.rol') == "Director") && (Session::get('usuario.habilitado'))
 
 
       return view("Usuario/registrarUsuario");
@@ -63,7 +63,8 @@ class UsuarioControlador extends Controller {
         $user->cedula = $data['cedula'];
         $user->rol = $data['rol'];
 
-        $usuarioCreador=Session::get('usuario.correo');
+        //$usuarioCreador=Session::get('usuario.correo');
+        $usuarioCreador = 'meossasa@unal.edu.co';
         $user->usuario_creador = $usuarioCreador;
 
 
