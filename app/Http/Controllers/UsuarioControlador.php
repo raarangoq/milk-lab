@@ -26,7 +26,6 @@ class UsuarioControlador extends Controller {
         //$this->middleware('guest', ['except' => 'getLogout']);
     }
 
-
     //MOSTRAR VISTA DE REGISTRAR USUARIO
     protected function getRegistrarUsuario() {
 // !!! *** verificacion del usuario logueado esta habilitado y sea un director -> carga combox de roles
