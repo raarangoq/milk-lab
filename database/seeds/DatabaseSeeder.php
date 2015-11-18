@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
         $this->call(CavaTableSeeder::class);
         $this->call(ControlDeCavaTableSeeder::class);
         $this->call(ProgramasTableSeeder::class);
+        $this->call(ProveedorTableSeeder::class);
+        $this->call(MateriaPrimaTableSeeder::class);
 
         Model::reguard();
     }
