@@ -30,16 +30,13 @@ class UsuarioControlador extends Controller {
     //MOSTRAR VISTA DE REGISTRAR USUARIO
     protected function getRegistrarUsuario() {
 // !!! *** verificacion del usuario logueado esta habilitado y sea un director -> carga combox de roles
-
      
      $roles=Usuario::distinct()->select('rol')->get();
 
-    if((Session::get('usuario.rol') == "Director") && (Session::get('usuario.habilitado'))
-
+    //if((Session::get('usuario.rol') == "Director") && (Session::get('usuario.habilitado'))
 
       return view("Usuario/registrarUsuario");
     }
-
 
     //RECIBIR DATOS DE VISTA (REGISTRAR USUARIO) PARA CREAR USUARIO
     protected function postRegistrarUsuario(RegistrarUsuarioRequest $request) {
@@ -63,8 +60,8 @@ class UsuarioControlador extends Controller {
         $user->cedula = $data['cedula'];
         $user->rol = $data['rol'];
 
-        //$usuarioCreador=Session::get('usuario.correo');
-        $usuarioCreador = 'meossasa@unal.edu.co';
+        $usuarioCreador=Session::get('usuario.correo');
+       // $usuarioCreador = 'meossasa@unal.edu.co';
         $user->usuario_creador = $usuarioCreador;
 
 

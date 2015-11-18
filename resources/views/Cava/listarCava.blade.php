@@ -15,6 +15,7 @@
   
     <div class="table">
 
+      
       <div class="row header blue">
         <div class="cell">
         FILTRAR CAVA
@@ -30,12 +31,8 @@
       <div class="cell">
        <input placeholder="filtrar codigo" class="active" type="text">
       </div>
-
-      </div>
-
-      <div class="row">
-      
-      <div class="cell">
+    
+       <div class="cell">
        En Uso
         </div>
       <div class="cell">
@@ -45,23 +42,34 @@
                               <option>No </option>
                               
 
-      </select>
+          </select>
       </div>
 
-
       </div>
+
 
       <div class="row">
-       
-   
-
-
+           <div class="cell">
+         Tipo
+        </div>
       <div class="cell">
+       <select id="idhabilitado" name="habilitado" data-reactid=".0.0.7.0" class="active"> 
+                               
+          <option>-seleccionar tipo-</option>
+          <option>Maduración</option>
+          <option>Congelamiento</option> 
+          <option>Producto terminado</option>                     
+
+        </select>
+      </div>
+
+       <div class="cell">
        <input value="filtrar" class="active" type="submit">
       </div>
       <div class="cell">
        
       </div>
+      
 
       </div>
 
@@ -69,16 +77,12 @@
 
   </div>
 
- </div>
-             
-
-
-
+ </div>     
              <div class="wrapper">
   
              <div class="table">
 
-             <div class="row header blue">
+     <div class="row header blue">
       <div class="cell">
         Codigo
       </div>
@@ -101,7 +105,6 @@
         Control de cava
       </div>
     </div>
-
 
 
    
@@ -134,7 +137,7 @@
  
       </div>
       <div class="cell">
-        <input class="inputEditar" type="submit" id={{$user->correo}} value="editar usuario" data-reactid=".0.0.7" >
+        <input class="inputEditar" type="submit" id={{$user->correo}} value="editar cava" data-reactid=".0.0.7" >
       </div>
     </div>
 

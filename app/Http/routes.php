@@ -1,7 +1,6 @@
 <?php
 
 
-
 //--------> LOGIN (rutas) <--------------------------
 Route::get('login', 'Auth\AuthController@getLogin');
 
@@ -43,7 +42,6 @@ Route::post('editarPerfil', ['as' => 'editarPerfil', 'uses' => 'UsuarioControlad
 
 //CREAR CAVA
 Route::get('registrarCava', 'CavaControlador@getRegistrarCava');
-
 //EDITAR CAVA
 Route::get('editarCava', 'CavaControlador@getEditarCava');
 Route::post('editarCava', ['as' => 'editarCava', 'uses' => 'CavaControlador@postEditarCava']);

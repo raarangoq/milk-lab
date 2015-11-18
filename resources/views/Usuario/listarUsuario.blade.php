@@ -99,11 +99,11 @@
 
 
 
-             <div class="wrapper">
+ <div class="wrapper">
   
-             <div class="table">
+  <div class="table">
 
-             <div class="row header blue">
+    <div class="row header blue">
       <div class="cell">
         Nombre
       </div>

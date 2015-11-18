@@ -32,6 +32,21 @@ class CavaControlador extends Controller {
         return view("Cava/editarCava");
     }
 
+    protected function postEditarCava() {
+
+        //return view("Cava/registrarCava");
+    }    
+        
+    protected function getListarCava() {
+
+        return view("Cava/listarCava");
+    }
+
+    protected function postListarCava() {
+
+     //   return view("Cava/registrarCava");
+    }
+
 
 
 }

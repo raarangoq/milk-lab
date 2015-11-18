@@ -82,9 +82,7 @@ use AuthenticatesAndRegistersUsers,
             return Redirect::to('login')->withErrors("XXXXXX");
         }
     }
-
-
-    
+   
 
     //para terminar sesión
 
