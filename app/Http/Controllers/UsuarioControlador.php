@@ -163,8 +163,10 @@ if($request['passwordAnterior']==="") {
         Session::put('usuario.cedula',$cedulaNuevo);
         Session::put('usuario.nombre',$nombreNuevo);
 
+
         //return "SE ACTULIZO NOMBRE,CORREO Y CEDULA";
         return redirect('editarPerfil')->with('success','Su prefil fue editado correctamente');
+
 
 
 }else{
