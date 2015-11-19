@@ -13,7 +13,7 @@ class CreateCavasTable extends Migration
     public function up()
     {
         Schema::create('cavas', function (Blueprint $table) {
-            $table->increments('id', 60);
+            $table->increments('codigo', 60);
             $table->enum('tipo', ['Congelamiento', 'Maduración', 'Producto terminado']);
             $table->decimal('temperatura_minima', 6, 3);
             $table->decimal('temperatura_maxima', 6, 3);
@@ -22,10 +22,10 @@ class CreateCavasTable extends Migration
 
             $table->timestamps();
 
-            //$table->primary('id');
             $table->foreign('usuario_registrador')
                 ->references('correo')
-                ->on('usuarios');  
+                ->on('usuarios')
+                ->onUpdate('cascade');  
         });
     }
 

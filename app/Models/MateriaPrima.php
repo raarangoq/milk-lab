@@ -4,28 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Cava extends Model
+class MateriaPrima extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'cavas';
+    protected $table = 'materias_primas';
 
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'nombre';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = [
-    	'codigo', 
+    protected $fillable = [ 
+    	'nombre', 
     	'tipo', 
-    	'temperatura_minima', 
-    	'temperatura_maxima', 
-    	'en_uso', 
-    	'usuario_registrador'
+    	'unidad_de_medida',
     ];
 }

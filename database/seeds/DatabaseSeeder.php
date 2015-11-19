@@ -13,10 +13,14 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-
         $this->call(UsuarioTableSeeder::class);
-        $this->call(CavaTableSeeder::class);
+        
         $this->call(BodegaTableSeeder::class);
+        $this->call(CavaTableSeeder::class);
+        $this->call(ControlDeCavaTableSeeder::class);
+        $this->call(ProgramasTableSeeder::class);
+        $this->call(ProveedorTableSeeder::class);
+        $this->call(MateriaPrimaTableSeeder::class);
 
         Model::reguard();
     }

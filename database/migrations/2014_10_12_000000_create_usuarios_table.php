@@ -31,7 +31,8 @@ class CreateUsuariosTable extends Migration
 
             $table->foreign('usuario_creador')
                 ->references('correo')
-                ->on('usuarios');        
+                ->on('usuarios')
+                ->onUpdate('cascade');        
 
         });
     }

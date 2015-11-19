@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBodegasTable extends Migration
+class CreateProveedoresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,15 +12,17 @@ class CreateBodegasTable extends Migration
      */
     public function up()
     {
-        Schema::create('bodegas', function (Blueprint $table) {
-            $table->string('codigo', 20);
-            $table->enum('tipo', ['Reactivo', 'Materia prima']);
-            $table->boolean('en_uso')->default(true);
+        Schema::create('proveedores', function (Blueprint $table) {
+            $table->integer('NIT')->unsigned();
+            $table->string('nombre', 60);
+            $table->boolean('habilitado')->default(true);
+            $table->string('direccion', 80)->nullable();
+            $table->integer('telefono')->nullable();
             $table->string('usuario_registrador', 60);
 
             $table->timestamps();
 
-            $table->primary('codigo');
+            $table->primary('NIT');
             $table->foreign('usuario_registrador')
                 ->references('correo')
                 ->on('usuarios')
@@ -35,6 +37,6 @@ class CreateBodegasTable extends Migration
      */
     public function down()
     {
-        Schema::drop('bodegas');
+        Schema::drop('proveedores');
     }
 }

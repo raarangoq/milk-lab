@@ -4,16 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Cava extends Model
+class Proveedor extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'cavas';
+    protected $table = 'proveedores';
 
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'NIT';
 
     /**
      * The attributes that are mass assignable.
@@ -21,11 +21,11 @@ class Cava extends Model
      * @var array
      */
     protected $fillable = [
-    	'codigo', 
-    	'tipo', 
-    	'temperatura_minima', 
-    	'temperatura_maxima', 
-    	'en_uso', 
-    	'usuario_registrador'
+    	'NIT',
+        'nombre',
+        'habilitado',
+        'direccion',
+        'telefono',
+        'usuario_registrador'
     ];
 }
