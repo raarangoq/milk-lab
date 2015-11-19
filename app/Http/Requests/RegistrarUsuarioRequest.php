@@ -13,6 +13,8 @@ class RegistrarUsuarioRequest extends Request
      */
     public function authorize()
     {
+       
+
        return true;
 
             

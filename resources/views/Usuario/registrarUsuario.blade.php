@@ -7,8 +7,6 @@
 @include('alerts.request')
 
 
-
-
 <main>
     <article>
         <section>

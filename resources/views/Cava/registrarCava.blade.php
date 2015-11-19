@@ -1,7 +1,7 @@
 @extends('layout.principal')
 
 @section('contenido')
-
+@include('alerts.request')
 
 
 <main>

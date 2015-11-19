@@ -8,8 +8,7 @@
 <!-- <style>
     @import url(css/3.TABLAS/css/style.css);
     @import url(css/4.MENSAJES/style.css);
-</style> -->
-           
+</style> -->           
 
 <div class="wrapper">
   
@@ -17,7 +16,7 @@
 
       <div class="row header blue">
         <div class="cell">
-        FILTRAR USURIO
+        FILTRAR BODEGA
         </div>
 
       </div>
@@ -25,61 +24,41 @@
       <div class="row">
 
         <div class="cell">
-       Nombre
+       Codigo
         </div>
       <div class="cell">
-       <input placeholder="filtrar nombre" class="active" type="text">
+       <input placeholder="filtrar codigo" class="active" type="text">
       </div>
 
       <div class="cell">
-       Rol
+       En uso
         </div>
       <div class="cell">
        <select name="rol" data-reactid=".0.0.´6.0" class="active">
-                              <option>--seleccionar rol--</option>
-                              <option>Director</option>
-                              <option>Estudiante</option>
-                              <option>Microbiólogo</option>
-                              <option>Operario</option>
-                              <option>Profesor</option>
-                              <option>Técnico operativo</option>
-                            </select>
+                              <option>--seleccionar --</option>
+                              <option>Si</option>
+                              <option>No</option>
+                            
+          </select>
       </div>
 
       </div>
+
+   
 
       <div class="row">
+        
         <div class="cell">
-       Correo
+       Tipo
         </div>
       <div class="cell">
-       <input placeholder="filtrar correo" class="active" type="text">
-      </div>
-
-      <div class="cell">
-       Estado
-        </div>
-      <div class="cell">
-       <select id="idhabilitado" name="habilitado" data-reactid=".0.0.7.0" class="active"> 
-                               
-          <option>-seleccionar estado-</option>
-          <option>Habilitado</option>
-          <option>Inhabilitado</option>                      
-
-        </select>
-      </div>
-
-
-      </div>
-
-      <div class="row">
-        <div class="cell">
-       Cedula
-        </div>
-      <div class="cell">
-       <input placeholder="filtrar cedula" class="active" type="text">
-      </div>
-
+       <select name="rol" data-reactid=".0.0.´6.0" class="active">
+                              <option>--seleccionar --</option>
+                              <option>Reactivo</option>
+                              <option>Materia prima</option>
+                            
+          </select>
+      </div>  
 
       <div class="cell">
        <input value="filtrar" class="active" type="submit">

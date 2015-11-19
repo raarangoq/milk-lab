@@ -47,28 +47,28 @@ class UsuarioControlador extends Controller {
             'password2' => 'required',
             'cedula'    => 'required',
             'rol'       => 'required',
-        ]);
+
+                    ]);
 
         if($request['password']==$request['password2']){
-        $data = $request;
+              $data = $request;
 
-        $user = new Usuario;
-        $user->nombre = $data['nombre'];
-        $user->correo = $data['correo'];
-        $user->password = bcrypt($data['password']);
-        $user->cedula = $data['cedula'];
-        $user->rol = $data['rol'];
+              $user = new Usuario;
+              $user->nombre = $data['nombre'];
+              $user->correo = $data['correo'];
+              $user->password = bcrypt($data['password']);
+              $user->cedula = $data['cedula'];
+              $user->rol = $data['rol'];
 
-        $usuarioCreador=Session::get('usuario.correo');
-       // $usuarioCreador = 'meossasa@unal.edu.co';
-        $user->usuario_creador = $usuarioCreador;
+              $usuarioCreador=Session::get('usuario.correo');
+              $user->usuario_creador = $usuarioCreador;
 
 
-          if ($user->save())
-           
-            return redirect('registrarUsuario')->with('success','usuario registrado correctamente');
+                if ($user->save())
+                 
+                  return redirect('registrarUsuario')->with('success','usuario registrado correctamente');
 
-                    }
+        }
       }
 
 
@@ -139,15 +139,15 @@ class UsuarioControlador extends Controller {
 
 
 
-protected function postEditarPerfil(EditarPerfilRequest $request) {     
+protected function postEditarPerfil(Request $request) {     
         
 if($request['passwordAnterior']==="") {
 //NO CAMBIAR PASSWORD
  
       $this->validate($request, [
-            'nombre' => 'required',
-            'cedula' => 'required',
-            'correo' => 'required',
+             'nombre' => 'required',
+            'cedula' => 'required|unique:usuarios',
+            'correo' => 'required|unique:usuarios',
         ]);
 
         $nombreNuevo = $request['nombre'];

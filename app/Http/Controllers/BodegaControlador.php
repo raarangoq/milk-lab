@@ -24,6 +24,22 @@ class BodegaControlador extends Controller {
       }
       protected function postRegistrarBodega(Request $request){
 
+            $this->validate($request, [
+            'codigo'    => 'required|unique:usuarios',
+            'tipo'      => 'required',
+            
+             ]);
+
+            $Bodega = new Bodega;
+            $Bodega->codigo = $request['codigo'];
+            $Bodega->tipo = $request['tipo'];
+
+            $usuarioCreador=Session::get('usuario.correo');
+            $Bodega->usuario_creador = $usuarioCreador;
+
+             if ( $Bodega->save())
+                 
+                  return redirect('registrarBodega')->with('success','Bodega registrada correctamente');
 
       	
       }
@@ -34,7 +50,7 @@ class BodegaControlador extends Controller {
         
       }
       protected function postEditarBodega(Request $request){
-
+       
 
         
       }
@@ -46,7 +62,7 @@ class BodegaControlador extends Controller {
 
     protected function getListarBodega() {
 
-     $usuarioSession = Session::get('usuario.correo');
+      $usuarioSession = Session::get('usuario.correo');
       $usuarios=Usuario::where('correo','!=',$usuarioSession)->get();
      
          return view('Bodega/listarBodega', compact('usuarios'));
