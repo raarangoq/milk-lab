@@ -141,8 +141,8 @@ if($request['passwordAnterior']==="") {
  
       $this->validate($request, [
             'nombre' => 'required',
-            'cedula' => 'required',
-            'correo' => 'required',
+            'cedula' => 'required|unique:usuarios',
+            'correo' => 'required|unique:usuarios',
         ]);
 
 
@@ -163,7 +163,8 @@ if($request['passwordAnterior']==="") {
         Session::put('usuario.cedula',$cedulaNuevo);
         Session::put('usuario.nombre',$nombreNuevo);
 
-        return "SE ACTULIZO NOMBRE,CORREO Y CEDULA";
+        //return "SE ACTULIZO NOMBRE,CORREO Y CEDULA";
+        return redirect('editarPerfil')->with('success','Su prefil fue editado correctamente');
 
 
 }else{

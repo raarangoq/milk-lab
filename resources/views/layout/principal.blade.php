@@ -101,7 +101,8 @@
                     <div class="link"><i class="fa fa"><img src="css/iconos/cava.png"></i>CAVAS<i class="fa fa-chevron-down"></i></div>
                     <ul class="submenu">
                         <li><a href="registrarCava">Registrar Cava</a></li>
-                        <li><a href="#"></a></li>
+                        <li><a href="listarCava">Listar Cavas</a></li>
+                        <li><a href="registrarControlCava">Registrar Control de Cava</a></li>
                     </ul>
                 </li>
 
