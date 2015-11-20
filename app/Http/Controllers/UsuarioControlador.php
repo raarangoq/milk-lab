@@ -145,7 +145,9 @@ if($request['passwordAnterior']==="") {
 //NO CAMBIAR PASSWORD
  
       $this->validate($request, [
-             'nombre' => 'required',
+
+            'nombre' => 'required',
+
             'cedula' => 'required|unique:usuarios',
             'correo' => 'required|unique:usuarios',
         ]);
@@ -164,11 +166,13 @@ if($request['passwordAnterior']==="") {
 
         Session::put('usuario.correo',$correoNuevo);
         Session::put('usuario.cedula',$cedulaNuevo);
+
         Session::put('usuario.nombre',$nombreNuevo);       
        
         return redirect('editarPerfil')->with('success','usuario editado correctamente');
      
        }
+
 
 }else{
 //CAMBIAR PASSWORD

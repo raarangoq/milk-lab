@@ -1,7 +1,14 @@
 @extends('layout.principal')
 
+
+<style>
+    
+    @import url(css/4.MENSAJES/style.css);
+</style>
+
 @section('contenido')
 <!-- Contenido  xxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+
 
 @include('alerts.request')
 

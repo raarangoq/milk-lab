@@ -40,13 +40,15 @@ Route::post('editarPerfil', ['as' => 'editarPerfil', 'uses' => 'UsuarioControlad
 
 //------> CAVA (rutas) <------------------------------
 
-//CREAR CAVA
+//REGISTRAR CAVA
 Route::get('registrarCava', 'CavaControlador@getRegistrarCava');
-//EDITAR CAVA
-Route::get('editarCava', 'CavaControlador@getEditarCava');
-Route::post('editarCava', ['as' => 'editarCava', 'uses' => 'CavaControlador@postEditarCava']);
+Route::post('registrarCava', ['as' => 'registrarCava', 'uses' => 'CavaControlador@postRegistrarCava']);
 //LISTAR CAVA
 Route::get('listarCava', 'CavaControlador@getListarCava');
+Route::get('editarCava', 'CavaControlador@getEditarCava');
+Route::post('editarCava', ['as' => 'editarCava', 'uses' => 'CavaControlador@postEditarCava']); 
+//REGISTRAR CONTROL CAVA
+Route::get('registrarControlCava', 'CavaControlador@getRegistrarControlCava');
 
 
 //------> BODEGA (rutas) <----------------------------

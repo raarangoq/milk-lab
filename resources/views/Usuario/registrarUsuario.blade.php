@@ -2,8 +2,10 @@
 
 
 
+
 @section('contenido')
 <!-- Contenido  xxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+
 @include('alerts.request')
 
 

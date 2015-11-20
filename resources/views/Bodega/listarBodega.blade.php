@@ -27,7 +27,7 @@
        Codigo
         </div>
       <div class="cell">
-       <input placeholder="filtrar codigo" class="active" type="text">
+       <input placeholder="filtrar codigo" class="active" type="text" name="codigo">
       </div>
 
       <div class="cell">
@@ -69,91 +69,74 @@
 
       </div>
 
-
-
   </div>
 
  </div>
-             
-
-
 
              <div class="wrapper">
   
              <div class="table">
 
-             <div class="row header blue">
+            <div class="row header blue">
+
       <div class="cell">
-        Nombre
+        Codigo
       </div>
       <div class="cell">
-        Correo
+        Tipo
       </div>
       <div class="cell">
-        Cedula
+        En uso
       </div>
-      <div class="cell">
-        Rol
-      </div>
-      <div class="cell">
-        Estado
-      </div>
+      
       <div class="cell">
         Editar
       </div>
+       <div class="cell">
+        Control de bodega
+      </div>
     </div>
+  
 
-
-
-   
-@foreach($usuarios as $user)
+@foreach($bodegas as $bodega)
 
 
 <div class="row">
-      <div class="cell">
-        {{$user->nombre}}
+      <div class="cell" align="center">
+        {{$bodega->codigo}}
       </div>
       <div class="cell">
-        {{$user->correo}}
+        {{$bodega->tipo}}
       </div>
-      <div class="cell">
-        {{$user->cedula}}
-      </div>
-      <div class="cell">
-        {{$user->rol}}
-      </div>
+      
 
-
-
-@if ($user->habilitado == 1)
-      <div class="cell">
-       Habilitado
+@if ($bodega->en_uso === 1)
+      <div class="cell" align="center">
+       SI
 @else
-      <div class="cell red">    
-       Inhabilitado
+      <div class="cell red" align="center">    
+       NO
+
 @endif
  
       </div>
       <div class="cell">
-        <input class="inputEditar" type="submit" id={{$user->correo}} value="editar usuario" data-reactid=".0.0.7" >
+
+      <input class="inputEditar" type="submit" id={{$bodega->codigo}} value="editar bodega" data-reactid=".0.0.7" >
+      </div>
+      <div class="cell">
+        <input class="inputVer" type="submit" id={{$bodega->codigo}} value="ver" data-reactid=".0.0.7" >
       </div>
     </div>
-
 @endforeach
 
-
-
-</div>
              </div>
 
-
-
+             </div>
 
 <!-- FIN Contenido -->
 
 @endsection
-
-
 
 @section('ajaxEditar')
 
@@ -165,7 +148,9 @@ $(document).ready(function(){
 $(".inputEditar").click(function(e){
  var id = e.target.id;
 //alert(id);
-document.location.href = "editarUsuario?correo=" + id;
+
+document.location.href = "editarBodega?id=" + id;
+
 
 
 });
@@ -175,3 +160,5 @@ document.location.href = "editarUsuario?correo=" + id;
 </script>
 
 @endsection
+
+

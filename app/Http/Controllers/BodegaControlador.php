@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Usuario;
+
+use App\Models\Bodega;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -25,23 +26,31 @@ class BodegaControlador extends Controller {
       protected function postRegistrarBodega(Request $request){
 
             $this->validate($request, [
-            'codigo'    => 'required|unique:usuarios',
+            'codigo'    => 'required',
             'tipo'      => 'required',
             
              ]);
 
-            $Bodega = new Bodega;
-            $Bodega->codigo = $request['codigo'];
-            $Bodega->tipo = $request['tipo'];
+                  
 
+       $auxcodigo = Bodega::where('codigo')->get();
+
+    if( $request['codigo'] != $auxcodigo){
+            $bodega = new Bodega;
+            $bodega->codigo = $request['codigo'];
+            $bodega->tipo = $request['tipo'];
+         
             $usuarioCreador=Session::get('usuario.correo');
-            $Bodega->usuario_creador = $usuarioCreador;
+            $bodega->usuario_creador = $usuarioCreador;
+          
 
-             if ( $Bodega->save())
+             if ( $bodega->save())
                  
-                  return redirect('registrarBodega')->with('success','Bodega registrada correctamente');
-
-      	
+                return redirect('registrarBodega')->with('success','Bodega registrada correctamente');
+             
+      	}else{
+               return "error";
+        }
       }
 
       protected function getEditarBodega() {
@@ -50,22 +59,42 @@ class BodegaControlador extends Controller {
         
       }
       protected function postEditarBodega(Request $request){
-       
+            
+            $this->validate($request, [
+            'codigo'    => 'required',
+            'tipo'      => 'required',
+            'en_uso'    => 'required',
+            
+             ]);
+        $nuevocodigo= $request['codigo'];
+        $nuevoTipo = $request['tipo']; 
+        $nuevoUso = $request['en_uso'];
+
+        //$usuarioEditor = Session::get('usuario.correo');
+        
+
+        if($bodegaActualizada=Bodega::where('codigo',$codigo)
+                        ->update(['tipo'=>  $nuevoTipo,
+                                  'codigo'=>  $nuevocodigo,
+                                  'en_uso'=>  $nuevoUso,
+                                 
+                          ])){
+
+ return redirect('listarBodega')->with('success','bodega editada correctamente');
+
+        }else{
+return redirect('listarBodega')->with('error','bodega NO editada correctamente');
+        }
 
         
       }
 
-     protected function getAjax() {
-
-      
-      }
-
+  
     protected function getListarBodega() {
 
-      $usuarioSession = Session::get('usuario.correo');
-      $usuarios=Usuario::where('correo','!=',$usuarioSession)->get();
-     
-         return view('Bodega/listarBodega', compact('usuarios'));
+    $bodegas=Bodega::all();
+      //print_r($cavas);
+     return view('Bodega/listarBodega', compact('bodegas'));
     }
 
 

@@ -102,9 +102,9 @@
                     <ul class="submenu">
                         <li><a href="registrarCava">Registrar Cava</a></li>
                         <li><a href="editarCava">Editar Cava</a></li>
-                         <li><a href="listarCava">Listar Cava</a></li>
-
-                        <li><a href="#"></a></li>
+                        <li><a href="listarCava">Listar Cavas</a></li>
+                        <li><a href="registrarControlCava">Registrar Control de Cava</a></li>
+                         <li><a href="#"></a></li>
                     </ul>
                 </li>
 
