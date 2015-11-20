@@ -31,7 +31,7 @@
                         <div class="control" data-reactid=".0.0.2">
 
 
-                            <input name="cedula" type="number" id="cedula" placeholder="ceudla:" required="" data-reactid=".0.0.2.0" class="active">
+                            <input name="cedula" type="number" id="cedula" placeholder="cedula:" required="" data-reactid=".0.0.2.0" class="active">
 
                             <label data-reactid=".0.0.2.1">* Cedula</label>
                         </div>

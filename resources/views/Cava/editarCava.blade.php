@@ -72,6 +72,7 @@
 
                     </fieldset>
                 </form>
+
             </div>
         </section>
     </article>
@@ -107,9 +108,7 @@ $(document).ready(function(){
           $('#idhabilitado').val('Habilitado');
           }else{
           $('#idhabilitado').val('Inhabilitado');
-          }
-
-          
+          }     
 
 
          });

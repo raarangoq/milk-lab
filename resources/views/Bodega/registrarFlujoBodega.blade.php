@@ -73,7 +73,7 @@
              <div class="table">
 
             <div class="row header blue">
-              
+
       <div class="cell">
         Materia prima
       </div>
@@ -108,28 +108,16 @@
     </div>
   
 
-@foreach($bodegas as $bodega)
+@foreach($materias_primas as $materias_prima)
 
 
 <div class="row">
       <div class="cell" align="center">
-        {{$bodega->codigo}}
+        {{$materias_prima->nombre}}
       </div>
-      <div class="cell">
-        {{$bodega->tipo}}
-      </div>
-      
+            
 
-@if ($bodega->en_uso === 1)
-      <div class="cell" align="center">
-       SI
-@else
-      <div class="cell red" align="center">    
-       NO
-
-@endif
- 
-      </div>
+</div>
       <div class="cell">
 
       <input class="inputEditar" type="submit" id={{$bodega->codigo}} value="editar bodega" data-reactid=".0.0.7" >

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Bodega;
+use App\Models\Usuario;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -20,22 +21,34 @@ class BodegaControlador extends Controller {
 
      protected function getRegistrarBodega() {
 
-        return view("Bodega/registrarBodega");
+         $usuarioRol = Session::get('usuario.rol');
+         $usuarioHabilitado = Session::get('usuario.habilitado');
+
+         if($usuarioRol == 'Director'){
+
+           if($usuarioHabilitado == 1){
+
+               return view("Bodega/registrarBodega");
+             }else{
+                   return redirect('login')->with('success','Zona restringida, no tiene los permisos para acceder a esta funcionalidad');
+                }
+         }else{
+
+          
+
+          return redirect('login')->with('success','Zona restringida, no tiene los permisos para acceder a esta funcionalidad');
+         }
+            
        
       }
       protected function postRegistrarBodega(Request $request){
 
             $this->validate($request, [
-            'codigo'    => 'required',
-            'tipo'      => 'required',
-            
-             ]);
-
-                  
-
-       $auxcodigo = Bodega::where('codigo')->get();
-
-    if( $request['codigo'] != $auxcodigo){
+            'codigo'    => 'required|unique:bodega',
+            'tipo'      => 'required',            
+             ]);                 
+      
+        //if( $request['codigo'] === ""){
             $bodega = new Bodega;
             $bodega->codigo = $request['codigo'];
             $bodega->tipo = $request['tipo'];
@@ -48,9 +61,7 @@ class BodegaControlador extends Controller {
                  
                 return redirect('registrarBodega')->with('success','Bodega registrada correctamente');
              
-      	}else{
-               return "error";
-        }
+      	
       }
 
       protected function getEditarBodega() {

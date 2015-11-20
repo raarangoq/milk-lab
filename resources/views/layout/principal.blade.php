@@ -114,6 +114,8 @@
                         <li><a href="registrarBodega">Registrar Bodega</a></li>
                         <li><a href="editarBodega">Editar Bodega</a></li>
                         <li><a href="listarBodega">Listar Bodega</a></li>
+                         <li><a href="registrarFlujoBodega">Registrar Flujo de Bodega</a></li>
+
                         <li><a href="#"></a></li>
                     </ul>
                 </li>
