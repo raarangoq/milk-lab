@@ -21,7 +21,7 @@ class ProgramasTableSeeder extends Seeder
         DB::table('programas')->insert([
             'numero_de_programa' => 2486713,
             'nombre' => 'Reactivación química en productos congelados',
-            'tipo' => 'Investigación',
+            'tipo' => 'Extensión',
             'en_ejecucion' => false,
             'observaciones' => '',
             'usuario_responsable' => 'uriel@unal.edu.co',

@@ -4,28 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Programa extends Model
+class MateriaPrima extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'programas';
+    protected $table = 'materias_primas';
 
-    protected $primaryKey = 'numero_de_programa';
+    protected $primaryKey = 'nombre';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = [
-    	'numero_de_programa', 
+    protected $fillable = [ 
     	'nombre', 
     	'tipo', 
-    	'en_ejecucion',
-    	'observaciones',
-    	'usuario_responsable',
+    	'unidad_de_medida',
     ];
 }
