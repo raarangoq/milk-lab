@@ -16,6 +16,15 @@ use Illuminate\Support\ServiceProvider;
 use Redirect;
 
 
+
+use App\Http\Controllers\ControllerSession;
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+//use Illuminate\Support\Facades\Crypt;
+//use Illuminate\Contracts\Encryption\DecryptException;
+
+
 class UsuarioControlador extends Controller {
 
 
@@ -137,9 +146,17 @@ protected function postEditarPerfil(Request $request) {
 if($request['passwordAnterior']==="") {
 //NO CAMBIAR PASSWORD
 
+/*
+       $this->validate($request, [
+            'nombre' => 'required',
+            'cedula' => 'required',
+            'correo' => 'required',
+        ]);
 
- 
-      $this->validate($request, [
+*/
+
+       
+        $this->validate($request, [
             'nombre' => 'required',
             'cedula' => 'required|unique:usuarios',
             'correo' => 'required|unique:usuarios',
@@ -159,13 +176,16 @@ if($request['passwordAnterior']==="") {
 
                           ]);
 
+                    
+
         Session::put('usuario.correo',$correoNuevo);
         Session::put('usuario.cedula',$cedulaNuevo);
         Session::put('usuario.nombre',$nombreNuevo);
 
 
         //return "SE ACTULIZO NOMBRE,CORREO Y CEDULA";
-        return redirect('editarPerfil')->with('success','Su prefil fue editado correctamente');
+     //   $c=Crypt::decrypt(Session::get('usuario.correo'));
+        return redirect('editarPerfil')->with('success',"usuario actualizado correctamente");
 
 
 
@@ -193,10 +213,19 @@ if($request['passwordAnterior']==="") {
 
         $correoAnterior= Session::get('usuario.correo');
 
+        
+     // $password = Hash::make($request['passwordAnterior']);
 
-        if ($this->auth->attempt($credentials, $request->has('remember'))) {
 
+
+      if ($password == Auth::usuarios()->password){
+
+        
+//Hash::check($value, Auth::user()->clave);
           return "password anterior igual";
+
+          //3-ACTUALIZAR USUARIO
+          //4-ACTUALIZAR VARIABLE DE SESSION 
 
 
         }else{

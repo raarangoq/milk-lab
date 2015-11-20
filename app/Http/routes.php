@@ -43,6 +43,14 @@ Route::get('editarCava', 'CavaControlador@getEditarCava');
 Route::post('editarCava', ['as' => 'editarCava', 'uses' => 'CavaControlador@postEditarCava']); 
 //REGISTRAR CONTROL CAVA
 Route::get('registrarControlCava', 'CavaControlador@getRegistrarControlCava');
+Route::post('registrarControlCava', ['as' => 'registrarControlCava', 'uses' => 'CavaControlador@postRegistrarControlCava']); 
+Route::get('borrarControlCava', 'CavaControlador@getBorrarControlCava');
+
+
+//LISTAR CONTROL DE CAVA
+Route::get('listarControlCava', 'CavaControlador@getListarControlCava');
+
+
 
 
 
