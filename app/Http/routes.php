@@ -54,6 +54,11 @@ Route::get('listarControlCava', 'CavaControlador@getListarControlCava');
 
 
 
+//------> PROGRAMAS (rutas) <------------------------------
+Route::get('registrarPrograma', 'ProgramaControlador@getRegistrarPrograma');
+
+
+
 //------> BODEGA (rutas) <----------------------------
 
 //CREAR BODEGA
