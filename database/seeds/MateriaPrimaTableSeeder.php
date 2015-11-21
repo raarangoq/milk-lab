@@ -12,6 +12,11 @@ class MateriaPrimaTableSeeder extends Seeder
     public function run()
     {
         DB::table('materias_primas')->insert([
+            'nombre' => 'leche',
+            'tipo' => 'Comestible',
+            'unidad_de_medida' => 'Litro',
+        ]);
+        DB::table('materias_primas')->insert([
             'nombre' => 'empaque para queso de 5 libras',
             'tipo' => 'Empaque',
             'unidad_de_medida' => null,
@@ -25,12 +30,7 @@ class MateriaPrimaTableSeeder extends Seeder
             'nombre' => 'azucar blanca extra fina',
             'tipo' => 'Comestible',
             'unidad_de_medida' => 'Kilo',
-        ]);
-        DB::table('materias_primas')->insert([
-            'nombre' => 'leche',
-            'tipo' => 'Comestible',
-            'unidad_de_medida' => 'Litro',
-        ]);
+        ]);;
         DB::table('materias_primas')->insert([
             'nombre' => 'pote para arequipe de 250gr',
             'tipo' => 'Empaque',

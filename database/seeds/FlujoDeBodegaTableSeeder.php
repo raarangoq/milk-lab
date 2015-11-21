@@ -53,5 +53,19 @@ class FlujoDeBodegaTableSeeder extends Seeder
             'usuario_responsable' => 'uriel@unal.edu.co',
             'bodega' => '52-112',
         ]);
+        DB::table('flujos_de_bodegas')->insert([
+            'id' => 4,
+            'fecha' => '2015-11-22 14:05:00',
+            'entra' => 950,
+            'sale' => 0,
+            'total' => 0,
+            'existencia' => 950,
+            'motivo_de_salida' => null,
+            'observaciones' => null,
+            'materia_prima' => 'leche',
+            'programa' => null,
+            'usuario_responsable' => 'uriel@unal.edu.co',
+            'bodega' => '52-112',
+        ]);
     }
 }
