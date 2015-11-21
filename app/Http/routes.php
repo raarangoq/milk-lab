@@ -55,7 +55,15 @@ Route::get('listarControlCava', 'CavaControlador@getListarControlCava');
 
 
 //------> PROGRAMAS (rutas) <------------------------------
+
+//REGISTRAR PROGRAMA
 Route::get('registrarPrograma', 'ProgramaControlador@getRegistrarPrograma');
+Route::post('registrarPrograma', ['as' => 'registrarPrograma', 'uses' => 'ProgramaControlador@postRegistrarPrograma']); 
+//LISTAR PROGRAMAS
+Route::get('listarPrograma', 'ProgramaControlador@getListarPrograma');
+Route::get('editarPrograma', 'ProgramaControlador@getEditarPrograma');
+Route::post('editarPrograma', ['as' => 'editarPrograma', 'uses' => 'ProgramaControlador@postEditarPrograma']); 
+
 
 
 

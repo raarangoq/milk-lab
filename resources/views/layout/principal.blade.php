@@ -98,9 +98,10 @@
                 </li>
 
                 <li>
-                    <div class="link"><i class="fa fa"><img src="css/iconos/programas.png"></i>PROGRAAMAS<i class="fa fa-chevron-down"></i></div>
+                    <div class="link"><i class="fa fa"><img src="css/iconos/programas.png"></i>PROGRAMAS<i class="fa fa-chevron-down"></i></div>
                     <ul class="submenu">
                         <li><a href="registrarPrograma">Registrar Programa</a></li>
+                        <li><a href="listarPrograma">Listar Programas</a></li>
                         
                         
                     </ul>

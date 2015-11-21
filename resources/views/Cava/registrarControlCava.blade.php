@@ -52,6 +52,7 @@
                                 <option>--seleccionar usuario--</option>
 
 
+
                             </select>
                             <label data-reactid=".0.0.4.1">* Usuario Registrador</label>
                         </div>
