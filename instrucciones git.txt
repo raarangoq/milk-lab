@@ -1,0 +1,9 @@
+
+
+git add -A
+
+git pull origin alejo
+
+git commit -m "mensage"
+
+git push origin alejo

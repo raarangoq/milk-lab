@@ -30,8 +30,6 @@ Route::post('editarPerfil', ['as' => 'editarPerfil', 'uses' => 'UsuarioControlad
 
 
 
-
-
 //------> CAVA (rutas) <------------------------------
 
 //REGISTRAR CAVA
@@ -45,12 +43,8 @@ Route::post('editarCava', ['as' => 'editarCava', 'uses' => 'CavaControlador@post
 Route::get('registrarControlCava', 'CavaControlador@getRegistrarControlCava');
 Route::post('registrarControlCava', ['as' => 'registrarControlCava', 'uses' => 'CavaControlador@postRegistrarControlCava']); 
 Route::get('borrarControlCava', 'CavaControlador@getBorrarControlCava');
-
-
 //LISTAR CONTROL DE CAVA
 Route::get('listarControlCava', 'CavaControlador@getListarControlCava');
-
-
 
 
 
@@ -64,6 +58,18 @@ Route::get('listarPrograma', 'ProgramaControlador@getListarPrograma');
 Route::get('editarPrograma', 'ProgramaControlador@getEditarPrograma');
 Route::post('editarPrograma', ['as' => 'editarPrograma', 'uses' => 'ProgramaControlador@postEditarPrograma']); 
 
+
+
+//------> MATERIA PRIMA (rutas) <------------------------------
+
+//REGISTRAR MATERIA PRIMA
+Route::get('registrarMateriaPrima', 'MateriaPrimaControlador@getRegistrarMateriaPrima');
+Route::post('registrarMateriaPrima', ['as' => 'registrarMateriaPrima', 'uses' => 'MateriaPrimaControlador@postRegistrarMateriaPrima']);
+
+//LISTAR MATERIA PRIMA
+Route::get('listarMateriaPrima', 'MateriaPrimaControlador@getListarMateriaPrima');
+Route::get('editarMateriaPrima', 'MateriaPrimaControlador@getEditarMateriaPrima');
+Route::post('editarMateriaPrima', ['as' => 'editarMateriaPrima', 'uses' => 'MateriaPrimaControlador@postEditarMateriaPrima']); 
 
 
 

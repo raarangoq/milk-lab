@@ -92,8 +92,9 @@
                 <li>
                     <div class="link"><i class="fa fa"><img src="css/iconos/materias_primas.png"></i>MATERIAS PRIMAS<i class="fa fa-chevron-down"></i></div>
                     <ul class="submenu">
-                        <li><a href="#">Registrar Materia Prima</a></li>
-                        <li><a href="#"></a></li>
+                        <li><a href="registrarMateriaPrima">Registrar Materia Prima</a></li>
+                        <li><a href="listarMateriaPrima">Listar Materias Primas</a></li>
+                        
                     </ul>
                 </li>
 
