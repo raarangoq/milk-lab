@@ -73,6 +73,13 @@ Route::post('editarMateriaPrima', ['as' => 'editarMateriaPrima', 'uses' => 'Mate
 
 
 
+//------> FLUJO DE BODEGA (rutas) <----------------------------
+Route::get('registrarFlujoBodega', 'FlujoBodegaControlador@getRegistrarFlujoBodega');
+
+
+
+
+
 //------> BODEGA (rutas) <----------------------------
 
 //CREAR BODEGA
