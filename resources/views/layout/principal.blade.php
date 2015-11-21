@@ -140,7 +140,7 @@
                     <div class="link"><i class="fa fa"><img src="css/iconos/proveedores.png"></i>PROVEEDORES<i class="fa fa-chevron-down"></i></div>
                     <ul class="submenu">
                         <li><a href="registrarProveedor">Registrar Proveedor</a></li>
-                        <li><a href="#"></a></li>
+                        <li><a href="listarProveedor">Listar Proveedores</a></li>
                     </ul>
                 </li>
 

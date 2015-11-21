@@ -95,10 +95,11 @@
 </div>
    
 
-<br/>
-           <input class="inputAgregarFila" type="submit" value="agregar fila" data-reactid=".0.0.5">
+
+
 
              </div>
+             <input class="inputAgregarFila" type="submit" value="agregar fila" data-reactid=".0.0.5">
 
              <br/><br/>
            <input class="inputRegistrar" type="submit" value="registrar flujos de bodega" data-reactid=".0.0.5">
@@ -125,14 +126,11 @@ $(document).ready(function(){
 
 $(".inputAgregarFila").click(function(e){
  
-//alert("add fila");
-var nuevaFila="<div class='row'></div>";
 
-//alert(nuevaFila);
-$(".table").appendTo(nuevaFila);
+var nuevaFila="<div class='row'><div class='cell' align='center'><select name='materia_prima'><option>-seleccionar materiaPrima-</option></select></div><div class='cell'><input type='date' name='fecha'></div><div class='cell'><input type='number' name='entra'></div><div class='cell'><input type='number' name='sale'></div><div class='cell' align='center'><select name='motivo'><option>-seleccionar motivo-</option></select></div><div class='cell'><input type='number' name='total'></div><div class='cell'><input type='number' name='existencia'></div><div class='cell'><input type='text' name='observaciones' class='active'></div><div class='cell' align='center'><select name='programa'><option>-seleccionar programa-</option></select></div><div class='cell' align='center'><select name='responsable'><option>-seleccionar responsable-</option></select></div></div>";
 
 
-
+$(".table").append(nuevaFila);
 
 });
 

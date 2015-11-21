@@ -89,6 +89,12 @@ Route::get('registrarBodega', 'BodegaControlador@getRegistrarBodega');
 
 //------> PROVEEDOR (rutas) <----------------------------
 
-//CREAR PROVEEDOR
+//REGISTRAR PROVEEDOR
 Route::get('registrarProveedor', 'ProveedorControlador@getRegistrarProveedor');
+Route::post('registrarProveedor', ['as' => 'registrarProveedor', 'uses' => 'ProveedorControlador@postRegistrarProveedor']); 
+//LISTAR PROVEEDOR
+Route::get('listarProveedor', 'ProveedorControlador@getListarProveedor');
+Route::get('editarProveedor', 'ProveedorControlador@getEditarProveedor');
+Route::post('editarProveedor', ['as' => 'editarProveedor', 'uses' => 'ProveedorControlador@postEditarProveedor']); 
+
 
