@@ -46,11 +46,13 @@ Route::get('registrarCava', 'CavaControlador@getRegistrarCava');
 Route::post('registrarCava', ['as' => 'registrarCava', 'uses' => 'CavaControlador@postRegistrarCava']);
 //LISTAR CAVA
 Route::get('listarCava', 'CavaControlador@getListarCava');
+//EDITAR CAVA
 Route::get('editarCava', 'CavaControlador@getEditarCava');
 Route::post('editarCava', ['as' => 'editarCava', 'uses' => 'CavaControlador@postEditarCava']); 
 //REGISTRAR CONTROL CAVA
 Route::get('registrarControlCava', 'CavaControlador@getRegistrarControlCava');
-Route::post('registrarControlCava', ['as' => 'registrarControlCava', 'uses' => 'CavaControlador@postRegistrarControlCava']); 
+Route::post('registrarControlCava', ['as' => 'registrarControlCava', 'uses' => 'CavaControlador@postRegistrarControlCava']);
+//ELIMINAR/BORRAR CONTROL CAVA 
 Route::get('borrarControlCava', 'CavaControlador@getBorrarControlCava');
 //LISTAR CONTROL DE CAVA
 Route::get('listarControlCava', 'CavaControlador@getListarControlCava');
@@ -64,6 +66,7 @@ Route::get('registrarPrograma', 'ProgramaControlador@getRegistrarPrograma');
 Route::post('registrarPrograma', ['as' => 'registrarPrograma', 'uses' => 'ProgramaControlador@postRegistrarPrograma']); 
 //LISTAR PROGRAMAS
 Route::get('listarPrograma', 'ProgramaControlador@getListarPrograma');
+//EDITAR PROGRAMAS
 Route::get('editarPrograma', 'ProgramaControlador@getEditarPrograma');
 Route::post('editarPrograma', ['as' => 'editarPrograma', 'uses' => 'ProgramaControlador@postEditarPrograma']); 
 
@@ -74,17 +77,25 @@ Route::post('editarPrograma', ['as' => 'editarPrograma', 'uses' => 'ProgramaCont
 //REGISTRAR MATERIA PRIMA
 Route::get('registrarMateriaPrima', 'MateriaPrimaControlador@getRegistrarMateriaPrima');
 Route::post('registrarMateriaPrima', ['as' => 'registrarMateriaPrima', 'uses' => 'MateriaPrimaControlador@postRegistrarMateriaPrima']);
-
 //LISTAR MATERIA PRIMA
 Route::get('listarMateriaPrima', 'MateriaPrimaControlador@getListarMateriaPrima');
+//EDITAR MATERIA PRIMA
 Route::get('editarMateriaPrima', 'MateriaPrimaControlador@getEditarMateriaPrima');
 Route::post('editarMateriaPrima', ['as' => 'editarMateriaPrima', 'uses' => 'MateriaPrimaControlador@postEditarMateriaPrima']); 
 
 
 
 //------> FLUJO DE BODEGA (rutas) <----------------------------
-Route::get('registrarFlujoBodega', 'FlujoBodegaControlador@getRegistrarFlujoBodega');
 
+//REGISTRAR FLUJO DE BODEGA
+Route::get('registrarFlujoBodega', 'FlujoBodegaControlador@getRegistrarFlujoBodega');
+Route::get('registrarFlujoBodega2', 'FlujoBodegaControlador@getRegistrarFlujoBodega2');
+//LISTAR FLUJO DE BODEGA
+Route::get('listarFlujoBodega', 'FlujoBodegaControlador@getListarFlujoBodega');
+//EDITAR FLUJO DE BODEGA
+Route::get('editarFlujoBodega', 'FlujoBodegaControlador@getEditarFlujoBodega');
+//falta---post
+//ELIMINAR/BORRAR FLUJO DE BODEGA
 
 
 
@@ -116,6 +127,7 @@ Route::get('registrarProveedor', 'ProveedorControlador@getRegistrarProveedor');
 Route::post('registrarProveedor', ['as' => 'registrarProveedor', 'uses' => 'ProveedorControlador@postRegistrarProveedor']); 
 //LISTAR PROVEEDOR
 Route::get('listarProveedor', 'ProveedorControlador@getListarProveedor');
+//EDITAR PROVEEDOR
 Route::get('editarProveedor', 'ProveedorControlador@getEditarProveedor');
 Route::post('editarProveedor', ['as' => 'editarProveedor', 'uses' => 'ProveedorControlador@postEditarProveedor']); 
 
