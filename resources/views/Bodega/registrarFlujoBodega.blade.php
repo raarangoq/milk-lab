@@ -86,11 +86,9 @@
       <div class="cell">
         Materia prima
       </div>
-
-       <div class="control" data-reactid=".0.0.3">
-       <input name="fecha"  type="date" required="" data-reactid=".0.0.3.0" class="active">
-           <label data-reactid=".0.0.3.1">* Fecha</label>
-                        </div>
+      <div class="cell"> 
+         Fecha
+        </div>
 
       <div class="cell">
         Entrada
@@ -120,6 +118,45 @@
     </div>
        
       
+            <div class="row ">
+
+      <div class="cell">
+        Materia prima
+      </div>
+      <div class="cell"> 
+         
+
+                            <input name="fecha"  type="date" required="" data-reactid=".0.0.3.0" class="active">
+                            
+                       
+        </div>
+
+      <div class="cell">
+        Entrada
+      </div>
+      
+      <div class="cell">
+        Salida
+      </div>
+       <div class="cell">
+        Motivo de salida
+      </div>
+       <div class="cell">
+        Total
+      </div>
+       <div class="cell">
+        Existencia
+      </div>
+       <div class="cell">
+        Observaciones
+      </div>
+       <div class="cell">
+        Programa
+      </div>
+       <div class="cell">
+        Responsable
+      </div>
+    </div>
 
 
       
