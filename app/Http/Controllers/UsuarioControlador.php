@@ -18,6 +18,15 @@ use Redirect;
 use App\Http\Requests\RegistrarUsuarioRequest;
 use App\Http\Requests\EditarPerfilRequest;
 
+
+use App\Http\Controllers\ControllerSession;
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+//use Illuminate\Support\Facades\Crypt;
+//use Illuminate\Contracts\Encryption\DecryptException;
+
+
 class UsuarioControlador extends Controller {
 
 
@@ -146,8 +155,8 @@ if($request['passwordAnterior']==="") {
  
       $this->validate($request, [
 
-            'nombre' => 'required',
 
+            'nombre' => 'required',
             'cedula' => 'required|unique:usuarios',
             'correo' => 'required|unique:usuarios',
         ]);
@@ -164,8 +173,11 @@ if($request['passwordAnterior']==="") {
                                   'correo'=>  $correoNuevo,
                           ])){
 
+                    
+
         Session::put('usuario.correo',$correoNuevo);
         Session::put('usuario.cedula',$cedulaNuevo);
+
 
         Session::put('usuario.nombre',$nombreNuevo);       
        
@@ -198,10 +210,19 @@ if($request['passwordAnterior']==="") {
 
         $correoAnterior= Session::get('usuario.correo');
 
+        
+     // $password = Hash::make($request['passwordAnterior']);
 
-        if ($this->auth->attempt($credentials, $request->has('remember'))) {
 
+
+      if ($password == Auth::usuarios()->password){
+
+        
+//Hash::check($value, Auth::user()->clave);
           return "password anterior igual";
+
+          //3-ACTUALIZAR USUARIO
+          //4-ACTUALIZAR VARIABLE DE SESSION 
 
 
         }else{

@@ -49,6 +49,19 @@ Route::get('editarCava', 'CavaControlador@getEditarCava');
 Route::post('editarCava', ['as' => 'editarCava', 'uses' => 'CavaControlador@postEditarCava']); 
 //REGISTRAR CONTROL CAVA
 Route::get('registrarControlCava', 'CavaControlador@getRegistrarControlCava');
+Route::post('registrarControlCava', ['as' => 'registrarControlCava', 'uses' => 'CavaControlador@postRegistrarControlCava']); 
+Route::get('borrarControlCava', 'CavaControlador@getBorrarControlCava');
+
+
+//LISTAR CONTROL DE CAVA
+Route::get('listarControlCava', 'CavaControlador@getListarControlCava');
+
+
+
+
+
+//------> PROGRAMAS (rutas) <------------------------------
+Route::get('registrarPrograma', 'ProgramaControlador@getRegistrarPrograma');
 
 
 //------> BODEGA (rutas) <----------------------------
@@ -63,7 +76,11 @@ Route::get('editarBodega', 'BodegaControlador@getEditarBodega');
 Route::post('editarBodega', ['as' => 'editarBodega', 'uses' => 'CavaControlador@postEditarBodega']);
 //LISTAR BODEGA
 Route::get('listarBodega', 'BodegaControlador@getListarBodega');
+//REGISTRAR FLUJO DE BODEGA
+Route::get('registrarFlujoBodega', 'BodegaControlador@getRegistrarFlujoBodega');
 
+Route::post('registrarFlujoBodega', ['as' => 'registrarFlujoBodega', 
+	                          'uses' => 'BodegaControlador@postRegistrarFlujoBodega']);
 
 //------> PROVEEDOR (rutas) <----------------------------
 

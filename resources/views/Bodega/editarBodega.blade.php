@@ -12,7 +12,7 @@
                         <legend data-reactid=".0.0.0">EDITAR BODEGA</legend>
 
                         <div class="control" data-reactid=".0.0.3.0">
-                            <input name="temperatura_maxima "  type="number" id="name" placeholder="temperatura_maxima" required="" data-reactid=".0.0.3.0" class="active">
+                            <input name="codigo"  type="number" id="name" placeholder="codigo" required="" data-reactid=".0.0.3.0" class="active">
                             <label data-reactid=".0.0.3.1">* Codigo </label>
                        </div>                   
 
@@ -20,7 +20,7 @@
 
                             <select name"tipo" data-reactid=".0.0.1.0" class="active">
                              
-                             <option>{{$Bodega->tipo}}</option>
+                             <option>{{$bodega->tipo}}</option>
                               <option>Reactivo</option>
                               <option>Materia prima</option>
 
@@ -62,44 +62,7 @@
 
 @endSection
 
-@section('ajaxEditar')
 
-
-<script>
-
-$(document).ready(function(){
-
-    $('#idCorreoBuscar').on('change',function(e){
-   
-    var correo = $('#idCorreoBuscar').val();
-
-        $.get('/ajax?correo=' + correo,function(data){  
-
-
-          $('#idcorreo').val(data[0]['correo']);
-          $('#idnombre').val(data[0]['nombre']);
-          $('#idcedula').val(data[0]['cedula']);
-          $('#idrol').val(data[0]['rol']);
-
-
-          if((data[0]['habilitado'])==1){
-          $('#idhabilitado').val('Habilitado');
-          }else{
-          $('#idhabilitado').val('Inhabilitado');
-          }
-
-          
-
-
-         });
-
-     });
-            
-});
-
-</script>
-
-@endsection
 
 
 

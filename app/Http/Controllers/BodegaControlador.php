@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Bodega;
 use App\Models\Usuario;
+use App\Models\MateriaPrima;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -30,13 +31,14 @@ class BodegaControlador extends Controller {
 
                return view("Bodega/registrarBodega");
              }else{
-                   return redirect('login')->with('success','Zona restringida, no tiene los permisos para acceder a esta funcionalidad');
+              return "Zona restringida, no tiene los permisos para acceder a esta funcionalidad";
+                   //return redirect('login')->with('success','Zona restringida, no tiene los permisos para acceder a esta funcionalidad');
                 }
          }else{
 
           
-
-          return redirect('login')->with('success','Zona restringida, no tiene los permisos para acceder a esta funcionalidad');
+      return "Zona restringida, no tiene los permisos para acceder a esta funcionalidad";
+          //return redirect('login')->with('success','Zona restringida, no tiene los permisos para acceder a esta funcionalidad');
          }
             
        
@@ -64,9 +66,15 @@ class BodegaControlador extends Controller {
       	
       }
 
-      protected function getEditarBodega() {
+      protected function getEditarBodega(Request $request) {
 
-        return view("Bodega/editarBodega");
+         $codigo_bodega= $request['codigo'];
+
+      $bodegaSeleccionado=Bodega::where('codigo',$codigo_bodega)->get();
+      $bodega=$bodegaSeleccionado[0];
+
+      return view('Bodega/editarBodega', compact('bodega'));
+
         
       }
       protected function postEditarBodega(Request $request){
@@ -107,6 +115,16 @@ return redirect('listarBodega')->with('error','bodega NO editada correctamente')
       //print_r($cavas);
      return view('Bodega/listarBodega', compact('bodegas'));
     }
+
+    protected function getRegistrarFlujoBodega(){
+
+      return view('Bodega/registrarFlujoBodega');
+    }
+    protected function postRegistrarFlujoBodega(){
+
+
+    }
+
 
 
 }

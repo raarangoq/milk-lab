@@ -7,8 +7,8 @@
 </style>
 
 @section('contenido')
-<!-- Contenido  xxxxxxxxxxxxxxxxxxxxxxxxxxx -->
 
+<!-- Contenido  xxxxxxxxxxxxxxxxxxxxxxxxxxx -->
 
 @include('alerts.request')
 

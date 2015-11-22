@@ -5,9 +5,11 @@
     @import url(css/4.MENSAJES/style.css);
 </style>
 
-@section('contenido')
 
+
+@section('contenido')
 @include('alerts.request')
+
 
 <main>
     <article>

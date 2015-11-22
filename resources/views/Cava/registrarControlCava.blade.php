@@ -1,26 +1,5 @@
 @extends('layout.principal')
-
-<style>
-    
-    @import url(css/4.MENSAJES/style.css);
-</style>
-
-@section('contenido')
-
-@if(Session::has('success'))
-    
-<div class="alert alert-success mensajeVerde">
-{{Session::get("success")}}
-</div>
-
-@elseif(Session::has('error'))
-    
-<div class="alert alert-error mensajeRojo">    
-{{Session::get("error")}}
-</div>
-
-@endif
-
+@include('alerts.request')
 
 <main>
     <article>
@@ -32,7 +11,7 @@
                         <legend data-reactid=".0.0.0">REGISTRAR CONTROL DE CAVA</legend>
 
                         <div class="control" data-reactid=".0.0.2">
-                         <input name="id"  type="number" required="" data-reactid=".0.0.3.0" class="active bloqueado" readonly>
+                         <input value={{$id_cava}} name="cava"  type="number" required="" data-reactid=".0.0.3.0" class="active bloqueado" readonly>
                             <label data-reactid=".0.0.2.1">Cava</label>
                         </div>
                         <div class="control" data-reactid=".0.0.3">
@@ -48,7 +27,7 @@
                             <label data-reactid=".0.0.4.1">* Temperatura</label>
                         </div>
                          <div class="control" data-reactid=".0.0.4">
-                            <select class="active">
+                            <select name="usuario_realizador" class="active" >
                                 <option>--seleccionar usuario--</option>
 
 

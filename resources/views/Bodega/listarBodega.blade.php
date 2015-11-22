@@ -87,13 +87,13 @@
       </div>
       <div class="cell">
         En uso
-      </div>
+      </div>   
       
+       <div class="cell">
+        Flujo de bodega
+      </div>
       <div class="cell">
         Editar
-      </div>
-       <div class="cell">
-        Control de bodega
       </div>
     </div>
   
@@ -120,13 +120,18 @@
 @endif
  
       </div>
-      <div class="cell">
-
-      <input class="inputEditar" type="submit" id={{$bodega->codigo}} value="editar bodega" data-reactid=".0.0.7" >
-      </div>
-      <div class="cell">
+       <div class="cell">
         <input class="inputVer" type="submit" id={{$bodega->codigo}} value="ver" data-reactid=".0.0.7" >
+        
+        <input class="inputRegistrar" type="submit" id={{$bodega->codigo}} value="registrar" data-reactid=".0.0.7" >
+         
       </div>
+
+      <div class="cell">
+      <input class="inputEditar" type="submit" id={{$bodega->codigo}} value="editar" data-reactid=".0.0.7" >
+      </div>
+   
+
     </div>
 @endforeach
 

@@ -10,7 +10,7 @@
     @import url(css/4.MENSAJES/style.css);
 </style> -->           
 
-<div class="wrapper">
+<div class="wrapper"> 
   
     <div class="table">
 
@@ -27,7 +27,7 @@
        Tipo
         </div>
       <div class="cell">
-       <select name="rol" data-reactid=".0.0.´6.0" class="active">
+       <select name="tipo" data-reactid=".0.0.´6.0" class="active">
                                 <option>--seleccionar --</option>
                               <option>Reactivo</option>
                               <option>Materia prima</option>
@@ -77,9 +77,12 @@
       <div class="cell">
         Materia prima
       </div>
-      <div class="cell">
-        Fecha
-      </div>
+
+       <div class="control" data-reactid=".0.0.3">
+       <input name="fecha"  type="date" required="" data-reactid=".0.0.3.0" class="active">
+           <label data-reactid=".0.0.3.1">* Fecha</label>
+                        </div>
+
       <div class="cell">
         Entrada
       </div>
@@ -106,57 +109,31 @@
         Responsable
       </div>
     </div>
-  
+       
+      
 
-@foreach($materias_primas as $materias_prima)
 
-
-<div class="row">
-      <div class="cell" align="center">
-        {{$materias_prima->nombre}}
+      <div class="row">
+          <div class="cell" align="center">
+            {{$materias_primas->nombre}}
       </div>
-            
 
-</div>
-      <div class="cell">
-
-      <input class="inputEditar" type="submit" id={{$bodega->codigo}} value="editar bodega" data-reactid=".0.0.7" >
-      </div>
-      <div class="cell">
-        <input class="inputVer" type="submit" id={{$bodega->codigo}} value="ver" data-reactid=".0.0.7" >
-      </div>
+      
+ 
+     </div>
+     
     </div>
-@endforeach
 
-             </div>
+    
+     </div>
 
-             </div>
+            
+          
 
 <!-- FIN Contenido -->
 
 @endsection
 
-@section('ajaxEditar')
 
-
-<script>
-
-$(document).ready(function(){
-
-$(".inputEditar").click(function(e){
- var id = e.target.id;
-//alert(id);
-
-document.location.href = "editarBodega?id=" + id;
-
-
-
-});
-
-});
-
-</script>
-
-@endsection
 
 
