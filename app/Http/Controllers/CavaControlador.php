@@ -68,7 +68,7 @@ class CavaControlador extends Controller {
       $cava=$cavaSeleccionado[0];
 
       return view('Cava/editarCava', compact('cava'));
-p
+
     }
 
     protected function postEditarCava(Request $request) {

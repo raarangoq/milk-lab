@@ -1,7 +1,8 @@
 @extends('layout.principal')
 
 @section('contenido')
- @include('alerts.request') 
+@include('alerts.request') 
+
 <main>
     <article>
         <section>
@@ -15,13 +16,14 @@
                             <input name="codigo" type="text" id="name" placeholder="codigo de bodega" required="" data-reactid=".0.0.1.0" class="active">
                             <label data-reactid=".0.0.1.1">* Codigo Bodega</label>
                         </div>
-                        <div class="control" data-reactid=".0.0.2">
-                            <select name"tipo" data-reactid=".0.0.2.0" class="active">
-                            
-                              <option>Materia Prima</option>
-                              <option>Reactivo</option>
+                        
+                         <div class="control" data-reactid=".0.0.2">
 
+                            <select name="tipo" data-reactid=".0.0.2.0" class="active">
+                             <option>Reactivo</option>
+                              <option>Materia prima</option>
                             </select>
+                            
                             <label data-reactid=".0.0.2.1">* Tipo de Bodega</label>
                         </div>
                     

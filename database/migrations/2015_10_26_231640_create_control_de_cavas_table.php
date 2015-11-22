@@ -23,7 +23,7 @@ class CreateControlDeCavasTable extends Migration
             $table->primary('fecha', 'cava');
 
             $table->foreign('cava')
-                ->references('codigo')
+                ->references('id')
                 ->on('cavas')
                 ->onUpdate('cascade');
             $table->foreign('usuario_realizador')

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCavasTable extends Migration
+class CreateProveedoresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,16 +12,17 @@ class CreateCavasTable extends Migration
      */
     public function up()
     {
-        Schema::create('cavas', function (Blueprint $table) {
-            $table->increments('id', 60);
-            $table->enum('tipo', ['Congelamiento', 'Maduración', 'Producto terminado']);
-            $table->decimal('temperatura_minima', 6, 3);
-            $table->decimal('temperatura_maxima', 6, 3);
-            $table->boolean('en_uso')->default(true);
+        Schema::create('proveedores', function (Blueprint $table) {
+            $table->integer('NIT')->unsigned();
+            $table->string('nombre', 60);
+            $table->boolean('habilitado')->default(true);
+            $table->string('direccion', 80)->nullable();
+            $table->integer('telefono')->nullable();
             $table->string('usuario_registrador', 60);
 
             $table->timestamps();
 
+            $table->primary('NIT');
             $table->foreign('usuario_registrador')
                 ->references('correo')
                 ->on('usuarios')
@@ -36,6 +37,6 @@ class CreateCavasTable extends Migration
      */
     public function down()
     {
-        Schema::drop('cavas');
+        Schema::drop('proveedores');
     }
 }

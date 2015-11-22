@@ -47,11 +47,10 @@ class BodegaControlador extends Controller {
       protected function postRegistrarBodega(Request $request){
 
             $this->validate($request, [
-            'codigo'    => 'required|unique:bodega',
+            'codigo'    => 'required',
             'tipo'      => 'required',            
              ]);                 
       
-        //if( $request['codigo'] === ""){
             $bodega = new Bodega;
             $bodega->codigo = $request['codigo'];
             $bodega->tipo = $request['tipo'];
@@ -60,11 +59,10 @@ class BodegaControlador extends Controller {
             $bodega->usuario_creador = $usuarioCreador;
           
 
-             if ( $bodega->save())
+             if ($bodega->save())
                  
                 return redirect('registrarBodega')->with('success','Bodega registrada correctamente');
-             
-      	
+                   	
       }
 
       protected function getEditarBodega(Request $request) {
