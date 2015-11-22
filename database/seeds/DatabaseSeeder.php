@@ -24,6 +24,8 @@ class DatabaseSeeder extends Seeder
         $this->call(FlujoDeBodegaTableSeeder::class);
         $this->call(LoteDeMateriaPrimaTableSeeder::class);
         $this->call(LoteDeLecheTableSeeder::class);
+        $this->call(ProductoDerivadoTableSeeder::class);
+        $this->call(TamanoTableSeeder::class);
 
         Model::reguard();
     }
