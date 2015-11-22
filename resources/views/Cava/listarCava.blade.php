@@ -4,14 +4,6 @@
 
 @include('alerts.request')
 
-<style>
-    @import url(css/3.TABLAS/css/style.css);
-    @import url(css/4.MENSAJES/style.css);
-</style>
-           
-
-
-
 <div class="wrapper">
   
     <div class="table">
@@ -29,6 +21,7 @@
        Codigo
         </div>
       <div class="cell">
+
        <input placeholder="filtrar codigo" class="active" type="text" name="id">
       </div>
 
@@ -42,9 +35,11 @@
                               <option>Maduración</option>
                               <option>Producto terminado</option>
                             </select>
+
       </div>
 
       </div>
+
 
       <div class="row">
         <div class="cell">
@@ -64,8 +59,10 @@
           <option>SI</option>
           <option>NO</option>                      
 
+
         </select>
       </div>
+
 
 
       </div>
@@ -80,17 +77,20 @@
 
 
       <div class="cell">
+
        <input value="filtrar" class="active" type="submit">
       </div>
       <div class="cell">
        
       </div>
 
+
       </div>
 
 
 
   </div>
+
 
  </div>
 
@@ -103,7 +103,9 @@
   
              <div class="table">
 
+
              <div class="row header blue">
+
       <div class="cell">
         Codigo
       </div>
@@ -111,6 +113,7 @@
         Tipo
       </div>
       <div class="cell">
+
         Temperatura minima
       </div>
       <div class="cell">
@@ -118,6 +121,7 @@
       </div>
       <div class="cell">
         En uso?
+
       </div>
       <div class="cell">
         Editar
@@ -126,6 +130,7 @@
         Control de cava
       </div>
     </div>
+
 
 
 
@@ -145,7 +150,9 @@
       </div>
       <div class="cell">
         {{$cava->temperatura_maxima}}
+
       </div>
+
 
 
 
@@ -155,37 +162,30 @@
 @else
       <div class="cell red" align="center">    
        NO
+
 @endif
  
       </div>
       <div class="cell">
+
         <input class="inputEditar" type="submit" id={{$cava->id}} value="editar cava" data-reactid=".0.0.7" >
       </div>
       <div class="cell">
         <input class="inputVer" type="submit" id={{$cava->id}} value="ver" data-reactid=".0.0.7" >
       </div>
     </div>
-
-
-
 @endforeach
-
-
-
              </div>
            <input class="inputRegistrar" type="submit" value="registrar cava" data-reactid=".0.0.5">
+
              </div>
 
-
+             </div>
 
 
 <!-- FIN Contenido -->
 
 @endsection
-
-
-
-
 
 @section('ajaxEditar')
 
@@ -197,7 +197,9 @@ $(document).ready(function(){
 $(".inputEditar").click(function(e){
  var id = e.target.id;
 //alert(id);
+
 document.location.href = "editarCava?id=" + id;
+
 
 
 });

@@ -3,29 +3,12 @@
 @section('contenido')
 
 
-@if(Session::has('success'))
-    
-<div class="alert alert-success mensajeVerde">
-    
-{{Session::get("success")}}
-</div>
+@include('alerts.request')
 
-
-@elseif(Session::has('error'))
-    
-<div class="alert alert-success mensajeRojo">
-    
-{{Session::get("error")}}
-</div>
-
-
-
-@endif
-
-<style>
+<!-- <style>
     @import url(css/3.TABLAS/css/style.css);
     @import url(css/4.MENSAJES/style.css);
-</style>
+</style> -->
            
 
 <div class="wrapper">
@@ -116,11 +99,11 @@
 
 
 
-             <div class="wrapper">
+ <div class="wrapper">
   
-             <div class="table">
+  <div class="table">
 
-             <div class="row header blue">
+    <div class="row header blue">
       <div class="cell">
         Nombre
       </div>
@@ -163,7 +146,7 @@
 
 
 
-@if ($user->habilitado === 1)
+@if ($user->habilitado == 1)
       <div class="cell">
        Habilitado
 @else
@@ -181,7 +164,7 @@
 
 
 
-             </div>
+</div>
              </div>
 
 

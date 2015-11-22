@@ -63,6 +63,7 @@ use AuthenticatesAndRegistersUsers,
           $correo=$request['correo']; 
           $user=Usuario::where('correo',$correo)->get();
 
+
           $usuario['correo']=$user['0']['correo'];
           $usuario['nombre']=$user['0']['nombre'];
           $usuario['cedula']=$user['0']['cedula'];
@@ -70,6 +71,7 @@ use AuthenticatesAndRegistersUsers,
           $usuario['password']=$user['0']['password'];
           $usuario['habilitado']=$user['0']['habilitado'];
           $usuario['usuario_creador']=$user['0']['usuario_creador'];
+
 
           Session::put('usuario',$usuario);
           
@@ -80,10 +82,10 @@ use AuthenticatesAndRegistersUsers,
             return Redirect::to('login')->withErrors("XXXXXX");
         }
     }
-
-    
+   
 
     //para terminar sesión
+
     protected function getLogout() {
         $this->auth->logout();
 

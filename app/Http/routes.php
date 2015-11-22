@@ -3,15 +3,24 @@
 
 //--------> LOGIN (rutas) <--------------------------
 Route::get('login', 'Auth\AuthController@getLogin');
-Route::get('/', 'Auth\AuthController@getLogin');
-Route::post('login', ['as' =>'login', 'uses' => 'Auth\AuthController@postLogin']);
-Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
 
-//--------> HOME (rutas) <--------------------------
+Route::post('login', ['as' =>'login', 'uses' => 'Auth\AuthController@postLogin']);
+
+Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
+ 
+// Registration routes...
+Route::get('register', 'Auth\AuthController@getRegister');
+
+Route::post('register', ['as' => 'auth/register', 'uses' => 'Auth\AuthController@postRegister']);
+
+Route::get('/', 'Auth\AuthController@getLogin');
+
+
+//--------> HOME (rutas) <----------------------------
 Route::get('home', function () {
     return view('home');
 });
-
+//USUARIO
 
 //------> USUARIOS (rutas) <--------------------------
 
@@ -90,17 +99,30 @@ Route::get('editarFlujoBodega', 'FlujoBodegaControlador@getEditarFlujoBodega');
 
 
 
-
 //------> BODEGA (rutas) <----------------------------
 
 //CREAR BODEGA
 Route::get('registrarBodega', 'BodegaControlador@getRegistrarBodega');
 
+Route::post('registrarBodega', ['as' => 'registrarBodega', 
+	                          'uses' => 'BodegaControlador@postRegistrarBodega']);
+//EDITAR BODEGA 
+Route::get('editarBodega', 'BodegaControlador@getEditarBodega');
+Route::post('editarBodega', ['as' => 'editarBodega', 'uses' => 'BodegaControlador@postEditarBodega']);
+//LISTAR BODEGA
+Route::get('listarBodega', 'BodegaControlador@getListarBodega');
+//REGISTRAR FLUJO DE BODEGA
+Route::get('registrarFlujoBodega', 'BodegaControlador@getRegistrarFlujoBodega');
 
+Route::post('registrarFlujoBodega', ['as' => 'registrarFlujoBodega', 
+	                          'uses' => 'BodegaControlador@postRegistrarFlujoBodega']);
 
 //------> PROVEEDOR (rutas) <----------------------------
 
-//REGISTRAR PROVEEDOR
+
+
+//CREAR PROVEEDOR
+
 Route::get('registrarProveedor', 'ProveedorControlador@getRegistrarProveedor');
 Route::post('registrarProveedor', ['as' => 'registrarProveedor', 'uses' => 'ProveedorControlador@postRegistrarProveedor']); 
 //LISTAR PROVEEDOR
@@ -110,3 +132,7 @@ Route::get('editarProveedor', 'ProveedorControlador@getEditarProveedor');
 Route::post('editarProveedor', ['as' => 'editarProveedor', 'uses' => 'ProveedorControlador@postEditarProveedor']); 
 
 
+
+//------> FICHA REACTIVO (rutas) <----------------------------
+Route::get('registrarReactivo', 'ReactivoControlador@getRegistrarReactivo');
+Route::post('registrarReactivo', ['as' => 'registrarReactivo', 'uses' => 'ReactivoControlador@postRegistrarReactivo']);

@@ -20,9 +20,11 @@ class CavaControlador extends Controller {
 
         return view("Cava/registrarCava");
     }
+  
+  
 
-    //RECIBIR DATOS DE VISTA (REGISTRAR USUARIO) PARA CREAR USUARIO
-    protected function postRegistrarCava(Request $request) {
+      protected function postRegistrarCava(Request $request) {
+
         $this->validate($request, [
             'tipo' => 'required',
             'temperatura_minima' => 'required',
@@ -79,8 +81,6 @@ class CavaControlador extends Controller {
             'temperatura_maxima' => 'required',
             'en_uso' => 'required',
         ]);
-
-
 
         $id= $request['id'];
         $nuevaTemperatura_minima = $request['temperatura_minima'];

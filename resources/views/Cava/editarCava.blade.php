@@ -1,17 +1,10 @@
 @extends('layout.principal')
 
 @section('contenido')
+
 <!-- Contenido  xxxxxxxxxxxxxxxxxxxxxxxxxxx -->
 
-@if(Session::has('success'))
-    
-<div class="alert alert-success">
-    
-{{Session::get("success")}}
-</div>
-
-
-@endif
+@include('alerts.request')
 
 <main>
 
@@ -39,7 +32,7 @@
                            <div class="control" data-reactid=".0.0.2">
 
                             <select  name="tipo" data-reactid=".0.0.2.0" class="active">
-                              <option>{{$cava->tipo}}</option>
+                           
                               <option>Congelamiento</option>
                               <option>Maduración</option>
                               <option>Producto terminado</option>
@@ -76,13 +69,16 @@
 
                         <input type="submit" value="editar cava" data-reactid=".0.0.5">
 
+
                     </fieldset>
                 </form>
+
             </div>
         </section>
     </article>
 </main>
 <!-- FIN Contenido -->
+
 
 @endsection
 
@@ -112,9 +108,7 @@ $(document).ready(function(){
           $('#idhabilitado').val('Habilitado');
           }else{
           $('#idhabilitado').val('Inhabilitado');
-          }
-
-          
+          }     
 
 
          });
@@ -126,3 +120,4 @@ $(document).ready(function(){
 </script>
 
 @endsection
+

@@ -1,40 +1,21 @@
 @extends('layout.principal')
 
-<style>
-    
-    @import url(css/4.MENSAJES/style.css);
-</style>
+
 
 
 @section('contenido')
 <!-- Contenido  xxxxxxxxxxxxxxxxxxxxxxxxxxx -->
 
-@if(Session::has('success'))
-    
-<div class="alert alert-success mensajeVerde">
-    
-{{Session::get("success")}}
-</div>
-
-
-@elseif(Session::has('error'))
-    
-<div class="alert alert-error mensajeRojo">
-    
-{{Session::get("error")}}
-</div>
-
-
-
-
-@endif
-
+@include('alerts.request')
 
 
 <main>
     <article>
         <section>
+           
             <div id="stage" class="stage">
+
+                
 
                 <form action="registrarUsuario" method="post" data-reactid=".0">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"> 
@@ -50,7 +31,7 @@
                         <div class="control" data-reactid=".0.0.2">
 
 
-                            <input name="cedula" type="number" id="cedula" placeholder="ceudla:" required="" data-reactid=".0.0.2.0" class="active">
+                            <input name="cedula" type="number" id="cedula" placeholder="cedula:" required="" data-reactid=".0.0.2.0" class="active">
 
                             <label data-reactid=".0.0.2.1">* Cedula</label>
                         </div>
@@ -82,6 +63,8 @@
                         </div>                      
 
                         <input type="submit" value="registrar usuario" data-reactid=".0.0.7">
+
+                        
 
                     </fieldset>
                 </form>
