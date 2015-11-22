@@ -108,7 +108,7 @@ Route::post('registrarBodega', ['as' => 'registrarBodega',
 	                          'uses' => 'BodegaControlador@postRegistrarBodega']);
 //EDITAR BODEGA 
 Route::get('editarBodega', 'BodegaControlador@getEditarBodega');
-Route::post('editarBodega', ['as' => 'editarBodega', 'uses' => 'CavaControlador@postEditarBodega']);
+Route::post('editarBodega', ['as' => 'editarBodega', 'uses' => 'BodegaControlador@postEditarBodega']);
 //LISTAR BODEGA
 Route::get('listarBodega', 'BodegaControlador@getListarBodega');
 //REGISTRAR FLUJO DE BODEGA

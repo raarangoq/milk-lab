@@ -20,8 +20,7 @@
 
                             <select name"tipo" data-reactid=".0.0.1.0" class="active">
                              
-                             <option>{{$bodega->tipo}}</option>
-                              <option>Reactivo</option>
+                               <option>Reactivo</option>
                               <option>Materia prima</option>
 
                             </select>
@@ -61,7 +60,6 @@
 <!-- FIN Contenido -->
 
 @endSection
-
 
 
 

@@ -10,7 +10,6 @@
 @section('contenido')
 @include('alerts.request')
 
-
 <main>
     <article>
         <section>

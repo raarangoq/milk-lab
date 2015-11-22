@@ -123,12 +123,12 @@
        <div class="cell">
       <input class="inputVer" type="submit" id={{$bodega->codigo}} value="ver" data-reactid=".0.0.7" >
         
-<input class="inputRegistrar" type="submit" id={{$bodega->codigo}} value="registrar" data-reactid=".7">
+<input class="inputRegistrar" type="submit" value="registrar" data-reactid=".7">
          
       </div>
 
       <div class="cell">
-<input class="inputEditar" type="submit" id={{$bodega->codigo}} value="editar" data-reactid=".0.0.7" >
+<input class="inputEditar" type="submit" id={{$bodega->codigo}} value="editar bodega" data-reactid=".0.0.7" >
       </div>
    
 
@@ -152,7 +152,23 @@ $(document).ready(function(){
 $(".inputEditar").click(function(e){
  var id = e.target.id;
 
-document.location.href = "editarBodega?id=" + id;
+document.location.href = "editarBodega";
+
+});
+
+$(".inputVer").click(function(e){
+ var id = e.target.id;
+
+document.location.href = "listarControlBodega";
+
+
+
+});
+$(".inputRegistrar").click(function(e){
+ var id = e.target.id;
+
+document.location.href = "registrarBodega";
+
 
 });
 

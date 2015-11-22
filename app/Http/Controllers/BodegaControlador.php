@@ -38,8 +38,8 @@ class BodegaControlador extends Controller {
          }else{
 
           
-      return "Zona restringida, no tiene los permisos para acceder a esta funcionalidad";
-          //return redirect('login')->with('success','Zona restringida, no tiene los permisos para acceder a esta funcionalidad');
+    //  return "Zona restringida, no tiene los permisos para acceder a esta funcionalidad";
+          return redirect('login')->with('success','Zona restringida, no tiene los permisos para acceder a esta funcionalidad');
          }
             
        
@@ -47,7 +47,7 @@ class BodegaControlador extends Controller {
       protected function postRegistrarBodega(Request $request){
 
             $this->validate($request, [
-            'codigo'    => 'required',
+            'codigo'    => 'required|unique:bodegas',
             'tipo'      => 'required',            
              ]);                 
       
