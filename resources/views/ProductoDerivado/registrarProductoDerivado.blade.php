@@ -68,7 +68,7 @@
                             <label data-reactid=".0.0.1.1">*  Unidad de medidad  </label>
                         </div>
                 
-                
+                      <p>* Campos obligatorios</p>
                                         
 
                         <input type="submit" value="Editar bodega" data-reactid=".0.0.6">
