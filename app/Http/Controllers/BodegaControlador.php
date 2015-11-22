@@ -56,7 +56,7 @@ class BodegaControlador extends Controller {
             $bodega->tipo = $request['tipo'];
          
             $usuarioCreador=Session::get('usuario.correo');
-            $bodega->usuario_creador = $usuarioCreador;
+            $bodega->usuario_registrador = $usuarioCreador;
           
 
              if ($bodega->save())
