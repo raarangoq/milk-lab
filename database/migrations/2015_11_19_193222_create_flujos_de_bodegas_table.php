@@ -13,7 +13,7 @@ class CreateFlujosDeBodegasTable extends Migration
     public function up()
     {
         Schema::create('flujos_de_bodegas', function (Blueprint $table) {
-            $table->integer('id')->increments();
+            $table->increments('id');
             $table->dateTime('fecha');
             $table->integer('entra')->unsigned();
             $table->integer('sale')->unsigned();
@@ -27,8 +27,6 @@ class CreateFlujosDeBodegasTable extends Migration
             $table->string('bodega', 20);
 
             $table->timestamps();
-
-            $table->primary('id');
 
             $table->foreign('materia_prima')
                 ->references('nombre')

@@ -38,6 +38,7 @@ Route::get('editarPerfil', 'UsuarioControlador@getEditarPerfil');
 Route::post('editarPerfil', ['as' => 'editarPerfil', 'uses' => 'UsuarioControlador@postEditarPerfil']);
 
 
+
 //------> CAVA (rutas) <------------------------------
 
 //REGISTRAR CAVA
@@ -51,17 +52,40 @@ Route::post('editarCava', ['as' => 'editarCava', 'uses' => 'CavaControlador@post
 Route::get('registrarControlCava', 'CavaControlador@getRegistrarControlCava');
 Route::post('registrarControlCava', ['as' => 'registrarControlCava', 'uses' => 'CavaControlador@postRegistrarControlCava']); 
 Route::get('borrarControlCava', 'CavaControlador@getBorrarControlCava');
-
-
 //LISTAR CONTROL DE CAVA
 Route::get('listarControlCava', 'CavaControlador@getListarControlCava');
 
 
 
-
-
 //------> PROGRAMAS (rutas) <------------------------------
+
+//REGISTRAR PROGRAMA
 Route::get('registrarPrograma', 'ProgramaControlador@getRegistrarPrograma');
+Route::post('registrarPrograma', ['as' => 'registrarPrograma', 'uses' => 'ProgramaControlador@postRegistrarPrograma']); 
+//LISTAR PROGRAMAS
+Route::get('listarPrograma', 'ProgramaControlador@getListarPrograma');
+Route::get('editarPrograma', 'ProgramaControlador@getEditarPrograma');
+Route::post('editarPrograma', ['as' => 'editarPrograma', 'uses' => 'ProgramaControlador@postEditarPrograma']); 
+
+
+
+//------> MATERIA PRIMA (rutas) <------------------------------
+
+//REGISTRAR MATERIA PRIMA
+Route::get('registrarMateriaPrima', 'MateriaPrimaControlador@getRegistrarMateriaPrima');
+Route::post('registrarMateriaPrima', ['as' => 'registrarMateriaPrima', 'uses' => 'MateriaPrimaControlador@postRegistrarMateriaPrima']);
+
+//LISTAR MATERIA PRIMA
+Route::get('listarMateriaPrima', 'MateriaPrimaControlador@getListarMateriaPrima');
+Route::get('editarMateriaPrima', 'MateriaPrimaControlador@getEditarMateriaPrima');
+Route::post('editarMateriaPrima', ['as' => 'editarMateriaPrima', 'uses' => 'MateriaPrimaControlador@postEditarMateriaPrima']); 
+
+
+
+//------> FLUJO DE BODEGA (rutas) <----------------------------
+Route::get('registrarFlujoBodega', 'FlujoBodegaControlador@getRegistrarFlujoBodega');
+
+
 
 
 //------> BODEGA (rutas) <----------------------------
@@ -85,8 +109,16 @@ Route::post('registrarFlujoBodega', ['as' => 'registrarFlujoBodega',
 //------> PROVEEDOR (rutas) <----------------------------
 
 
+
 //CREAR PROVEEDOR
+
 Route::get('registrarProveedor', 'ProveedorControlador@getRegistrarProveedor');
+Route::post('registrarProveedor', ['as' => 'registrarProveedor', 'uses' => 'ProveedorControlador@postRegistrarProveedor']); 
+//LISTAR PROVEEDOR
+Route::get('listarProveedor', 'ProveedorControlador@getListarProveedor');
+Route::get('editarProveedor', 'ProveedorControlador@getEditarProveedor');
+Route::post('editarProveedor', ['as' => 'editarProveedor', 'uses' => 'ProveedorControlador@postEditarProveedor']); 
+
 
 
 //------> FICHA REACTIVO (rutas) <----------------------------

@@ -24,6 +24,7 @@ class BodegaControlador extends Controller {
 
          $usuarioRol = Session::get('usuario.rol');
          $usuarioHabilitado = Session::get('usuario.habilitado');
+         
 
          if($usuarioRol == 'Director'){
 
@@ -112,15 +113,35 @@ return redirect('listarBodega')->with('error','bodega NO editada correctamente')
     protected function getListarBodega() {
 
     $bodegas=Bodega::all();
-      //print_r($cavas);
+      
      return view('Bodega/listarBodega', compact('bodegas'));
     }
 
     protected function getRegistrarFlujoBodega(){
 
-      return view('Bodega/registrarFlujoBodega');
+      
+         $usuarioHabilitado = Session::get('usuario.habilitado');
+         $bodegas=Bodega::all();
+
+           if($usuarioHabilitado === 1){
+
+               return view('Bodega/registrarFlujoBodega',compact('bodegas'));
+             }else{
+              return "Zona restringida, no tiene los permisos para acceder a esta funcionalidad";
+                   //return redirect('login')->with('success','Zona restringida, no tiene los permisos para acceder a esta funcionalidad');
+                }
+               
     }
     protected function postRegistrarFlujoBodega(){
+
+      $this->validate($request, [
+            'codigo'    => 'required',
+            'tipo'      => 'required',
+            'en_uso'    => 'required',
+            
+             ]);
+
+
 
 
     }

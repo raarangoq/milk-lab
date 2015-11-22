@@ -4,11 +4,7 @@
 
 
 @include('alerts.request')
-
-<!-- <style>
-    @import url(css/3.TABLAS/css/style.css);
-    @import url(css/4.MENSAJES/style.css);
-</style> -->           
+          
 
 <div class="wrapper"> 
   
@@ -42,7 +38,18 @@
        Codigo
         </div>
       <div class="cell">
-       <input placeholder="filtrar codigo" class="active" type="text" name="codigo">
+           <select name="tipo" data-reactid=".0.0.´6.0" class="active">
+                                <option>--seleccionar --</option>
+
+                                 @foreach($bodegas as $bodega)
+                                <option> 
+                                   <div class="cell" align="center">
+                                       {{$bodega->codigo}}
+                                   </div>
+                                </option>
+                                 @endforeach
+                            
+          </select>
       </div>
 
     </div>
@@ -67,6 +74,8 @@
   </div>
 
  </div>
+
+
 
              <div class="wrapper">
   
@@ -113,10 +122,7 @@
       
 
 
-      <div class="row">
-          <div class="cell" align="center">
-            {{$materias_primas->nombre}}
-      </div>
+      
 
       
  
