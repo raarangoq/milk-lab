@@ -9,7 +9,7 @@
               <div class="row header blue">
                 
                 <div class="cell">
-               REGISTRAR PRODUCTO DERIVADO
+               EDITAR PRODUCTO DERIVADO
                  </div>
 
                    </div>   
@@ -166,10 +166,7 @@
                 <input class="inputregistrarproductoderivado" type="submit" value="registrar producto derivado " data-reactid=".7">
              </div>
 
-             </div>
-
-
-           
+             </div> 
   
 
   
