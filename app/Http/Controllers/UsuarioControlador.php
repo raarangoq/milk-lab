@@ -75,7 +75,7 @@ class UsuarioControlador extends Controller {
 
                 if ($user->save())
                  
-                  return redirect('registrarUsuario')->with('success','usuario registrado correctamente');
+      return redirect('registrarUsuario')->with('success','usuario registrado correctamente');
 
         }
       }

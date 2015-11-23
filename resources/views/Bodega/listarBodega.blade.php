@@ -128,7 +128,7 @@
       </div>
 
       <div class="cell">
-<input class="inputEditar" type="submit" id={{$bodega->codigo}} value="editar bodega" data-reactid=".0.0.7" >
+<input class="inputEditar" type="submit"  value="editar bodega" data-reactid=".0.0.7" >
       </div>
    
 
@@ -138,6 +138,8 @@
             </div>
 
              </div>
+
+    </div>
 <!-- FIN Contenido -->
 
 @endsection
@@ -158,7 +160,7 @@ document.location.href = "editarBodega";
 
 $(".inputVer").click(function(e){
  var id = e.target.id;
-
+//alert(id);
 document.location.href = "listarControlBodega";
 
 
@@ -166,7 +168,7 @@ document.location.href = "listarControlBodega";
 });
 $(".inputRegistrar").click(function(e){
  var id = e.target.id;
-
+//alert(id);
 document.location.href = "registrarBodega";
 
 
