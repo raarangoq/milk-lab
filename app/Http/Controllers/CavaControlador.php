@@ -182,22 +182,6 @@ $paginaAnterior="listarControlCava?id=$id_cava";
 return redirect($paginaAnterior)->with('success','Control de cava borrado correctamente');
 
 
-
-//$controlCavaRegistro=$controlCava[0];
-
-//$controlCava->delete();
-
-//print_r($controlCava2);
-  //  return "$fecha , $id_cava";
-
-
-
-     // $controlDeCavas=ControlDeCava::all();
-
-   //$controlDeCavaSeleccionado=ControlDeCava::where('cava',$id_cava)->get();
-
- //  return view('Cava/listarControlCava', compact('controlDeCavaSeleccionado','id_cava'));
-
     }
 
 

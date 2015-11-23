@@ -61,13 +61,13 @@ class BodegaControlador extends Controller {
 
              if ($bodega->save())
                  
-                return redirect('registrarBodega')->with('success','Bodega registrada correctamente');
+                return redirect('listarBodega')->with('success','Bodega registrada correctamente');
                    	
       }
 
       protected function getEditarBodega(Request $request) {
 
-         $codigo_bodega= $request['codigo'];
+      $codigo_bodega= $request['codigo_bodega'];
 
       $bodegaSeleccionado=Bodega::where('codigo',$codigo_bodega)->get();
       $bodega=$bodegaSeleccionado[0];
@@ -76,14 +76,23 @@ class BodegaControlador extends Controller {
 
         
       }
+
+
       protected function postEditarBodega(Request $request){
             
+
+//AL PARECER EXISTE UN ERROR CON ESTA VALIDACION  
+/*
             $this->validate($request, [
             'codigo'    => 'required',
             'tipo'      => 'required',
-            'en_uso'    => 'required',
-            
-             ]);
+            'en_uso'    => 'required',            
+             ]);   
+
+*/             
+
+       $anteriorCodigo=$request['anteriorCodigo'];
+
         $nuevocodigo= $request['codigo'];
         $nuevoTipo = $request['tipo']; 
         $nuevoUso = $request['en_uso'];
@@ -91,7 +100,7 @@ class BodegaControlador extends Controller {
         //$usuarioEditor = Session::get('usuario.correo');
         
 
-        if($bodegaActualizada=Bodega::where('codigo',$codigo)
+        if($bodegaActualizada=Bodega::where('codigo',$anteriorCodigo)
                         ->update(['tipo'=>  $nuevoTipo,
                                   'codigo'=>  $nuevocodigo,
                                   'en_uso'=>  $nuevoUso,

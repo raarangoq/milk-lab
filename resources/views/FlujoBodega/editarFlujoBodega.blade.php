@@ -19,13 +19,14 @@
         <section>
             <div id="stage" class="stage">
 
-            <a href="">
+            <a href="listarFlujoBodega?codigo_bodega={{$flujo_de_bodega->bodega}}">
               <img src="css/iconos/atras.png">
             </a>
 
 
-                <form action="editarCava" method="post" data-reactid=".0">
+                <form action="editarFlujoBodega" method="post" data-reactid=".0">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"> 
+                    <input type="hidden" name="id_flujo_bodega" value={{$id_flujo_bodega}}> 
 
 
                     <fieldset data-reactid=".0.0">
@@ -33,8 +34,12 @@
 
                            <div class="control" data-reactid=".0.0.2">
 
-                            <select  name="materia_prima" data-reactid=".0.0.2.0" class="active">
-                              <option>materia prima</option>
+                            <select id="idmateria_prima" name="materia_prima" data-reactid=".0.0.7.0" class="active"> 
+                               
+   <option value={{$flujo_de_bodega->materia_prima}}>{{$flujo_de_bodega->materia_prima}} -- {{$vectorINFO[1]}}</option>                            
+ @foreach($materiasPrimas as $materiasPrima)
+<option value={{$materiasPrima->nombre}}>{{$materiasPrima->nombre}} -- {{$materiasPrima->unidad_de_medida}}</option>
+@endforeach                
 
                             </select>
                             
@@ -43,24 +48,31 @@
 
 
                        <div class="control" data-reactid=".0.0.3">
-                            <input name="id"  type="date" value= required="" data-reactid=".0.0.3.0" class="active">
+                            <input name="fecha"  type="date"  required="" data-reactid=".0.0.3.0" class="active" value={{$flujo_de_bodega->fecha}}>
                             <label data-reactid=".0.0.3.1">* Fecha</label>
                         </div>
 
                         
                         <div class="control" data-reactid=".0.0.3">
-                            <input name="entra"  type="number" value= required="" data-reactid=".0.0.3.0" class="active">
+                            <input name="entra"  type="number"  required="" data-reactid=".0.0.3.0" class="active" value={{$flujo_de_bodega->entra}}>
                             <label data-reactid=".0.0.3.1">* Entra</label>
                         </div>
                         <div class="control" data-reactid=".0.0.4">
-                            <input name="sale" type="number" required="" data-reactid=".0.0.4.0" class="active">
+                            <input name="sale" type="number" required="" data-reactid=".0.0.4.0" class="active" value={{$flujo_de_bodega->sale}}>
                             <label data-reactid=".0.0.4.1">* Sale</label>
                         </div>
 
                         <div class="control" data-reactid=".0.0.2">
 
                             <select  name="motivo_de_salida" data-reactid=".0.0.2.0" class="active">
-                              <option>motivo_de_salida</option>
+
+@if ($flujo_de_bodega->motivo_de_salida == "Producción")
+   <option value="Producción">Producción</option>
+   <option value="Descarte">Descarte</option>
+@else
+    <option value="Descarte">Descarte</option>
+     <option value="Producción">Producción</option> 
+@endif  
 
                             </select>
                             
@@ -68,24 +80,28 @@
                         </div>
 
                         <div class="control" data-reactid=".0.0.4">
-                            <input name="total" type="number" required="" data-reactid=".0.0.4.0" class="active">
+                            <input name="total" type="number" required="" data-reactid=".0.0.4.0" class="active" value={{$flujo_de_bodega->total}}>
                             <label data-reactid=".0.0.4.1">* Total</label>
                         </div>
 
                         <div class="control" data-reactid=".0.0.4">
-                            <input name="existencia" type="number" required="" data-reactid=".0.0.4.0" class="active">
+                            <input name="existencia" type="number" required="" data-reactid=".0.0.4.0" class="active" value={{$flujo_de_bodega->existencia}}>
                             <label data-reactid=".0.0.4.1">* Existencia</label>
                         </div>
 
                          <div class="control" data-reactid=".0.0.1">
-                           <textarea  name="observaciones" rows="10" data-reactid=".0.0.1.0" class="active"></textarea>
+                           <textarea  name="observaciones" rows="10" data-reactid=".0.0.1.0" class="active">{{$flujo_de_bodega->observaciones}}</textarea>
                             <label data-reactid=".0.0.1.1">Observaciones:</label>
                         </div>
 
                          <div class="control" data-reactid=".0.0.2">
 
-                            <select  name="programa" data-reactid=".0.0.2.0" class="active">
-                              <option>programa</option>
+<select id="idprograma" name="programa" data-reactid=".0.0.7.0" class="active"> 
+                               
+   <option value={{$flujo_de_bodega->programa}}>{{$vectorINFO[2]}}</option>                            
+ @foreach($programas as $programa)
+<option value={{$programa->numero_de_programa}}>{{$programa->nombre}}</option>
+@endforeach                
 
                             </select>
                             
@@ -94,18 +110,27 @@
 
                          <div class="control" data-reactid=".0.0.2">
 
-                            <select  name="usuario_responsable" data-reactid=".0.0.2.0" class="active">
-                              <option>responsable</option>
+<select id="idusuario_responsable" name="usuario_responsable" data-reactid=".0.0.7.0" class="active"> 
+                               
+   <option value={{$flujo_de_bodega->usuario_responsable}}>{{$vectorINFO[3]}}--{{$vectorINFO[4]}}--{{$flujo_de_bodega->usuario_responsable}}</option>                            
+ @foreach($usuarios as $usuario)
+<option value={{$usuario->correo}}>{{$usuario->nombre}}--{{$usuario->rol}}--{{$usuario->correo}}</option>
+@endforeach                
 
                             </select>
+
                             
                             <label data-reactid=".0.0.2.1">* Responsable</label>
                         </div>
 
                          <div class="control" data-reactid=".0.0.2">
 
-                            <select  name="bodega" data-reactid=".0.0.2.0" class="active">
-                              <option>bodega</option>
+<select id="idbodega" name="bodega" data-reactid=".0.0.7.0" class="active"> 
+                               
+   <option value={{$flujo_de_bodega->bodega}}>{{$vectorINFO[5]}}--{{$flujo_de_bodega->bodega}}</option>                            
+ @foreach($bodegas as $bodega)
+<option value={{$bodega->codigo}}>{{$bodega->tipo}}--{{$bodega->codigo}}</option>
+@endforeach                
 
                             </select>
                             
@@ -136,29 +161,7 @@
 
 $(document).ready(function(){
 
-    $('#idCorreoBuscar').on('change',function(e){
-   
-    var correo = $('#idCorreoBuscar').val();
-
-        $.get('/ajax?correo=' + correo,function(data){  
-
-
-          $('#idcorreo').val(data[0]['correo']);
-          $('#idnombre').val(data[0]['nombre']);
-          $('#idcedula').val(data[0]['cedula']);
-          $('#idrol').val(data[0]['rol']);
-
-
-          if((data[0]['habilitado'])==1){
-          $('#idhabilitado').val('Habilitado');
-          }else{
-          $('#idhabilitado').val('Inhabilitado');
-          }
-
-          
-
-
-         });
+    
 
      });
             
