@@ -26,5 +26,13 @@ class ProgramasTableSeeder extends Seeder
             'observaciones' => '',
             'usuario_responsable' => 'uriel@unal.edu.co',
         ]);
+        DB::table('programas')->insert([
+            'numero_de_programa' => 0486713,
+            'nombre' => 'Ciencias de la leche 1',
+            'tipo' => 'Docencia',
+            'en_ejecucion' => true,
+            'observaciones' => '',
+            'usuario_responsable' => 'uriel@unal.edu.co',
+        ]);
     }
 }
