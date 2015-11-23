@@ -2,30 +2,33 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Usuario;
+use App\Models\Usuario;
 use Validator;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ControllerSession;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use Session;
+use Input;
+use Redirect;
 
-class AuthController extends Controller
-{
+
+class AuthController extends Controller {
     /*
-    |--------------------------------------------------------------------------
-    | Registration & Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users, as well as the
-    | authentication of existing users. By default, this controller uses
-    | a simple trait to add these behaviors. Why don't you explore it?
-    |
-    */
+      |--------------------------------------------------------------------------
+      | Registration & Login Controller
+      |--------------------------------------------------------------------------
+      |
+      | This controller handles the registration of new users, as well as the
+      | authentication of existing users. By default, this controller uses
+      | a simple trait to add these behaviors. Why don't you explore it?
+      |
+     */
 
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+use AuthenticatesAndRegistersUsers,
+    ThrottlesLogins;
 
     protected $username = 'correo';
     protected $redirectPath = '/';
@@ -35,74 +38,61 @@ class AuthController extends Controller
      *
      * @return void
      */
-    public function __construct(Guard $auth)
-    {
+    public function __construct(Guard $auth) {
         $this->auth = $auth;
-        $this->middleware('guest', ['except' => 'getLogout']);
+        //$this->middleware('guest', ['except' => 'getLogout']);
     }
 
-    public function getLogin(){
+
+
+    public function getLogin() {
         return view("login");
     }
 
-    public function postLogin(Request $request){
+    public function postLogin(Request $request) {
         $this->validate($request, [
             'correo' => 'required',
             'password' => 'required',
         ]);
 
         $credentials = $request->only('correo', 'password');
-      //$credentials["habilitado"] = 1;  
-        
+        //$credentials["habilitado"] = 1;  
 
-        if ($this->auth->attempt($credentials, $request->has('remember')))
-        {
-            return view("welcome");
+        if ($this->auth->attempt($credentials, $request->has('remember'))) {
+
+          $correo=$request['correo']; 
+          $user=Usuario::where('correo',$correo)->get();
+
+          $usuario['correo']=$user['0']['correo'];
+          $usuario['nombre']=$user['0']['nombre'];
+          $usuario['cedula']=$user['0']['cedula'];
+          $usuario['rol']=$user['0']['rol'];
+          $usuario['password']=$user['0']['password'];
+          $usuario['habilitado']=$user['0']['habilitado'];
+          $usuario['usuario_creador']=$user['0']['usuario_creador'];
+
+          Session::put('usuario',$usuario);
+          
+           return view("home");
+            
+        } else {
+            //return "credenciales incorrectas";
+            return Redirect::to('login')->withErrors("XXXXXX");
         }
-
-        return "credenciales incorrectas";
     }
 
-    protected function getRegister()
-    {
-        return view("registro");
-    }
+    
 
-    protected function postRegister(Request $request)
-    {
-        $this->validate($request, [
-            'nombre' => 'required',
-            'correo' => 'required',
-            'password' => 'required',
-            'cedula' => 'required',
-            'rol' => 'required',
-
-        ]);
-
-        $data = $request;
-
-        $user=new Usuario;
-        $user->nombre = $data['nombre'];
-        $user->correo = $data['correo'];
-        $user->password = bcrypt($data['password']);
-        $user->cedula = $data['cedula'];
-        $user->rol = $data['rol'];
-        $user->usuario_creador = 'raarangoq@unal.edu.co';
-
-        if($user->save())
-            return "se ha registrado correctamente el usuario";   
-    }
-
-//para terminar sesión
-    protected function getLogout()
-    {
+    //para terminar sesión
+    protected function getLogout() {
         $this->auth->logout();
 
         Session::flush();
 
         return redirect('login');
     }
-    
+
+
 
     /**
      * Get a validator for an incoming registration request.
@@ -110,14 +100,15 @@ class AuthController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
+    protected function validator(array $data) {
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
+                    'name' => 'required|max:255',
+                    'email' => 'required|email|max:255|unique:users',
+                    'password' => 'required|confirmed|min:6',
         ]);
     }
+
+
 
     /**
      * Create a new user instance after a valid registration.
@@ -125,12 +116,15 @@ class AuthController extends Controller
      * @param  array  $data
      * @return User
      */
-    protected function create(array $data)
-    {
+    protected function create(array $data) {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+                    'name' => $data['name'],
+                    'email' => $data['email'],
+                    'password' => bcrypt($data['password']),
         ]);
     }
+
+
 }
+
+

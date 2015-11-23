@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateUsuariosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -21,7 +21,6 @@ class CreateUsersTable extends Migration
             $table->boolean('habilitado')->default(true);
 
             $table->string('usuario_creador', 60);
-            $table->string('usuario_editor', 60)->nullable();
             
             $table->rememberToken();
             $table->timestamps();
@@ -32,15 +31,8 @@ class CreateUsersTable extends Migration
 
             $table->foreign('usuario_creador')
                 ->references('correo')
-                ->on('usuarios');
-            $table->foreign('usuario_editor')
-                ->references('correo')
-                ->on('usuarios');
-
-            
-
-
-            
+                ->on('usuarios')
+                ->onUpdate('cascade');        
 
         });
     }
