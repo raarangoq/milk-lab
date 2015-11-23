@@ -32,7 +32,10 @@ class BodegaControlador extends Controller {
 
                return view("Bodega/registrarBodega");
              }else{
-              return "Zona restringida, no tiene los permisos para acceder a esta funcionalidad";
+              //$message = $this->usuario->name . ' Zona restringida, no tiene los permisos para acceder a esta funcionalidad';
+              $message = Session::get('usuario.nombre')
+              Session::flash('message', $message) . ' Zona restringida, no tiene los permisos para acceder a esta funcionalidad';
+              return redirect()->route('login');
                    //return redirect('login')->with('success','Zona restringida, no tiene los permisos para acceder a esta funcionalidad');
                 }
          }else{

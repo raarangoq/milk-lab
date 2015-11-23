@@ -149,9 +149,6 @@
       </div>
     </div>
 
-
-
-
    
 @foreach($cavas as $cava)
 
@@ -170,8 +167,6 @@
         {{$cava->temperatura_maxima}}
 
       </div>
-
-
 
 
 @if ($cava->en_uso === 1)
