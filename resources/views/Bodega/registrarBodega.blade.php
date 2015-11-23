@@ -19,7 +19,7 @@
                         
                          <div class="control" data-reactid=".0.0.2">
 
-                            <select name="tipo" data-reactid=".0.0.2.0" class="active">
+                            <select name="tipo" id="idtipo" data-reactid=".0.0.2.0" class="active">
                              <option>Reactivo</option>
                               <option>Materia prima</option>
                             </select>

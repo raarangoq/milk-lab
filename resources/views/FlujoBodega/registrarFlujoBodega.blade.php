@@ -361,8 +361,6 @@ var observaciones=($("input[name=observaciones"+i+"]").val());
 var programa=($("select[name=programa"+i+"]").val());
 var responsable=($("select[name=usuario_responsable"+i+"]").val());
 
-
-alert(motivo_de_salida);
 item = {};
 
 if(materia !==''
@@ -385,6 +383,7 @@ if(materia !==''
           item["observaciones"] = observaciones;
           item["programa"] = programa; 
           item["responsable"] = responsable;
+          item["bodega"] = {{$codigo_bodega}};
           vectorDeFlujo.push(item);
 
          // vectorDeFlujo.push($("select[name=materia_prima"+i+"]").val());
@@ -396,7 +395,7 @@ console.log(vectorDeFlujo);
 
 
 aInfo   = JSON.stringify(vectorDeFlujo); 
-alert(aInfo);
+
 var identificacion = aInfo ;
 var cadenaFormulario = "&data=" + identificacion;
  
@@ -404,18 +403,14 @@ $.ajax({
     data: cadenaFormulario,
     dataType: "html",
     type: 'GET',
-    url : 'registrarFlujoBodega2',
+    url : 'registrarFlujoBodegaAJAX',
     processData: false, 
     contentType: false,
     success: function(r){
 
- 
-//return r;
-
-      //Una vez que se haya ejecutado de forma exitosa hacer el código para que muestre esto mismo.
-
-      //     alert(r);
-
+              alert("Se Registraron los flujos exitosamente");
+              document.location.href = "listarBodega";
+              
 
     }
   });

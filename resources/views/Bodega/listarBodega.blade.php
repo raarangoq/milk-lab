@@ -121,9 +121,9 @@
  
       </div>
        <div class="cell">
-      <input class="inputVer" type="submit" id={{$bodega->codigo}} value="ver" data-reactid=".0.0.7" >
+      <input class="inputVerFlujo" type="submit" id={{$bodega->codigo}} value="ver" data-reactid=".0.0.7" >
         
-<input class="inputRegistrar" type="submit" value="registrar" data-reactid=".7">
+<input class="inputRegistrarFlujo" type="submit" id={{$bodega->codigo}} value="registrar" data-reactid=".7">
          
       </div>
 
@@ -135,12 +135,17 @@
     </div>
 @endforeach
 
+
+
             </div>
+             <input class="inputRegistrar" type="submit" value="registrar bodega" data-reactid=".0.0.5">
 
              </div>
 <!-- FIN Contenido -->
 
 @endsection
+
+
 
 @section('ajaxEditar')
 
@@ -152,18 +157,33 @@ $(document).ready(function(){
 $(".inputEditar").click(function(e){
  var id = e.target.id;
 
-document.location.href = "editarBodega";
+ var codigo_bodega=id;
+
+document.location.href = "editarBodega?codigo_bodega=" + codigo_bodega;
 
 });
 
-$(".inputVer").click(function(e){
+$(".inputRegistrarFlujo").click(function(e){
  var id = e.target.id;
+ var codigo_bodega=id;
 
-document.location.href = "listarControlBodega";
+document.location.href = "registrarFlujoBodega?codigo_bodega=" + codigo_bodega;
 
 
 
 });
+
+$(".inputVerFlujo").click(function(e){
+ var id = e.target.id;
+ var codigo_bodega=id;
+
+document.location.href = "listarFlujoBodega?codigo_bodega=" + codigo_bodega;
+
+
+
+});
+
+
 $(".inputRegistrar").click(function(e){
  var id = e.target.id;
 

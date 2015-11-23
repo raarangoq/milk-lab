@@ -89,21 +89,21 @@ Route::post('editarMateriaPrima', ['as' => 'editarMateriaPrima', 'uses' => 'Mate
 
 //REGISTRAR FLUJO DE BODEGA
 Route::get('registrarFlujoBodega', 'FlujoBodegaControlador@getRegistrarFlujoBodega');
-Route::get('registrarFlujoBodega2', 'FlujoBodegaControlador@getRegistrarFlujoBodega2');
+Route::get('registrarFlujoBodegaAJAX', 'FlujoBodegaControlador@getRegistrarFlujoBodegaAJAX');
 //LISTAR FLUJO DE BODEGA
 Route::get('listarFlujoBodega', 'FlujoBodegaControlador@getListarFlujoBodega');
 //EDITAR FLUJO DE BODEGA
 Route::get('editarFlujoBodega', 'FlujoBodegaControlador@getEditarFlujoBodega');
-//falta---post
+Route::post('editarFlujoBodega', ['as' => 'editarFlujoBodega', 'uses' => 'FlujoBodegaControlador@postEditarFlujoBodega']); 
 //ELIMINAR/BORRAR FLUJO DE BODEGA
+Route::get('borrarFlujoBodega', 'FlujoBodegaControlador@getBorrarFlujoBodega');
 
 
 
 //------> BODEGA (rutas) <----------------------------
 
-//CREAR BODEGA
+//REGISTRAR BODEGA
 Route::get('registrarBodega', 'BodegaControlador@getRegistrarBodega');
-
 Route::post('registrarBodega', ['as' => 'registrarBodega', 
 	                          'uses' => 'BodegaControlador@postRegistrarBodega']);
 //EDITAR BODEGA 
@@ -111,11 +111,10 @@ Route::get('editarBodega', 'BodegaControlador@getEditarBodega');
 Route::post('editarBodega', ['as' => 'editarBodega', 'uses' => 'BodegaControlador@postEditarBodega']);
 //LISTAR BODEGA
 Route::get('listarBodega', 'BodegaControlador@getListarBodega');
-//REGISTRAR FLUJO DE BODEGA
-Route::get('registrarFlujoBodega', 'BodegaControlador@getRegistrarFlujoBodega');
 
-Route::post('registrarFlujoBodega', ['as' => 'registrarFlujoBodega', 
-	                          'uses' => 'BodegaControlador@postRegistrarFlujoBodega']);
+//REGISTRAR FLUJO DE BODEGA
+//Route::get('registrarFlujoBodega', 'BodegaControlador@getRegistrarFlujoBodega');
+//Route::post('registrarFlujoBodega', ['as' => 'registrarFlujoBodega','uses' => 'BodegaControlador@postRegistrarFlujoBodega']);
 
 //------> PROVEEDOR (rutas) <----------------------------
 
