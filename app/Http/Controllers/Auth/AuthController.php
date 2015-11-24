@@ -46,17 +46,10 @@ use AuthenticatesAndRegistersUsers,
 
 
     public function getLogin() {
-     
-     $usuarioHabilitado = Session::get('usuario.habilitado');
-      
-      if($usuarioHabilitado == 1){
+
          return view("login");
 
-      }else{
-
-        return “Acceso restringido, esta cuenta está actualmente inhabilitada”;
-
-      }
+     
         
     }
 
