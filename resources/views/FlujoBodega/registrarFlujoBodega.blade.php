@@ -55,10 +55,11 @@
 <div class="row">
 
       <div class="cell" align="center">
-        <select id="idmateria_prima" name="materia_prima0" data-reactid=".0.0.6.0" class="active" > 
-                   <option></option>            
+     <select id="idmateria_prima" name="materia_prima0" data-reactid=".0.0.6.0" class="active" > 
+       <option></option>            
  @foreach($materiasPrimas as $materiasPrima)
-<option value={{$materiasPrima->nombre}}>{{$materiasPrima->nombre}} -- {{$materiasPrima->unidad_de_medida}}</option>
+<option value={{$materiasPrima->nombre}}>{{$materiasPrima->nombre}} -- {{$materiasPrima->unidad_de_medida}}
+</option>
 @endforeach   
 
         </select>
@@ -100,6 +101,7 @@
 
         </select>
       </div>
+
       <div class="cell" align="center">
         <select id="idusuario_responsable" name="usuario_responsable0" data-reactid=".0.0.6.0" class="active" > 
                        <option></option>        

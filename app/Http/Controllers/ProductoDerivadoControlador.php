@@ -16,43 +16,49 @@ class ProductoDerivadoControlador extends Controller {
 
 	protected function getRegistrarProductoDerivado(){
 
-		return view("ProductoDerivado/RegistrarProductoDerivado");
+		return view("ProductoDerivado/registrarProductoDerivado");
 	}
 	protected function postRegistrarProductoDerivado(Request $request){
 
 		$this->validate($request,[
 
-		'nombre'=>'required',
+	    	'nombre'=>'required',
         'tipo'=>'required',
-        'descripcion_fisica'=>'required',
+
         'tiempo_de_vencimiento'=>'required',
-        'instrucciones_de_la_etiqueta'=>'required',
+       
         'temperatura_de_almacenamiento'=>'required',
         'unidad_de_medida'=>'required',
-
+    
+          
 			]);
-
-               $productoDerivado = new ProductoDerivado;
+                $productoDerivado = new ProductoDerivado;
 
                 $productoDerivado->nombre = $request['nombre'];
                 $productoDerivado->tipo = $request['tipo'];
-                $productoDerivado->descripcion_fisica = $request['descripcion_fisica']; 
-                $productoDerivado->tiempo_de_vencimiento = $request['tiempo_de_vencimiento'];
-                $productoDerivado->instrucciones_de_la_etiqueta = $request['instrucciones_de_la_etiqueta']; 
-                $productoDerivado->temperatura_de_almacenamiento = $request['temperatura_de_almacenamiento']; 
-                $productoDerivado->unidad_de_medida = $request['unidad_de_medida']; 
+                $productoDerivado->descripcion_fisica= $request['descripcion_fisica'];       $productoDerivado->tiempo_de_vencimiento = $request['tiempo_de_vencimiento'];
+                $productoDerivado->instrucciones_de_la_etiqueta = $request['instrucciones_de_la_etiqueta'];
+    
+     $productoDerivado->temperatura_de_almacenamiento = $request['temperatura_de_almacenamiento']; 
+     $productoDerivado->unidad_de_medida = $request['unidad_de_medida']; 
 
+      // return print_r($productoDerivado);
 
-                if($materiaPrima->save()){
+             if($productoDerivado->save()){
             
-            return redirect('listarMateriaPrima')->with('success','Materia prima registrada correctamente');
+            
+           return redirect('registrarProductoDerivado')->with('success','ProductoDerivado registrada correctamente');
+
         }
 
 	}
 
 	protected function getListarProductoDerivado(){
 
-		return view("ProductoDerivado/listarProductoDerivado");
+      $productoDerivado=ProductoDerivado::all();
+              
+
+		return view('ProductoDerivado/listarProductoDerivado',compact('productoDerivado'));
 	}
 
 	protected function getEditarProductoDerivado(){
@@ -66,9 +72,9 @@ class ProductoDerivadoControlador extends Controller {
 
 		'nombre'=>'required',
         'tipo'=>'required',
-        'descripcion_fisica'=>'required',
+        
         'tiempo_de_vencimiento'=>'required',
-        'instrucciones_de_la_etiqueta'=>'required',
+        
         'temperatura_de_almacenamiento'=>'required',
         'unidad_de_medida'=>'required',
 

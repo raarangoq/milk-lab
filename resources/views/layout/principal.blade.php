@@ -131,6 +131,9 @@
                 <li>
                     <div class="link"><i class="fa fa"><img src="css/iconos/queso.png"></i>PRODUCTOS<i class="fa fa-chevron-down"></i></div>
                     <ul class="submenu">
+                        <li><a href="registrarProductoDerivado">Registrar Producto Derivado</a></li>
+                        <li><a href="listarProductoDerivado">Listar Producto Derivado</a></li>
+                         <li><a href="editarProductoDerivado">Editar Producto Derivado</a></li>
                         <li><a href="#">Registrar Lote de PRODUCTO</a></li>
                         <li><a href="#">Analisis de Lote de PRODUCTO</a></li>
                     </ul>
