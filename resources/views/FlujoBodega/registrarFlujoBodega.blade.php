@@ -258,10 +258,6 @@
 
 @endsection
 
-
-
-
-
 @section('ajaxEditar')
 
 
@@ -332,6 +328,8 @@ nuevaFila+="<option value={{$usuario->correo}}>{{$usuario->nombre}}--{{$usuario-
 nuevaFila+="@endforeach";
 nuevaFila+="</select>";
 nuevaFila+="</div>";
+
+
 
 nuevaFila+="</div>";
 

@@ -38,8 +38,8 @@
                         </div>
 
                          <div class="control"  data-reactid=".0.0.3.0">
-                             <br></br><input name="tiempo_de_vencimiento"  type="number"  required="" placeholder= " tiempo de vencimiento (minutos)"data-reactid=".0.0.3.0" class="active">
-                            <label data-reactid=".0.0.3.1">*Tiempo de vencimiento </label>
+                             <br></br><input name="tiempo_de_vencimiento"  type="number"  required="" placeholder= " tiempo de vencimiento (dias)"data-reactid=".0.0.3.0" class="active">
+                            <label data-reactid=".0.0.3.1">*Tiempo de vencimiento (dias) </label>
                             
                        </div>
                         
@@ -72,7 +72,8 @@
                             <label data-reactid=".0.0.1.1">*  Unidad de medidad  </label>
                         </div> 
 
-
+                        <p>* campos obligatorios </p>
+                        <br>  
                         
 
     <div class="wrapper">
@@ -110,9 +111,8 @@
         </div>
 
         <div class="cell">
-           <select name="tipo">
-                <option></option>
-                <option>Bolsa</option>
+           <select name="tipot">
+               <option>Bolsa</option>
                <option>Pote</option>
                <option>Vaso</option>
                <option>Cuarto</option>
@@ -156,23 +156,56 @@
 </main>
 
 
-
-
-
 <!-- FIN Contenido -->
 
 @endSection
 
 
-
 @section('ajaxEditar')
 
-<script>
 
+<script>
 
 $(document).ready(function(){
 
   var fila=2;
+
+  $(".inputAgregarFila").click(function(e){
+ 
+fila++;
+
+var nuevaFila="<div class='row'>";
+
+nuevaFila+="<div class='cell'>";
+nuevaFila+="<input type='number' name='cantidad"+fila+"'>";
+nuevaFila+="</div>";
+
+
+nuevaFila+="<div class='cell' align='center'>";
+nuevaFila+="<select name='tipo"+fila+"' data-reactid='.0.0.6.0' class='active'>";
+nuevaFila+="<option>Pote</option>";
+nuevaFila+="<option>Vaso</option>";
+nuevaFila+="<option>Cuarto</option>";
+nuevaFila+="<option>Caja</option>";
+nuevaFila+="<option>Bloque</option>";  
+nuevaFila+="</select>";
+nuevaFila+="</div>";
+
+nuevaFila+="<div class='cell'>";
+nuevaFila+="<input type='number' name='precio"+fila+"'>";
+nuevaFila+="</div>";
+
+
+
+nuevaFila+="</div>";
+
+
+
+$(".table").append(nuevaFila);
+
+//alert(nuevaFila);
+
+});
 
 
 

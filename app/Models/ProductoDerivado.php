@@ -29,4 +29,6 @@ class ProductoDerivado extends Model
         'temperatura_de_almacenamiento',
         'unidad_de_medida',
     ];
+
+     public $timestamps = false;
 }

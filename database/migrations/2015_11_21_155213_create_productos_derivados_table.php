@@ -20,7 +20,7 @@ class CreateProductosDerivadosTable extends Migration
             $table->string('instrucciones_de_la_etiqueta', 200)->nullable();
             $table->enum('temperatura_de_almacenamiento', ['Ambiente', 'Refrigeración', 'Congelación']);
             $table->enum('unidad_de_medida', ['Litro', 'Kilo']);
-              
+              $table->timestamps();
             $table->primary('nombre');
             
         });

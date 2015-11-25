@@ -16,7 +16,33 @@ class ProductoDerivadoControlador extends Controller {
 
 	protected function getRegistrarProductoDerivado(){
 
-		return view("ProductoDerivado/registrarProductoDerivado");
+
+         $usuarioRol = Session::get('usuario.rol');
+         $usuarioHabilitado = Session::get('usuario.habilitado');
+         
+
+         if($usuarioRol == 'Director'){
+
+           if($usuarioHabilitado == 1){
+
+              return view("ProductoDerivado/registrarProductoDerivado");
+             }else{
+              //$message = $this->usuario->name . ' Zona restringida, no tiene los permisos para acceder a esta funcionalidad';
+      $message = $this->usuario->nombre . 'Zona restringida, no tiene los permisos para acceder a esta funcionalidad';
+
+              Session::flash('message', $message) ;
+              return redirect('home');
+                   //return redirect('login')->with('success','Zona restringida, no tiene los permisos para acceder a esta funcionalidad');
+                }
+         }else{
+
+          
+    return "Zona restringida, no tiene los permisos para acceder a esta funcionalidad";
+         // return redirect('login')->with('success','Zona restringida, no tiene los permisos para acceder a esta funcionalidad');
+         }
+
+
+		
 	}
 	protected function postRegistrarProductoDerivado(Request $request){
 
