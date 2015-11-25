@@ -15,6 +15,17 @@ use Input;
 use Illuminate\Support\ServiceProvider;
 use Redirect;
 
+use App\Http\Requests\RegistrarUsuarioRequest;
+use App\Http\Requests\EditarPerfilRequest;
+
+
+use App\Http\Controllers\ControllerSession;
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+//use Illuminate\Support\Facades\Crypt;
+//use Illuminate\Contracts\Encryption\DecryptException;
+
 
 class UsuarioControlador extends Controller {
 
@@ -24,50 +35,49 @@ class UsuarioControlador extends Controller {
         //$this->middleware('guest', ['except' => 'getLogout']);
     }
 
-
     //MOSTRAR VISTA DE REGISTRAR USUARIO
     protected function getRegistrarUsuario() {
-
+// !!! *** verificacion del usuario logueado esta habilitado y sea un director -> carga combox de roles
+     
      $roles=Usuario::distinct()->select('rol')->get();
 
+    //if((Session::get('usuario.rol') == "Director") && (Session::get('usuario.habilitado'))
 
-        return view("Usuario/registrarUsuario", compact('roles'));
+      return view("Usuario/registrarUsuario");
     }
 
-
     //RECIBIR DATOS DE VISTA (REGISTRAR USUARIO) PARA CREAR USUARIO
-    protected function postRegistrarUsuario(Request $request) {
+    protected function postRegistrarUsuario(RegistrarUsuarioRequest $request) {
+     //!!! *** verifica que no exista otro usuario con el mismo correo ni otro usuario con la misma cédula  --> request !!
         $this->validate($request, [
-            'nombre' => 'required',
-            'correo' => 'required',
-            'password' => 'required',
+            'nombre'    => 'required',
+            'correo'    => 'required',
+            'password'  => 'required',
             'password2' => 'required',
-            'cedula' => 'required',
-            'rol' => 'required',
-        ]);
+            'cedula'    => 'required',
+            'rol'       => 'required',
+
+                    ]);
 
         if($request['password']==$request['password2']){
-        $data = $request;
+              $data = $request;
 
-        $user = new Usuario;
-        $user->nombre = $data['nombre'];
-        $user->correo = $data['correo'];
-        $user->password = bcrypt($data['password']);
-        $user->cedula = $data['cedula'];
-        $user->rol = $data['rol'];
+              $user = new Usuario;
+              $user->nombre = $data['nombre'];
+              $user->correo = $data['correo'];
+              $user->password = bcrypt($data['password']);
+              $user->cedula = $data['cedula'];
+              $user->rol = $data['rol'];
 
-        //$user->usuario_creador = 'raarangoq@unal.edu.co';
-        $usuarioCreador=Session::get('usuario.correo');
-        $user->usuario_creador = $usuarioCreador;
+              $usuarioCreador=Session::get('usuario.correo');
+              $user->usuario_creador = $usuarioCreador;
 
-          if ($user->save())
-            //return "se ha registrado correctamente el usuario";
-            //Session::flash('success',"se ha registrado correctamente el usuario");
-            return redirect('registrarUsuario')->with('success','usuario registrado correctamente');
-          }else{
-            return "escribir bien dos veces el PASSWORD";
-            //return redirect('registrarUsuario')->with('error','usuario NO registrado correctamente');
-          }
+
+                if ($user->save())
+                 
+      return redirect('registrarUsuario')->with('success','usuario registrado correctamente');
+
+        }
       }
 
 
@@ -77,7 +87,9 @@ class UsuarioControlador extends Controller {
       $correoUsuario= $request['correo'];
 
       $usuarioSeleccionado=Usuario::where('correo',$correoUsuario)->get();
-      $usuario=$usuarioSeleccionado[0];
+    $usuario=$usuarioSeleccionado[0];
+
+       //$usuario = Session::get('usuario');
 
       return view('Usuario/editarUsuario', compact('usuario'));
 
@@ -88,14 +100,20 @@ class UsuarioControlador extends Controller {
 
       
       $this->validate($request, [
-            'correo' => 'required',
-            'rol' => 'required',
+
+            'nombre'     => 'required',    
+            'rol'        => 'required',
             'habilitado' => 'required',
         ]);
 
-
-        $rolNuevo = $request['rol'];
+      //  $nombreNuevo = $request['nombre'];
+        $rolNuevo    = $request['rol'];
         $estadoNuevo = $request['habilitado'];
+
+        
+        //$correo=Input::get('correo');//COJER CORREO DE LISTA DE SELECT
+      //prueba
+       
 
         $usuarioEditor = Session::get('usuario.correo');
         $correo= $request['correo'];
@@ -107,44 +125,54 @@ class UsuarioControlador extends Controller {
 
                           ])){
 
- return redirect('listarUsuario')->with('success','usuario editado correctamente');
 
-        }else{
-return redirect('listarUsuario')->with('error','usuario NO editado correctamente');
+            return redirect('listarUsuario')->with('success','usuario editado correctamente');
+
         }
 
-
   //return $this->getListarUsuario();
+
 //return Redirect::to('listarUsuario');
 // return redirect('registrarUsuario')->with('success','usuario registrado correctamente');
+
 
     }
 
     //MOSTRAR VISTA DE EDITAR PERFIL
     protected function getEditarPerfil() {
 
-      $usuario = Session::get('usuario');
+ $usuarioHabilitado = Session::get('usuario.habilitado');
+
+
+           if($usuarioHabilitado == 1){
+
+                $usuario = Session::get('usuario');
      
-         return view('Usuario/editarPerfil', compact('usuario'));
+                 return view('Usuario/editarPerfil', compact('usuario'));
+             }else{
+                 return "Zona restringida, no tiene los permisos para acceder a esta funcionalidad";
+                   //return redirect('login')->with('success','Zona restringida, no tiene los permisos para acceder a esta funcionalidad');
+                }
+     
     }
 
 
 
-protected function postEditarPerfil(Request $request) {
-
-     
+protected function postEditarPerfil(Request $request) {     
         
 if($request['passwordAnterior']==="") {
 //NO CAMBIAR PASSWORD
-
-
  
       $this->validate($request, [
+
             'nombre' => 'required',
             'cedula' => 'required',
             'correo' => 'required',
         ]);
 
+    $CorreoSession = Session::get('usuario.correo');
+
+      if($CorreoSession === ""){
 
         $nombreNuevo = $request['nombre'];
         $cedulaNuevo = $request['cedula'];
@@ -152,18 +180,21 @@ if($request['passwordAnterior']==="") {
         
         $correo= Session::get('usuario.correo');
 
-        $usuario=Usuario::where('correo',$correo)
+        if($usuario=Usuario::where('correo',$correo)
                         ->update(['nombre'=>  $nombreNuevo,
                                   'cedula'=>  $cedulaNuevo,
                                   'correo'=>  $correoNuevo,
-
-                          ]);
+                          ])){                    
 
         Session::put('usuario.correo',$correoNuevo);
         Session::put('usuario.cedula',$cedulaNuevo);
-        Session::put('usuario.nombre',$nombreNuevo);
 
-        return "SE ACTULIZO NOMBRE,CORREO Y CEDULA";
+
+        Session::put('usuario.nombre',$nombreNuevo);       
+       
+        return redirect('editarPerfil')->with('success','usuario editado correctamente');
+     
+       }
 
 
 }else{
@@ -190,11 +221,17 @@ if($request['passwordAnterior']==="") {
 
         $correoAnterior= Session::get('usuario.correo');
 
+        
+     // $password = Hash::make($request['passwordAnterior']);
 
-        if ($this->auth->attempt($credentials, $request->has('remember'))) {
+      if ($password == Auth::usuarios()->password){
 
+        
+//Hash::check($value, Auth::user()->clave);
           return "password anterior igual";
 
+          //3-ACTUALIZAR USUARIO
+          //4-ACTUALIZAR VARIABLE DE SESSION 
 
         }else{
 
@@ -202,15 +239,7 @@ if($request['passwordAnterior']==="") {
         }
       }
 
-
-
-
-
       }//ELSE ERROR CAMPOS INCOMPLETOS
-
-
-
-      
           
     }
 
@@ -223,7 +252,6 @@ if($request['passwordAnterior']==="") {
        return $usuarioSeleccionado;//ENVIAR TODOS LOS DATOS DE USUARIO
       }
 
-
     protected function getListarUsuario() {
 
       $usuarioSession = Session::get('usuario.correo');
@@ -231,8 +259,6 @@ if($request['passwordAnterior']==="") {
      
          return view('Usuario/listarUsuario', compact('usuarios'));
     }
-
-
 
 
 }

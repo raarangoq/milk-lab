@@ -73,7 +73,54 @@
                     </ul>
                 </li>
 
+                 <li>
+                    <div class="link"><i class="fa fa"><img src="css/iconos/cava.png"></i>CAVAS<i class="fa fa-chevron-down"></i></div>
+                    <ul class="submenu">
+                        <li><a href="registrarCava">Registrar Cava</a></li>
+                        <li><a href="listarCava">Listar Cavas</a></li>
+
+                    </ul>
+                </li>
+
                 <li>
+                    <div class="link"><i class="fa fa"><img src="css/iconos/bodega.png"></i>BODEGAS<i class="fa fa-chevron-down"></i></div>
+                    <ul class="submenu">
+                        <li><a href="registrarBodega">Registrar Bodega</a></li>
+                        <li><a href="listarBodega">Listar Bodega</a></li>
+                                            
+                    </ul>
+                </li>
+
+                
+
+                <li>
+                    <div class="link"><i class="fa fa"><img src="css/iconos/materias_primas.png"></i>MATERIAS PRIMAS<i class="fa fa-chevron-down"></i></div>
+                    <ul class="submenu">
+                        <li><a href="registrarMateriaPrima">Registrar Materia Prima</a></li>
+                        <li><a href="listarMateriaPrima">Listar Materias Primas</a></li>
+                        
+                    </ul>
+                </li>
+
+                <li>
+                    <div class="link"><i class="fa fa"><img src="css/iconos/programas.png"></i>PROGRAMAS<i class="fa fa-chevron-down"></i></div>
+                    <ul class="submenu">
+                        <li><a href="registrarPrograma">Registrar Programa</a></li>
+                        <li><a href="listarPrograma">Listar Programas</a></li>
+                        
+                        
+                    </ul>
+                </li>
+
+                 <li>
+                    <div class="link"><i class="fa fa"><img src="css/iconos/proveedores.png"></i>PROVEEDORES<i class="fa fa-chevron-down"></i></div>
+                    <ul class="submenu">
+                        <li><a href="registrarProveedor">Registrar Proveedor</a></li>
+                        <li><a href="listarProveedor">Listar Proveedores</a></li>
+                    </ul>
+                </li>
+
+                 <li>
                     <div class="link"><i class="fa fa"><img src="css/iconos/vaca4.png"></i>LECHE<i class="fa fa-chevron-down"></i></div>
                     <ul class="submenu">
                         <li><a href="#">Registrar LECHE</a></li>
@@ -84,34 +131,14 @@
                 <li>
                     <div class="link"><i class="fa fa"><img src="css/iconos/queso.png"></i>PRODUCTOS<i class="fa fa-chevron-down"></i></div>
                     <ul class="submenu">
+                        <li><a href="registrarProductoDerivado">Registrar Producto Derivado</a></li>
+                        <li><a href="listarProductoDerivado">Listar Producto Derivado</a></li>
+                         <li><a href="editarProductoDerivado">Editar Producto Derivado</a></li>
                         <li><a href="#">Registrar Lote de PRODUCTO</a></li>
                         <li><a href="#">Analisis de Lote de PRODUCTO</a></li>
                     </ul>
                 </li>
-
-                <li>
-                    <div class="link"><i class="fa fa"><img src="css/iconos/materias_primas.png"></i>MATERIAS PRIMAS<i class="fa fa-chevron-down"></i></div>
-                    <ul class="submenu">
-                        <li><a href="#">Registrar Materia Prima</a></li>
-                        <li><a href="#"></a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <div class="link"><i class="fa fa"><img src="css/iconos/cava.png"></i>CAVAS<i class="fa fa-chevron-down"></i></div>
-                    <ul class="submenu">
-                        <li><a href="registrarCava">Registrar Cava</a></li>
-                        <li><a href="#"></a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <div class="link"><i class="fa fa"><img src="css/iconos/bodega.png"></i>BODEGAS<i class="fa fa-chevron-down"></i></div>
-                    <ul class="submenu">
-                        <li><a href="registrarBodega">Registrar Bodega</a></li>
-                        <li><a href="#"></a></li>
-                    </ul>
-                </li>
+               
 
                     <li>
                     <div class="link"><i class="fa fa"><img src="css/iconos/analisis.png"></i>PRUEBAS<i class="fa fa-chevron-down"></i></div>
@@ -121,16 +148,7 @@
                     </ul>
                 </li>
 
-                </li>
-
-                    <li>
-                    <div class="link"><i class="fa fa"><img src="css/iconos/proveedores.png"></i>PROVEEDORES<i class="fa fa-chevron-down"></i></div>
-                    <ul class="submenu">
-                        <li><a href="registrarProveedor">Registrar Proveedor</a></li>
-                        <li><a href="#"></a></li>
-                    </ul>
-                </li>
-
+            
                 
             </ul>
 

@@ -3,15 +3,7 @@
 @section('contenido')
 <!-- Contenido  xxxxxxxxxxxxxxxxxxxxxxxxxxx -->
 
-@if(Session::has('success'))
-    
-<div class="alert alert-success">
-    
-{{Session::get("success")}}
-</div>
-
-
-@endif
+@include('alerts.request')
 
 <main>
 
@@ -110,37 +102,27 @@
 
 
 <script>
-
 $(document).ready(function(){
-
     $('#idCorreoBuscar').on('change',function(e){
    
     var correo = $('#idCorreoBuscar').val();
-
         $.get('/ajax?correo=' + correo,function(data){  
-
-
           $('#idcorreo').val(data[0]['correo']);
           $('#idnombre').val(data[0]['nombre']);
           $('#idcedula').val(data[0]['cedula']);
           $('#idrol').val(data[0]['rol']);
 
-
+          
           if((data[0]['habilitado'])==1){
           $('#idhabilitado').val('Habilitado');
           }else{
           $('#idhabilitado').val('Inhabilitado');
           }
-
           
-
-
          });
-
      });
             
 });
-
 </script>
 
 @endsection

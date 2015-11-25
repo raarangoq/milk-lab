@@ -1,7 +1,17 @@
 @extends('layout.principal')
 
+
+<style>
+    
+    @import url(css/4.MENSAJES/style.css);
+</style>
+
 @section('contenido')
+
 <!-- Contenido  xxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+
+@include('alerts.request')
+
 <main>
     <article>
         <section>
@@ -10,14 +20,9 @@
 
                 <form action="editarPerfil" method="post" data-reactid=".0">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"> 
-
-
                     <fieldset data-reactid=".0.0">
                         <legend data-reactid=".0.0.0">EDITAR PERFIL</legend>
-
-                        
-
-                       
+                                           
                         <div class="control" data-reactid=".0.0.2">
 
 
@@ -76,11 +81,9 @@
 
                             <label data-reactid=".0.0.3.1">Confirmar Password</label>
 
-                        </div>
-                       
-                         
-                                         
-
+                        </div>    
+                     
+                    
                         <input type="submit" value="editar perfil" data-reactid=".0.0.7">
 
                     </fieldset>

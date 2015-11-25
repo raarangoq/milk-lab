@@ -15,7 +15,7 @@
 
                          <div class="control" data-reactid=".0.0.1">
                            
-                             <input name="nit" type="text" id="idnit" placeholder="NIT : " required="" data-reactid=".0.0.1.0" class="active">
+                             <input name="NIT" type="text" id="idnit" placeholder="NIT : " required="" data-reactid=".0.0.1.0" class="active">
                             <label data-reactid=".0.0.1.1">* NIT de proveedor</label>
                         </div>
 
@@ -26,19 +26,17 @@
 
                          <div class="control" data-reactid=".0.0.3">
                            
-                             <input name="telefono" type="number" id="idtelefono" placeholder="TELEFONO : " required="" data-reactid=".0.0.3.0" class="active">
-                            <label data-reactid=".0.0.3.1">* Telefono</label>
+                             <input name="telefono" type="number" id="idtelefono" placeholder="TELEFONO : "  data-reactid=".0.0.3.0" class="active">
+                            <label data-reactid=".0.0.3.1">Telefono</label>
                         </div>
 
                        
                         <div class="control" data-reactid=".0.0.4">
-                            <input name="direccion"   type="text" id="iddireccion" placeholder="DIRECCION : " required="" data-reactid=".0.0.4.0" class="active">
-                            <label data-reactid=".0.0.4.1">* Direccion</label>
+                            <input name="direccion"  type="text" id="iddireccion" placeholder="DIRECCION : "  data-reactid=".0.0.4.0" class="active">
+                            <label data-reactid=".0.0.4.1">Direccion</label>
                         </div>
 
                         
-                    
-
                         <input type="submit" value="registrar proveedor" data-reactid=".0.0.5">
 
                     </fieldset>

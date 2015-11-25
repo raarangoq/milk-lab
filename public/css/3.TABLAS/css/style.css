@@ -55,6 +55,7 @@
 .cell {
   padding: 6px 12px;
   display: table-cell;
+  text-align: center;
 }
 
 .cell.red {
@@ -68,4 +69,12 @@
     padding: 2px 12px;
     display: block;
   }
+}
+
+
+.inputRegistrar{
+
+
+
+
 }
