@@ -9,19 +9,19 @@
             <div id="stage" class="stage">
                 <form action="editarProductoDerivado" method="post" data-reactid=".0">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"> 
-                  <input type="hidden" name="nombreAnterior" value={{$productoDerivado->nombre}}>
+             
                     <fieldset data-reactid=".0.0">
                         
                         <legend data-reactid=".0.0.0">EDITAR PRODUCTO DERIVADO</legend>
 
                           <div class="control" data-reactid=".0.0.3.0">
-                            <input name="nombre"  type="text" id="name" value={{$productoDerivado->nombre}} placeholder="nombre" required="" data-reactid=".0.0.3.0" class="active">
+                            <input name="nombre"  type="text" id="name" placeholder="nombre" required="" data-reactid=".0.0.3.0" class="active">
                             <label data-reactid=".0.0.3.1">* Nombre </label>
                         </div> 
                           <div class="control" data-reactid=".0.0.1">
 
                             <select name="tipo" data-reactid=".0.0.1.0" class="active">
-                             <option>{{$productoDerivado->tipo}}</option>  
+                              
                                <option>Bebida</option>
                               <option>Dulce</option>
                               <option>Helado </option>
@@ -31,20 +31,23 @@
                             <label data-reactid=".0.0.1.1">* Tipo </label>
                          </div>
                          <div class="control" data-reactid=".0.0.1">
-                           <textarea  name="descripcion_fisica" rows="10" value={{$productoDerivado->descripcion_fisica}} data-reactid=".0.0.1.0" class="active"></textarea>
+                           <textarea  name="descripcion_fisica" rows="5"  data-reactid=".0.0.1.0" class="active"></textarea>
                             <label data-reactid=".0.0.1.1">Descripcion fisica </label>
                         </div>
+
                          <div class="control" data-reactid=".0.0.3.0">
-                            <input name="tiempo_de_vencimiento"  type="number" id="name" placeholder="Descripcion fisica" value={{$productoDerivado->tiempo_de_vencimiento}} required="" data-reactid=".0.0.3.0" class="active">
-                            <label data-reactid=".0.0.3.1">* Tiempo de vencimiento </label>
+                            <br><input name="tiempo_de_vencimiento"  type="number" id="name" placeholder="Descripcion fisica dias" srequired="" data-reactid=".0.0.3.0" class="active">
+                            <label data-reactid=".0.0.3.1">* Tiempo de vencimiento (dias)</label>
                        </div>
+
                         <div class="control" data-reactid=".0.0.3.0">
-                            <textarea name="instrucciones_de_la_etiqueta" rows="10"  data-reactid=".0.0.3.0" class="active">
+                           <br> <textarea name="instrucciones_de_la_etiqueta" rows="5"  data-reactid=".0.0.3.0" class="active"></textarea>
                             <label data-reactid=".0.0.3.1">Instrucciones de la etiqueta </label>
                         </div>
+
                           <div class="control" data-reactid=".0.0.1">
 
-                            <select name="temperatura_de_almacenamiento" data-reactid=".0.0.1.0" class="active">
+                          <br><select name="temperatura_de_almacenamiento" data-reactid=".0.0.1.0" class="active">
                              
                                <option>Ambiente</option>
                               <option>Refrigeración</option>

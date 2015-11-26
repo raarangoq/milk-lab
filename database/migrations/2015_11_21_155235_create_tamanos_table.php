@@ -23,6 +23,7 @@ class CreateTamanosTable extends Migration
                 ->references('nombre')
                 ->on('productos_derivados')
                 ->onUpdate('cascade'); 
+           $table->timestamps();
 
         });
     }

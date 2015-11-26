@@ -27,4 +27,6 @@ class Tamano extends Model
         'precio',
         'producto_derivado',
     ];
+
+      public $timestamps = false;
 }

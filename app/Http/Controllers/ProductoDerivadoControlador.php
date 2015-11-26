@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ProductoDerivado;
+use App\Models\Tamano;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -55,6 +56,10 @@ class ProductoDerivadoControlador extends Controller {
        
         'temperatura_de_almacenamiento'=>'required',
         'unidad_de_medida'=>'required',
+        //tabla tamanio
+        'cantidad'=>'required',
+        'tipo'=>'required',
+        'precio'=>'required',  
     
           
 			]);
@@ -62,15 +67,23 @@ class ProductoDerivadoControlador extends Controller {
 
                 $productoDerivado->nombre = $request['nombre'];
                 $productoDerivado->tipo = $request['tipo'];
-                $productoDerivado->descripcion_fisica= $request['descripcion_fisica'];       $productoDerivado->tiempo_de_vencimiento = $request['tiempo_de_vencimiento'];
+                $productoDerivado->descripcion_fisica= $request['descripcion_fisica'];                        $productoDerivado->tiempo_de_vencimiento = $request['tiempo_de_vencimiento'];
                 $productoDerivado->instrucciones_de_la_etiqueta = $request['instrucciones_de_la_etiqueta'];
     
      $productoDerivado->temperatura_de_almacenamiento = $request['temperatura_de_almacenamiento']; 
      $productoDerivado->unidad_de_medida = $request['unidad_de_medida']; 
+ 
+                
 
-      // return print_r($productoDerivado);
+                $tamano = new Tamano;
 
-             if($productoDerivado->save()){
+                $tamano->cantidad = $request['cantidad'];
+                $tamano->tipo = $request['tipo'];
+                $tamano->precio = $request['precio'];
+                $tamano->producto_derivado = $request['nombre'];
+
+
+             if($productoDerivado->save() && $tamano->save()){
             
             
            return redirect('registrarProductoDerivado')->with('success','ProductoDerivado registrada correctamente');
@@ -81,10 +94,26 @@ class ProductoDerivadoControlador extends Controller {
 
 	protected function getListarProductoDerivado(){
 
-      $productoDerivado=ProductoDerivado::all();
+    $productoDerivado=ProductoDerivado::all();
+    $usuarioHabilitado = Session::get('usuario.habilitado');
+
+    if($usuarioHabilitado == 1){
+
+        return view('ProductoDerivado/listarProductoDerivado',compact('productoDerivado'));
+      
+         }else{
+              //$message = $this->usuario->name . ' Zona restringida, no tiene los permisos para acceder a esta funcionalidad';
+              $message = $this->usuario->nombre . 'Zona restringida, no tiene los permisos para acceder a esta funcionalidad';
+
+              Session::flash('message', $message) ;
+              return redirect('home');
+                   //return redirect('login')->with('success','Zona restringida, no tiene los permisos para acceder a esta funcionalidad');
+                }
+
+      
               
 
-		return view('ProductoDerivado/listarProductoDerivado',compact('productoDerivado'));
+		
 	}
 
 	protected function getEditarProductoDerivado(){
