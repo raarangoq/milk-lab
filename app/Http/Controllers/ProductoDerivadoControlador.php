@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ProductoDerivado;
+use App\Models\Usuario;
 use App\Models\Tamano;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -73,7 +74,7 @@ class ProductoDerivadoControlador extends Controller {
      $productoDerivado->temperatura_de_almacenamiento = $request['temperatura_de_almacenamiento']; 
      $productoDerivado->unidad_de_medida = $request['unidad_de_medida']; 
  
-                
+               //vector  
 
                 $tamano = new Tamano;
 
@@ -94,12 +95,12 @@ class ProductoDerivadoControlador extends Controller {
 
 	protected function getListarProductoDerivado(){
 
-    $productoDerivado=ProductoDerivado::all();
+    $productos_derivados=ProductoDerivado::all();
     $usuarioHabilitado = Session::get('usuario.habilitado');
 
     if($usuarioHabilitado == 1){
 
-        return view('ProductoDerivado/listarProductoDerivado',compact('productoDerivado'));
+        return view('ProductoDerivado/listarProductoDerivado',compact('productos_derivados'));
       
          }else{
               //$message = $this->usuario->name . ' Zona restringida, no tiene los permisos para acceder a esta funcionalidad';
@@ -108,9 +109,7 @@ class ProductoDerivadoControlador extends Controller {
               Session::flash('message', $message) ;
               return redirect('home');
                    //return redirect('login')->with('success','Zona restringida, no tiene los permisos para acceder a esta funcionalidad');
-                }
-
-      
+                }      
               
 
 		

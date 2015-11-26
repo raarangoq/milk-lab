@@ -142,19 +142,19 @@
       <div class="cell" align="center">
         {{$cava->id}}
       </div>
+
       <div class="cell">
         {{$cava->tipo}}
       </div>
+
       <div class="cell">
         {{$cava->temperatura_minima}}
       </div>
+
       <div class="cell">
         {{$cava->temperatura_maxima}}
 
       </div>
-
-
-
 
 @if ($cava->en_uso === 1)
       <div class="cell" align="center">
@@ -166,17 +166,21 @@
 @endif
  
       </div>
+      
       <div class="cell">
 
-        <input class="inputEditar" type="submit" id={{$cava->id}} value="editar cava" data-reactid=".0.0.7" >
+<input class="inputEditar" type="submit" id={{$cava->id}} value="editar cava" data-reactid=".0.7" >
       </div>
       <div class="cell">
         <input class="inputVer" type="submit" id={{$cava->id}} value="ver" data-reactid=".0.0.7" >
       </div>
+
     </div>
 @endforeach
              </div>
-           <input class="inputRegistrar" type="submit" value="registrar cava" data-reactid=".0.0.5">
+
+
+        <input class="inputRegistrar" type="submit" value="registrar cava" data-reactid=".0.0.5">
 
              </div>
 

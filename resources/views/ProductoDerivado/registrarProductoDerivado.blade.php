@@ -13,6 +13,10 @@
                         
                         <legend data-reactid=".0.0.0">REGISTRAR PRODUCTO DERIVADO</legend>
 
+                           <a href="listarProductoDerivado">
+                             <img src="css/iconos/atras.png">
+                           </a>
+
                           <div class="control" data-reactid=".0.0.3.0">
                             <input name="nombre"  type="text"  placeholder="nombre" required="" data-reactid=".0.0.3.0" class="active">
                             <label data-reactid=".0.0.3.1">* Nombre </label>

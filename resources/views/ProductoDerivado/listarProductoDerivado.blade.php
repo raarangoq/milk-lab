@@ -109,9 +109,13 @@
 
  </div>
 
-             <div class="wrapper">
-  
-             <div class="table">
+
+
+             
+
+<div class="wrapper">
+
+  <div class="table">
 
 
              <div class="row header blue">
@@ -140,21 +144,97 @@
       <div class="cell">
         Unidad de medida 
       </div>
+
     </div>
 
-   
+
+@foreach($productos_derivados as $producto_derivado)
+
+
+
+  <div class="row">
+
+      <div class="cell" align="center">
+        {{$producto_derivado->nombre}}
+      </div>
+
+     <div class="cell" >
+        {{$producto_derivado->tipo}}
+      </div>
+
+      <div class="cell" align="center">
+        {{$producto_derivado->descripcion_fisica}}
+      </div>
+
+       <div class="cell" align="center">
+        {{$producto_derivado->tiempo_de_vencimiento}}
+      </div>
+
+      <div class="cell" align="center" >
+        {{$producto_derivado->instrucciones_de_la_etiqueta}}
+      </div>
+      <div class="cell" align="center">
+        {{$producto_derivado->temperatura_de_almacenamiento}}
+      </div>
+
+       <div class="cell"align="center" >
+        {{$producto_derivado->unidad_de_medida}}
+      </div>
+
+
+  </div>
+
+
+<div class="table">
+         <div class="row header blue">
+
+      <div class="cell">
+        Tipo
+      </div>
+      <div class="cell">
+        cantidad
+      </div>
+      <div class="cell">
+       precio
+      </div>
+    
+
+    </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+@endforeach
+
 
 <br>
-<input class="inputEditar" type="submit" value="editar " data-reactid=".0.0.5">
+    <div>
+ <input class="inputEditar" type="submit" value="editar " data-reactid=".0.0.5">
+  </div> 
 <br>
-     <input class="inputRegistrar" type="submit" value="registrar producto derivado " data-reactid=".0.0.5">
-     <br>
-     <input class="inputRegistrarLote" type="submit" value="registrar lote producto derivado " data-reactid=".0.0.5">
+ <div>
+  <input class="inputRegistrarLote" type="submit" value="registrar lote producto derivado " data-reactid=".0.0.5"> 
+ </div>
+ <br>
+<div>
+  <input class="inputRegistrar" type="submit" value="registrar producto derivado " data-reactid=".0.0.5">
+</div>       
+    
 
 
              </div>
 
+
              </div>
+     
+
 
 
 <!-- FIN Contenido -->
@@ -186,6 +266,13 @@ document.location.href = "registrarProductoDerivado?id=" + id;
 
 });
 
+$(".inputRegistrarLote").click(function(e){
+ var id = e.target.id;
+//alert(id);
+
+document.location.href = "registrarLoteProductoDerivado?id=" + id;
+
+});
 
 
 });
