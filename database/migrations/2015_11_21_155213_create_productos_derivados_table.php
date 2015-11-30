@@ -22,6 +22,8 @@ class CreateProductosDerivadosTable extends Migration
             $table->enum('unidad_de_medida', ['Litro', 'Kilo']);
 
             $table->primary('nombre');
+            
+            $table->timestamps();
         });
     }
 

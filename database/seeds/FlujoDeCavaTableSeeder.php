@@ -22,7 +22,7 @@ class FlujoDeCavaTableSeeder extends Seeder
             'observaciones' => 'Llegó un poco mas espesa de lo normal, pero nada de qué procuparse',
             'producto_derivado' => 'Leche condensada',
             'tamano' => 1,
-            'programa' => null,
+            'programa' => 0486713,
             'usuario_responsable' => 'omar@unal.edu.co',
             'cava' => 2,
         ]);
