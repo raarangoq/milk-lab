@@ -7,104 +7,90 @@
 
 <div class="wrapper">
   
-    <div class="table">
+        <div class="table">
 
-      <div class="row header blue">
-        <div class="cell">
-          
-          FILTRAR PRODUCTO DERIVADO
-        </div>
+              <div class="row header blue">
+                <div class="cell">                  
+                  FILTRAR PRODUCTO DERIVADO
+                </div>
+              </div>
 
-      </div>
+              <div class="row">
 
-      <div class="row">
+                  <div class="cell">
+                    Nombre
+                  </div>
+                <div class="cell">
+                 <input placeholder="filtrar nombre" class="active" type="text" name="id">
+                </div>
 
-        <div class="cell">
-       Nombre
-        </div>
-      <div class="cell">
+                <div class="cell">
+                 Temperatura de almacenamiento 
+                  </div>
+                <div class="cell">
+                 <select name="tipo" data-reactid=".0.0.´6.0" class="active">
+                     <option>--seleccionar tipo--</option>
+                     <option>Ambiente</option>
+                     <option>Refrigeración</option>
+                     <option>Congelación</option>                   
+                </select>
+                </div>
 
-       <input placeholder="filtrar nombre" class="active" type="text" name="id">
-      </div>
+              </div>
 
-      <div class="cell">
-       Temperatura de almacenamiento 
-        </div>
-      <div class="cell">
-       <select name="tipo" data-reactid=".0.0.´6.0" class="active">
-                              <option>--seleccionar tipo--</option>
-                              <option>Ambiente</option>
-                              <option>Refrigeración</option>
-                              <option>Congelación</option>
-      </select>
-      </div>
+              <div class="row">
 
-      </div>
+                  <div class="cell">
+                    Tipo :
+                  </div>
+                  <div class="cell">
+                   <select id="" name="tipo" data-reactid=".0.0.7.0" class="active"> 
+                                           
+                      <option>-seleccionar tipo-</option>
+                      <option>Bebida</option>
+                      <option>Dulce</option>
+                      <option>Helado</option>
+                      <option>Queso</option>  
+                    </select>
+                  </div>                    
+                  <div class="cell">
+                     Unidad de medida :
+                  </div>
+                  <div class="cell">
+                     <select id="" name="unidad_de_medida" data-reactid=".0.0.7.0" class="active">                                              
+                        <option>-seleccionar unidad-</option>
+                        <option>Litro</option>
+                        <option>Kilo</option> 
+                      </select>
+                  </div>     
+              </div>
 
+              <div class="row">
+                  <div class="cell">
+                   Tipo de tamaño :
+                  </div>
+                  <div class="cell">
+                   <select id="" name="tipo_de_tamano" data-reactid=".0.0.7.0" class="active">                                            
+                      <option>-seleccionar tipo-</option>
+                      <option>Bolsa</option>
+                      <option>Pote</option>
+                      <option>Vaso</option>
+                      <option>Cuarto</option> 
+                      <option>Caja</option>
+                      <option>Bloque</option>
+                    </select>
+                  </div>
+                  <div class="cell">
+                   <input value="filtrar busqueda" class="active" type="submit">
+                  </div>
+                  <div class="cell">
+                   
+                  </div>
+              </div>
 
-      <div class="row">
-
-          <div class="cell">
-       Tipo :
-        </div>
-      <div class="cell">
-       <select id="" name="tipo" data-reactid=".0.0.7.0" class="active"> 
-                               
-          <option>-seleccionar tipo-</option>
-          <option>Bebida</option>
-          <option>Dulce</option>
-          <option>Helado</option>
-          <option>Queso</option>  
-        </select>
-      </div>
-        
-          <div class="cell">
-       Unidad de medida :
-        </div>
-      <div class="cell">
-       <select id="" name="unidad_de_medida" data-reactid=".0.0.7.0" class="active"> 
-                               
-          <option>-seleccionar unidad-</option>
-          <option>Litro</option>
-          <option>Kilo</option> 
-        </select>
-      </div>
-
-    
-
-      </div>
-
-      <div class="row">
-          <div class="cell">
-       Tipo de tamaño :
-        </div>
-      <div class="cell">
-       <select id="" name="tipo_de_tamano" data-reactid=".0.0.7.0" class="active"> 
-                               
-          <option>-seleccionar tipo-</option>
-          <option>Bolsa</option>
-          <option>Pote</option>
-          <option>Vaso</option>
-          <option>Cuarto</option> 
-          <option>Caja</option>
-          <option>Bloque</option>
-        </select>
-      </div>
-
-      <div class="cell">
-
-       <input value="filtrar busqueda" class="active" type="submit">
-      </div>
-      <div class="cell">
-       
-      </div>
 
 
       </div>
-
-
-
-  </div>
 
 
  </div>
@@ -151,7 +137,6 @@
 @foreach($productos_derivados as $producto_derivado)
 
 
-
   <div class="row">
 
       <div class="cell" align="center">
@@ -183,10 +168,12 @@
 
 
   </div>
+<br>
+<!-- TABLA DE TAMANIO-->
+<div class="wrapper">
 
-
-<div class="table">
-         <div class="row header blue">
+  <div class="table">
+    <div class="row header blue">
 
       <div class="cell">
         Tipo
@@ -196,25 +183,29 @@
       </div>
       <div class="cell">
        precio
-      </div>
-    
+      </div>   
 
     </div>
 
+  @foreach($tamanos as $tamano)
 
-
-
-
-</div>
-
-
-
-
-
+    <div class="row">
+       
+       <div class="cell"align="center" >
+         {{$tamano->tipo}}
+       </div>
+       <div class="cell"align="center" >
+         {{$tamano->cantidad}}
+       </div>
+       <div class="cell"align="center" >
+         {{$tamano->precio}}
+       </div>
+    
+    </div>
+  
 @endforeach
-
-
-<br>
+</div>
+ 
     <div>
  <input class="inputEditar" type="submit" value="editar " data-reactid=".0.0.5">
   </div> 
@@ -223,6 +214,14 @@
   <input class="inputRegistrarLote" type="submit" value="registrar lote producto derivado " data-reactid=".0.0.5"> 
  </div>
  <br>
+
+</div>
+<!--TERMINA TABLA TAMANIO -->
+
+@endforeach
+
+
+
 <div>
   <input class="inputRegistrar" type="submit" value="registrar producto derivado " data-reactid=".0.0.5">
 </div>       

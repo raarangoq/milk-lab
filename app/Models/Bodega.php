@@ -26,4 +26,16 @@ class Bodega extends Model
     	'en_uso', 
     	'usuario_registrador'
     ];
+
+    /*public function scopeType($query, $type){
+
+        $types= config('opciones.filtroTipo');
+
+
+        if($type != "" && isset($types[$type])){
+
+            $query->where('type',$type);
+
+        }
+    }*/
 }

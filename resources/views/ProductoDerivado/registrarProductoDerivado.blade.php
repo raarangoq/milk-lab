@@ -7,15 +7,22 @@
     <article>
         <section>
             <div id="stage" class="stage">
+               <a href="listarProductoDerivado">
+                             <img src="css/iconos/atras.png">
+                           </a>
+
                 <form action="registrarProductoDerivado" method="post" data-reactid=".0">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"> 
+                   
+                           
+
+
                     <fieldset data-reactid=".0.0">
+
+                      
                         
                         <legend data-reactid=".0.0.0">REGISTRAR PRODUCTO DERIVADO</legend>
 
-                           <a href="listarProductoDerivado">
-                             <img src="css/iconos/atras.png">
-                           </a>
 
                           <div class="control" data-reactid=".0.0.3.0">
                             <input name="nombre"  type="text"  placeholder="nombre" required="" data-reactid=".0.0.3.0" class="active">

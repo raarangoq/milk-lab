@@ -96,21 +96,25 @@ class ProductoDerivadoControlador extends Controller {
 	protected function getListarProductoDerivado(){
 
     $productos_derivados=ProductoDerivado::all();
+    $tamanos = Tamano::all();
+
     $usuarioHabilitado = Session::get('usuario.habilitado');
 
-    if($usuarioHabilitado == 1){
+    if($usuarioHabilitado === 1){
 
-        return view('ProductoDerivado/listarProductoDerivado',compact('productos_derivados'));
+return view('ProductoDerivado/listarProductoDerivado',compact('productos_derivados','tamanos'));
       
          }else{
               //$message = $this->usuario->name . ' Zona restringida, no tiene los permisos para acceder a esta funcionalidad';
-              $message = $this->usuario->nombre . 'Zona restringida, no tiene los permisos para acceder a esta funcionalidad';
+             // $message = $this->usuario->nombre . 'Zona restringida, no tiene los permisos para acceder a esta funcionalidad';
 
-              Session::flash('message', $message) ;
-              return redirect('home');
+              //Session::flash('message', $message) ;
+             return "Zona restringida, no tiene los permisos para acceder a esta funcionalidad";
                    //return redirect('login')->with('success','Zona restringida, no tiene los permisos para acceder a esta funcionalidad');
                 }      
-              
+             
+
+
 
 		
 	}

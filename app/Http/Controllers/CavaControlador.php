@@ -16,6 +16,7 @@ use Input;
 
 class CavaControlador extends Controller {
 
+
     protected function getRegistrarCava() {
 
         return view("Cava/registrarCava");
@@ -198,7 +199,33 @@ return redirect($paginaAnterior)->with('success','Control de cava borrado correc
    return view('Cava/listarControlCava', compact('controlDeCavaSeleccionado','id_cava'));
 
     }
+  protected function getRegistrarFlujoCava(){
 
+    $producto_derivado = ProductoDerivado::all();
+
+    return view('Cava/getRegistrarFlujoCava',compact('producto_derivado'));
+  }  
+ /*protected function postRegistrarFlujoCava(Request $request)
+ {
+     $this->validate([$request,s
+
+        'fecha'=>'required',
+        'entra'=>'required',
+        'sale'=>'required',
+        'total'=>'required',
+        'existencia'=>'required',
+        'motivo_de_salida'=>'required',
+        
+        'producto_derivado'=>'required',
+        'tamano'=>'required'=>'required',
+        
+        'usuario_responsable'=>'required',
+        ]
+      );
+
+
+
+ } */
 
    
 

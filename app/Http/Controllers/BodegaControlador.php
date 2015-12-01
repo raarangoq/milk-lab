@@ -124,6 +124,7 @@ return redirect('listarBodega')->with('error','bodega NO editada correctamente')
     protected function getListarBodega() {
 
     $bodegas=Bodega::all();
+    //$bodegas=Bodega::type($request->get('type'));
       
      return view('Bodega/listarBodega', compact('bodegas'));
     }
@@ -152,6 +153,12 @@ return redirect('listarBodega')->with('error','bodega NO editada correctamente')
             
              ]);
 
+
+
+
+    }
+
+    protected function postFiltrarBusqueda(Request $request){
 
 
 
