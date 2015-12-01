@@ -46,6 +46,6 @@ class CreateLotesDeMateriaPrimaTable extends Migration
      */
     public function down()
     {
-         Schema::drop('lotes_de_materia_prima');
+        Schema::drop('lotes_de_materia_prima');
     }
 }
