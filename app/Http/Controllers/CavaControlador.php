@@ -55,8 +55,10 @@ class CavaControlador extends Controller {
     protected function getListarCava(Request $request) {
 
       $cavas=Cava::all();
-     $cavas=Cava::filterAndPaginate($request->get('id'),$request->get('id'));
-      //print_r($cavas);
+
+      $cavas=Cava::paginate(10);
+      $cavas->setPath('listarCava');
+    
      return view('Cava/listarCava', compact('cavas'));
     }
 
@@ -90,13 +92,11 @@ class CavaControlador extends Controller {
 
         //$usuarioEditor = Session::get('usuario.correo');
         
-
         if($cavaActualizada=Cava::where('id',$id)
                         ->update(['tipo'=>  $nuevoTipo,
                                   'temperatura_minima'=>  $nuevaTemperatura_minima,
                                   'temperatura_maxima'=>  $nuevaTemperatura_maxima,
-                                  'en_uso'=>  $nuevoUso,
-                                 
+                                  'en_uso'=>  $nuevoUso,                                 
                           ])){
 
  return redirect('listarCava')->with('success','cava editada correctamente');
@@ -177,9 +177,12 @@ return redirect($paginaAnterior)->with('success','Control de cava borrado correc
 
     $id_cava= $request['id'];
 
-     // $controlDeCavas=ControlDeCava::all();
+      $controlDeCavas=ControlDeCava::all();
 
    $controlDeCavaSeleccionado=ControlDeCava::where('cava',$id_cava)->get();
+
+   //PAGINACION
+   
 
    return view('Cava/listarControlCava', compact('controlDeCavaSeleccionado','id_cava'));
 

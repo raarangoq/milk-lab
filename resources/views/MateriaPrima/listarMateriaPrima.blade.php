@@ -7,12 +7,8 @@
 <style>
     @import url(css/3.TABLAS/css/style.css);
     @import url(css/4.MENSAJES/style.css);
-</style>
-           
-
-             
-
-
+</style>   
+         
 
              <div class="wrapper">
   
@@ -65,8 +61,10 @@
 
 
 @endforeach
-
-
+<br>
+ <nav>
+ {!!$materiasPrimas->render()!!}
+</nav>
 
              </div>
            <input class="inputRegistrar" type="submit" value="registrar materia prima" data-reactid=".0.0.5">

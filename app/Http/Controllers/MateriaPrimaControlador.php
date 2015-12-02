@@ -41,11 +41,12 @@ class MateriaPrimaControlador extends Controller {
 
   }
 
-
-
     protected function getListarMateriaPrima() {
 
       $materiasPrimas=MateriaPrima::all();
+     $materiasPrimas= MateriaPrima::paginate(10);
+     $materiasPrimas->setPath('listarMateriaPrima');
+
       return view('MateriaPrima/listarMateriaPrima', compact('materiasPrimas'));
     }
 

@@ -161,18 +161,13 @@ class UsuarioControlador extends Controller {
 protected function postEditarPerfil(Request $request) {     
         
 if($request['passwordAnterior']==="") {
-//NO CAMBIAR PASSWORD
- 
+//NO CAMBIAR PASSWORD 
       $this->validate($request, [
 
             'nombre' => 'required',
             'cedula' => 'required',
             'correo' => 'required',
         ]);
-
-    $CorreoSession = Session::get('usuario.correo');
-
-      if($CorreoSession === ""){
 
         $nombreNuevo = $request['nombre'];
         $cedulaNuevo = $request['cedula'];
@@ -184,23 +179,19 @@ if($request['passwordAnterior']==="") {
                         ->update(['nombre'=>  $nombreNuevo,
                                   'cedula'=>  $cedulaNuevo,
                                   'correo'=>  $correoNuevo,
-                          ])){                    
+                          ]))
+        {                    
 
         Session::put('usuario.correo',$correoNuevo);
         Session::put('usuario.cedula',$cedulaNuevo);
-
-
         Session::put('usuario.nombre',$nombreNuevo);       
        
         return redirect('editarPerfil')->with('success','usuario editado correctamente');
      
        }
 
-
 }else{
 //CAMBIAR PASSWORD
-
-
       $this->validate($request, [
             'nombre' => 'required',
             'cedula' => 'required',
@@ -209,9 +200,6 @@ if($request['passwordAnterior']==="") {
             'password' => 'required',
             'password2' => 'required',
         ]);
-
-
-
 //1-VERIFICAR SI PASSWORD = PASSWORD2
 //2-VERIFICAR PASSWORD ANTERIOR
 //3-ACTUALIZAR USUARIO
@@ -219,13 +207,9 @@ if($request['passwordAnterior']==="") {
 
       if($request['password']==$request['password2']){
 
-        $correoAnterior= Session::get('usuario.correo');
-
-        
+        $correoAnterior= Session::get('usuario.correo');        
      // $password = Hash::make($request['passwordAnterior']);
-
       if ($password == Auth::usuarios()->password){
-
         
 //Hash::check($value, Auth::user()->clave);
           return "password anterior igual";
@@ -242,6 +226,7 @@ if($request['passwordAnterior']==="") {
       }//ELSE ERROR CAMPOS INCOMPLETOS
           
     }
+  
 
      //FUNCION DE AJAX PARA EDITAR USUARIO
      protected function getAjax() {
@@ -250,12 +235,15 @@ if($request['passwordAnterior']==="") {
        $usuarioSeleccionado=Usuario::where('correo',$correo)->get();//BUSCAR TODOS LOS ATRIBUTOS DE USUARIO CON CORREO
 
        return $usuarioSeleccionado;//ENVIAR TODOS LOS DATOS DE USUARIO
-      }
+      } 
 
     protected function getListarUsuario() {
 
       $usuarioSession = Session::get('usuario.correo');
       $usuarios=Usuario::where('correo','!=',$usuarioSession)->get();
+
+    /*  $usuarios = Usuario::paginate(2);
+      $usuarios->setPath('listarUsuario');*/
      
          return view('Usuario/listarUsuario', compact('usuarios'));
     }

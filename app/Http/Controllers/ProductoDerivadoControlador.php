@@ -98,7 +98,8 @@ class ProductoDerivadoControlador extends Controller {
     $productos_derivados=ProductoDerivado::all();
     $tamanos = Tamano::all();
     
-    $productos_derivados = ProductoDerivado::paginate(2);
+  $productos_derivados = ProductoDerivado::paginate(2);
+   $productos_derivados->setPath('listarProductoDerivado');
 
     $usuarioHabilitado = Session::get('usuario.habilitado');
 
