@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cava;
 use App\Models\ControlDeCava;
+use App\Models\Usuario;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -115,8 +116,9 @@ return redirect('listarUsuario')->with('error','cava NO editada correctamente');
     protected function getRegistrarControlCava(Request $request) {
 
      $id_cava= $request['id'];
-      //return $id_cava;
-      return view('Cava/registrarControlCava',compact('id_cava'));
+     $usuarios=Usuario::all();
+      
+      return view('Cava/registrarControlCava', compact('id_cava','usuarios'));
     }
     
 
