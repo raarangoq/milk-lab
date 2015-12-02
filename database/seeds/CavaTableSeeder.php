@@ -12,18 +12,25 @@ class CavaTableSeeder extends Seeder
     public function run()
     {
         DB::table('cavas')->insert([
-            //'id' => 'Maduración 1',
+            'id' => 1,
             'tipo' => 'Maduración',
             'temperatura_minima' => -1.75,
         	'temperatura_maxima' => 12.00,
             'usuario_registrador' => 'raarangoq@unal.edu.co',
         ]);
         DB::table('cavas')->insert([
-            //'id' => 'Maduración 1',
+            'id' => 2,
             'tipo' => 'Congelamiento',
             'temperatura_minima' => -22.75,
             'temperatura_maxima' => -3.00,
             'usuario_registrador' => 'raarangoq@unal.edu.co',
         ]);
+        DB::table('cavas')->insert([
+            'id' => 3,
+            'tipo' => 'Producto terminado',
+            'temperatura_minima' => 15.8,
+            'temperatura_maxima' => 37.6,
+            'usuario_registrador' => 'raarangoq@unal.edu.co',
+        ]); 
     }
 }

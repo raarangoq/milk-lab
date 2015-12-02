@@ -67,7 +67,7 @@
 
 
 
-                        <input type="submit" value="registrar programa" data-reactid=".0.0.6.2">
+                   <input type="submit" value="registrar programa" data-reactid=".0.0.6.2">
 
 
                     </fieldset>

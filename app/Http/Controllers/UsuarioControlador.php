@@ -75,7 +75,7 @@ class UsuarioControlador extends Controller {
 
                 if ($user->save())
                  
-                  return redirect('registrarUsuario')->with('success','usuario registrado correctamente');
+      return redirect('registrarUsuario')->with('success','usuario registrado correctamente');
 
         }
       }
@@ -141,9 +141,19 @@ class UsuarioControlador extends Controller {
     //MOSTRAR VISTA DE EDITAR PERFIL
     protected function getEditarPerfil() {
 
-      $usuario = Session::get('usuario');
+ $usuarioHabilitado = Session::get('usuario.habilitado');
+
+
+           if($usuarioHabilitado == 1){
+
+                $usuario = Session::get('usuario');
      
-         return view('Usuario/editarPerfil', compact('usuario'));
+                 return view('Usuario/editarPerfil', compact('usuario'));
+             }else{
+                 return "Zona restringida, no tiene los permisos para acceder a esta funcionalidad";
+                   //return redirect('login')->with('success','Zona restringida, no tiene los permisos para acceder a esta funcionalidad');
+                }
+     
     }
 
 
@@ -155,11 +165,14 @@ if($request['passwordAnterior']==="") {
  
       $this->validate($request, [
 
-
             'nombre' => 'required',
-            'cedula' => 'required|unique:usuarios',
-            'correo' => 'required|unique:usuarios',
+            'cedula' => 'required',
+            'correo' => 'required',
         ]);
+
+    $CorreoSession = Session::get('usuario.correo');
+
+      if($CorreoSession === ""){
 
         $nombreNuevo = $request['nombre'];
         $cedulaNuevo = $request['cedula'];
@@ -171,9 +184,7 @@ if($request['passwordAnterior']==="") {
                         ->update(['nombre'=>  $nombreNuevo,
                                   'cedula'=>  $cedulaNuevo,
                                   'correo'=>  $correoNuevo,
-                          ])){
-
-                    
+                          ])){                    
 
         Session::put('usuario.correo',$correoNuevo);
         Session::put('usuario.cedula',$cedulaNuevo);
@@ -213,8 +224,6 @@ if($request['passwordAnterior']==="") {
         
      // $password = Hash::make($request['passwordAnterior']);
 
-
-
       if ($password == Auth::usuarios()->password){
 
         
@@ -223,7 +232,6 @@ if($request['passwordAnterior']==="") {
 
           //3-ACTUALIZAR USUARIO
           //4-ACTUALIZAR VARIABLE DE SESSION 
-
 
         }else{
 

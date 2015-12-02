@@ -4,16 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tamano extends Model
+class LoteDeProductoDerivado extends Model
 {
-     /**
+    /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'tamanos';
+    protected $table = 'lotes_de_productos_derivados';
 
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'numero_de_lote';
 
     /**
      * The attributes that are mass assignable.
@@ -21,12 +21,7 @@ class Tamano extends Model
      * @var array
      */
     protected $fillable = [
-    	'id',
-        'cantidad',
-        'tipo',
-        'precio',
-        'producto_derivado',
+    	'numero_de_lote',
+        'flujo_de_cava',
     ];
-
-      public $timestamps = false;
 }

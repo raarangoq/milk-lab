@@ -17,6 +17,7 @@ use Input;
 
 class CavaControlador extends Controller {
 
+
     protected function getRegistrarCava() {
 
         return view("Cava/registrarCava");
@@ -52,11 +53,10 @@ class CavaControlador extends Controller {
       }
   }
 
-
-
-    protected function getListarCava() {
+    protected function getListarCava(Request $request) {
 
       $cavas=Cava::all();
+     $cavas=Cava::filterAndPaginate($request->get('id'),$request->get('id'));
       //print_r($cavas);
      return view('Cava/listarCava', compact('cavas'));
     }
@@ -121,8 +121,6 @@ return redirect('listarUsuario')->with('error','cava NO editada correctamente');
       return view('Cava/registrarControlCava', compact('id_cava','usuarios'));
     }
     
-
-
 protected function postRegistrarControlCava(Request $request) {
         $this->validate($request, [
             'cava' => 'required',
@@ -130,9 +128,7 @@ protected function postRegistrarControlCava(Request $request) {
             'humedad' => 'required',
             'temperatura' => 'required',
             'usuario_realizador' => 'required',
-        ]);
-
-        
+        ]);        
 
         $controlDeCava = new ControlDeCava;
         $controlDeCava->cava = $request['cava'];
@@ -140,11 +136,9 @@ protected function postRegistrarControlCava(Request $request) {
         $controlDeCava->humedad = $request['humedad'];
         $controlDeCava->temperatura = $request['temperatura'];
         $controlDeCava->usuario_realizador = 'avillav@unal.edu.co';
-        
-
+     
        // $usuarioCreador=Session::get('usuario.correo');
        // $cava->usuario_registrador = $usuarioCreador;
-
 
 try {
 
@@ -155,14 +149,9 @@ try {
   
 } catch (Exception $e) {
   return "FALLO";
-}
+}   
           
-        
-
-      
   }
-
-
 
  protected function getBorrarControlCava(Request $request) {
 
@@ -186,9 +175,6 @@ return redirect($paginaAnterior)->with('success','Control de cava borrado correc
 
     }
 
-
-
-
  protected function getListarControlCava(Request $request) {
 
     $id_cava= $request['id'];
@@ -200,7 +186,33 @@ return redirect($paginaAnterior)->with('success','Control de cava borrado correc
    return view('Cava/listarControlCava', compact('controlDeCavaSeleccionado','id_cava'));
 
     }
+  protected function getRegistrarFlujoCava(){
 
+    $producto_derivado = ProductoDerivado::all();
+
+    return view('Cava/getRegistrarFlujoCava',compact('producto_derivado'));
+  }  
+ /*protected function postRegistrarFlujoCava(Request $request)
+ {
+     $this->validate([$request,s
+
+        'fecha'=>'required',
+        'entra'=>'required',
+        'sale'=>'required',
+        'total'=>'required',
+        'existencia'=>'required',
+        'motivo_de_salida'=>'required',
+        
+        'producto_derivado'=>'required',
+        'tamano'=>'required'=>'required',
+        
+        'usuario_responsable'=>'required',
+        ]
+      );
+
+
+
+ } */
 
    
 

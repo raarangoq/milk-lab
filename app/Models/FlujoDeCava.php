@@ -4,14 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tamano extends Model
+class FlujoDeCava extends Model
 {
-     /**
+    /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'tamanos';
+    protected $table = 'flujos_de_cavas';
 
     protected $primaryKey = 'id';
 
@@ -22,11 +22,17 @@ class Tamano extends Model
      */
     protected $fillable = [
     	'id',
-        'cantidad',
-        'tipo',
-        'precio',
+        'fecha',
+        'entra',
+        'sale',
+        'total',
+        'existencia',
+        'motivo_de_salida',
+        'observaciones',
         'producto_derivado',
+        'tamano',
+        'programa',
+        'usuario_responsable',
+        'cava,
     ];
-
-      public $timestamps = false;
 }

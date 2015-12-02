@@ -135,3 +135,14 @@ Route::post('editarProveedor', ['as' => 'editarProveedor', 'uses' => 'ProveedorC
 //------> FICHA REACTIVO (rutas) <----------------------------
 Route::get('registrarReactivo', 'ReactivoControlador@getRegistrarReactivo');
 Route::post('registrarReactivo', ['as' => 'registrarReactivo', 'uses' => 'ReactivoControlador@postRegistrarReactivo']);
+
+
+//----->PRODUCTO DERIVADO (rutas) <---------------------------
+//REGISTRAR PRODUCTO DERIVADO
+Route::get('registrarProductoDerivado','ProductoDerivadoControlador@getRegistrarProductoDerivado');
+Route::post('registrarProductoDerivado',['as' => 'registrarProductoDerivado','uses'=>'ProductoDerivadoControlador@postRegistrarProductoDerivado']);
+//EDITAR PRODUCTO DERIVADO
+Route::get('editarProductoDerivado', 'ProductoDerivadoControlador@getEditarProductoDerivado');
+Route::post('editarProductoDerivado', ['as' => 'editarProductoDerivado', 'uses' => 'ProductoDerivadoControlador@postEditarProductoDerivado']); 
+//LISTAR PRODUCTO DERIVADO
+Route::get('listarProductoDerivado', 'ProductoDerivadoControlador@getListarProductoDerivado');

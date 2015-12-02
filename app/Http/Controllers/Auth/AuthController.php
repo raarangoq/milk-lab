@@ -46,7 +46,11 @@ use AuthenticatesAndRegistersUsers,
 
 
     public function getLogin() {
-        return view("login");
+
+         return view("login");
+
+     
+        
     }
 
     public function postLogin(Request $request) {

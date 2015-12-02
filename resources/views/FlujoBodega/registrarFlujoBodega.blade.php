@@ -55,20 +55,24 @@
 <div class="row">
 
       <div class="cell" align="center">
-        <select id="idmateria_prima" name="materia_prima0" data-reactid=".0.0.6.0" class="active" > 
-                   <option></option>            
+     <select id="idmateria_prima" name="materia_prima0" data-reactid=".0.0.6.0" class="active" > 
+       <option></option>            
  @foreach($materiasPrimas as $materiasPrima)
-<option value={{$materiasPrima->nombre}}>{{$materiasPrima->nombre}} -- {{$materiasPrima->unidad_de_medida}}</option>
+<option value={{$materiasPrima->nombre}}>{{$materiasPrima->nombre}} -- {{$materiasPrima->unidad_de_medida}}
+</option>
 @endforeach   
 
         </select>
       </div>
+
       <div class="cell">
         <input type="date" name="fecha0">
       </div>
+
       <div class="cell">
         <input type="number" name="entra0">
       </div>
+      
       <div class="cell">
         <input type="number" name="sale0">
       </div>
@@ -97,6 +101,7 @@
 
         </select>
       </div>
+
       <div class="cell" align="center">
         <select id="idusuario_responsable" name="usuario_responsable0" data-reactid=".0.0.6.0" class="active" > 
                        <option></option>        
@@ -253,10 +258,6 @@
 
 @endsection
 
-
-
-
-
 @section('ajaxEditar')
 
 
@@ -328,6 +329,8 @@ nuevaFila+="@endforeach";
 nuevaFila+="</select>";
 nuevaFila+="</div>";
 
+
+
 nuevaFila+="</div>";
 
 
@@ -361,6 +364,8 @@ var observaciones=($("input[name=observaciones"+i+"]").val());
 var programa=($("select[name=programa"+i+"]").val());
 var responsable=($("select[name=usuario_responsable"+i+"]").val());
 
+
+alert(motivo_de_salida);
 item = {};
 
 if(materia !==''
@@ -383,7 +388,6 @@ if(materia !==''
           item["observaciones"] = observaciones;
           item["programa"] = programa; 
           item["responsable"] = responsable;
-          item["bodega"] = {{$codigo_bodega}};
           vectorDeFlujo.push(item);
 
          // vectorDeFlujo.push($("select[name=materia_prima"+i+"]").val());
@@ -395,7 +399,7 @@ console.log(vectorDeFlujo);
 
 
 aInfo   = JSON.stringify(vectorDeFlujo); 
-
+alert(aInfo);
 var identificacion = aInfo ;
 var cadenaFormulario = "&data=" + identificacion;
  
@@ -403,14 +407,18 @@ $.ajax({
     data: cadenaFormulario,
     dataType: "html",
     type: 'GET',
-    url : 'registrarFlujoBodegaAJAX',
+    url : 'registrarFlujoBodega2',
     processData: false, 
     contentType: false,
     success: function(r){
 
-              alert("Se Registraron los flujos exitosamente");
-              document.location.href = "listarBodega";
-              
+ 
+//return r;
+
+      //Una vez que se haya ejecutado de forma exitosa hacer el código para que muestre esto mismo.
+
+      //     alert(r);
+
 
     }
   });

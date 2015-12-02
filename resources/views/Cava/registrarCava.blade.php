@@ -6,7 +6,6 @@
 </style>
 
 
-
 @section('contenido')
 @include('alerts.request')
 
