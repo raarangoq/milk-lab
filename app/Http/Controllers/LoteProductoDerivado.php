@@ -25,16 +25,38 @@ use Illuminate\Database\Eloquent\Builder;
 
 class FlujoProductoDerivadoControlador extends Controller {
 
-protected function getRegistrarFlujoProductoDerivado(Request $request) {
+protected function getRegistrarLoteProductoDerivado(Request $request) {
+
+return view("");
+}
+protected function postRegistrarLoteProductoDerivado(Resquest $request){
 
 
 }
-protected function postRegistrarFlujoProductoDerivado(Resquest $request){
+protected function getEditarLoteProductoDerivado(Request $request) {
 
 
 }
+protected function postEditarLoteProductoDerivado(Resquest $request){
 
 
+}
+protected function getListarLoteProductoDerivado(Request $request) {
+
+
+}
+protected function postListarLoteProductoDerivado(Resquest $request){
+
+
+}
+protected function getEliminarLoteProductoDerivado(Request $request) {
+
+
+}
+protected function postEliminarLoteProductoDerivado(Resquest $request){
+
+
+}
 
 
 }
