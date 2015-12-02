@@ -11,84 +11,86 @@
 
               <div class="row header blue">
                 <div class="cell">                  
-                  FILTRAR PRODUCTO DERIVADO
+                  FILTRAR LOTE DE PRODUCTO DERIVADO
                 </div>
               </div>
 
               <div class="row">
 
                   <div class="cell">
-                    Nombre
+                    Nombre de lote
                   </div>
                 <div class="cell">
                  <input placeholder="filtrar nombre" class="active" type="text" name="id">
                 </div>
 
-                <div class="cell">
-                 Temperatura de almacenamiento 
+                   <div class="cell">
+                    Fecha
                   </div>
                 <div class="cell">
-                 <select name="tipo" data-reactid=".0.0.´6.0" class="active">
-                     <option>--seleccionar tipo--</option>
-                     <option>Ambiente</option>
-                     <option>Refrigeración</option>
-                     <option>Congelación</option>                   
-                </select>
+                 <input placeholder="filtrar nombre" class="active" type="date" name="id">
                 </div>
+
+             
 
               </div>
 
               <div class="row">
 
+                <div class="cell">
+                 Producto derivado
+                </div>
+                <div class="cell">
+                 <select name="tipo" data-reactid=".0.0.´6.0" class="active">
+                     <option>--seleccionar producto derivado--</option>
+                                        
+                </select>
+                </div>
+
                   <div class="cell">
-                    Tipo :
+                    Cava :
                   </div>
                   <div class="cell">
                    <select id="" name="tipo" data-reactid=".0.0.7.0" class="active"> 
                                            
-                      <option>-seleccionar tipo-</option>
-                      <option>Bebida</option>
-                      <option>Dulce</option>
-                      <option>Helado</option>
-                      <option>Queso</option>  
+                      <option>-seleccionar cava-</option>
+                     
                     </select>
                   </div>                    
-                  <div class="cell">
-                     Unidad de medida :
-                  </div>
-                  <div class="cell">
-                     <select id="" name="unidad_de_medida" data-reactid=".0.0.7.0" class="active">                                              
-                        <option>-seleccionar unidad-</option>
-                        <option>Litro</option>
-                        <option>Kilo</option> 
-                      </select>
-                  </div>     
+                 
               </div>
 
               <div class="row">
                   <div class="cell">
-                   Tipo de tamaño :
+                   Tamaño :
                   </div>
                   <div class="cell">
                    <select id="" name="tipo_de_tamano" data-reactid=".0.0.7.0" class="active">                                            
-                      <option>-seleccionar tipo-</option>
-                      <option>Bolsa</option>
-                      <option>Pote</option>
-                      <option>Vaso</option>
-                      <option>Cuarto</option> 
-                      <option>Caja</option>
-                      <option>Bloque</option>
+                      <option>-seleccionar tamaño-</option>
+                      
                     </select>
                   </div>
+
                   <div class="cell">
-                   <input value="filtrar busqueda" class="active" type="submit">
+                   Responsable :
                   </div>
                   <div class="cell">
-                   
+                   <select id="" name="responsable" data-reactid=".0.0.7.0" class="active">                                            
+                      <option>-seleccionar responsable-</option>
+                      
+                    </select>
                   </div>
+
+                  
               </div>
-
-
+      <div class="row">
+            <div class="cell">
+               <input value="filtrar busqueda" class="active" type="submit">
+            </div>
+             <div class="cell">
+                   
+             </div>
+      </div>
 
       </div>
 
@@ -103,36 +105,44 @@
 
   <div class="table">
 
- @foreach($productos_derivados as $producto_derivado) 
-             <div class="row header blue">
+   <div class="row header blue">
 
       <div class="cell">
-        Nombre
+        Numero de lote
       </div>
       <div class="cell">
-        Tipo
+        Producto derivado
       </div>
       <div class="cell">
-
-        Descripción física
+         Tamaño         
       </div>
       <div class="cell">
-        Tiempo de vencimiento
+        Fecha
       </div>
       <div class="cell">
-        Instrucciones en la etiqueta 
-
+        Cava
       </div>
       <div class="cell">
-        Temperatura de almacenamiento
+       Cantidad
       </div>
       
       <div class="cell">
-        Unidad de medida 
+        Total 
+      </div>
+      <div class="cell">
+        Existencia        
+      </div>
+      <div class="cell">
+        
+      </div>
+      
+      <div class="cell">
+        
       </div>
 
     </div>
-
+  
+ @foreach($productos_derivados as $producto_derivado) 
 
   <div class="row">
 
@@ -166,57 +176,7 @@
 
   </div>
 <br>
-<!-- TABLA DE TAMANIO-->
 
-<div class="wrapper">
-
-  <div class="table">
-    <div class="row header blue">
-
-      <div class="cell">
-        Tipo
-      </div>
-      <div class="cell">
-        cantidad
-      </div>
-      <div class="cell">
-       precio
-      </div>   
-
-    </div>
-
-  @foreach($tamanos as $tamano)
-@if($tamano->producto_derivado == $producto_derivado->nombre)
-    <div class="row">
-       
-       <div class="cell"align="center" >
-         {{$tamano->tipo}}
-       </div>
-       <div class="cell"align="center" >
-         {{$tamano->cantidad}}
-       </div>
-       <div class="cell"align="center" >
-         {{$tamano->precio}}
-       </div>
-    
-    </div>
-  @endif
-@endforeach
-</div>
- 
-    <div>
- <input class="inputEditar" type="submit" value="editar " data-reactid=".0.0.5">
-
-
-  </div> 
-
- <div>
-  <input class="inputRegistrarLote" type="submit" value="registrar lote producto derivado " data-reactid=".0.0.5"> 
- </div>
- <br>
-
-</div>
-<!--TERMINA TABLA TAMANIO -->
 
 @endforeach
 

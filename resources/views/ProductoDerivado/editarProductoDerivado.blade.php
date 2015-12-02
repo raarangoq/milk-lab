@@ -7,20 +7,17 @@
     <article>
         <section>
             <div id="stage" class="stage">
-
                <a href="listarProductoDerivado">
               <img src="css/iconos/atras.png">
-            </a>
+              </a>
                 <form action="editarProductoDerivado" method="post" data-reactid=".0">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"> 
              
                     <fieldset data-reactid=".0.0">
                         
-                        <legend data-reactid=".0.0.0">EDITAR PRODUCTO DERIVADO</legend>
-
-                    
+                        <legend data-reactid=".0.0.0">EDITAR PRODUCTO DERIVADO</legend>             
                           <div class="control" data-reactid=".0.0.3.0">
-                            <input name="nombre"  type="text" id="name" placeholder="nombre" required="" data-reactid=".0.0.3.0" class="active">
+                            <input name="nombre"  type="text" id="name" placeholder="nombre" required=""  data-reactid=".0.0.3.0" class="active">
                             <label data-reactid=".0.0.3.1">* Nombre </label>
                         </div> 
                           <div class="control" data-reactid=".0.0.1">

@@ -135,7 +135,7 @@
                         <li><a href="listarProductoDerivado">Listar Producto Derivado</a></li>
                         
                       
-                        <li><a href="#">Registrar Lote de PRODUCTO</a></li>
+                        <li><a href="#">Registrar Lote de producto</a></li>
                         <li><a href="#">Analisis de Lote de PRODUCTO</a></li>
                     </ul>
                 </li>

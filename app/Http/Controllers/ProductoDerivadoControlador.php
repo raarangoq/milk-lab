@@ -112,16 +112,16 @@ return view('ProductoDerivado/listarProductoDerivado',compact('productos_derivad
              return "Zona restringida, no tiene los permisos para acceder a esta funcionalidad";
                    //return redirect('login')->with('success','Zona restringida, no tiene los permisos para acceder a esta funcionalidad');
                 }      
-             
-
-
-
-		
+             		
 	}
 
-	protected function getEditarProductoDerivado(){
- 
-       return view("ProductoDerivado/editarProductoDerivado");
+	protected function getEditarProductoDerivado(Request $request){
+/*
+$nombre_productoDerivado = $request['nombre'];
+$producto_derivadoSeleccionado=ProductoDerivado::where('nombre',$nombre_productoDerivado)->get();
+$producto_derivado =$producto_derivadoSeleccionado[0];*/
+
+    return view('ProductoDerivado/editarProductoDerivado');
 	}
 
 	protected function postEditarProductoDerivado(){

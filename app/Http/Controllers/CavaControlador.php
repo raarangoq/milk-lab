@@ -52,8 +52,6 @@ class CavaControlador extends Controller {
       }
   }
 
-
-
     protected function getListarCava() {
 
       $cavas=Cava::all();
@@ -120,8 +118,6 @@ return redirect('listarUsuario')->with('error','cava NO editada correctamente');
       return view('Cava/registrarControlCava',compact('id_cava'));
     }
     
-
-
 protected function postRegistrarControlCava(Request $request) {
         $this->validate($request, [
             'cava' => 'required',
@@ -129,9 +125,7 @@ protected function postRegistrarControlCava(Request $request) {
             'humedad' => 'required',
             'temperatura' => 'required',
             'usuario_realizador' => 'required',
-        ]);
-
-        
+        ]);        
 
         $controlDeCava = new ControlDeCava;
         $controlDeCava->cava = $request['cava'];
@@ -154,14 +148,9 @@ try {
   
 } catch (Exception $e) {
   return "FALLO";
-}
+}   
           
-        
-
-      
   }
-
-
 
  protected function getBorrarControlCava(Request $request) {
 
@@ -184,9 +173,6 @@ return redirect($paginaAnterior)->with('success','Control de cava borrado correc
 
 
     }
-
-
-
 
  protected function getListarControlCava(Request $request) {
 
