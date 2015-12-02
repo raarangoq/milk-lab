@@ -141,7 +141,10 @@ class UsuarioControlador extends Controller {
     //MOSTRAR VISTA DE EDITAR PERFIL
     protected function getEditarPerfil() {
 
- $usuarioHabilitado = Session::get('usuario.habilitado');
+
+
+
+           $usuarioHabilitado = Session::get('usuario.habilitado');
 
 
            if($usuarioHabilitado == 1){
@@ -153,6 +156,8 @@ class UsuarioControlador extends Controller {
                  return "Zona restringida, no tiene los permisos para acceder a esta funcionalidad";
                    //return redirect('login')->with('success','Zona restringida, no tiene los permisos para acceder a esta funcionalidad');
                 }
+
+                
      
     }
 
@@ -170,31 +175,31 @@ if($request['passwordAnterior']==="") {
             'correo' => 'required',
         ]);
 
-    $CorreoSession = Session::get('usuario.correo');
-
-      if($CorreoSession === ""){
-
+        
         $nombreNuevo = $request['nombre'];
         $cedulaNuevo = $request['cedula'];
         $correoNuevo = $request['correo'];
         
         $correo= Session::get('usuario.correo');
 
+
+        //actualizar usuario en base de datos
         if($usuario=Usuario::where('correo',$correo)
                         ->update(['nombre'=>  $nombreNuevo,
                                   'cedula'=>  $cedulaNuevo,
                                   'correo'=>  $correoNuevo,
                           ])){                    
 
+        //actualizar varibable de session
         Session::put('usuario.correo',$correoNuevo);
         Session::put('usuario.cedula',$cedulaNuevo);
-
-
         Session::put('usuario.nombre',$nombreNuevo);       
        
         return redirect('editarPerfil')->with('success','usuario editado correctamente');
      
        }
+
+
 
 
 }else{
@@ -242,6 +247,9 @@ if($request['passwordAnterior']==="") {
       }//ELSE ERROR CAMPOS INCOMPLETOS
           
     }
+
+
+
 
      //FUNCION DE AJAX PARA EDITAR USUARIO
      protected function getAjax() {
