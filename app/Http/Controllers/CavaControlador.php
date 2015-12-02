@@ -52,9 +52,10 @@ class CavaControlador extends Controller {
       }
   }
 
-    protected function getListarCava() {
+    protected function getListarCava(Request $request) {
 
       $cavas=Cava::all();
+     $cavas=Cava::filterAndPaginate($request->get('id'),$request->get('id'));
       //print_r($cavas);
      return view('Cava/listarCava', compact('cavas'));
     }
@@ -133,11 +134,9 @@ protected function postRegistrarControlCava(Request $request) {
         $controlDeCava->humedad = $request['humedad'];
         $controlDeCava->temperatura = $request['temperatura'];
         $controlDeCava->usuario_realizador = 'avillav@unal.edu.co';
-        
-
+     
        // $usuarioCreador=Session::get('usuario.correo');
        // $cava->usuario_registrador = $usuarioCreador;
-
 
 try {
 

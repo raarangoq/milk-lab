@@ -131,9 +131,6 @@
       </div>
     </div>
 
-
-
-
    
 @foreach($cavas as $cava)
 
@@ -177,6 +174,7 @@
 
     </div>
 @endforeach
+
              </div>
 
 

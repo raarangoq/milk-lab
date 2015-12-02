@@ -219,7 +219,7 @@
 <!--TERMINA TABLA TAMANIO -->
 
 @endforeach
-
+  {!!$productos_derivados->render()!!} 
 
 
 <div>
@@ -233,6 +233,8 @@
 
              </div>
      
+
+
 
 
 
