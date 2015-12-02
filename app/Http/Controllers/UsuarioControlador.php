@@ -242,6 +242,9 @@ if($request['passwordAnterior']==="") {
       $usuarioSession = Session::get('usuario.correo');
       $usuarios=Usuario::where('correo','!=',$usuarioSession)->get();
 
+      $usuarios= Usuario::paginate(1);
+      $usuarios->setPath('listarUsuario');
+
     /*  $usuarios = Usuario::paginate(2);
       $usuarios->setPath('listarUsuario');*/
      

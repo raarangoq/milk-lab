@@ -161,8 +161,10 @@
     </div>
 
 @endforeach
-
-
+<br>
+<nav>
+  {!!$usuarios->render()!!}
+</nav>
 
 </div>
              </div>
