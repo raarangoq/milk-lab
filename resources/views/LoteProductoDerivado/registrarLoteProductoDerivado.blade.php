@@ -13,8 +13,7 @@
 
                 <form action="registrarLoteProductoDerivado" method="post" data-reactid=".0">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"> 
-                   
-                           
+                                             
 
 
                     <fieldset data-reactid=".0.0">

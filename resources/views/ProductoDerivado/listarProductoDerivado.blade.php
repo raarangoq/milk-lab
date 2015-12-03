@@ -220,8 +220,8 @@
 
 @endforeach
 
+  {!! $productos_derivados->render() !!} 
 
-  {!!$productos_derivados->render()!!} 
 
 
 <div>
@@ -276,6 +276,15 @@ $(".inputRegistrarLote").click(function(e){
 document.location.href = "registrarLoteProductoDerivado?id=" + id;
 
 });
+
+$("[href]").click(function(e){
+ //var id = e.target.id;
+alert('ok');
+
+//document.location.href = "registrarLoteProductoDerivado?id=" + id;
+
+});
+
 
 
 

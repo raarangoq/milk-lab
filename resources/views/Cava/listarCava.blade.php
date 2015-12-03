@@ -174,8 +174,10 @@
 
     </div>
 @endforeach
-
+<nav> {!!$cavas->render()!!}</nav>
+  
              </div>
+          
 
 
         <input class="inputRegistrar" type="submit" value="registrar cava" data-reactid=".0.0.5">

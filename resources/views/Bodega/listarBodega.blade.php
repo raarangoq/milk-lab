@@ -134,6 +134,9 @@
 
           </div>
           @endforeach
+          <br>
+          <nav>  {!!$bodegas->render()!!}</nav>
+        
 
       </div>
          <input class="inputRegistrar" type="submit" value="registrar bodega" data-reactid=".0.0.5">

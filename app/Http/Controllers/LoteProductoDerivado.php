@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Cava;
 use App\Models\ProductoDerivado;
-use App\Models\Programa;
 use App\Models\Usuario;
+use App\Models\Programa;
+use App\Models\Tamano;
+
 use App\Models\FlujoDeCava;
-use 
+
 
 use Validator;
 use App\Http\Controllers\Controller;
@@ -26,7 +28,11 @@ class FlujoProductoDerivadoControlador extends Controller {
 
 protected function getRegistrarLoteProductoDerivado(Request $request) {
 
-return view("LoteProductoDerivado.registrarLoteProductoDerivado");
+	$productos_derivados=ProductoDerivado::all();
+    $tamanos = Tamano::all();
+    $cavas = Cava::all();
+
+return view("LoteProductoDerivado.registrarLoteProductoDerivado",compact('tamanos','productos_derivados','cavas'));
 }
 protected function postRegistrarLoteProductoDerivado(Resquest $request){
 

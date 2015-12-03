@@ -28,14 +28,14 @@
        Nombre
         </div>
       <div class="cell">
-       <input placeholder="filtrar nombre" class="active" type="text">
+       <input id="idnombre" placeholder="filtrar nombre" class="active" type="text">
       </div>
 
       <div class="cell">
        Rol
         </div>
       <div class="cell">
-       <select name="rol" data-reactid=".0.0.´6.0" class="active">
+       <select id="idrol" name="rol" data-reactid=".0.0.´6.0" class="active">
                               <option>--seleccionar rol--</option>
                               <option>Director</option>
                               <option>Estudiante</option>
@@ -53,7 +53,7 @@
        Correo
         </div>
       <div class="cell">
-       <input placeholder="filtrar correo" class="active" type="text">
+       <input id="idcorreo" placeholder="filtrar correo" class="active" type="text">
       </div>
 
       <div class="cell">
@@ -63,8 +63,8 @@
        <select id="idhabilitado" name="habilitado" data-reactid=".0.0.7.0" class="active"> 
                                
           <option>-seleccionar estado-</option>
-          <option>Habilitado</option>
-          <option>Inhabilitado</option>                      
+          <option value=1>Habilitado</option>
+          <option value=0>Inhabilitado</option>                      
 
         </select>
       </div>
@@ -77,12 +77,12 @@
        Cedula
         </div>
       <div class="cell">
-       <input placeholder="filtrar cedula" class="active" type="text">
+       <input id="idcedula" placeholder="filtrar cedula" class="active" type="number">
       </div>
 
 
       <div class="cell">
-       <input value="filtrar" class="active" type="submit">
+       <input id="" value="filtrar" class="inputFiltrar" type="submit">
       </div>
       <div class="cell">
        
@@ -161,8 +161,10 @@
     </div>
 
 @endforeach
-
-
+<br>
+<nav>
+  {!!$usuarios->render()!!}
+</nav>
 
 </div>
              </div>
@@ -190,6 +192,24 @@ document.location.href = "editarUsuario?correo=" + id;
 
 
 });
+
+
+
+$(".inputFiltrar").click(function(e){
+
+var rol=$("#idrol").val();
+var nombre=$("#idnombre").val();
+var habilitado=$("#idhabilitado").val();
+var cedula=$("#idcedula").val();
+var correo=$("#idcorreo").val();
+
+
+document.location.href = "filtrarUsuario?rol=" + rol +"&nombre="+nombre+"&habilitado="+habilitado+"&cedula="+cedula+"&correo="+correo   ;
+
+});
+
+
+
 
 });
 

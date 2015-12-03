@@ -60,6 +60,8 @@
 
         @endforeach
 
+        
+
         <div id="dialog-confirm"></div>
 
     </div>
