@@ -225,8 +225,7 @@ if($request['passwordAnterior']==="") {
 
       }//ELSE ERROR CAMPOS INCOMPLETOS
           
-    }
-  
+    }  
 
      //FUNCION DE AJAX PARA EDITAR USUARIO
      protected function getAjax() {
@@ -242,7 +241,7 @@ if($request['passwordAnterior']==="") {
       $usuarioSession = Session::get('usuario.correo');
       $usuarios=Usuario::where('correo','!=',$usuarioSession)->get();
 
-      $usuarios= Usuario::paginate(1);
+      $usuarios= Usuario::paginate(10);
       $usuarios->setPath('listarUsuario');
 
     /*  $usuarios = Usuario::paginate(2);
