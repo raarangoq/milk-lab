@@ -128,7 +128,7 @@
           </div>
 
           <div class="cell">
-            <input class="inputEditar" type="submit"  value="editar bodega" data-reactid=".0.0.7" >
+            <input id={{$bodega->codigo}} class="inputEditar" type="submit"  value="editar bodega" data-reactid=".0.0.7" >
           </div>
        
 

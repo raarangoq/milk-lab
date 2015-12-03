@@ -141,7 +141,10 @@ class UsuarioControlador extends Controller {
     //MOSTRAR VISTA DE EDITAR PERFIL
     protected function getEditarPerfil() {
 
- $usuarioHabilitado = Session::get('usuario.habilitado');
+
+
+
+           $usuarioHabilitado = Session::get('usuario.habilitado');
 
 
            if($usuarioHabilitado == 1){
@@ -153,6 +156,8 @@ class UsuarioControlador extends Controller {
                  return "Zona restringida, no tiene los permisos para acceder a esta funcionalidad";
                    //return redirect('login')->with('success','Zona restringida, no tiene los permisos para acceder a esta funcionalidad');
                 }
+
+                
      
     }
 
@@ -169,12 +174,15 @@ if($request['passwordAnterior']==="") {
             'correo' => 'required',
         ]);
 
+
         $nombreNuevo = $request['nombre'];
         $cedulaNuevo = $request['cedula'];
         $correoNuevo = $request['correo'];
         
         $correo= Session::get('usuario.correo');
 
+
+        //actualizar usuario en base de datos
         if($usuario=Usuario::where('correo',$correo)
                         ->update(['nombre'=>  $nombreNuevo,
                                   'cedula'=>  $cedulaNuevo,
@@ -182,6 +190,7 @@ if($request['passwordAnterior']==="") {
                           ]))
         {                    
 
+        //actualizar varibable de session
         Session::put('usuario.correo',$correoNuevo);
         Session::put('usuario.cedula',$cedulaNuevo);
         Session::put('usuario.nombre',$nombreNuevo);       
@@ -189,6 +198,7 @@ if($request['passwordAnterior']==="") {
         return redirect('editarPerfil')->with('success','usuario editado correctamente');
      
        }
+
 
 }else{
 //CAMBIAR PASSWORD
@@ -227,6 +237,9 @@ if($request['passwordAnterior']==="") {
           
     }  
 
+
+
+
      //FUNCION DE AJAX PARA EDITAR USUARIO
      protected function getAjax() {
 
@@ -249,6 +262,86 @@ if($request['passwordAnterior']==="") {
      
          return view('Usuario/listarUsuario', compact('usuarios'));
     }
+
+
+
+
+        protected function getFiltrarListarUsuario(Request $request){
+
+
+      $rol=$request['rol'];
+      $nombre=$request['nombre'];
+      $habilitado=$request['habilitado'];
+      $correo=$request['correo'];
+      $cedula=$request['cedula'];
+  
+
+if($rol != "--seleccionar rol--" AND $habilitado != "-seleccionar estado-" ){
+
+        $usuarios=Usuario::where([
+
+                          'rol' => $rol,
+                          'habilitado' => $habilitado,
+
+                          ])->paginate(10);
+
+        $usuarios->setPath('listarUsuario');
+        return view('Usuario/listarUsuario', compact('usuarios'));
+}else{
+
+  return redirect('listarUsuario')->with('success','ERROR : NO SE PUDO FILTRAR POR ROL Y ESTADO');
+}
+
+/*
+if($rol=="--seleccionar rol--"){
+//NO HAGA NADA
+}else{
+$usuarios = Usuario::where('rol',$rol)->paginate(10); 
+ $rol2=true;
+}
+
+if($habilitado=="-seleccionar estado-"){
+//NO HAGA NADA
+}else{
+//$usuarios = Usuario::where('habilitado',$habilitado)->paginate(10);  
+$habilitado2=true;
+}
+
+
+if(empty($nombre)==false){
+//$usuarios= Usuario::where('nombre',$nombre)->paginate(10);
+$nombre2=true;
+}
+
+if(empty($correo)==false){
+//$usuarios= Usuario::where('correo',$correo)->paginate(10);
+$correo2=true;
+}
+
+if(empty($cedula)==false){
+//$usuarios= Usuario::where('cedula',$cedula)->paginate(10);
+$cedula2=true;
+}
+
+*/
+
+
+
+
+
+          
+
+      
+
+      //$usuariosRol = Usuario::where('rol',$rol)->paginate(10);
+      //$usuariosRol = Usuario::where('nombre',$nombre)->paginate(10);
+
+
+      
+    }
+
+
+    
 
 
 }

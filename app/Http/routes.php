@@ -33,6 +33,8 @@ Route::post('editarUsuario', ['as' => 'editarUsuario', 'uses' => 'UsuarioControl
 Route::get('/ajax', 'UsuarioControlador@getAjax');
 //LISTAR USUARIO
 Route::get('listarUsuario', 'UsuarioControlador@getListarUsuario');
+Route::get('filtrarUsuario', 'UsuarioControlador@getFiltrarListarUsuario');
+
 //EDITAR PERFIL
 Route::get('editarPerfil', 'UsuarioControlador@getEditarPerfil');
 Route::post('editarPerfil', ['as' => 'editarPerfil', 'uses' => 'UsuarioControlador@postEditarPerfil']);

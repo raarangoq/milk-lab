@@ -219,7 +219,9 @@
 <!--TERMINA TABLA TAMANIO -->
 
 @endforeach
+
   {!! $productos_derivados->render() !!} 
+
 
 
 <div>
@@ -282,6 +284,18 @@ alert('ok');
 //document.location.href = "registrarLoteProductoDerivado?id=" + id;
 
 });
+
+
+
+
+$(".pagination").click(function(e){
+ //var id = e.target.id;
+alert("hola");
+
+document.location.href = "registrarLoteProductoDerivado";
+
+});
+
 
 
 
