@@ -22,14 +22,14 @@
         </div>
       <div class="cell">
 
-       <input placeholder="filtrar codigo" class="active" type="text" name="id">
+       <input id ="idcodigo" name="codigo" placeholder="filtrar codigo" class="active" type="text" >
       </div>
 
       <div class="cell">
        Tipo
         </div>
       <div class="cell">
-       <select name="tipo" data-reactid=".0.0.´6.0" class="active">
+       <select name="idtipo" name="tipo" data-reactid=".0.0.´6.0" class="active">
                               <option>--seleccionar tipo--</option>
                               <option>Congelamiento</option>
                               <option>Maduración</option>
@@ -46,14 +46,14 @@
        Temperatura minima
         </div>
       <div class="cell">
-       <input placeholder="temperatura minima" class="active" type="text" name="temperatura_minima">
+       <input id="idtemperatura_minima"placeholder="temperatura minima" class="active" type="number">
       </div>
 
       <div class="cell">
        En uso
         </div>
       <div class="cell">
-       <select id="" name="en_uso" data-reactid=".0.0.7.0" class="active"> 
+       <select id="iden_uso" name="en_uso" data-reactid=".0.0.7.0" class="active"> 
                                
           <option>-seleccionar uso-</option>
           <option>SI</option>
@@ -72,13 +72,13 @@
       Temperatura maxima
         </div>
       <div class="cell">
-       <input placeholder="temperatura maxima" class="active" type="text" name="temperatura_maxima">
+       <input placeholder="temperatura maxima" class="active" type="text">
       </div>
 
 
       <div class="cell">
 
-       <input value="filtrar" class="active" type="submit">
+       <input id ="" value="filtrar" class="inputFiltrar" type="submit">
       </div>
       <div class="cell">
        
@@ -99,7 +99,7 @@
 
 
 
-             <div class="wrapper">
+    <div class="wrapper">
   
              <div class="table">
 
@@ -168,15 +168,21 @@
 
 <input class="inputEditar" type="submit" id={{$cava->id}} value="editar cava" data-reactid=".0.7" >
       </div>
+     
       <div class="cell">
         <input class="inputVer" type="submit" id={{$cava->id}} value="ver" data-reactid=".0.0.7" >
       </div>
 
     </div>
+
+
 @endforeach
-<nav> {!!$cavas->render()!!}</nav>
+<br>
+<nav>
+  {!!$cavas->render()!!}
+</nav>
   
-             </div>
+  </div>
           
 
 
@@ -204,8 +210,6 @@ $(".inputEditar").click(function(e){
 
 document.location.href = "editarCava?id=" + id;
 
-
-
 });
 
 
@@ -213,7 +217,6 @@ $(".inputVer").click(function(e){
  var id = e.target.id;
 //alert(id);
 document.location.href = "listarControlCava?id=" + id;
-
 
 
 });
@@ -224,6 +227,20 @@ $(".inputRegistrar").click(function(e){
 //alert(id);
 document.location.href = "registrarCava";
 
+
+});
+
+$(".inputFiltrar").click(function(e){
+
+var codigo=$("#idcodigo").val();
+var en_uso=$("#iden_uso").val();
+var tipo=$("#idtipo").val();
+var temperatura_minima=$("#idtemperatura_minima").val();
+var temperatura_maxima=$("#idtemperatura_maxina").val();
+
+
+
+document.location.href = "filtrarCava?codigo=" + codigo +"&en_uso="+en_uso+"&tipo="+tipo+"&temperatura_minima="+temperatura_minima+"&temperatura_maxima="+temperatura_maxima  ;
 
 });
 

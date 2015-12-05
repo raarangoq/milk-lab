@@ -183,8 +183,7 @@ return redirect($paginaAnterior)->with('success','Control de cava borrado correc
 
    $controlDeCavaSeleccionado=ControlDeCava::where('cava',$id_cava)->get();
 
-   //PAGINACION
-   
+   //PAGINACION  
 
    return view('Cava/listarControlCava', compact('controlDeCavaSeleccionado','id_cava'));
 
@@ -213,10 +212,31 @@ return redirect($paginaAnterior)->with('success','Control de cava borrado correc
         ]
       );
 
-
-
  } */
+protected function getFiltrarListarCava(Request $request){
 
+     $tipo=$request['tipo'];
+     $en_uso=$request['en_uso'];
+     $codigo=$request['codigo'];
+     $temperatura_minima=$request['temperatura_minima'];
+     $temperatura_maxima=$request['temperatura_maxima'];
+
+
+     if($tipo != "--seleccionar tipo--" AND $en_uso != "-seleccionar uso-"){
+
+          $cavas=Cava::where([
+                          'tipo' => $tipo,
+                          'en_uso' => $en_uso,
+                          ])->paginate(10);
+
+        $cavas->setPath('listarCava');
+        return view('Cava/listarCava', compact('cavas'));
+
+     }else{
+
+      return redirect('listarCava')->with('success','ERROR : NO SE PUDO FILTRAR POR TIPO Y ESTADO');
+     }
+}
    
 
 }

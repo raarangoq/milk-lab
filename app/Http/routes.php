@@ -48,6 +48,7 @@ Route::get('registrarCava', 'CavaControlador@getRegistrarCava');
 Route::post('registrarCava', ['as' => 'registrarCava', 'uses' => 'CavaControlador@postRegistrarCava']);
 //LISTAR CAVA
 Route::get('listarCava', 'CavaControlador@getListarCava');
+Route::get('filtrarCava', 'CavaControlador@getFiltrarListarCava');
 //EDITAR CAVA
 Route::get('editarCava', 'CavaControlador@getEditarCava');
 Route::post('editarCava', ['as' => 'editarCava', 'uses' => 'CavaControlador@postEditarCava']); 

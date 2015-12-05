@@ -47,7 +47,7 @@ class UsuarioControlador extends Controller {
     }
 
     //RECIBIR DATOS DE VISTA (REGISTRAR USUARIO) PARA CREAR USUARIO
-    protected function postRegistrarUsuario(RegistrarUsuarioRequest $request) {
+    protected function postRegistrarUsuario(Request $request) {
      //!!! *** verifica que no exista otro usuario con el mismo correo ni otro usuario con la misma cédula  --> request !!
         $this->validate($request, [
             'nombre'    => 'required',
@@ -323,13 +323,7 @@ if(empty($cedula)==false){
 $cedula2=true;
 }
 
-*/
-
-
-
-
-
-          
+*/ 
 
       
 

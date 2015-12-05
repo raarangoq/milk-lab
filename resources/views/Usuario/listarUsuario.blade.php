@@ -89,13 +89,9 @@
       </div>
 
       </div>
-
-
-
   </div>
 
- </div>
-             
+ </div>           
 
 
 
@@ -123,9 +119,6 @@
         Editar
       </div>
     </div>
-
-
-
    
 @foreach($usuarios as $user)
 
@@ -143,8 +136,6 @@
       <div class="cell">
         {{$user->rol}}
       </div>
-
-
 
 @if ($user->habilitado == 1)
       <div class="cell">
@@ -169,17 +160,14 @@
 </div>
              </div>
 
-
+</div>
 
 
 <!-- FIN Contenido -->
 
 @endsection
 
-
-
 @section('ajaxEditar')
-
 
 <script>
 
@@ -190,10 +178,7 @@ $(".inputEditar").click(function(e){
 //alert(id);
 document.location.href = "editarUsuario?correo=" + id;
 
-
 });
-
-
 
 $(".inputFiltrar").click(function(e){
 
@@ -203,13 +188,9 @@ var habilitado=$("#idhabilitado").val();
 var cedula=$("#idcedula").val();
 var correo=$("#idcorreo").val();
 
-
 document.location.href = "filtrarUsuario?rol=" + rol +"&nombre="+nombre+"&habilitado="+habilitado+"&cedula="+cedula+"&correo="+correo   ;
 
 });
-
-
-
 
 });
 
