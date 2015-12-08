@@ -24,7 +24,7 @@
                 <input type="text" placeholder="correo" name="correo"><br>
                 <input type="password" placeholder="password" name="password"><br>
                 <input type="submit" value="ENTRAR">
-
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
             </form>
         </div>
 
