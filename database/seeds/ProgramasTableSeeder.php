@@ -18,6 +18,7 @@ class ProgramasTableSeeder extends Seeder
             'observaciones' => 'Proyecto a 6 meses',
             'usuario_responsable' => 'raarangoq@unal.edu.co',
             'created_at' => '2015-10-26 18:40:00',
+            'updated_at' => '2015-10-26 18:40:00',
         ]);
         DB::table('programas')->insert([
             'numero_de_programa' => 2486713,
@@ -27,6 +28,7 @@ class ProgramasTableSeeder extends Seeder
             'observaciones' => '',
             'usuario_responsable' => 'uriel@unal.edu.co',
             'created_at' => '2015-10-26 18:40:00',
+            'updated_at' => '2015-10-26 18:40:00',
         ]);
         DB::table('programas')->insert([
             'numero_de_programa' => 0486713,
@@ -36,6 +38,7 @@ class ProgramasTableSeeder extends Seeder
             'observaciones' => '',
             'usuario_responsable' => 'uriel@unal.edu.co',
             'created_at' => '2015-10-26 18:40:00',
+            'updated_at' => '2015-10-26 18:40:00',
         ]);
     }
 }

@@ -19,6 +19,7 @@ class ProveedorTableSeeder extends Seeder
             'telefono' => 1234567,
             'usuario_registrador' => 'raarangoq@unal.edu.co',
             'created_at' => '2015-10-26 18:40:00',
+            'updated_at' => '2015-10-26 18:40:00',
         ]);
         DB::table('proveedores')->insert([
             'NIT' => 10497873,
@@ -28,6 +29,7 @@ class ProveedorTableSeeder extends Seeder
             'telefono' => 1239867,
             'usuario_registrador' => 'raarangoq@unal.edu.co',
             'created_at' => '2015-10-26 18:40:00',
+            'updated_at' => '2015-10-26 18:40:00',
         ]);
     }
 }

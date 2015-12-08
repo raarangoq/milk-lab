@@ -18,6 +18,7 @@ class LoteDeMateriaPrimaTableSeeder extends Seeder
             'flujo_de_bodega' => 1,
             'proveedor' => 10497873,
             'created_at' => '2015-10-26 18:40:00',
+            'updated_at' => '2015-10-26 18:40:00',
         ]);
         DB::table('lotes_de_materia_prima')->insert([
             'orden_de_compra' => 174887,
@@ -26,6 +27,7 @@ class LoteDeMateriaPrimaTableSeeder extends Seeder
             'flujo_de_bodega' => 2,
             'proveedor' => 10497873,
             'created_at' => '2015-10-26 18:40:00',
+            'updated_at' => '2015-10-26 18:40:00',
         ]);
         DB::table('lotes_de_materia_prima')->insert([
             'orden_de_compra' => 228347,
@@ -34,6 +36,7 @@ class LoteDeMateriaPrimaTableSeeder extends Seeder
             'flujo_de_bodega' => 4,
             'proveedor' => 10456213,
             'created_at' => '2015-10-26 18:40:00',
+            'updated_at' => '2015-10-26 18:40:00',
         ]);
 
     }

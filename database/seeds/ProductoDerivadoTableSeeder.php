@@ -20,6 +20,7 @@ class ProductoDerivadoTableSeeder extends Seeder
             'temperatura_de_almacenamiento' => 'Ambiente',
             'unidad_de_medida' => 'Litro',
             'created_at' => '2015-10-26 18:40:00',
+            'updated_at' => '2015-10-26 18:40:00',
         ]);
         DB::table('productos_derivados')->insert([
             'nombre' => 'Queso Eda',
@@ -30,6 +31,7 @@ class ProductoDerivadoTableSeeder extends Seeder
             'temperatura_de_almacenamiento' => 'Refrigeración',
             'unidad_de_medida' => 'Kilo',
             'created_at' => '2015-10-26 18:40:00',
+            'updated_at' => '2015-10-26 18:40:00',
         ]);
     }
 }

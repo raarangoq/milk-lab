@@ -19,6 +19,7 @@ class UsuarioTableSeeder extends Seeder
         	'rol' => 'Director',
             'usuario_creador' => 'raarangoq@unal.edu.co',
             'created_at' => '2015-10-26 18:40:00',
+            'updated_at' => '2015-10-26 18:40:00',
         ]);
 
         DB::table('usuarios')->insert([
@@ -29,6 +30,7 @@ class UsuarioTableSeeder extends Seeder
             'rol' => 'Técnico operativo',
             'usuario_creador' => 'raarangoq@unal.edu.co',
             'created_at' => '2015-10-26 18:40:00',
+            'updated_at' => '2015-10-26 18:40:00',
         ]);
 
         DB::table('usuarios')->insert([
@@ -39,6 +41,7 @@ class UsuarioTableSeeder extends Seeder
             'rol' => 'Profesor',
             'usuario_creador' => 'raarangoq@unal.edu.co',
             'created_at' => '2015-10-26 18:40:00',
+            'updated_at' => '2015-10-26 18:40:00',
         ]);
     }
 }

@@ -26,6 +26,7 @@ class FlujoDeCavaTableSeeder extends Seeder
             'usuario_responsable' => 'omar@unal.edu.co',
             'cava' => 2,
             'created_at' => '2015-10-26 18:40:00',
+            'updated_at' => '2015-10-26 18:40:00',
         ]);
         DB::table('flujos_de_cavas')->insert([
             'id' => 2,
@@ -42,6 +43,7 @@ class FlujoDeCavaTableSeeder extends Seeder
             'usuario_responsable' => 'omar@unal.edu.co',
             'cava' => 2,
             'created_at' => '2015-10-26 18:40:00',
+            'updated_at' => '2015-10-26 18:40:00',
         ]);
         DB::table('flujos_de_cavas')->insert([
             'id' => 3,
@@ -58,6 +60,7 @@ class FlujoDeCavaTableSeeder extends Seeder
             'usuario_responsable' => 'uriel@unal.edu.co',
             'cava' => 1,
             'created_at' => '2015-10-26 18:40:00',
+            'updated_at' => '2015-10-26 18:40:00',
         ]);
         DB::table('flujos_de_cavas')->insert([
             'id' => 4,
@@ -74,6 +77,7 @@ class FlujoDeCavaTableSeeder extends Seeder
             'usuario_responsable' => 'uriel@unal.edu.co',
             'cava' => 1,
             'created_at' => '2015-10-26 18:40:00',
+            'updated_at' => '2015-10-26 18:40:00',
         ]);
     }
 }

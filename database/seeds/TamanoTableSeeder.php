@@ -18,6 +18,7 @@ class TamanoTableSeeder extends Seeder
             'precio' => 6500,
             'producto_derivado' => 'Leche condensada',
             'created_at' => '2015-10-26 18:40:00',
+            'updated_at' => '2015-10-26 18:40:00',
         ]);
         DB::table('tamanos')->insert([
             'id' => 2,
@@ -26,6 +27,7 @@ class TamanoTableSeeder extends Seeder
             'precio' => 15000,
             'producto_derivado' => 'Leche condensada',
             'created_at' => '2015-10-26 18:40:00',
+            'updated_at' => '2015-10-26 18:40:00',
         ]);
         DB::table('tamanos')->insert([
             'id' => 3,
@@ -34,6 +36,7 @@ class TamanoTableSeeder extends Seeder
             'precio' => 14500,
             'producto_derivado' => 'Queso Eda',
             'created_at' => '2015-10-26 18:40:00',
+            'updated_at' => '2015-10-26 18:40:00',
         ]);
         DB::table('tamanos')->insert([
             'id' => 4,
@@ -42,6 +45,7 @@ class TamanoTableSeeder extends Seeder
             'precio' => 28000,
             'producto_derivado' => 'Queso Eda',
             'created_at' => '2015-10-26 18:40:00',
+            'updated_at' => '2015-10-26 18:40:00',
         ]);
         DB::table('tamanos')->insert([
             'id' => 5,
@@ -50,6 +54,7 @@ class TamanoTableSeeder extends Seeder
             'precio' => 96000,
             'producto_derivado' => 'Queso Eda',
             'created_at' => '2015-10-26 18:40:00',
+            'updated_at' => '2015-10-26 18:40:00',
         ]);
     }
 }
