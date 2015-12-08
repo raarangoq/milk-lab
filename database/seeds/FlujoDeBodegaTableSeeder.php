@@ -24,6 +24,7 @@ class FlujoDeBodegaTableSeeder extends Seeder
             'programa' => null,
             'usuario_responsable' => 'omar@unal.edu.co',
             'bodega' => '52-108',
+            'created_at' => '2015-10-26 18:40:00',
         ]);
         DB::table('flujos_de_bodegas')->insert([
             'id' => 2,
@@ -38,6 +39,7 @@ class FlujoDeBodegaTableSeeder extends Seeder
             'programa' => null,
             'usuario_responsable' => 'omar@unal.edu.co',
             'bodega' => '52-112',
+            'created_at' => '2015-10-26 18:40:00',
         ]);
         DB::table('flujos_de_bodegas')->insert([
             'id' => 3,
@@ -52,6 +54,7 @@ class FlujoDeBodegaTableSeeder extends Seeder
             'programa' => 2486713,
             'usuario_responsable' => 'uriel@unal.edu.co',
             'bodega' => '52-112',
+            'created_at' => '2015-10-26 18:40:00',
         ]);
         DB::table('flujos_de_bodegas')->insert([
             'id' => 4,
@@ -66,6 +69,7 @@ class FlujoDeBodegaTableSeeder extends Seeder
             'programa' => null,
             'usuario_responsable' => 'uriel@unal.edu.co',
             'bodega' => '52-112',
+            'created_at' => '2015-10-26 18:40:00',
         ]);
     }
 }

@@ -14,6 +14,7 @@ class LoteDeLecheTableSeeder extends Seeder
         DB::table('lotes_de_leche')->insert([
             'remision' =>  496872,
             'lote_de_materia_prima' => 228347,
+            'created_at' => '2015-10-26 18:40:00',
         ]);
     }
 }
