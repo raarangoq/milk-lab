@@ -20,7 +20,6 @@ class CreateProveedoresTable extends Migration
             $table->integer('telefono')->nullable();
             $table->string('usuario_registrador', 60);
 
-
             $table->timestamps();
 
             $table->primary('NIT');
