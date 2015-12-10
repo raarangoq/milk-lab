@@ -21,7 +21,7 @@ class ProductoDerivadoControlador extends Controller {
 
          $usuarioRol = Session::get('usuario.rol');
          $usuarioHabilitado = Session::get('usuario.habilitado');
-         
+ /*        
 
          if($usuarioRol == 'Director'){
 
@@ -42,10 +42,70 @@ class ProductoDerivadoControlador extends Controller {
     return "Zona restringida, no tiene los permisos para acceder a esta funcionalidad";
          // return redirect('login')->with('success','Zona restringida, no tiene los permisos para acceder a esta funcionalidad');
          }
-
-
+*/
+return view("ProductoDerivado/registrarProductoDerivado");
 		
 	}
+
+
+
+protected function getRegistrarProductoDerivadoAJAX(Request $request) {
+
+//NO ES NECESARIO VALIDAR, SE VALIDA DESDE LA VISTA, EN EL SCRIPT DE JQUERY
+
+ $arrayAtributos = json_decode($request['atributosProducto'],true);
+ $arrayTamanio = json_decode($request['tamanio'],true);
+
+
+//1ro guardar producto derivado
+
+foreach ($arrayAtributos as $producto) {
+
+$nombreProducto=$producto['nombre'];
+
+$productoDerivado=new ProductoDerivado;
+
+$productoDerivado->nombre=$producto['nombre'];
+$productoDerivado->tipo=$producto['tipo'];
+$productoDerivado->descripcion_fisica=$producto['descripcion_fisica'];
+$productoDerivado->tiempo_de_vencimiento=$producto['tiempo_de_vencimiento'];
+$productoDerivado->instrucciones_de_la_etiqueta=$producto['instrucciones_de_la_etiqueta'];
+$productoDerivado->temperatura_de_almacenamiento=$producto['temperatura_de_almacenamiento'];
+$productoDerivado->unidad_de_medida=$producto['unidad_de_medida'];
+
+$productoDerivado->save();
+
+}
+
+
+
+//2do guardar TAMAÑOS de producto derivado
+
+foreach ($arrayTamanio as $tamano) {
+
+$tamano2 = new Tamano;
+
+$tamano2->cantidad=$tamano['cantidad'];
+$tamano2->tipo=$tamano['tipo'];
+$tamano2->precio=$tamano['precio'];
+
+$tamano2->producto_derivado=$nombreProducto;//nombre de producto
+
+$tamano2->save();
+
+
+
+}
+
+
+
+
+
+    }
+
+
+
+
 	protected function postRegistrarProductoDerivado(Request $request){
 
 		$this->validate($request,[
@@ -93,6 +153,13 @@ class ProductoDerivadoControlador extends Controller {
 
 	}
 
+
+
+
+
+
+
+
 	protected function getListarProductoDerivado(){
 
     $productos_derivados=ProductoDerivado::all();
@@ -132,12 +199,15 @@ return view('ProductoDerivado/listarProductoDerivado',compact('productos_derivad
 	}
 
 	protected function getEditarProductoDerivado(Request $request){
-/*
-$nombre_productoDerivado = $request['nombre'];
-$producto_derivadoSeleccionado=ProductoDerivado::where('nombre',$nombre_productoDerivado)->get();
-$producto_derivado =$producto_derivadoSeleccionado[0];*/
 
-    return view('ProductoDerivado/editarProductoDerivado');
+$nombre_productoDerivado = $request['producto'];
+$producto_derivadoSeleccionado=ProductoDerivado::where('nombre',$nombre_productoDerivado)->get();
+$producto_derivado =$producto_derivadoSeleccionado[0];
+
+$tamanios = Tamano::where('producto_derivado',$nombre_productoDerivado)->get();
+
+
+    return view('ProductoDerivado/editarProductoDerivado' , compact('producto_derivado','tamanios'));
 	}
 
 	protected function postEditarProductoDerivado(){

@@ -143,6 +143,8 @@ Route::post('registrarReactivo', ['as' => 'registrarReactivo', 'uses' => 'Reacti
 //----->PRODUCTO DERIVADO (rutas) <---------------------------
 //REGISTRAR PRODUCTO DERIVADO
 Route::get('registrarProductoDerivado','ProductoDerivadoControlador@getRegistrarProductoDerivado');
+Route::get('registrarProductoDerivadoAJAX', 'ProductoDerivadoControlador@getRegistrarProductoDerivadoAJAX');
+
 Route::post('registrarProductoDerivado',['as' => 'registrarProductoDerivado','uses'=>'ProductoDerivadoControlador@postRegistrarProductoDerivado']);
 //EDITAR PRODUCTO DERIVADO
 Route::get('editarProductoDerivado', 'ProductoDerivadoControlador@getEditarProductoDerivado');
