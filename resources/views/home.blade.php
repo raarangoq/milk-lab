@@ -1,6 +1,8 @@
 @extends('layout.principal')
 
 @section('footer')
+
+
         <footer>
             <ul class="social-ul">
                 <li class="social" title="Home"><a href="">&#8962;</a></li>

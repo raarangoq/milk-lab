@@ -1,21 +1,34 @@
 @extends('layout.principal')
 
 @section('contenido')
-@include('alerts.request')
+
+
+
+<style>
+    @import url(css/3.TABLAS/css/style.css);
+    @import url(css/4.MENSAJES/style.css);
+</style>
 
 <main>
     <article>
         <section>
             <div id="stage" class="stage">
-                <form action="registrarProductoDerivado" method="post" data-reactid=".0">
+               <a href="listarProductoDerivado">
+                             <img src="css/iconos/atras.png">
+                           </a>
+
+                <form action="#" method="post" data-reactid=".0">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"> 
+                   
+                           
+
+
                     <fieldset data-reactid=".0.0">
+
+                      
                         
                         <legend data-reactid=".0.0.0">REGISTRAR PRODUCTO DERIVADO</legend>
 
-                           <a href="listarProductoDerivado">
-                             <img src="css/iconos/atras.png">
-                           </a>
 
                           <div class="control" data-reactid=".0.0.3.0">
                             <input name="nombre"  type="text"  placeholder="nombre" required="" data-reactid=".0.0.3.0" class="active">
@@ -80,15 +93,21 @@
                         <br>  
                         
 
-    <div class="wrapper">
+
+
+
+                            
+                       
+    <div class="wrapper" style="padding-left: 0px;">
+
   
              <div class="table">
 
-              <div class="row header blue">
+              <div class="row header green">
                   <center>TAMAÑO</center> 
               </div>
   
-             <div class="row header blue">
+             <div class="row header green">
               
              
       <div class="cell">
@@ -108,14 +127,15 @@
       </div>
 
 
-      <div class="row">
+      <div class="row" id="idrow0">
 
         <div class="cell">
-           <input type="number" name="cantidad">
+           <input type="number" name="cantidad0">
         </div>
 
         <div class="cell">
-           <select name="tipo">
+           <select name="tipo0">
+               <option></option>
                <option>Bolsa</option>
                <option>Pote</option>
                <option>Vaso</option>
@@ -127,11 +147,12 @@
         </div>
 
         <div class="cell">
-           <input type="number" name="precio">
+           <input type="number" name="precio0">
         </div>
 
         <div class="cell">
-           <input type="submit" value="editar" data-reactid=".0.0.6.2">
+           
+           <input class="inputQuitarFila" id='idrow0' type="submit" value="quitar" data-reactid=".0.0.5">
         </div>
 
 
@@ -141,11 +162,12 @@
 
      </div>
      <input class="inputAgregarFila" type="submit" value="agregar fila" data-reactid=".0.0.5">
-  <br></br>
+     
+  <br><br>
    </div>
 
 
-                    <input type="submit" value="registrar producto derivado" data-reactid=".0.0.6.2">
+                    <input class="inputRegistrarProducto" type="submit" value="registrar producto derivado" data-reactid=".0.0.6.2">
 
 
                     </fieldset>
@@ -170,15 +192,18 @@
 
 <script>
 
+
 $(document).ready(function(){
 
-  var fila=2;
+  var fila=0;
+
+
 
   $(".inputAgregarFila").click(function(e){
  
 fila++;
 
-var nuevaFila="<div class='row'>";
+var nuevaFila="<div class='row' id='idrow"+fila+"' >";
 
 nuevaFila+="<div class='cell'>";
 nuevaFila+="<input type='number' name='cantidad"+fila+"'>";
@@ -187,6 +212,8 @@ nuevaFila+="</div>";
 
 nuevaFila+="<div class='cell' align='center'>";
 nuevaFila+="<select name='tipo"+fila+"' data-reactid='.0.0.6.0' class='active'>";
+nuevaFila+="<option></option>";
+nuevaFila+="<option>Bolsa</option>";
 nuevaFila+="<option>Pote</option>";
 nuevaFila+="<option>Vaso</option>";
 nuevaFila+="<option>Cuarto</option>";
@@ -199,22 +226,142 @@ nuevaFila+="<div class='cell'>";
 nuevaFila+="<input type='number' name='precio"+fila+"'>";
 nuevaFila+="</div>";
 
+nuevaFila+="<div class='cell'>";
+nuevaFila+="<input class='inputQuitarFila' id='"+fila+"' type='submit' value='quitar' data-reactid='.0.0.6.2'>";
+//nuevaFila+="<input class='borrar' id='ida' type='submit' value='quitar'  onclick='quitar()'  onChange='myFunction()' data-reactid='.0.0.6.2'>";
+
+//nuevaFila+="<input class='inputQuitarFila' name='loco' type='submit' value='quitar' data-reactid='.0.0.5'>";
 
 
 nuevaFila+="</div>";
 
-
+nuevaFila+="</div>";
 
 $(".table").append(nuevaFila);
 
-//alert(nuevaFila);
+
+
+
+$(".inputQuitarFila").off('click');
+
+
+    $(".inputQuitarFila").on('click', function() {
+
+
+     //alert('El valor es: ' + $(this).data('val'));
+
+     var idfila=$(this).attr("id");
+     //alert(idfila);
+
+     // $("#idrow1").remove();
+
+     $("#idrow"+idfila).remove();
+     fila--;
+
+
+
+    });
+
 
 });
 
 
 
 
+
+$(".inputRegistrarProducto").click(function(e){
+
+
+var vectorAtt = [];
+Atts = {};
+
+var nombre=($("input[name=nombre]").val());
+var tipo=($("select[name=tipo]").val());
+var descripcion_fisica=($("textarea[name=descripcion_fisica]").val());
+
+var tiempo_de_vencimiento=($("input[name=tiempo_de_vencimiento]").val());
+var instrucciones_de_la_etiqueta=($("textarea[name=instrucciones_de_la_etiqueta]").val());
+var temperatura_de_almacenamiento=($("select[name=temperatura_de_almacenamiento]").val());
+var unidad_de_medida=($("select[name=unidad_de_medida]").val());
+
+
+
+          Atts["nombre"] = nombre; 
+          Atts["tipo"] = tipo; 
+          Atts["descripcion_fisica"] = descripcion_fisica;
+          Atts["tiempo_de_vencimiento"] = tiempo_de_vencimiento; 
+          Atts["instrucciones_de_la_etiqueta"] = instrucciones_de_la_etiqueta; 
+          Atts["temperatura_de_almacenamiento"] = temperatura_de_almacenamiento;
+          Atts["unidad_de_medida"] = unidad_de_medida; 
+
+          vectorAtt.push(Atts);
+   
+
+
+aInfoAtributos   = JSON.stringify(vectorAtt);
+//alert(aInfoAtributos);
+
+
+var vectorDeTamanio = [];
+item = {};
+
+for (var i=0; i<fila+1; i++) {
+
+
+var tipo=($("select[name=tipo"+i+"]").val());
+var cantidad=($("input[name=cantidad"+i+"]").val());
+var precio=($("input[name=precio"+i+"]").val());
+
+item = {};
+
+if(tipo !==''
+  && cantidad !=='' 
+  && precio !==''
+  ){
+          item["tipo"] = tipo; 
+          item["cantidad"] = cantidad; 
+          item["precio"] = precio;
+
+          vectorDeTamanio.push(item);
+    }
+
+
 }
+
+
+
+aInfoTamanio   = JSON.stringify(vectorDeTamanio); 
+
+
+var cadenaFormulario = "&atributosProducto=" + aInfoAtributos + "&tamanio=" + aInfoTamanio;
+ 
+$.ajax({
+    data: cadenaFormulario,
+    dataType: "html",
+    type: 'GET',
+    url : 'registrarProductoDerivadoAJAX',
+    processData: false, 
+    contentType: false,
+    success: function(r){
+
+          // alert(r);
+
+          alert("SE REGISTRO EL PRODUCTO EXITOSAMENTE")
+
+
+    }
+  });
+
+
+
+});
+
+
+
+
+});
+
+
 </script>
 
 @endSection

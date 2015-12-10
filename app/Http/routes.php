@@ -33,6 +33,8 @@ Route::post('editarUsuario', ['as' => 'editarUsuario', 'uses' => 'UsuarioControl
 Route::get('/ajax', 'UsuarioControlador@getAjax');
 //LISTAR USUARIO
 Route::get('listarUsuario', 'UsuarioControlador@getListarUsuario');
+Route::get('filtrarUsuario', 'UsuarioControlador@getFiltrarListarUsuario');
+
 //EDITAR PERFIL
 Route::get('editarPerfil', 'UsuarioControlador@getEditarPerfil');
 Route::post('editarPerfil', ['as' => 'editarPerfil', 'uses' => 'UsuarioControlador@postEditarPerfil']);
@@ -46,6 +48,7 @@ Route::get('registrarCava', 'CavaControlador@getRegistrarCava');
 Route::post('registrarCava', ['as' => 'registrarCava', 'uses' => 'CavaControlador@postRegistrarCava']);
 //LISTAR CAVA
 Route::get('listarCava', 'CavaControlador@getListarCava');
+Route::get('filtrarCava', 'CavaControlador@getFiltrarListarCava');
 //EDITAR CAVA
 Route::get('editarCava', 'CavaControlador@getEditarCava');
 Route::post('editarCava', ['as' => 'editarCava', 'uses' => 'CavaControlador@postEditarCava']); 
@@ -140,6 +143,8 @@ Route::post('registrarReactivo', ['as' => 'registrarReactivo', 'uses' => 'Reacti
 //----->PRODUCTO DERIVADO (rutas) <---------------------------
 //REGISTRAR PRODUCTO DERIVADO
 Route::get('registrarProductoDerivado','ProductoDerivadoControlador@getRegistrarProductoDerivado');
+Route::get('registrarProductoDerivadoAJAX', 'ProductoDerivadoControlador@getRegistrarProductoDerivadoAJAX');
+
 Route::post('registrarProductoDerivado',['as' => 'registrarProductoDerivado','uses'=>'ProductoDerivadoControlador@postRegistrarProductoDerivado']);
 //EDITAR PRODUCTO DERIVADO
 Route::get('editarProductoDerivado', 'ProductoDerivadoControlador@getEditarProductoDerivado');

@@ -15,7 +15,7 @@
 
                          <div class="control" data-reactid=".0.0.1">
                            
-                             <input name="NIT" type="text" id="idnit" placeholder="NIT : " required="" data-reactid=".0.0.1.0" class="active">
+                             <input name="NIT" type="number" id="idnit" placeholder="NIT : " required="" data-reactid=".0.0.1.0" class="active">
                             <label data-reactid=".0.0.1.1">* NIT de proveedor</label>
                         </div>
 

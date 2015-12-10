@@ -14,6 +14,24 @@
 
 }
 
+
+.borde{
+
+border: blue 5px solid;
+border-color: white;
+background: white;
+
+
+}
+
+.fuente{
+
+font-weight:bold;
+font-size: 15pt;
+
+}
+
+
 .table {
   margin: 0 0 20px 0;
   width: 100%;

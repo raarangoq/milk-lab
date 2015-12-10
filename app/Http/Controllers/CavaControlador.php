@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cava;
 use App\Models\ControlDeCava;
+use App\Models\Usuario;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -15,6 +16,7 @@ use Input;
 
 
 class CavaControlador extends Controller {
+
 
     protected function getRegistrarCava() {
 
@@ -51,12 +53,13 @@ class CavaControlador extends Controller {
       }
   }
 
-
-
-    protected function getListarCava() {
+    protected function getListarCava(Request $request) {
 
       $cavas=Cava::all();
-      //print_r($cavas);
+
+      $cavas=Cava::paginate(10);
+      $cavas->setPath('listarCava');
+    
      return view('Cava/listarCava', compact('cavas'));
     }
 
@@ -90,13 +93,11 @@ class CavaControlador extends Controller {
 
         //$usuarioEditor = Session::get('usuario.correo');
         
-
         if($cavaActualizada=Cava::where('id',$id)
                         ->update(['tipo'=>  $nuevoTipo,
                                   'temperatura_minima'=>  $nuevaTemperatura_minima,
                                   'temperatura_maxima'=>  $nuevaTemperatura_maxima,
-                                  'en_uso'=>  $nuevoUso,
-                                 
+                                  'en_uso'=>  $nuevoUso,                                 
                           ])){
 
  return redirect('listarCava')->with('success','cava editada correctamente');
@@ -115,12 +116,11 @@ return redirect('listarUsuario')->with('error','cava NO editada correctamente');
     protected function getRegistrarControlCava(Request $request) {
 
      $id_cava= $request['id'];
-      //return $id_cava;
-      return view('Cava/registrarControlCava',compact('id_cava'));
+     $usuarios=Usuario::all();
+      
+      return view('Cava/registrarControlCava', compact('id_cava','usuarios'));
     }
     
-
-
 protected function postRegistrarControlCava(Request $request) {
         $this->validate($request, [
             'cava' => 'required',
@@ -128,9 +128,7 @@ protected function postRegistrarControlCava(Request $request) {
             'humedad' => 'required',
             'temperatura' => 'required',
             'usuario_realizador' => 'required',
-        ]);
-
-        
+        ]);        
 
         $controlDeCava = new ControlDeCava;
         $controlDeCava->cava = $request['cava'];
@@ -138,11 +136,9 @@ protected function postRegistrarControlCava(Request $request) {
         $controlDeCava->humedad = $request['humedad'];
         $controlDeCava->temperatura = $request['temperatura'];
         $controlDeCava->usuario_realizador = 'avillav@unal.edu.co';
-        
-
+     
        // $usuarioCreador=Session::get('usuario.correo');
        // $cava->usuario_registrador = $usuarioCreador;
-
 
 try {
 
@@ -153,14 +149,9 @@ try {
   
 } catch (Exception $e) {
   return "FALLO";
-}
+}   
           
-        
-
-      
   }
-
-
 
  protected function getBorrarControlCava(Request $request) {
 
@@ -184,22 +175,68 @@ return redirect($paginaAnterior)->with('success','Control de cava borrado correc
 
     }
 
-
-
-
  protected function getListarControlCava(Request $request) {
 
     $id_cava= $request['id'];
 
-     // $controlDeCavas=ControlDeCava::all();
+      $controlDeCavas=ControlDeCava::all();
 
    $controlDeCavaSeleccionado=ControlDeCava::where('cava',$id_cava)->get();
+
+   //PAGINACION  
 
    return view('Cava/listarControlCava', compact('controlDeCavaSeleccionado','id_cava'));
 
     }
+  protected function getRegistrarFlujoCava(){
+
+    $producto_derivado = ProductoDerivado::all();
+
+    return view('Cava/getRegistrarFlujoCava',compact('producto_derivado'));
+  }  
+ /*protected function postRegistrarFlujoCava(Request $request)
+ {
+     $this->validate([$request,s
+
+        'fecha'=>'required',
+        'entra'=>'required',
+        'sale'=>'required',
+        'total'=>'required',
+        'existencia'=>'required',
+        'motivo_de_salida'=>'required',
+        
+        'producto_derivado'=>'required',
+        'tamano'=>'required'=>'required',
+        
+        'usuario_responsable'=>'required',
+        ]
+      );
+
+ } */
+protected function getFiltrarListarCava(Request $request){
+
+     $tipo=$request['tipo'];
+     $en_uso=$request['en_uso'];
+     $codigo=$request['codigo'];
+     $temperatura_minima=$request['temperatura_minima'];
+     $temperatura_maxima=$request['temperatura_maxima'];
 
 
+     if($tipo != "--seleccionar tipo--" AND $en_uso != "-seleccionar uso-"){
+
+          $cavas=Cava::where([
+                          'tipo' => $tipo,
+                          'en_uso' => $en_uso,
+                          ])->paginate(10);
+
+        $cavas->setPath('listarCava');
+        return view('Cava/listarCava', compact('cavas'));
+
+     }else{
+
+      return redirect('listarCava')->with('success','ERROR : NO SE PUDO FILTRAR POR TIPO Y ESTADO');
+     }
+}
    
 
 }

@@ -1,6 +1,8 @@
 @extends('layout.principal')
 @include('alerts.request')
 
+@section('contenido')
+
 <main>
     <article>
         <section>
@@ -27,14 +29,16 @@
                             <label data-reactid=".0.0.4.1">* Temperatura</label>
                         </div>
                          <div class="control" data-reactid=".0.0.4">
-                            <select name="usuario_realizador" class="active" >
-                                <option>--seleccionar usuario--</option>
+                            <select id="idusuario_realizador" name="usuario_realizador" data-reactid=".0.0.6.0" class="active" > 
+                     <option></option>          
+ @foreach($usuarios as $usuario)
+<option value={{$usuario->correo}}>{{$usuario->nombre}}--{{$usuario->rol}}--{{$usuario->correo}}</option>
+@endforeach   
 
-
-
-                            </select>
+        </select>
                             <label data-reactid=".0.0.4.1">* Usuario Registrador</label>
                         </div>
+
                     
 
                         <input type="submit" value="registrar control cava" data-reactid=".0.0.5">

@@ -11,71 +11,62 @@
     
 
 <a href="listarCava">
-              <img src="css/iconos/atras.png">
+    <img src="css/iconos/atras.png">
 </a>
 
-
-             <div class="wrapper">
+<div class="wrapper">
   
-             <div class="table">
+    <div class="table">
+         <div class="row header blue">
+               <div class="cell">
+                Fecha
+              </div>
+              <div class="cell">
+                Humedad
+              </div>
+              <div class="cell">
+                Temperatura
+              </div>
+              <div class="cell">
+                Usuario realizador
+              </div>
 
-             <div class="row header blue">
-       <div class="cell">
-        Fecha
-      </div>
-      <div class="cell">
-        Humedad
-      </div>
-      <div class="cell">
-        Temperatura
-      </div>
-      <div class="cell">
-        Usuario realizador
-      </div>
+              <div class="cell">
+                Borrar
+              </div>
+          </div>
+         
+         @foreach($controlDeCavaSeleccionado as $controlCava)
 
-      <div class="cell">
-        Borrar
-      </div>
+          <div class="row">
+              <div class="cell" align="center">
+                {{$controlCava->fecha}}
+              </div>
+              <div class="cell">
+                {{$controlCava->humedad}}
+              </div>
+              <div class="cell">
+                {{$controlCava->temperatura}}
+              </div>
+              <div class="cell">
+                {{$controlCava->usuario_realizador}}
+              </div>
+
+              <div class="cell">
+               <input class="inputBorrar" id={{$controlCava->fecha}}  type="submit"  value="borrar" data-reactid=".0.0.7" >
+              </div>          
+
+          </div>
+
+        @endforeach
+
+        
+
+        <div id="dialog-confirm"></div>
+
     </div>
-
-
-
-   
-@foreach($controlDeCavaSeleccionado as $controlCava)
-
-
-<div class="row">
-      <div class="cell" align="center">
-        {{$controlCava->fecha}}
-      </div>
-      <div class="cell">
-        {{$controlCava->humedad}}
-      </div>
-      <div class="cell">
-        {{$controlCava->temperatura}}
-      </div>
-      <div class="cell">
-        {{$controlCava->usuario_realizador}}
-      </div>
-
-      <div class="cell">
-        <input class="inputBorrar" id={{$controlCava->fecha}}  type="submit"  value="borrar" data-reactid=".0.0.7" >
-      </div>
-    
-
-    </div>
-
-
-
-@endforeach
-
-  <div id="dialog-confirm"></div>
-
-             </div>
-           <input class="inputRegistrar" id={{$id_cava}} type="submit" value="registrar control cava" data-reactid=".0.0.5">
-             </div>
-
-
+<input class="inputRegistrar" id={{$id_cava}} type="submit" value="registrar control cava" data-reactid=".0.0.5">
+</div>
 
 
 <!-- FIN Contenido -->
@@ -83,16 +74,8 @@
 @endsection
 
 
-
-
-
 @section('ajaxEditar')
-
-
 <script>
-
-
-
 
 $(document).ready(function(){
 
@@ -111,7 +94,7 @@ $(document).ready(function(){
                 $(this).dialog('close');
                 callback(true,fecha);
             },
-                "NO": function () {
+            "NO": function () {
                 $(this).dialog('close');
                 callback(false,fecha);
             }
