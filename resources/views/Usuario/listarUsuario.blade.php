@@ -5,11 +5,6 @@
 
 @include('alerts.request')
 
-<!-- <style>
-    @import url(css/3.TABLAS/css/style.css);
-    @import url(css/4.MENSAJES/style.css);
-</style> -->
-           
 
 <div class="wrapper">
   
@@ -43,31 +38,31 @@
                               <option>Operario</option>
                               <option>Profesor</option>
                               <option>Técnico operativo</option>
-                            </select>
+       </select>
       </div>
 
       </div>
 
       <div class="row">
-        <div class="cell">
-       Correo
-        </div>
-      <div class="cell">
-       <input id="idcorreo" placeholder="filtrar correo" class="active" type="text">
-      </div>
+          <div class="cell">
+           Correo
+          </div>
+          <div class="cell">
+           <input id="idcorreo" placeholder="filtrar correo" class="active" type="text">
+          </div>
 
-      <div class="cell">
-       Estado
-        </div>
-      <div class="cell">
-       <select id="idhabilitado" name="habilitado" data-reactid=".0.0.7.0" class="active"> 
-                               
-          <option>-seleccionar estado-</option>
-          <option value=1>Habilitado</option>
-          <option value=0>Inhabilitado</option>                      
+          <div class="cell">
+           Estado
+          </div>
+          <div class="cell">
+           <select id="idhabilitado" name="habilitado" data-reactid=".0.0.7.0" class="active"> 
+                                   
+              <option>-seleccionar estado-</option>
+              <option value=1>Habilitado</option>
+              <option value=0>Inhabilitado</option>                      
 
-        </select>
-      </div>
+            </select>
+          </div>
 
 
       </div>

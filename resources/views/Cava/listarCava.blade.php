@@ -22,19 +22,19 @@
         </div>
       <div class="cell">
 
-       <input id ="idcodigo" name="codigo" placeholder="filtrar codigo" class="active" type="text" >
+       <input id ="idcodigo" placeholder="filtrar codigo" class="active" type="text" >
       </div>
 
       <div class="cell">
        Tipo
         </div>
       <div class="cell">
-       <select name="idtipo" name="tipo" data-reactid=".0.0.´6.0" class="active">
+       <select id="idtipo" name="tipo" data-reactid=".0.0.´6.0" class="active" >
                               <option>--seleccionar tipo--</option>
                               <option>Congelamiento</option>
                               <option>Maduración</option>
                               <option>Producto terminado</option>
-                            </select>
+        </select>
 
       </div>
 
@@ -46,33 +46,30 @@
        Temperatura minima
         </div>
       <div class="cell">
-       <input id="idtemperatura_minima"placeholder="temperatura minima" class="active" type="number">
+       <input id="idtemperatura_minima" placeholder="temperatura minima" class="active" type="number">
       </div>
 
       <div class="cell">
        En uso
-        </div>
+      </div>
       <div class="cell">
-       <select id="iden_uso" name="en_uso" data-reactid=".0.0.7.0" class="active"> 
-                               
-          <option>-seleccionar uso-</option>
-          <option>SI</option>
-          <option>NO</option>                      
+         <select id="iden_uso" name="en_uso" data-reactid=".0.0.7.0" class="active"> 
+                                 
+            <option>-seleccionar uso-</option>
+            <option value=1>SI</option>
+            <option value=0>NO</option>                      
 
-
-        </select>
+          </select>
       </div>
-
-
 
       </div>
 
-      <div class="row">
+    <div class="row">
         <div class="cell">
       Temperatura maxima
         </div>
       <div class="cell">
-       <input placeholder="temperatura maxima" class="active" type="text">
+       <input id="idtemperatura_maxima" placeholder="temperatura maxima" class="active" type="text">
       </div>
 
 
@@ -84,8 +81,7 @@
        
       </div>
 
-
-      </div>
+   </div>
 
 
 
@@ -93,10 +89,6 @@
 
 
  </div>
-
-
-             
-
 
 
     <div class="wrapper">
@@ -133,7 +125,6 @@
 
    
 @foreach($cavas as $cava)
-
 
 <div class="row">
       <div class="cell" align="center">
@@ -177,13 +168,12 @@
 
 
 @endforeach
-<br>
+
 <nav>
   {!!$cavas->render()!!}
 </nav>
   
-  </div>
-          
+  </div>     
 
 
         <input class="inputRegistrar" type="submit" value="registrar cava" data-reactid=".0.0.5">
@@ -232,15 +222,13 @@ document.location.href = "registrarCava";
 
 $(".inputFiltrar").click(function(e){
 
-var codigo=$("#idcodigo").val();
+var id=$("#idcodigo").val();
 var en_uso=$("#iden_uso").val();
 var tipo=$("#idtipo").val();
-var temperatura_minima=$("#idtemperatura_minima").val();
-var temperatura_maxima=$("#idtemperatura_maxina").val();
+//var temperatura_minima=$("#idtemperatura_minima").val();
+//var temperatura_maxima=$("#idtemperatura_maxina").val();
 
-
-
-document.location.href = "filtrarCava?codigo=" + codigo +"&en_uso="+en_uso+"&tipo="+tipo+"&temperatura_minima="+temperatura_minima+"&temperatura_maxima="+temperatura_maxima  ;
+document.location.href = "filtrarCava?en_uso=" + en_uso +"&tipo="+tipo +"&id=" +id;
 
 });
 

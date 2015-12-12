@@ -257,9 +257,6 @@ if($request['passwordAnterior']==="") {
       $usuarios= Usuario::paginate(10);
       $usuarios->setPath('listarUsuario');
 
-    /*  $usuarios = Usuario::paginate(2);
-      $usuarios->setPath('listarUsuario');*/
-     
          return view('Usuario/listarUsuario', compact('usuarios'));
     }
 
