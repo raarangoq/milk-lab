@@ -101,9 +101,11 @@
 
 <div class="wrapper">
 
-  <div class="table">
+  
 
  @foreach($productos_derivados as $producto_derivado) 
+
+ <div class="table borde">
              <div class="row header blue">
 
       <div class="cell">
@@ -136,7 +138,7 @@
 
   <div class="row">
 
-      <div class="cell" align="center">
+      <div class="cell fuente" align="center">
         {{$producto_derivado->nombre}}
       </div>
 
@@ -168,11 +170,24 @@
 <br>
 <!-- TABLA DE TAMANIO-->
 
-<div class="wrapper">
 
-  <div class="table">
-    <div class="row header blue">
 
+  <div class="table" style="
+    margin-left: 50px;
+    margin-top: 20px;">
+    <div class="row header green">
+     <div class="cell">
+        TAMAÑOS
+      </div>
+
+          <div  class="cell">
+ <input class="inputEditar" id={{$producto_derivado->nombre}} type="submit" value="editar " data-reactid=".0.0.5">
+
+
+  </div> 
+    </div>
+
+    <div class="row header green">
       <div class="cell">
         Tipo
       </div>
@@ -202,13 +217,10 @@
     </div>
   @endif
 @endforeach
+
 </div>
  
-    <div>
- <input class="inputEditar" type="submit" value="editar " data-reactid=".0.0.5">
 
-
-  </div> 
 
  <div>
   <input class="inputRegistrarLote" type="submit" value="registrar lote producto derivado " data-reactid=".0.0.5"> 
@@ -220,7 +232,11 @@
 
 @endforeach
 
+
+<nav>
   {!! $productos_derivados->render() !!} 
+</nav>
+  
 
 
 
@@ -240,6 +256,13 @@
 
 
 
+
+
+
+
+
+
+
 <!-- FIN Contenido -->
 
 @endsection
@@ -253,9 +276,11 @@ $(document).ready(function(){
 
 $(".inputEditar").click(function(e){
  var id = e.target.id;
+
+ var productoDerivado = id ;
 //alert(id);
 
-document.location.href = "editarProductoDerivado?id=" + id;
+document.location.href = "editarProductoDerivado?producto=" + productoDerivado;
 
 
 
@@ -265,7 +290,7 @@ $(".inputRegistrar").click(function(e){
  var id = e.target.id;
 //alert(id);
 
-document.location.href = "registrarProductoDerivado?id=" + id;
+document.location.href = "registrarProductoDerivado";
 
 });
 
@@ -273,28 +298,12 @@ $(".inputRegistrarLote").click(function(e){
  var id = e.target.id;
 //alert(id);
 
-document.location.href = "registrarLoteProductoDerivado?id=" + id;
-
-});
-
-$("[href]").click(function(e){
- //var id = e.target.id;
-alert('ok');
-
+document.location.href = "#";
 //document.location.href = "registrarLoteProductoDerivado?id=" + id;
 
 });
 
 
-
-
-$(".pagination").click(function(e){
- //var id = e.target.id;
-alert("hola");
-
-document.location.href = "registrarLoteProductoDerivado";
-
-});
 
 
 

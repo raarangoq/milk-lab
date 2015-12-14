@@ -16,7 +16,7 @@
 
                          <div class="control" data-reactid=".0.0.1">
                            
-                             <input name="NIT" type="text" id="idnit" required="" data-reactid=".0.0.1.0" class="active" value= {{$proveedor->NIT}}>
+                             <input name="NIT" type="number" id="idnit" required="" data-reactid=".0.0.1.0" class="active" value= {{$proveedor->NIT}}>
                             <label data-reactid=".0.0.1.1">* NIT de proveedor</label>
                         </div>
 
