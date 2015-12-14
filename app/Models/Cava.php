@@ -30,10 +30,11 @@ class Cava extends Model
     ];
 
     //filtros 
-    public static function filterAndPaginate($id, $tipo){
+    public static function filterAndPaginate($id, $tipo,$en_uso){
         
         return Cava::id($id)
                    ->tipo($tipo)
+                   ->en_uso($en_uso)
                    ->paginate();
 
     }
@@ -46,8 +47,9 @@ class Cava extends Model
             $query->where('id',$id);
         }
     }
-    public function scopeTipo($query, $tipo){
-       dd("scope:". $tipo);
+    public function scopeTipo($query, $tipo)
+    {
+      // dd("scope:". $tipo);
 
       $types = array(
 
@@ -56,14 +58,39 @@ class Cava extends Model
        'Congelamiento'      =>'Congelamiento',
        'Maduración'         =>'Maduración',
        'Producto terminado' =>'Producto terminado'
-    ]
+      ]
         );
 
-      if($tipo != "" && isset($types[$tipo])){
-
+      if($tipo != "" && isset($types[$tipo]))
+      {
         $query->where('tipo',$tipo);
       }
 
+    }
+
+    public function scopeEn_uso($query, $en_uso)
+    {
+        dd("scope:". $en_uso);
+        $en_usos = array(
+         'en_usos' => [
+         ''   => 'seleccionar uso',
+         'SI' =>'1',
+         'NO' =>'0'
+         ]
+            );
+
+        if($en_uso != "" && isset($en_usos[$en_uso]))
+        {
+           $query->where('en_uso',$en_uso);
+        }
+    }
+    public function scopeTemperatura_minima($query, $temperatura_minima)
+    {
+
+    }
+    public function scopeTemperatura_maxima($query, $temperatura_maxima)
+    {
+        
     }
 
 

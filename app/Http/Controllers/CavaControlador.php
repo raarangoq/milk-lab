@@ -224,7 +224,6 @@ protected function getFiltrarListarCava(Request $request){
 
    dd($request->get('tipo'));
 
-
      if(  $tipo!= "tipo" AND $en_uso != "-seleccionar uso-"){
 
           $cavas=Cava::where([
@@ -241,8 +240,9 @@ protected function getFiltrarListarCava(Request $request){
      }
 
      */
-     $cavas= Cava::filterAndPaginate($request->get('id'),$request->get('tipo'));
-
+    
+     $cavas= Cava::filterAndPaginate($request->get('id'),$request->get('tipo'),$request->get('en_uso'));
+       $cavas->setPath('listarCava');
      return view('Cava/listarCava', compact('cavas'));
 }
    
