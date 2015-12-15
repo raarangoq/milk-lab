@@ -33,7 +33,8 @@ class FlujoBodegaControlador extends Controller  {
     $codigo_bodega=$request['codigo_bodega'];
       
 
-    	$materiasPrimas=MateriaPrima::all();
+    	$materiasPrimas
+      =MateriaPrima::all();
     	$programas=Programa::all();
     	$usuarios=Usuario::all();
       
@@ -41,7 +42,8 @@ class FlujoBodegaControlador extends Controller  {
         return view("FlujoBodega/registrarFlujoBodega", compact('materiasPrimas','programas','usuarios','codigo_bodega'));
     }
 
-
+<div>
+</div>
 protected function getRegistrarFlujoBodegaAJAX(Request $request) {
 
 //NO ES NECESARIO VALIDAR, SE VALIDA DESDE LA VISTA, EN EL SCRIPT DE JQUERY

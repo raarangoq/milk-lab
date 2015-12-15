@@ -12,42 +12,42 @@
      <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"> 
      <input type="hidden" name="bodega" value={{$codigo_bodega}}>       
 
-             <div class="wrapper">
+       <div class="wrapper">
   
-             <div class="table">
+          <div class="table">
 
              <div class="row header blue">
-      <div class="cell">
-        *Materia prima
-      </div>
-      <div class="cell">
-        *Fecha
-      </div>
-      <div class="cell">
-        *Entra
-      </div>
-      <div class="cell">
-        *Sale
-      </div>
-      <div class="cell">
-        *Motivo de salida
-      </div>
-      <div class="cell">
-        *Total
-      </div>
-      <div class="cell">
-        *Existencia
-      </div>
-      <div class="cell">
-         Observaciones
-      </div>
-      <div class="cell">
-        *Programa
-      </div>
-      <div class="cell">
-        *Responsable
-      </div>
-    </div>
+                <div class="cell">
+                  *Materia prima
+                </div>
+                <div class="cell">
+                  *Fecha
+                </div>
+                <div class="cell">
+                  *Entra
+                </div>
+                <div class="cell">
+                  *Sale
+                </div>
+                <div class="cell">
+                  *Motivo de salida
+                </div>
+                <div class="cell">
+                  *Total
+                </div>
+                <div class="cell">
+                  *Existencia
+                </div>
+                <div class="cell">
+                   Observaciones
+                </div>
+                <div class="cell">
+                  *Programa
+                </div>
+                <div class="cell">
+                  *Responsable
+               </div>
+           </div>
 
 
 
@@ -57,14 +57,15 @@
 <div class="row">
 
       <div class="cell" align="center">
-     <select id="idmateria_prima" name="materia_prima0" data-reactid=".0.0.6.0" class="active" > 
-       <option></option>            
- @foreach($materiasPrimas as $materiasPrima)
-<option value={{$materiasPrima->nombre}}>{{$materiasPrima->nombre}} -- {{$materiasPrima->unidad_de_medida}}
-</option>
-@endforeach   
+             <select id="idmateria_prima" name="materia_prima0" data-reactid=".0.0.6.0" class="active" > 
+               <option></option>            
+                   @foreach($materiasPrimas as $materiasPrima)
+                  <option value={{$materiasPrima->nombre}}>
+                    {{$materiasPrima->nombre}} -- {{$materiasPrima->unidad_de_medida}}
+                  </option>
+                  @endforeach   
 
-        </select>
+            </select>
       </div>
 
       <div class="cell">
@@ -79,11 +80,11 @@
         <input type="number" name="sale0">
       </div>
       <div class="cell" align="center">
-        <select name="motivo_de_salida0">
-        <option></option>
-          <option>Producción</option>
-          <option>Descarte</option>
-        </select>
+          <select name="motivo_de_salida0">
+          <option></option>
+            <option>Producción</option>
+            <option>Descarte</option>
+          </select>
       </div>
        <div class="cell">
         <input type="number" name="total0">
@@ -95,21 +96,20 @@
         <input type="text" name="observaciones0" class="active">
       </div>
       <div class="cell" align="center">
-        <select id="idprograma" name="programa0" data-reactid=".0.0.6.0" class="active" > 
-                <option></option>               
- @foreach($programas as $programa)
-<option value={{$programa->numero_de_programa}}>{{$programa->nombre}}</option>
-@endforeach   
-
-        </select>
+            <select id="idprograma" name="programa0" data-reactid=".0.0.6.0" class="active" > 
+               <option></option>               
+                 @foreach($programas as $programa)
+                <option value={{$programa->numero_de_programa}}>{{$programa->nombre}}</option>
+                @endforeach   
+            </select>
       </div>
 
       <div class="cell" align="center">
         <select id="idusuario_responsable" name="usuario_responsable0" data-reactid=".0.0.6.0" class="active" > 
-                       <option></option>        
- @foreach($usuarios as $usuario)
-<option value={{$usuario->correo}}>{{$usuario->nombre}}--{{$usuario->rol}}--{{$usuario->correo}}</option>
-@endforeach   
+             <option></option>        
+             @foreach($usuarios as $usuario)
+            <option value={{$usuario->correo}}>{{$usuario->nombre}}--{{$usuario->rol}}--{{$usuario->correo}}</option>
+            @endforeach   
 
         </select>
       </div>
@@ -125,10 +125,10 @@
 
       <div class="cell" align="center">
         <select id="idmateria_prima" name="materia_prima1" data-reactid=".0.0.6.0" class="active" > 
-                   <option></option>            
- @foreach($materiasPrimas as $materiasPrima)
-<option value={{$materiasPrima->nombre}}>{{$materiasPrima->nombre}} -- {{$materiasPrima->unidad_de_medida}}</option>
-@endforeach   
+            <option></option>            
+             @foreach($materiasPrimas as $materiasPrima)
+            <option value={{$materiasPrima->nombre}}>{{$materiasPrima->nombre}} -- {{$materiasPrima->unidad_de_medida}}</option>
+            @endforeach   
 
         </select>
       </div>
@@ -142,11 +142,11 @@
         <input type="number" name="sale1">
       </div>
       <div class="cell" align="center">
-        <select name="motivo_de_salida1">
-        <option></option>
-          <option>Producción</option>
-          <option>Descarte</option>
-        </select>
+          <select name="motivo_de_salida1">
+          <option></option>
+            <option>Producción</option>
+            <option>Descarte</option>
+          </select>
       </div>
        <div class="cell">
         <input type="number" name="total1">
@@ -159,19 +159,19 @@
       </div>
       <div class="cell" align="center">
         <select id="idprograma" name="programa1" data-reactid=".0.0.6.0" class="active" > 
-                        <option></option>       
- @foreach($programas as $programa)
-<option value={{$programa->numero_de_programa}}>{{$programa->nombre}}</option>
-@endforeach   
+              <option></option>       
+               @foreach($programas as $programa)
+              <option value={{$programa->numero_de_programa}}>{{$programa->nombre}}</option>
+              @endforeach   
 
         </select>
       </div>
       <div class="cell" align="center">
         <select id="idusuario_responsable" name="usuario_responsable1" data-reactid=".0.0.6.0" class="active" > 
-                     <option></option>          
- @foreach($usuarios as $usuario)
-<option value={{$usuario->correo}}>{{$usuario->nombre}}--{{$usuario->rol}}--{{$usuario->correo}}</option>
-@endforeach   
+            <option></option>          
+             @foreach($usuarios as $usuario)
+            <option value={{$usuario->correo}}>{{$usuario->nombre}}--{{$usuario->rol}}--{{$usuario->correo}}</option>
+            @endforeach   
 
         </select>
       </div>
@@ -179,19 +179,14 @@
 
 </div>
    
-
-
-
-
-
 <div class="row">
 
       <div class="cell" align="center">
         <select id="idmateria_prima" name="materia_prima2" data-reactid=".0.0.6.0" class="active" > <option></option>
                                
- @foreach($materiasPrimas as $materiasPrima)
-<option value={{$materiasPrima->nombre}}>{{$materiasPrima->nombre}} -- {{$materiasPrima->unidad_de_medida}}</option>
-@endforeach   
+           @foreach($materiasPrimas as $materiasPrima)
+          <option value={{$materiasPrima->nombre}}>{{$materiasPrima->nombre}} -- {{$materiasPrima->unidad_de_medida}}</option>
+          @endforeach   
 
         </select>
       </div>

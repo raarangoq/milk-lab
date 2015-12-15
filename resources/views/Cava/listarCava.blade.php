@@ -27,7 +27,7 @@
 
       <div class="cell">
        Tipo
-        </div>
+      </div>
       <div class="cell">
        <select id="idtipo" name="tipo" data-reactid=".0.0.´6.0" class="active" >
                               <option>--seleccionar tipo--</option>
@@ -87,12 +87,12 @@
 
  </div>
 
-    <div class="wrapper">
+<div class="wrapper">
   
-             <div class="table">
+  <div class="table">
 
 
-             <div class="row header blue">
+    <div class="row header blue">
 
       <div class="cell">
         Codigo
@@ -108,14 +108,16 @@
         Temperatura maxima
       </div>
       <div class="cell">
-        En uso?
-
+        En uso
       </div>
       <div class="cell">
         Editar
       </div>
       <div class="cell">
         Control de cava
+      </div>
+      <div class="cell" align="center">
+        Flujo de cava
       </div>
     </div>
 
@@ -160,11 +162,17 @@
         <input class="inputVer" type="submit" id={{$cava->id}} value="ver" data-reactid=".0.0.7" >
       </div>
 
+      <div class="cell">
+          <input class="inputVerFlujo" type="submit" id={{$cava->id}} value="ver" data-reactid=".0.0.7" >
+            
+         <input class="inputRegistrarFlujo" type="submit" id={{$cava->id}} value="registrar" data-reactid=".7">
+      </div>
+
     </div>
 
 
 @endforeach
-
+<br>
 <nav>
   {!!$cavas->render()!!}
 </nav>
@@ -215,6 +223,14 @@ document.location.href = "registrarCava";
 
 
 });
+$(".inputVerFlujo").click(function(e){
+ var id = e.target.id;
+//alert(id);
+
+document.location.href = "registrarFlujoCava?id=" + id;
+
+});
+
 
 $(".inputFiltrar").click(function(e){
 
@@ -227,6 +243,7 @@ var tipo=$("#idtipo").val();
 document.location.href = "filtrarCava?en_uso=" + en_uso +"&tipo="+tipo +"&id=" +id;
 
 });
+
 
 });
 

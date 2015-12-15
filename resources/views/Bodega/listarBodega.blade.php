@@ -97,12 +97,11 @@
             <div class="cell">
               Editar
             </div>
-        </div>
-      
+        </div>     
 
-     @foreach($bodegas as $bodega)
+         @foreach($bodegas as $bodega)
 
-     <div class="row">
+      <div class="row">
           <div class="cell" align="center">
             {{$bodega->codigo}}
           </div>

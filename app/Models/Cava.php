@@ -40,7 +40,7 @@ class Cava extends Model
     }
     public function scopeId($query, $id){
 
-       // dd("scope:". $id);
+   dd("scope:". $id);
 
         if(trim($id) != ""){
             
@@ -49,7 +49,7 @@ class Cava extends Model
     }
     public function scopeTipo($query, $tipo)
     {
-      // dd("scope:". $tipo);
+      dd("scope:". $tipo);
 
       $types = array(
 

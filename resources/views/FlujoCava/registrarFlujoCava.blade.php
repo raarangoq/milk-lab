@@ -4,6 +4,9 @@
 
 @include('alerts.request')
 
+<a href="listarCava">
+    <img src="css/iconos/atras.png">
+</a>
 
 <div class="wrapper">
   
@@ -14,33 +17,34 @@
           
           REGISTRAR FLUJO DE CAVA
         </div>
+   
       </div>
 
          <div class="row">
-		        <div class="control" data-reactid=".0.0.2">
-
-                            <select name="tipo" data-reactid=".0.0.2.0" class="active">
-                              <option>Congelamiento</option>
-                              <option>Maduración</option>
-                              <option>Producto terminado</option>
-
-                            </select>
+            <div class="cell">
+              * Tipo
+            </div><!--  listar tipos de cavas que este en uso -->
+		        <div class="cell">
+                <select id="idtipo" name="tipo" data-reactid=".0.0.2.0" class="active">
+                  <option>Congelamiento</option>
+                  <option>Maduración</option>
+                  <option>Producto terminado</option>
+                </select>
                             
-                            <label data-reactid=".0.0.2.1">* Tipo </label>
-                   </div>
-                   <!-- cargar cavas que esten en uso (en_uso == 1)-->
-                   <div class="cell">
-                   	<select name="tipo" data-reactid=".0.0.2.0" class="active">
-                              @foreach($cavas as $cava)
-                              <option>{{$cava->id}}</option>
-                             @endforeach
+            </div>
+                   
+         </div>
 
-                    </select>
-                   	   
-                   <label data-reactid=".0.0.2.1">* id</label>
-                   </div>
-
-
+         <div class="row">
+            <div class="cell">
+              * Id
+            </div>
+            <div class="cell"><!--  listar id de cavas que este en uso -->
+               <select name="id" id="idid">
+                 <option >--Listar ids--</option>
+               </select>
+              
+            </div>
 
          </div>
 
@@ -48,77 +52,82 @@
 </div>
 
 <!-- REGISTRAR FLUJOS DE CAVAS-->
-
 <div class="wrapper">
   
-    <div class="table">
-         <div class="row header blue">
-               <div class="cell">
-               * Fecha
-              </div>
-              <div class="cell">
-               * Producto derivado
-              </div>
-              <div class="cell">
-                * Tamaño
-              </div>
-              <div class="cell">
-                * Entra
-              </div>
+  <div class="table">
 
-              <div class="cell">
-                * Sale
-              </div>
-              <div class="cell">
-              	* Motivo de salida
-              </div>
-              <div class="cell">
-              	* Total
-              </div>
-              <div class="cell">
-              	* Existencia
-              </div>
-              <div class="cell">
-              	Programa              	
-              </div>
-              <div class="cell">
-              	* Responsable              	
-              </div>
-              <div class="cell">
-              	Observaciones             	
-              </div>
-              <div class="cell">
-              	
-              </div>
-
-          </div>
-         
-         @foreach($controlDeCavaSeleccionado as $controlCava)
-
-          <div class="row">
-              <div class="cell" align="center">
-                {{$controlCava->fecha}}
-              </div>
-              <div class="cell">
-                {{$controlCava->humedad}}
-              </div>
-              <div class="cell">
-                {{$controlCava->temperatura}}
-              </div>
-              <div class="cell">
-                {{$controlCava->usuario_realizador}}
-              </div>
-
-              <div class="cell">
-               <input class="inputBorrar" id={{$controlCava->fecha}}  type="submit"  value="borrar" data-reactid=".0.0.7" >
-              </div>          
-
-          </div>
-
-        @endforeach
-
-        <div id="dialog-confirm"></div>
-
+    <div class="row header blue">
+      <div class="cell">
+        *Fecha
+      </div>
+      <div class="cell">
+        *Producto derivado
+      </div>
+      <div clas="cell">
+        *Tamaño
+      </div>
+      <div class="cell">
+        *Entra
+      </div>
+      <div class="cell">
+        *Sale
+      </div>
+      <div class="cell">
+        *Motivo de salida
+      </div>
+      <div class="cell">
+        *Total
+      </div>
+      <div class="cell">
+        *Existencia
+      </div>
+      <div class="cell">
+         Programa
+      </div>
+      <div class="cell">
+        *Responsable
+      </div>
+      <div class="cell">
+        Observaciones 
+      </div>
+      <div class="cell">
+        
+      </div>
     </div>
-<input class="inputRegistrar" id={{$id_cava}} type="submit" value="registrar control cava" data-reactid=".0.0.5">
+    
+
+    <div class="row">
+      <div class="cell">
+        <input type="date" name="fecha0">
+      </div>
+      <div class="cell" align="center">
+        <select name="producto_derivado0" id="idproducto_derivado" class="active">
+          <option ></option>
+         <!-- @foreach($productosDerivados as $productoDerivado)
+          <option value={{$productoDerivado->nombre}}>
+            {{$productoDerivado->nombre}}
+          </option>
+          @endforeach -->
+        </select>
+      </div>
+      <div class="cell">
+        
+      </div>
+      
+    </div>
+
+
+
+  </div>
 </div>
+
+
+         
+       
+@endsection
+          
+             
+
+  
+
+      

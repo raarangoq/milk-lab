@@ -78,7 +78,9 @@
                     <ul class="submenu">
                         <li><a href="registrarCava">Registrar Cava</a></li>
                         <li><a href="listarCava">Listar Cavas</a></li>
-
+                        <li><a href="registrarFlujoCava"> Registrar flujo Cava</a></li>
+                         <li><a href="editarFlujoCava">Editar flujo Cava</a></li>
+                         <li><a href="eliminarFlujoCava">Eliminar flujo de Cava</a></li>
                     </ul>
                 </li>
 

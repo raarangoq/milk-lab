@@ -54,13 +54,13 @@
                         <div class="control" data-reactid=".0.0.7">
                             <select id="iden_uso" name="en_uso" data-reactid=".0.0.7.0" class="active"> 
                                
-@if ($cava->en_uso === 1)
-   <option value="1">SI</option>
-   <option value="0">NO</option>
-@else
-    <option value="0">NO</option>
-     <option value="1">SI</option> 
-@endif                  
+                              @if ($cava->en_uso === 1)
+                                 <option value="1">SI</option>
+                                 <option value="0">NO</option>
+                              @else
+                                  <option value="0">NO</option>
+                                   <option value="1">SI</option> 
+                              @endif                  
 
                             </select>
                             <label data-reactid=".0.0.7.1">En uso</label>
