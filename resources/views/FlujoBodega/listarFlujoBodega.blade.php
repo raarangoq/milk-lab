@@ -13,9 +13,13 @@
     @import url(css/4.MENSAJES/style.css);
 </style>
 
-<a href="listarBodega">
+<div>
+    
+   <a href="listarBodega">
     <img src="css/iconos/atras.png">
-</a>
+</a> 
+</div>
+
 
 <div class="wrapper">
 
@@ -52,10 +56,10 @@
             <div class="cell">
                 Responsable
             </div>
-            <div class="cell">
+            <div class="cell green">
                 Editar
             </div>
-            <div class="cell">
+            <div class="cell red">
                 Borrar
             </div>
         </div>
@@ -97,10 +101,10 @@
             </div>
 
             <div class="cell">
-                <input class="inputEditar" id={{$flujo->id}} type="submit" value="editar" data-reactid=".0.0.7" >
+                <input class="inputEditar" id='{{$flujo->id}}' type="submit" value="editar" data-reactid=".0.0.7" >
                 </div>
                 <div class="cell">
-                    <input class="inputBorrar" id={{$flujo->id}} type="submit" value="borrar" data-reactid=".0.0.7" >
+                    <input class="inputBorrar" id='{{$flujo->id}}' type="submit" value="borrar" data-reactid=".0.0.7" >
                     </div>
                 </div>
 
@@ -111,8 +115,11 @@
                 <div id="dialog-confirm"></div>
 
 
+
+
             </div>
 
+<input class="inputRegistrar" type="submit" value="registrar control cava" data-reactid=".0.0.5">
         </div>
 
 
@@ -189,6 +196,24 @@ var id = e.target.id;
         //document.location.href = "editarBodega?codigo_bodega=" + codigo_bodega;
 
 });
+
+
+
+
+$(".inputRegistrar").click(function(e){
+
+     var codigo_bodega = {{$codigo_bodega}};
+
+document.location.href = "registrarFlujoBodega?codigo_bodega="+'{{$codigo_bodega}}' ;
+});
+
+
+
+
+
+
+
+
 });
 
         </script>

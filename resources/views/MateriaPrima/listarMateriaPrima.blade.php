@@ -24,7 +24,7 @@
             <div class="cell">
                 Unidad de medida
             </div>
-            <div class="cell">
+            <div class="cell green">
                 Editar
             </div>
             <div class="cell">
@@ -51,10 +51,10 @@
             </div>
 
             <div class="cell">
-                <input class="inputEditar" type="submit" id={{$materiaPrima->nombre}} value="editar" data-reactid=".0.0.7" >
+                <input class="inputEditar" type="submit" id='{{$materiaPrima->nombre}}' value="editar" data-reactid=".0.0.7" >
                 </div>
                 <div class="cell">
-                    <input class="inputRegistrarLote" type="submit" id={{$materiaPrima->nombre}} value="registrar" data-reactid=".0.0.7" >
+                    <input class="inputRegistrarLote" type="submit" id='{{$materiaPrima->nombre}}' value="registrar" data-reactid=".0.0.7" >
                     </div>
                 </div>
 
@@ -92,6 +92,7 @@
                     var id = e.target.id;
 
                     var nombre = id;
+                    //alert(nombre);
                     document.location.href = "editarMateriaPrima?nombre=" + nombre;
 
 
@@ -100,7 +101,11 @@
 
                 $(".inputRegistrarLote").click(function (e) {
 
+                    var id = e.target.id;
 
+                    var nombre = id;
+                    //alert(nombre);
+                    document.location.href = "registrarLoteMateriaPrima?nombre=" + nombre;
 
                 });
 

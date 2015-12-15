@@ -7,13 +7,16 @@
     <article>
         <section>
             <div id="stage" class="stage">
+                            <a href="listarControlCava?id={{$id_cava}}">
+                    <img src="css/iconos/atras.png">
+                </a>
                 <form action="registrarControlCava" method="post" data-reactid=".0">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"> 
                     <fieldset data-reactid=".0.0">
                         <legend data-reactid=".0.0.0">REGISTRAR CONTROL DE CAVA</legend>
 
                         <div class="control" data-reactid=".0.0.2">
-                            <input value={{$id_cava}} name="cava"  type="number" required="" data-reactid=".0.0.3.0" class="active bloqueado" readonly>
+                            <input value='{{$id_cava}}' name="cava"  type="number" required="" data-reactid=".0.0.3.0" class="active bloqueado" readonly>
                             <label data-reactid=".0.0.2.1">Cava</label>
                         </div>
                         <div class="control" data-reactid=".0.0.3">
@@ -32,12 +35,15 @@
                             <select id="idusuario_realizador" name="usuario_realizador" data-reactid=".0.0.6.0" class="active" > 
                                 <option></option>          
                                 @foreach($usuarios as $usuario)
-                                <option value={{$usuario->correo}}>{{$usuario->nombre}}--{{$usuario->rol}}--{{$usuario->correo}}</option>
+                                <option value='{{$usuario->correo}}'>{{$usuario->nombre}}--{{$usuario->rol}}--{{$usuario->correo}}</option>
                                 @endforeach   
 
                             </select>
                             <label data-reactid=".0.0.4.1">* Usuario Registrador</label>
                         </div>
+
+                        <p>* campos obligatorios </p>
+                        <br>
 
 
 

@@ -27,7 +27,7 @@
                         <div class="control" data-reactid=".0.0.2">
 
 
-                            <input  id="idcorreo" name="correo" type="email" placeholder="nuevo-correo@unal.edu.co" required="" data-reactid=".0.0.2.0" class="active" value={{$usuario['correo']}}>
+                            <input  id="idcorreo" name="correo" type="email" placeholder="nuevo-correo@unal.edu.co" required="" data-reactid=".0.0.2.0" class="active" value='{{$usuario->correo}}'>
 
                             <label data-reactid=".0.0.2.1">* Correo</label>
                         </div>
@@ -35,7 +35,7 @@
                         <div class="control" data-reactid=".0.0.2">
 
 
-                            <input  id="idcedula" name="cedula" type="number" placeholder="ceudla:" required="" data-reactid=".0.0.2.0" class="active" value={{$usuario['cedula']}}>
+                            <input  id="idcedula" name="cedula" type="number" placeholder="ceudla:" required="" data-reactid=".0.0.2.0" class="active" value='{{$usuario->cedula}}'>
 
                             <label data-reactid=".0.0.2.1">* Cedula</label>
                         </div>
@@ -43,7 +43,7 @@
                         <div class="control" data-reactid=".0.0.3">
 
 
-                            <input id="idnombre" name="nombre" type="text" id="name" placeholder="nombre:" required="" data-reactid=".0.0.3.0" class="active" value={{$usuario['nombre']}}>
+                            <input id="idnombre" name="nombre" type="text" id="name" placeholder="nombre:" required="" data-reactid=".0.0.3.0" class="active" value='{{$usuario->nombre}}'>
 
                             <label data-reactid=".0.0.3.1">* Nombre</label>
 

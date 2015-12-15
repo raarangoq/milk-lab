@@ -34,7 +34,7 @@
             <div class="cell">
                 En ejecucion?
             </div>
-            <div class="cell">
+            <div class="cell green">
                 Editar
             </div>
             <div class="cell">

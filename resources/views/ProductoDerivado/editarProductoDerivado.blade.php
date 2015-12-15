@@ -24,7 +24,7 @@
                         <legend data-reactid=".0.0.0">EDITAR PRODUCTO DERIVADO</legend> 
 
                         <div class="control" data-reactid=".0.0.3.0">
-                            <input value={{$producto_derivado->nombre}} name="nombre"  type="text" id="name" placeholder="nombre" required=""  data-reactid=".0.0.3.0" class="active">
+                            <input value='{{$producto_derivado->nombre}}' name="nombre"  type="text" id="name" placeholder="nombre" required=""  data-reactid=".0.0.3.0" class="active">
                             <label data-reactid=".0.0.3.1">* Nombre </label>
                         </div> 
                         <div class="control" data-reactid=".0.0.1">
@@ -46,7 +46,7 @@
                         </div>
 
                         <div class="control" data-reactid=".0.0.3.0">
-                            <br><input  value={{$producto_derivado->tiempo_de_vencimiento}} name="tiempo_de_vencimiento"  type="number" id="name" placeholder="Descripcion fisica dias" srequired="" data-reactid=".0.0.3.0" class="active">
+                            <br><input  value='{{$producto_derivado->tiempo_de_vencimiento}}' name="tiempo_de_vencimiento"  type="number" id="name" placeholder="Descripcion fisica dias" srequired="" data-reactid=".0.0.3.0" class="active">
                             <label data-reactid=".0.0.3.1">* Tiempo de vencimiento (dias)</label>
                         </div>
 
@@ -125,7 +125,7 @@
                                 <div class="row" id="idrow{{$index}}">
 
                                     <div class="cell"align="center" >
-                                        <input class=""   type="number" name="cantidad{{$index}}" value={{$tamano->cantidad}}>        
+                                        <input class=""   type="number" name="cantidad{{$index}}" value='{{$tamano->cantidad}}'>        
                                     </div>
                                     <div class="cell"align="center" >
                                         <select name="tipo{{$index}}">
@@ -162,9 +162,15 @@
 
                             </div>
 
+
+            <a class="inputAgregarFila">
+                    <img src="css/iconos/agregar.png"  width="35" height="35">
+                </a>
+<input class="inputAgregarFila" type="button" value="agregar fila" data-reactid=".0.0.5">
+  <br><br>
                         </div>
-                        <input class="inputAgregarFila" type="button" value="agregar fila" data-reactid=".0.0.5">
-                        <br><br>
+                        
+                      
 
 
 

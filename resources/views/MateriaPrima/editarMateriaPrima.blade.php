@@ -7,9 +7,13 @@
     <article>
         <section>
             <div id="stage" class="stage">
+            <a href="listarMateriaPrima">
+                    <img src="css/iconos/atras.png">
+                </a>
+
                 <form action="editarMateriaPrima" method="post" data-reactid=".0">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"> 
-                    <input type="hidden" name="nombreAnterior" value={{$materiaPrima->nombre}}>
+                    <input type="hidden" name="nombreAnterior" value='{{$materiaPrima->nombre}}'>
                     <fieldset data-reactid=".0.0">
                         <legend data-reactid=".0.0.0">EDITAR MATERIA PRIMA</legend>
 
@@ -26,7 +30,7 @@
                         </div>  
 
                         <div class="control" data-reactid=".0.0.1">
-                            <input name="nombre" type="text" value={{$materiaPrima->nombre}} required="" data-reactid=".0.0.1.0" class="active">
+                            <input name="nombre" type="text" value='{{$materiaPrima->nombre}}' required="" data-reactid=".0.0.1.0" class="active">
                             <label data-reactid=".0.0.1.1">* Nombre:</label>
                         </div>
 

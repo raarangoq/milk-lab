@@ -8,6 +8,11 @@
     <article>
         <section>
             <div id="stage" class="stage">
+            <div>
+            <a href="listarProveedor">
+                <img src="css/iconos/atras.png">
+              </a> 
+           </div>            
                 <form action="registrarProveedor" method="post" data-reactid=".0">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"> 
                     <fieldset data-reactid=".0.0">
@@ -35,6 +40,9 @@
                             <input name="direccion"  type="text" id="iddireccion" placeholder="DIRECCION : "  data-reactid=".0.0.4.0" class="active">
                             <label data-reactid=".0.0.4.1">Direccion</label>
                         </div>
+
+                        <p>* campos obligatorios </p>
+                        <br>
 
 
                         <input type="submit" value="registrar proveedor" data-reactid=".0.0.5">

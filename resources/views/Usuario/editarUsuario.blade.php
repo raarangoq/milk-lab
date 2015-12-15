@@ -28,14 +28,14 @@
                         <div class="control" data-reactid=".0.0.2">
 
 
-                            <input  id="idnombre" name="nombre" type="text" readOnly  required data-reactid=".0.0.2.0" class="active bloqueado" value={{$usuario->nombre}}>
+                            <input  id="idnombre" name="nombre" type="text" readOnly  required data-reactid=".0.0.2.0" class="active bloqueado" value='{{$usuario->nombre}}'>
 
                             <label data-reactid=".0.0.2.1">Nombre</label>
                         </div>
                         <div class="control" data-reactid=".0.0.2">
 
 
-                            <input  id="idcedula" name="cedula" type="number"  required readOnly data-reactid=".0.0.2.0" class="active bloqueado" value={{$usuario->cedula}}>
+                            <input  id="idcedula" name="cedula" type="number"  required readOnly data-reactid=".0.0.2.0" class="active bloqueado" value='{{$usuario->cedula}}'>
 
                             <label data-reactid=".0.0.2.1">Cedula</label>
                         </div>
@@ -43,7 +43,7 @@
                         <div class="control" data-reactid=".0.0.3">
 
 
-                            <input id="idcorreo" readOnly name="correo" type="email" required readOnly data-reactid=".0.0.3.0" class="active bloqueado"  value={{$usuario->correo}}>
+                            <input id="idcorreo" readOnly name="correo" type="email" required readOnly data-reactid=".0.0.3.0" class="active bloqueado"  value='{{$usuario->correo}}'>
 
 
                             <label data-reactid=".0.0.3.1">Correo de Usuario</label>

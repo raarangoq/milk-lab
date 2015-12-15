@@ -47,7 +47,7 @@
             <nav>
                 <h1><a href="#"><span>Milk - Lab</span></a></h1>
                 <ul>
-                    <li class=""><a href="home"><span>Home</span></a></li>
+                    <li class=""><a href="#"><span>Home</span></a></li>
                     <li class=""><a href="#"><span>Acerca de nosotros</span></a></li>
                     <li class=""><a href="#"><span>Servicios</span></a></li>
                     <li class=""><a href="#"><span>Productos</span></a></li>

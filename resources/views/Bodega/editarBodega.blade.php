@@ -6,10 +6,12 @@
     <article>
         <section>
             <div id="stage" class="stage">
-
-                <a href="listarBodega">
+<div>
+                  <a href="listarBodega">
                     <img src="css/iconos/atras.png">
-                </a>
+                </a>  
+</div>
+
 
                 <form action="editarBodega" method="post" data-reactid=".0">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"> 
@@ -19,7 +21,7 @@
                         <legend data-reactid=".0.0.0">EDITAR BODEGA</legend>
 
                         <div class="control" data-reactid=".0.0.3.0">
-                            <input name="codigo"  type="number" required="" data-reactid=".0.0.3.0" class="active" value={{$bodega->codigo}}>
+                            <input name="codigo"  type="number" required="" data-reactid=".0.0.3.0" class="active" value='{{$bodega->codigo}}'>
                             <label data-reactid=".0.0.3.1">* Codigo </label>
                         </div>                   
 

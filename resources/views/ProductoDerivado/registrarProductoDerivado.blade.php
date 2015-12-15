@@ -89,15 +89,7 @@
                             <label data-reactid=".0.0.1.1">*  Unidad de medidad  </label>
                         </div> 
 
-                        <p>* campos obligatorios </p>
-                        <br>  
-
-
-
-
-
-
-
+                       
                         <div class="wrapper" style="padding-left: 0px;">
 
 
@@ -169,11 +161,19 @@
 
                             </div>
 
-
+            <a class="inputAgregarFila">
+                    <img src="css/iconos/agregar.png"  width="35" height="35">
+                </a>
+<input class="inputAgregarFila" type="button" value="agregar fila" data-reactid=".0.0.5">
+  <br><br>
 
                         </div>
-                        <input class="inputAgregarFila" type="button" value="agregar fila" data-reactid=".0.0.5">
-                        <br><br>
+
+                         <br><br>  
+                         <p>* campos obligatorios </p>
+                        <br>  
+
+
 
                         <input class="inputRegistrarProducto" type="submit" value="registrar producto derivado" data-reactid=".0.0.6.2">
 

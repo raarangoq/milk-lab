@@ -7,6 +7,11 @@
     <article>
         <section>
             <div id="stage" class="stage">
+            <div>
+            <a href="listarCava">
+                <img src="css/iconos/atras.png">
+              </a> 
+           </div>
                 <form action="registrarPrograma" method="post" data-reactid=".0">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"> 
                     <fieldset data-reactid=".0.0">
@@ -61,11 +66,8 @@
                             <label data-reactid=".0.0.6.1">* Resposable:</label>
                         </div> 
 
-
-
-
-
-
+                        <p>* campos obligatorios </p>
+                        <br>
 
                         <input type="submit" value="registrar programa" data-reactid=".0.0.6.2">
 

@@ -43,11 +43,11 @@
                         </div>
 
                         <div class="control" data-reactid=".0.0.3">
-                            <input name="temperatura_minima"  type="number" step="0.001"     value={{$cava->temperatura_minima}} required="" data-reactid=".0.0.3.0" class="active">
+                            <input name="temperatura_minima"  type="number" step="0.001"     value='{{$cava->temperatura_minima}}' required="" data-reactid=".0.0.3.0" class="active">
                             <label data-reactid=".0.0.3.1">* Temperatura minima</label>
                         </div>
                         <div class="control" data-reactid=".0.0.4">
-                            <input name="temperatura_maxima"     type="number" step="0.001" value={{$cava->temperatura_maxima}} required="" data-reactid=".0.0.4.0" class="active">
+                            <input name="temperatura_maxima"     type="number" step="0.001" value='{{$cava->temperatura_maxima}}' required="" data-reactid=".0.0.4.0" class="active">
                             <label data-reactid=".0.0.4.1">* Temperatura maxima</label>
                         </div>
 

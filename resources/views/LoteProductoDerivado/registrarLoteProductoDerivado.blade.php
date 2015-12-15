@@ -7,11 +7,11 @@
     <article>
         <section>
             <div id="stage" class="stage">
-               <a href="listarLoteProductoDerivado">
+               <a href="listarProductoDerivado">
                              <img src="css/iconos/atras.png">
-                           </a>
+               </a>
 
-                <form action="registrarLoteProductoDerivado" method="post" data-reactid=".0">
+                <form action="listarProductoDerivado" method="get" data-reactid=".0">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"> 
                                              
 
@@ -24,17 +24,14 @@
 
 
                           <div class="control" data-reactid=".0.0.3.0">
-                            <input name="nombre"  type="text"  placeholder="numero de lote" required="" data-reactid=".0.0.3.0" class="active">
+                            <input name="nombre"  type="text"  placeholder="numero de lote" required="" data-reactid=".0.0.3.0" class="active" value=''>
                             <label data-reactid=".0.0.3.1">* Numero de lote </label>
                         </div> 
 
                           <div class="control" data-reactid=".0.0.1">
 
-                            <select name="producto_derivado" id="idtipo" data-reactid=".0.0.2.0" class="active">
-                             
-                               <option>--seleccione uno---</option>
-                              
-                           </select>
+                          <input  id="idnombre" name="nombre" type="text" readOnly  required data-reactid=".0.0.2.0" class="active bloqueado" value='{{$nombreProducto}}'>
+
                             
                             <label data-reactid=".0.0.1.1">* Producto derivado </label>
                          </div>
@@ -42,9 +39,13 @@
                          <div class="control" data-reactid=".0.0.1">
 
                             <select name="tamano" id="idtipo" data-reactid=".0.0.2.0" class="active">
-                             
-                               <option>--seleccione uno---</option>
-                              
+                              @foreach($tamanos as $tamano)
+
+                               
+                               <option value='{{$tamano->id}}'>{{$tamano->tipo}}--{{$tamano->cantidad}}</option>
+
+
+                              @endforeach
                            </select>
                             
                             <label data-reactid=".0.0.1.1">* Tamaño </label>
@@ -55,6 +56,14 @@
                             <select name="responsable" id="idtipo" data-reactid=".0.0.2.0" class="active">
                              
                                <option>--seleccione uno---</option>
+
+                               @foreach($usuarios as $responsable)
+
+                               
+                               <option value='{{$responsable->correo}}'>{{$responsable->nombre}}--{{$responsable->rol}}--{{$responsable->correo}}</option>
+
+
+                              @endforeach
                               
                            </select>
                             
@@ -76,6 +85,14 @@
                             <select name="responsable" id="idtipo" data-reactid=".0.0.2.0" class="active">
                              
                                <option>--seleccione uno---</option>
+
+                               @foreach($cavas as $cava)
+
+                               
+                               <option value='{{$cava->id}}'>{{$cava->id}}--{{$cava->tipo}}</option>
+
+
+                              @endforeach
                               
                            </select>
                             
@@ -104,6 +121,14 @@
                             <select name="programa"  data-reactid=".0.0.1.0" class="active">                             
                              
                                <option>--seleccione uno--</option>
+
+                               @foreach($programas as $programa)
+
+                               
+                               <option value='{{$programa->numero_de_programa}}'>{{$programa->nombre}}</option>
+
+
+                              @endforeach
                               
                               
                            </select>
@@ -115,7 +140,7 @@
                         <p>* campos obligatorios </p>
                         <br>  
                         
-         <input type="submit" value="registrar lote producto derivado" data-reactid=".0.0.6.2">
+         <input class="inputRegistrarLote" type="submit" value="registrar lote producto derivado" data-reactid=".0.0.6.2">
 
 
                     </fieldset>
@@ -135,3 +160,29 @@
 @endSection
 
 
+@endSection
+
+
+
+        @section('ajaxEditar')
+
+
+        <script>
+
+            $(document).ready(function () {
+
+              
+                $(".inputRegistrarLote").click(function (e) {
+
+                    alert("ESTA FUNCIONALIDAD TODAVIA NO SE ENCUENTRA DISPONIBLE");
+
+
+                });
+
+
+
+            });
+
+        </script>
+
+@endsection

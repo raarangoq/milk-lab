@@ -115,7 +115,7 @@
             <div class="cell">
                 Estado
             </div>
-            <div class="cell">
+            <div class="cell green">
                 Editar
             </div>
         </div>

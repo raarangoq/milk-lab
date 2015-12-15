@@ -20,6 +20,7 @@
 
 <div class="alert alert-success mensajeVerde">
 
+<img src="css/iconos/ok.png" width="30" height="30">
     {{Session::get("success")}}
 </div>
 
