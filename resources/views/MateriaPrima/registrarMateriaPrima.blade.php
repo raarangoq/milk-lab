@@ -12,27 +12,27 @@
                     <fieldset data-reactid=".0.0">
                         <legend data-reactid=".0.0.0">REGISTRAR MATERIA PRIMA</legend>
 
-                  
+
                         <div class="control" data-reactid=".0.0.6">
                             <select id="idtipo" name="tipo" data-reactid=".0.0.6.0" class="active" > 
-                               
-                            <option>Comestible</option>
-                              <option>Empaque</option>    
+
+                                <option>Comestible</option>
+                                <option>Empaque</option>    
 
                             </select>
                             <label data-reactid=".0.0.6.1">* Tipo:</label>
                         </div>  
 
-                         <div class="control" data-reactid=".0.0.1">
+                        <div class="control" data-reactid=".0.0.1">
                             <input name="nombre" type="text" placeholder="nombre de materia prima" required="" data-reactid=".0.0.1.0" class="active">
                             <label data-reactid=".0.0.1.1">* Nombre:</label>
                         </div>
 
                         <div class="control" data-reactid=".0.0.6">
                             <select id="idunidad_de_medida" name="unidad_de_medida" data-reactid=".0.0.6.0" class="active" > 
-                               
-                              <option>Litro</option>
-                              <option>Kilo</option>    
+
+                                <option>Litro</option>
+                                <option>Kilo</option>    
 
                             </select>
                             <label data-reactid=".0.0.6.1">* Tipo:</label>

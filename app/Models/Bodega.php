@@ -4,15 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Bodega extends Model
-{
+class Bodega extends Model {
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
     protected $table = 'bodegas';
-
     protected $primaryKey = 'codigo';
 
     /**
@@ -21,21 +20,21 @@ class Bodega extends Model
      * @var array
      */
     protected $fillable = [
-    	'codigo', 
-    	'tipo', 
-    	'en_uso', 
-    	'usuario_registrador'
+        'codigo',
+        'tipo',
+        'en_uso',
+        'usuario_registrador'
     ];
 
-    /*public function scopeType($query, $type){
+    /* public function scopeType($query, $type){
 
-        $types= config('opciones.filtroTipo');
+      $types= config('opciones.filtroTipo');
 
 
-        if($type != "" && isset($types[$type])){
+      if($type != "" && isset($types[$type])){
 
-            $query->where('type',$type);
+      $query->where('type',$type);
 
-        }
-    }*/
+      }
+      } */
 }

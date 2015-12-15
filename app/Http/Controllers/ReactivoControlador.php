@@ -12,24 +12,17 @@ use Illuminate\Http\Request;
 use Session;
 use Input;
 
-
 class ReactivoControlador extends Controller {
 
+    protected function getRegistrarReactivo() {
 
+        return view('FichaReactivo.registrarFichaReactivo');
+    }
 
-     protected function getRegistrarReactivo() {
-
-          return view('FichaReactivo.registrarFichaReactivo');
-      }
-
-     protected function postRegistrarReactivo(Request $request) {
+    protected function postRegistrarReactivo(Request $request) {
 
         $nomnbreR = $request['nombre'];
-        return $nombreR; 
-       
-      }
-
+        return $nombreR;
+    }
 
 }
-
-

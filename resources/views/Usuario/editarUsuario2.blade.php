@@ -19,26 +19,26 @@
 
 
 
-<select id="idCorreoBuscar" data-reactid=".0.0.1.0" class="active buscar"> 
+                            <select id="idCorreoBuscar" data-reactid=".0.0.1.0" class="active buscar"> 
 
 
 
-@foreach($usuarios as $user)
+                                @foreach($usuarios as $user)
 
-<option value={{$user->correo}} > {{$user->nombre}} -- {{$user->rol}} -- {{$user->correo}}</option>
+                                <option value={{$user->correo}} > {{$user->nombre}} -- {{$user->rol}} -- {{$user->correo}}</option>
 
-@endforeach
+                                @endforeach
 
 
-</select>  
+                            </select>  
 
-                           
+
 
 
                             <label data-reactid=".0.0.1.1">BUSCAR usuario</label>
                         </div><br/>
 
-                           <div class="control" data-reactid=".0.0.2">
+                        <div class="control" data-reactid=".0.0.2">
 
 
                             <input  id="idnombre" name="nombre" type="text" id="cedula" placeholder="nombre:" required="" data-reactid=".0.0.2.0" class="active">
@@ -63,17 +63,17 @@
 
 
                         </div>
-                       
+
                         <div class="control" data-reactid=".0.0.6">
                             <select id="idrol" name="rol" data-reactid=".0.0.6.0" class="active"> 
-                               
 
-                              <option>Director</option>
-                              <option>Estudiante</option>
-                              <option>Microbiólogo</option>
-                              <option>Operario</option>
-                              <option>Profesor</option>
-                              <option>Técnico operativo</option>                         
+
+                                <option>Director</option>
+                                <option>Estudiante</option>
+                                <option>Microbiólogo</option>
+                                <option>Operario</option>
+                                <option>Profesor</option>
+                                <option>Técnico operativo</option>                         
 
 
                             </select>
@@ -82,16 +82,16 @@
 
                         <div class="control" data-reactid=".0.0.7">
                             <select id="idhabilitado" name="habilitado" data-reactid=".0.0.7.0" class="active"> 
-                               
 
-                              <option>Habilitado</option>
-                              <option>Inhabilitado</option>                      
+
+                                <option>Habilitado</option>
+                                <option>Inhabilitado</option>                      
 
                             </select>
                             <label data-reactid=".0.0.7.1">Estado</label>
                         </div>  
 
-                                          
+
 
                         <input type="submit" value="editar usuario" data-reactid=".0.0.7">
 
@@ -112,35 +112,35 @@
 
 <script>
 
-$(document).ready(function(){
+    $(document).ready(function () {
 
-    $('#idCorreoBuscar').on('change',function(e){
-   
-    var correo = $('#idCorreoBuscar').val();
+        $('#idCorreoBuscar').on('change', function (e) {
 
-        $.get('/ajax?correo=' + correo,function(data){  
+            var correo = $('#idCorreoBuscar').val();
 
-
-          $('#idcorreo').val(data[0]['correo']);
-          $('#idnombre').val(data[0]['nombre']);
-          $('#idcedula').val(data[0]['cedula']);
-          $('#idrol').val(data[0]['rol']);
+            $.get('/ajax?correo=' + correo, function (data) {
 
 
-          if((data[0]['habilitado'])==1){
-          $('#idhabilitado').val('Habilitado');
-          }else{
-          $('#idhabilitado').val('Inhabilitado');
-          }
-
-          
+                $('#idcorreo').val(data[0]['correo']);
+                $('#idnombre').val(data[0]['nombre']);
+                $('#idcedula').val(data[0]['cedula']);
+                $('#idrol').val(data[0]['rol']);
 
 
-         });
+                if ((data[0]['habilitado']) == 1) {
+                    $('#idhabilitado').val('Habilitado');
+                } else {
+                    $('#idhabilitado').val('Inhabilitado');
+                }
 
-     });
-            
-});
+
+
+
+            });
+
+        });
+
+    });
 
 </script>
 

@@ -14,9 +14,9 @@
                     <fieldset data-reactid=".0.0">
                         <legend data-reactid=".0.0.0">REGISTRAR PROVEEDOR</legend>
 
-                         <div class="control" data-reactid=".0.0.1">
-                           
-                             <input name="NIT" type="number" id="idnit" required="" data-reactid=".0.0.1.0" class="active" value= {{$proveedor->NIT}}>
+                        <div class="control" data-reactid=".0.0.1">
+
+                            <input name="NIT" type="number" id="idnit" required="" data-reactid=".0.0.1.0" class="active" value= {{$proveedor->NIT}}>
                             <label data-reactid=".0.0.1.1">* NIT de proveedor</label>
                         </div>
 
@@ -25,13 +25,13 @@
                             <label data-reactid=".0.0.2.1">* Nombre de Proveedor</label>
                         </div>
 
-                         <div class="control" data-reactid=".0.0.3">
-                           
-                             <input name="telefono" type="number" id="idtelefono"   data-reactid=".0.0.3.0" class="active" value={{$proveedor->telefono}}>
+                        <div class="control" data-reactid=".0.0.3">
+
+                            <input name="telefono" type="number" id="idtelefono"   data-reactid=".0.0.3.0" class="active" value={{$proveedor->telefono}}>
                             <label data-reactid=".0.0.3.1">Telefono</label>
                         </div>
 
-                       
+
                         <div class="control" data-reactid=".0.0.4">
                             <input name="direccion"  type="text" id="iddireccion"   data-reactid=".0.0.4.0" class="active" value={{$proveedor->direccion}}>
                             <label data-reactid=".0.0.4.1">Direccion</label>
@@ -39,20 +39,20 @@
 
                         <div class="control" data-reactid=".0.0.7">
                             <select id="idhabilitado" name="habilitado" data-reactid=".0.0.7.0" class="active"> 
-                               
-@if ($proveedor->habilitado === 1)
-   <option value="1">SI</option>
-   <option value="0">NO</option>
-@else
-    <option value="0">NO</option>
-     <option value="1">SI</option> 
-@endif                  
+
+                                @if ($proveedor->habilitado === 1)
+                                <option value="1">SI</option>
+                                <option value="0">NO</option>
+                                @else
+                                <option value="0">NO</option>
+                                <option value="1">SI</option> 
+                                @endif                  
 
                             </select>
                             <label data-reactid=".0.0.7.1">Habilitado</label>
                         </div>  
 
-                        
+
                         <input type="submit" value="editar proveedor" data-reactid=".0.0.5">
 
                     </fieldset>

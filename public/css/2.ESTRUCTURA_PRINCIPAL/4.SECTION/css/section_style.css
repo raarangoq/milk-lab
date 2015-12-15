@@ -65,7 +65,10 @@ form {
   color: white;
 }
 
-[type="button"]{
+
+
+
+.cerrarSesion{
   background: #1a2530;
   display: inline-block;
   padding: 0.3em 1em 0.5em;
@@ -87,11 +90,18 @@ form {
     max-width: 230px;
    min-width: 20%;
 
-
 }
 
-[type="button"]:hover {
-  background: red;
+.inputAgregarFila:hover {
+  background: green;
+  color: white;
+}
+.inputAgregarFila:active {
+  background: #1a2530;
+  color: white;
+}
+.inputAgregarFila:focus {
+  background: #3498db;
   color: white;
 }
 
@@ -240,7 +250,6 @@ background: red;
 background: darkslateblue;
 
 }
-
 
 
 

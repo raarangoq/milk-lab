@@ -10,11 +10,11 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
-class Usuario extends Model implements AuthenticatableContract,
-                                    AuthorizableContract,
-                                    CanResetPasswordContract
-{
-    use Authenticatable, Authorizable, CanResetPassword;
+class Usuario extends Model implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract {
+
+    use Authenticatable,
+        Authorizable,
+        CanResetPassword;
 
     /**
      * The database table used by the model.
@@ -22,7 +22,6 @@ class Usuario extends Model implements AuthenticatableContract,
      * @var string
      */
     protected $table = 'usuarios';
-
     protected $primaryKey = 'correo';
 
     /**
@@ -31,12 +30,12 @@ class Usuario extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $fillable = [
-        'cedula', 
-        'correo', 
-        'password', 
-        'nombre', 
-        'rol', 
-        'habilitado', 
+        'cedula',
+        'correo',
+        'password',
+        'nombre',
+        'rol',
+        'habilitado',
         'usuario_creador'
     ];
 
@@ -46,4 +45,5 @@ class Usuario extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
 }

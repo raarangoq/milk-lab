@@ -2,7 +2,7 @@
 
 
 <style>
-    
+
     @import url(css/4.MENSAJES/style.css);
 </style>
 
@@ -20,10 +20,10 @@
 
                 <form action="editarPerfil" method="post" data-reactid=".0">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"> 
-                    
+
                     <fieldset data-reactid=".0.0">
                         <legend data-reactid=".0.0.0">EDITAR PERFIL</legend>
-                                           
+
                         <div class="control" data-reactid=".0.0.2">
 
 
@@ -75,7 +75,7 @@
                             <label data-reactid=".0.0.3.1">Password Nuevo</label>
 
                         </div>
-                       <div class="control" data-reactid=".0.0.3">
+                        <div class="control" data-reactid=".0.0.3">
 
 
                             <input id="idpassword2"  name="password2" type="password" placeholder="confirmar nuevo password"  data-reactid=".0.0.3.0" class="active">
@@ -83,8 +83,8 @@
                             <label data-reactid=".0.0.3.1">Confirmar Password</label>
 
                         </div>    
-                     
-                    
+
+
                         <input type="submit" value="editar perfil" data-reactid=".0.0.7">
 
                     </fieldset>

@@ -13,7 +13,7 @@
                         <legend data-reactid=".0.0.0">REGISTRAR CONTROL DE CAVA</legend>
 
                         <div class="control" data-reactid=".0.0.2">
-                         <input value={{$id_cava}} name="cava"  type="number" required="" data-reactid=".0.0.3.0" class="active bloqueado" readonly>
+                            <input value={{$id_cava}} name="cava"  type="number" required="" data-reactid=".0.0.3.0" class="active bloqueado" readonly>
                             <label data-reactid=".0.0.2.1">Cava</label>
                         </div>
                         <div class="control" data-reactid=".0.0.3">
@@ -24,22 +24,22 @@
                             <input name="humedad" type="number" step="0.001" placeholder="humedad" required="" data-reactid=".0.0.4.0" class="active">
                             <label data-reactid=".0.0.4.1">* Humedad</label>
                         </div>
-                         <div class="control" data-reactid=".0.0.4">
+                        <div class="control" data-reactid=".0.0.4">
                             <input name="temperatura" type="number" step="0.001" placeholder="temperatura" required="" data-reactid=".0.0.4.0" class="active">
                             <label data-reactid=".0.0.4.1">* Temperatura</label>
                         </div>
-                         <div class="control" data-reactid=".0.0.4">
+                        <div class="control" data-reactid=".0.0.4">
                             <select id="idusuario_realizador" name="usuario_realizador" data-reactid=".0.0.6.0" class="active" > 
-                     <option></option>          
- @foreach($usuarios as $usuario)
-<option value={{$usuario->correo}}>{{$usuario->nombre}}--{{$usuario->rol}}--{{$usuario->correo}}</option>
-@endforeach   
+                                <option></option>          
+                                @foreach($usuarios as $usuario)
+                                <option value={{$usuario->correo}}>{{$usuario->nombre}}--{{$usuario->rol}}--{{$usuario->correo}}</option>
+                                @endforeach   
 
-        </select>
+                            </select>
                             <label data-reactid=".0.0.4.1">* Usuario Registrador</label>
                         </div>
 
-                    
+
 
                         <input type="submit" value="registrar control cava" data-reactid=".0.0.5">
 
