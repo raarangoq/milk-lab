@@ -84,7 +84,6 @@ Route::get('editarMateriaPrima', 'MateriaPrimaControlador@getEditarMateriaPrima'
 Route::post('editarMateriaPrima', ['as' => 'editarMateriaPrima', 'uses' => 'MateriaPrimaControlador@postEditarMateriaPrima']);
 
 
-
 //------> FLUJO DE BODEGA (rutas) <----------------------------
 //REGISTRAR FLUJO DE BODEGA
 Route::get('registrarFlujoBodega', 'FlujoBodegaControlador@getRegistrarFlujoBodega');
@@ -96,6 +95,10 @@ Route::get('editarFlujoBodega', 'FlujoBodegaControlador@getEditarFlujoBodega');
 Route::post('editarFlujoBodega', ['as' => 'editarFlujoBodega', 'uses' => 'FlujoBodegaControlador@postEditarFlujoBodega']);
 //ELIMINAR/BORRAR FLUJO DE BODEGA
 Route::get('borrarFlujoBodega', 'FlujoBodegaControlador@getBorrarFlujoBodega');
+
+//----->LOTE DE MATERIA PRIMA (rutas) <---------------------------
+//REGISTRAR LOTE DE PRODUCTO DERIVADO
+Route::get('registrarLoteMateriaPrima', 'LoteMateriaPrimaControlador@getRegistrarLoteMateriaPrima');
 
 
 
@@ -142,3 +145,10 @@ Route::get('editarProductoDerivadoAJAX', 'ProductoDerivadoControlador@getEditarP
 //Route::post('editarProductoDerivado', ['as' => 'editarProductoDerivado', 'uses' => 'ProductoDerivadoControlador@postEditarProductoDerivado']); 
 //LISTAR PRODUCTO DERIVADO
 Route::get('listarProductoDerivado', 'ProductoDerivadoControlador@getListarProductoDerivado');
+
+//----->LOTE DE PRODUCTO DERIVADO (rutas) <---------------------------
+//REGISTRAR LOTE DE PRODUCTO DERIVADO
+Route::get('registrarLoteProductoDerivado', 'LoteProductoDerivadoControlador@getRegistrarLoteProductoDerivado');
+
+//LISTAR LOTE DE PRODUCTO DERIVADO
+Route::get('listarLoteProductoDerivado', 'LoteProductoDerivadoControlador@getListarLoteProductoDerivado');

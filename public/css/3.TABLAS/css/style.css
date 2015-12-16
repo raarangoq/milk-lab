@@ -76,12 +76,7 @@ font-size: 15pt;
   text-align: center;
 }
 
-.cell.red {
-  padding: 6px 12px;
-  display: table-cell;
-  color: #ffffff;
-  background: #ea6153;
-}
+
 @media screen and (max-width: 580px) {
   .cell {
     padding: 2px 12px;
@@ -89,10 +84,18 @@ font-size: 15pt;
   }
 }
 
-
-.inputRegistrar{
-
-
-
-
+.cell.red {
+  padding: 6px 12px;
+  display: table-cell;
+  color: #ffffff;
+  background: #ea6153;
 }
+
+.cell.green {
+  padding: 6px 12px;
+  display: table-cell;
+  color: #ffffff;
+  background: #27ae60;
+}
+
+

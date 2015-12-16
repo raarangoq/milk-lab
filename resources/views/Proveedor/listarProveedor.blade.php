@@ -34,7 +34,7 @@
             <div class="cell">
                 Habilitado?
             </div>
-            <div class="cell">
+            <div class="cell green">
                 Editar
             </div>
         </div>
@@ -72,7 +72,7 @@
                 </div>
 
                 <div class="cell">
-                    <input class="inputEditar" type="submit" id={{$proveedor->NIT}} value="editar" data-reactid=".0.0.7" >
+                    <input class="inputEditar" type="submit" id='{{$proveedor->NIT}}' value="editar" data-reactid=".0.0.7" >
                     </div>
                 </div>
 

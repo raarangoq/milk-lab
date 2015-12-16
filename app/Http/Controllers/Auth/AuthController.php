@@ -70,13 +70,17 @@ use AuthenticatesAndRegistersUsers,
             $usuario['habilitado'] = $user['0']['habilitado'];
             $usuario['usuario_creador'] = $user['0']['usuario_creador'];
 
+            $user = $user['0'];
+
 
             Session::put('usuario', $usuario);
 
-            return view("home");
+            return view("home",compact('user'));
         } else {
             //return "credenciales incorrectas";
-            return Redirect::to('login')->withErrors("XXXXXX");
+            
+            //return "Nombre de usuario O contraseña incorrecta";
+            return redirect('login')->with('errors', 'error en teperatura minima y maxima');
         }
     }
 

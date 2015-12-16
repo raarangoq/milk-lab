@@ -13,16 +13,16 @@
                 </a>
                 <form action="editarPrograma" method="post" data-reactid=".0">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"> 
-                    <input type="hidden" name="anteriorNumero_programa" value={{$programa->numero_de_programa}}> 
+                    <input type="hidden" name="anteriorNumero_programa" value='{{$programa->numero_de_programa}}'> 
                     <fieldset data-reactid=".0.0">
                         <legend data-reactid=".0.0.0">EDITAR PROGRAMA</legend>
 
                         <div class="control" data-reactid=".0.0.1">
-                            <input name="numero_programa" type="number"  required="" data-reactid=".0.0.1.0" class="active" value={{$programa->numero_de_programa}}>
+                            <input name="numero_programa" type="number"  required="" data-reactid=".0.0.1.0" class="active" value='{{$programa->numero_de_programa}}'>
                             <label data-reactid=".0.0.1.1">* Numero de programa:</label>
                         </div>
                         <div class="control" data-reactid=".0.0.1">
-                            <input name="nombre_programa" type="text"  required="" data-reactid=".0.0.1.0" class="active" value={{$programa->nombre}}>
+                            <input name="nombre_programa" type="text"  required="" data-reactid=".0.0.1.0" class="active" value='{{$programa->nombre}}'>
                             <label data-reactid=".0.0.1.1">* Nombre de programa:</label>
                         </div>
 
@@ -70,7 +70,7 @@
                                 <option>{{$programa->usuario_responsable}}</option>
                                 @foreach($usuarios as $user)
 
-                                <option value={{$user->correo}}>{{$user->nombre}} -- {{$user->rol}} -- {{$user->correo}}</option>
+                                <option value='{{$user->correo}}'>{{$user->nombre}} -- {{$user->rol}} -- {{$user->correo}}</option>
                                 @endforeach   
 
 

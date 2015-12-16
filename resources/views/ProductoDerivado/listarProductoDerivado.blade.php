@@ -181,10 +181,18 @@
                 </div>
 
                 <div  class="cell">
-                    <input class="inputEditar" id={{$producto_derivado->nombre}} type="submit" value="editar " data-reactid=".0.0.5">
+                    <input class="inputEditar" id='{{$producto_derivado->nombre}}' type="submit" value="editar " data-reactid=".0.0.5">
+                </div> 
 
 
-                    </div> 
+                <div  class="cell">
+                <a class="inputEditar">
+                    <img src="css/iconos/editar2.png" id='{{$producto_derivado->nombre}}' width="35" height="35"s>
+                </a>
+                </div>
+
+
+
                 </div>
 
                 <div class="row header green">
@@ -223,7 +231,7 @@
 
 
             <div>
-                <input class="inputRegistrarLote" type="submit" value="registrar lote producto derivado " data-reactid=".0.0.5"> 
+                <input class="inputRegistrarLote" id='{{$producto_derivado->nombre}}' type="submit" value="registrar lote producto derivado " data-reactid=".0.0.5"> 
             </div>
             <br>
 
@@ -296,10 +304,10 @@
 
         $(".inputRegistrarLote").click(function (e) {
             var id = e.target.id;
-//alert(id);
-
-            document.location.href = "#";
-//document.location.href = "registrarLoteProductoDerivado?id=" + id;
+            var nombreProducto = id;
+            //alert(id);
+            
+            document.location.href = "registrarLoteProductoDerivado?nombreProducto=" + nombreProducto;
 
         });
 

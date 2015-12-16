@@ -13,6 +13,13 @@
 <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"> 
 <input type="hidden" name="bodega" value={{$codigo_bodega}}>       
 
+<div>
+    
+   <a href="listarFlujoBodega?codigo_bodega={{$codigo_bodega}}">
+    <img src="css/iconos/atras.png">
+</a> 
+</div>
+
 <div class="wrapper">
 
     <div class="table">

@@ -60,7 +60,10 @@
                                 <option>Técnico operativo</option>
                             </select>
                             <label data-reactid=".0.0.6.1">* Tipo de Rol</label>
-                        </div>                      
+                        </div>         
+
+                         <p>* campos obligatorios </p>
+                        <br>              
 
                         <input type="submit" value="registrar usuario" data-reactid=".0.0.7">
 

@@ -7,6 +7,9 @@
     <article>
         <section>
             <div id="stage" class="stage">
+                        <a href="listarMateriaPrima">
+                    <img src="css/iconos/atras.png">
+                </a>
                 <form action="registrarMateriaPrima" method="post" data-reactid=".0">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"> 
                     <fieldset data-reactid=".0.0">
@@ -37,6 +40,9 @@
                             </select>
                             <label data-reactid=".0.0.6.1">* Tipo:</label>
                         </div>  
+
+                        <p>* campos obligatorios </p>
+                        <br>
 
 
                         <input type="submit" value="registrar materia prima" data-reactid=".0.0.6.2">

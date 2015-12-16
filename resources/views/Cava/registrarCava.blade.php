@@ -40,6 +40,9 @@
 
                         </div>
 
+                        <p>* campos obligatorios </p>
+                        <br>
+
 
                         <input type="submit" value="registrar cava" data-reactid=".0.0.5">
 

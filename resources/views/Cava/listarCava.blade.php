@@ -48,7 +48,7 @@
                 Temperatura minima
             </div>
             <div class="cell">
-                <input id="idtemperatura_minima"placeholder="temperatura minima" class="active" type="number">
+                <input id="idtemperatura_minima" placeholder="temperatura minima" class="active" type="number">
             </div>
 
             <div class="cell">
@@ -129,7 +129,7 @@
                 En uso?
 
             </div>
-            <div class="cell">
+            <div class="cell green">
                 Editar
             </div>
             <div class="cell">
@@ -179,17 +179,27 @@
                 </div>
 
                 <div class="cell">
+                                    <a class="inputEditar">
+                    <img src="css/iconos/editar2.png" id='{{$cava->id}}' width="35" height="35">
+                </a>
+                
+                    <input class="inputEditar" type="submit" id={{$cava->id}} value="editar" data-reactid=".0.7" >
 
-                    <input class="inputEditar" type="submit" id={{$cava->id}} value="editar cava" data-reactid=".0.7" >
                     </div>
 
                     <div class="cell">
-                        <input class="inputVer" type="submit" id={{$cava->id}} value="ver" data-reactid=".0.0.7" >
+                       <a class="inputVer">
+                           <img src="css/iconos/ver.png" id='{{$cava->id}}' width="35" height="35">
+                        </a>
+                    
+                        <input class="inputVer" type="submit" id={{$cava->id}} value=" ver " data-reactid=".0.0.7" >
+                        
                     </div>
                     <div class="cell">
                       <input class="inputVerFlujo" type="submit" id={{$cava->id}} value="ver">
                      <input class="inputRegistrarFlujo"type="submit" id={{$cava->id}} value="Registrar" >
                     </div>
+
 
                     </div>
 
@@ -204,10 +214,13 @@
 
                 </div>
 
-
+                <a class="inputRegistrar">
+   <img src="css/iconos/agregar3.png" width="40" height="40">
+</a>
 
 
                 <input class="inputRegistrar" type="submit" value="registrar cava" data-reactid=".0.0.5">
+
 
             </div>
 

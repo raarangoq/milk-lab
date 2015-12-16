@@ -7,6 +7,11 @@
     <article>
         <section>
             <div id="stage" class="stage">
+            <div>
+                  <a href="listarBodega">
+                    <img src="css/iconos/atras.png">
+                </a>  
+</div>
                 <form action="registrarBodega" method="post" data-reactid=".0">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"> 
                     <fieldset data-reactid=".0.0">
@@ -26,6 +31,9 @@
 
                             <label data-reactid=".0.0.2.1">* Tipo de Bodega</label>
                         </div>
+
+                        <p>* campos obligatorios </p>
+                        <br>
 
 
                         <input type="submit" value="registrar bodega" data-reactid=".0.0.5">

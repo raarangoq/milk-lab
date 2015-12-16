@@ -185,9 +185,82 @@
 
 <script>
 $(document).ready(function(){
+  var fila=2;
+  $(".inputAgregarFila").click(function(e){
 
+   fila++;
+   var nuevaFila="<div class='row'>";
+
+    nuevaFila += "<div class='cell'>";
+    nuevaFila += "<input type='date' name='fecha" + fila + "'>";
+    nuevaFila += "</div>";
+
+   nuevaFila +="<div class='cell' align='center'>";
+nuevaFila += "<select name='producto_derivado" + fila + "' data-reactid='.0.0.6.0' class='active'>";
+    nuevaFila += "@foreach($productosDerivados as $productoDerivado)";
+    nuevaFila += "<option value={{$productoDerivado->nombre}}>
+   {{$productoDerivado->nombre}}</option>";
+    nuevaFila += "@endforeach";
+    nuevaFila += "</select>";
+    nuevaFila += "</div>";
+
+   nuevaFila +="<div class='cell' align='center'>";
+nuevaFila += "<select name='tamano" + fila + "' data-reactid='.0.0.6.0' class='active'>";
+    nuevaFila += "";
+    nuevaFila += "<option >  1</option>";
+    nuevaFila += "";
+    nuevaFila += "</select>";
+    nuevaFila += "</div>";
+    
+
+    nuevaFila += "<div class='cell'>";
+    nuevaFila += "<input type='number' name='entra" + fila + "'>";
+    nuevaFila += "</div>";
+
+    nuevaFila += "<div class='cell'>";
+    nuevaFila += "<input type='number' name='sale" + fila + "'>";
+    nuevaFila += "</div>";
+
+    nuevaFila += "<div class='cell' align='center'>";
+  nuevaFila += "<select name='motivo_de_salida" + fila + "' data-reactid='.0.0.6.0' class='active'>";
+    nuevaFila += "<option>Producción</option>";
+    nuevaFila += "<option>Descarte</option>";
+    nuevaFila += "</select>";
+    nuevaFila += "</div>";
+
+    nuevaFila += "<div class='cell'>";
+    nuevaFila += "<input type='number' name='total" + fila + "'>";
+    nuevaFila += "</div>";
+
+    nuevaFila += "<div class='cell'>";
+    nuevaFila += "<input type='number' name='existencia" + fila + "'>";
+    nuevaFila += "</div>";
+
+    nuevaFila += "<div class='cell' align='center'>";
+    nuevaFila += "<select name='programa" + fila + "' data-reactid='.0.0.6.0' class='active'>";
+    nuevaFila += "@foreach($programas as $programa)";
+    nuevaFila += "<option value={{$programa->numero_de_programa}}>{{$programa->nombre}}</option>";
+    nuevaFila += "@endforeach";
+    nuevaFila += "</select>";
+    nuevaFila += "</div>";
+
+    nuevaFila += "<div class='cell' align='center'>";
+    nuevaFila += "<select name='usuario_responsable" + fila + "' data-reactid='.0.0.6.0' class='active'>";
+    nuevaFila += "@foreach($usuarios as $usuario)";
+    nuevaFila += "<option value={{$usuario->correo}}>{{$usuario->nombre}}--{{$usuario->rol}}--{{$usuario->correo}}</option>";
+    nuevaFila += "@endforeach";
+    nuevaFila += "</select>";
+    nuevaFila += "</div>";
+
+    nuevaFila += "<div class='cell'>";
+    nuevaFila += "<input type='number' name='observaciones" + fila + "'>";
+    nuevaFila += "</div>";
+
+    nuevaFila += "</div>";
+    $(".table").append(nuevaFila);
+  });
   
-})
+});
 
 
 </script>

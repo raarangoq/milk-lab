@@ -133,52 +133,23 @@
         Existencia        
       </div>
       <div class="cell">
-        
+      Responsable        
+      </div>
+      <div class="cell">
+      Observaciones        
+      </div>
+      <div class="cell green">
+        Editar        
+      </div>
+      <div class="cell red">
+      Eliminar        
       </div>
       
-      <div class="cell">
-        
-      </div>
+
 
     </div>
   
- @foreach($productos_derivados as $producto_derivado) 
 
-  <div class="row">
-
-      <div class="cell" align="center">
-        {{$producto_derivado->nombre}}
-      </div>
-
-     <div class="cell" >
-        {{$producto_derivado->tipo}}
-      </div>
-
-      <div class="cell" align="center">
-        {{$producto_derivado->descripcion_fisica}}
-      </div>
-
-       <div class="cell" align="center">
-        {{$producto_derivado->tiempo_de_vencimiento}}
-      </div>
-
-      <div class="cell" align="center" >
-        {{$producto_derivado->instrucciones_de_la_etiqueta}}
-      </div>
-      <div class="cell" align="center">
-        {{$producto_derivado->temperatura_de_almacenamiento}}
-      </div>
-
-       <div class="cell"align="center" >
-        {{$producto_derivado->unidad_de_medida}}
-      </div>
-
-
-  </div>
-<br>
-
-
-@endforeach
 
 
 

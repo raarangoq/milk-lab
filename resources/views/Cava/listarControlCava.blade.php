@@ -9,10 +9,12 @@
 <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 
 
-
-<a href="listarCava">
+<div>
+   <a href="listarCava">
     <img src="css/iconos/atras.png">
-</a>
+</a> 
+</div>
+
 
 <div class="wrapper">
 
@@ -31,7 +33,7 @@
                 Usuario realizador
             </div>
 
-            <div class="cell">
+            <div class="cell red">
                 Borrar
             </div>
         </div>
@@ -53,7 +55,7 @@
             </div>
 
             <div class="cell">
-                <input class="inputBorrar" id={{$controlCava->fecha}}  type="submit"  value="borrar" data-reactid=".0.0.7" >
+                <input class="inputBorrar" id='{{$controlCava->fecha}}'  type="submit"  value="borrar" data-reactid=".0.0.7" >
                 </div>          
 
             </div>
@@ -65,7 +67,7 @@
             <div id="dialog-confirm"></div>
 
         </div>
-        <input class="inputRegistrar" id={{$id_cava}} type="submit" value="registrar control cava" data-reactid=".0.0.5">
+        <input class="inputRegistrar" id='{{$id_cava}}' type="submit" value="registrar control cava" data-reactid=".0.0.5">
     </div>
 
 

@@ -94,7 +94,7 @@
             <div class="cell">
                 Flujo de bodega
             </div>
-            <div class="cell">
+            <div class="cell green">
                 Editar
             </div>
 
@@ -125,13 +125,17 @@
                 <div class="cell">
                     <input class="inputVerFlujo" type="submit" id={{$bodega->codigo}} value="ver" data-reactid=".0.0.7" >
 
-                    <input class="inputRegistrarFlujo" type="submit" id={{$bodega->codigo}} value="registrar" data-reactid=".7">
+
+               <input class="inputRegistrarFlujo" type="submit" id='{{$bodega->codigo}}' value="registrar" data-reactid=".7">
+
 
                     </div>
 
-                    <div class="cell">
-                        <input id={{$bodega->codigo}} class="inputEditar" type="submit"  value="editar bodega" data-reactid=".0.0.7" >
-                        </div>
+
+            <div class="cell">
+              <input id='{{$bodega->codigo}}' class="inputEditar" type="submit"  value="editar bodega" data-reactid=".0.0.7" >
+              </div>
+
 
 
                     </div>
