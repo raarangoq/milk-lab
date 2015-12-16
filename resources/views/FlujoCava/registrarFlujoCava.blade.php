@@ -4,7 +4,8 @@
 
 @include('alerts.request')
 
-
+<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"> 
+<input type="hidden" name="cava" value={{$codigo_cava}}>     
 
 <div class="wrapper">
 
@@ -259,6 +260,76 @@ nuevaFila += "<select name='tamano" + fila + "' data-reactid='.0.0.6.0' class='a
     nuevaFila += "</div>";
     $(".table").append(nuevaFila);
   });
+
+$(".inputRegistrar").click(function(e){
+  var vectorDeFlujo = [];
+     for(var i = 0; i< fila +1; i++)
+{
+       var fecha = ($("input[name=fecha" + i + "]").val());
+       var producto_derivado = ($("select[name=producto_derivado" + i + "]").val());
+       var tamano = ($("select[name=tamano"+ i +"]").val());
+       var entra = ($("input[name=entra" + i + "]").val());
+       var sale = ($("input[name=sale" + i + "]").val());
+       var motivo_de_salida = ($("select[name=motivo_de_salida" + i + "]").val());
+       var total = ($("input[name=total" + i + "]").val());
+      var existencia = ($("input[name=existencia" + i + "]").val());
+      var programa = ($("select[name=programa" + i + "]").val()); 
+      var responsable = ($("select[name=usuario_responsable" + i + "]").val());
+      var observaciones = ($("input[name=observaciones" + i + "]").val());
+    
+    item={};
+
+    if(fecha !== ''
+      && producto_derivado !== ''
+      && tamano !== ''
+      && entra !== ''
+      && sale !== ''
+      && motivo_de_salida !== ''
+      && total !== ''
+      && existencia !== ''
+      && programa !== ''
+      && responsable !== ''
+      && observaciones !== ''
+
+      )
+    {
+      item["fecha"] = fecha;
+      item["producto_derivado"] = producto_derivado;
+      item["tamano"] = tamano;
+      item["entra"] = entra;
+      item["sale"] = sale;
+      item["motivo_de_salida"] = motivo_de_salida;
+      item["total"] = total;
+      item["existencia"] = existencia;
+      item["programa"] = programa;
+      item["responsable"] = responsable;
+      item["observaciones"] = observaciones;
+          
+      item["cava"] = {{$codigo_cava}};
+      vectorDeFlujo.push(item);
+    }
+}
+console.log(vectorDeFlujo);
+       aInfo = JSON.stringify(vectorDeFlujo);
+       var identificacion = aInfo;
+       var cadenaFormulario = "&data=" +identificacion;
+       $.ajax({
+               data: cadenaFormulario,
+               dataType: "html",
+               type: 'GET',
+               url: 'registrarFlujoCavaAJAX',
+               processData: false,
+               contentType: false,
+               success:function(r){
+
+                alert("Se resgistraron los flujos de cava correctamente");
+               }
+
+
+            });
+
+
+});
   
 });
 

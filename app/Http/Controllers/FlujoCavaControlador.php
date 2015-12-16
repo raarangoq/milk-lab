@@ -25,13 +25,43 @@ class FlujoCavaControlador extends Controller
   		//$cavas = Cava::all();
   	
   		//$tamanos= Tamano::all();
-      $codigoCava = $Request['id'];
+      $codigo_cava = $Request['id'];
       $productosDerivados= ProductoDerivado::all();
       $usuarios = Usuario::all();
       $programas= Programa::all();
   		
-      return view("FlujoCava/registrarFlujoCava",compact('codigoCava','productosDerivados','usuarios','programas'));
+      return view("FlujoCava/registrarFlujoCava",compact('codigo_cava','productosDerivados','usuarios','programas'));
 	}
+    protected function getRegistrarFlujoCavaAJAX(Request $request) 
+    {
+        $arrayFlujos = json_decode($request['data'], true);
+
+        foreach ($arrayFlujos as $flujo) {
+
+
+            $flujoCava = new FlujoDeCava;
+
+            $flujoCava->fecha = $flujo['fecha'];
+            $flujoCava->materia_prima = $flujo['producto_derivado'];
+            $flujoCava->tamano =$flujo['tamano'];
+            $flujoCava->entra = $flujo['entra'];
+            $flujoCava->sale = $flujo['sale'];
+            $flujoCava->motivo_de_salida = $flujo['motivo_de_salida'];
+            $flujoCava->total = $flujo['total'];
+            $flujoCava->existencia = $flujo['existencia'];
+            $flujoCava->programa = $flujo['programa'];
+            $flujoCava->usuario_responsable = $flujo['responsable'];
+            $flujoCava->observaciones = $flujo['observaciones'];
+            
+            
+            $flujoCava->bodega = $flujo['bodega'];
+
+
+            $flujoCava->save();
+        }
+
+//MENSAJE DE FLUJOS DE BODEGA REGISTRADOS CORRECTAMENTE
+    }
   
 
 

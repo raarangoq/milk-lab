@@ -286,30 +286,38 @@
     nuevaFila += "@endforeach";
     nuevaFila += "</select>";
     nuevaFila += "</div>";
+
     nuevaFila += "<div class='cell'>";
     nuevaFila += "<input type='date' name='fecha" + fila + "'>";
     nuevaFila += "</div>";
+
     nuevaFila += "<div class='cell'>";
     nuevaFila += "<input type='number' name='entra" + fila + "'>";
     nuevaFila += "</div>";
+
     nuevaFila += "<div class='cell'>";
     nuevaFila += "<input type='number' name='sale" + fila + "'>";
     nuevaFila += "</div>";
+
     nuevaFila += "<div class='cell' align='center'>";
     nuevaFila += "<select name='motivo_de_salida" + fila + "' data-reactid='.0.0.6.0' class='active'>";
     nuevaFila += "<option>Producción</option>";
     nuevaFila += "<option>Descarte</option>";
     nuevaFila += "</select>";
     nuevaFila += "</div>";
+
     nuevaFila += "<div class='cell'>";
     nuevaFila += "<input type='number' name='total" + fila + "'>";
     nuevaFila += "</div>";
+
     nuevaFila += "<div class='cell'>";
     nuevaFila += "<input type='number' name='existencia" + fila + "'>";
     nuevaFila += "</div>";
+
     nuevaFila += "<div class='cell'>";
     nuevaFila += "<input type='number' name='observaciones" + fila + "'>";
     nuevaFila += "</div>";
+
     nuevaFila += "<div class='cell' align='center'>";
     nuevaFila += "<select name='programa" + fila + "' data-reactid='.0.0.6.0' class='active'>";
     nuevaFila += "@foreach($programas as $programa)";
@@ -317,6 +325,7 @@
     nuevaFila += "@endforeach";
     nuevaFila += "</select>";
     nuevaFila += "</div>";
+
     nuevaFila += "<div class='cell' align='center'>";
     nuevaFila += "<select name='usuario_responsable" + fila + "' data-reactid='.0.0.6.0' class='active'>";
     nuevaFila += "@foreach($usuarios as $usuario)";
@@ -324,6 +333,7 @@
     nuevaFila += "@endforeach";
     nuevaFila += "</select>";
     nuevaFila += "</div>";
+
     nuevaFila += "</div>";
     $(".table").append(nuevaFila);
 //alert(nuevaFila);
@@ -337,10 +347,9 @@
 //3.enviar vector hacia controlador postRegistrarFlujoBodega
 
 var vectorDeFlujo = [];
-    for (var i = 0; i < fila + 1; i++) {
-
-
-var materia = ($("select[name=materia_prima" + i + "]").val());
+    for (var i = 0; i < fila + 1; i++) 
+{
+    var materia = ($("select[name=materia_prima" + i + "]").val());
     var fecha = ($("input[name=fecha" + i + "]").val());
     var entra = ($("input[name=entra" + i + "]").val());
     var sale = ($("input[name=sale" + i + "]").val());
@@ -352,7 +361,8 @@ var materia = ($("select[name=materia_prima" + i + "]").val());
     var responsable = ($("select[name=usuario_responsable" + i + "]").val());
 //alert(motivo_de_salida);
     item = {};
-    if (materia !== ''
+
+    if (      materia !== ''
             && fecha !== ''
             && entra !== ''
             && sale !== ''
@@ -361,24 +371,26 @@ var materia = ($("select[name=materia_prima" + i + "]").val());
             && existencia !== ''
             && programa !== ''
             && responsable !== ''
-            ){
-item["materia"] = materia;
-    item["fecha"] = fecha;
-    item["entra"] = entra;
-    item["sale"] = sale;
-    item["motivo_de_salida"] = motivo_de_salida;
-    item["total"] = total;
-    item["existencia"] = existencia;
-    item["observaciones"] = observaciones;
-    item["programa"] = programa;
-    item["responsable"] = responsable;
-    item["bodega"] = {{$codigo_bodega}};
-    vectorDeFlujo.push(item);
+            )
+    {
+        item["materia"] = materia;
+        item["fecha"] = fecha;
+        item["entra"] = entra;
+        item["sale"] = sale;
+        item["motivo_de_salida"] = motivo_de_salida;
+        item["total"] = total;
+        item["existencia"] = existencia;
+        item["observaciones"] = observaciones;
+        item["programa"] = programa;
+        item["responsable"] = responsable;
+        item["bodega"] = {{$codigo_bodega}};
+        vectorDeFlujo.push(item);
             // vectorDeFlujo.push($("select[name=materia_prima"+i+"]").val());
     }
 
 
-    }
+}//fin del for
+
     console.log(vectorDeFlujo);
             aInfo = JSON.stringify(vectorDeFlujo);
 //alert(aInfo);
