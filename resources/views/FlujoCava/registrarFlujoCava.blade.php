@@ -173,11 +173,11 @@
 
         </div>
         <div class="cell">
-          <input class="inputAgregarFila" id type="submit"value="agregar fila">
+          <input class="inputAgregarFila"  type="submit"value="agregar fila">
            <input  type="" value="* campos obligatorios" align="center" class="active">
         </div>
 
-        <input class="inputRegistrar" id type="submit" value="registrar flujo cava" data-reactid=".0.0.5">
+        <input class="inputRegistrar" type="submit" value="registrar flujo cava" data-reactid=".0.0.5">
     </div>
 
 @endsection
@@ -259,6 +259,7 @@ nuevaFila += "<select name='tamano" + fila + "' data-reactid='.0.0.6.0' class='a
 
     nuevaFila += "</div>";
     $(".table").append(nuevaFila);
+    alert(nuevaFila);
   });
 
 $(".inputRegistrar").click(function(e){

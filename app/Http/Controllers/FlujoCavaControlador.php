@@ -13,8 +13,11 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Contracts\Routing\ResponseFactory;
 use Session;
 use Input;
+use Illuminate\Database\Eloquent\Builder;
 
 class FlujoCavaControlador extends Controller 
 {
@@ -25,7 +28,7 @@ class FlujoCavaControlador extends Controller
   		//$cavas = Cava::all();
   	
   		//$tamanos= Tamano::all();
-      $codigo_cava = $Request['id'];
+      $codigo_cava = $Request['codigo_cava'];
       $productosDerivados= ProductoDerivado::all();
       $usuarios = Usuario::all();
       $programas= Programa::all();
@@ -62,6 +65,8 @@ class FlujoCavaControlador extends Controller
 
 //MENSAJE DE FLUJOS DE BODEGA REGISTRADOS CORRECTAMENTE
     }
+
+
   
 
 

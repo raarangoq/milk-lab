@@ -57,8 +57,12 @@ Route::get('borrarControlCava', 'CavaControlador@getBorrarControlCava');
 Route::get('listarControlCava', 'CavaControlador@getListarControlCava');
 
 //------> FLUJO DE CAVA (rutas) <----------------------------
-
+//REGISTRAR FLUJO DE CAVA 
 Route::get('registrarFlujoCava', 'FlujoCavaControlador@getRegistrarFlujoCava');
+Route::get('registrarFlujoCavaAJAX','FlujoCavaControlador@getRegistrarFlujoCavaAJAX');
+//LISTAR FLUJO DE CAVA
+Route::get('listarFlujoCava','FlujoCavaControlador@getListarFlujoCava');
+//EDITAR FLUJO DE CAVA
 
 
 //------> PROGRAMAS (rutas) <------------------------------
