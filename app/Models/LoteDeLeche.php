@@ -4,15 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class LoteDeLeche extends LoteDeMateriaPrima
-{
+class LoteDeLeche extends LoteDeMateriaPrima {
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
     protected $table = 'lotes_de_leche';
-
     protected $primaryKey = ['lote_de_materia_prima'];
 
     /**
@@ -21,7 +20,8 @@ class LoteDeLeche extends LoteDeMateriaPrima
      * @var array
      */
     protected $fillable = [
-    	'remision',
+        'remision',
         'lote_de_materia_prima'
     ];
+
 }

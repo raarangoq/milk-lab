@@ -14,18 +14,14 @@ use Illuminate\Http\Request;
 use Session;
 use Input;
 
-
 class CavaControlador extends Controller {
-
 
     protected function getRegistrarCava() {
 
         return view("Cava/registrarCava");
     }
-  
-  
 
-      protected function postRegistrarCava(Request $request) {
+    protected function postRegistrarCava(Request $request) {
 
         $this->validate($request, [
             'tipo' => 'required',
@@ -33,51 +29,49 @@ class CavaControlador extends Controller {
             'temperatura_maxima' => 'required',
         ]);
 
-        if($request['temperatura_minima'] <= $request['temperatura_maxima'] ){
+        if ($request['temperatura_minima'] <= $request['temperatura_maxima']) {
 
-        $cava = new Cava;
-        $cava->tipo = $request['tipo'];
-        $cava->temperatura_minima = $request['temperatura_minima'];
-        $cava->temperatura_maxima = $request['temperatura_maxima'];
+            $cava = new Cava;
+            $cava->tipo = $request['tipo'];
+            $cava->temperatura_minima = $request['temperatura_minima'];
+            $cava->temperatura_maxima = $request['temperatura_maxima'];
 
-        $usuarioCreador=Session::get('usuario.correo');
-        $cava->usuario_registrador = $usuarioCreador;
+            $usuarioCreador = Session::get('usuario.correo');
+            $cava->usuario_registrador = $usuarioCreador;
 
-          if($cava->save()){
-            
-            return redirect('listarCava')->with('success','cava registrada correctamente');
+            if ($cava->save()) {
+
+                return redirect('listarCava')->with('success', 'cava registrada correctamente');
+            }
+        } else {
+            return redirect('registrarCava')->with('error', 'error en teperatura minima y maxima');
         }
-
-      }else{
-      	return redirect('registrarCava')->with('error','error en teperatura minima y maxima');
-      }
-  }
+    }
 
     protected function getListarCava(Request $request) {
 
-      $cavas=Cava::all();
+        $cavas = Cava::all();
 
-      $cavas=Cava::paginate(10);
-      $cavas->setPath('listarCava');
-    
-     return view('Cava/listarCava', compact('cavas'));
+        $cavas = Cava::paginate(10);
+        $cavas->setPath('listarCava');
+
+        return view('Cava/listarCava', compact('cavas'));
     }
 
     protected function getEditarCava(Request $request) {
 
-      $id_cava= $request['id'];
+        $id_cava = $request['id'];
 
-      $cavaSeleccionado=Cava::where('id',$id_cava)->get();
-      $cava=$cavaSeleccionado[0];
+        $cavaSeleccionado = Cava::where('id', $id_cava)->get();
+        $cava = $cavaSeleccionado[0];
 
-      return view('Cava/editarCava', compact('cava'));
-
+        return view('Cava/editarCava', compact('cava'));
     }
 
     protected function postEditarCava(Request $request) {
 
-      
-      $this->validate($request, [
+
+        $this->validate($request, [
             'id' => 'required',
             'tipo' => 'required',
             'temperatura_minima' => 'required',
@@ -85,50 +79,48 @@ class CavaControlador extends Controller {
             'en_uso' => 'required',
         ]);
 
-        $id= $request['id'];
+        $id = $request['id'];
         $nuevaTemperatura_minima = $request['temperatura_minima'];
         $nuevaTemperatura_maxima = $request['temperatura_maxima'];
         $nuevoTipo = $request['tipo'];
         $nuevoUso = $request['en_uso'];
 
         //$usuarioEditor = Session::get('usuario.correo');
-        
-        if($cavaActualizada=Cava::where('id',$id)
-                        ->update(['tipo'=>  $nuevoTipo,
-                                  'temperatura_minima'=>  $nuevaTemperatura_minima,
-                                  'temperatura_maxima'=>  $nuevaTemperatura_maxima,
-                                  'en_uso'=>  $nuevoUso,                                 
-                          ])){
 
- return redirect('listarCava')->with('success','cava editada correctamente');
+        if ($cavaActualizada = Cava::where('id', $id)
+                ->update(['tipo' => $nuevoTipo,
+            'temperatura_minima' => $nuevaTemperatura_minima,
+            'temperatura_maxima' => $nuevaTemperatura_maxima,
+            'en_uso' => $nuevoUso,
+                ])) {
 
-        }else{
-return redirect('listarUsuario')->with('error','cava NO editada correctamente');
+            return redirect('listarCava')->with('success', 'cava editada correctamente');
+        } else {
+            return redirect('listarUsuario')->with('error', 'cava NO editada correctamente');
         }
 
 
-  //return $this->getListarUsuario();
+        //return $this->getListarUsuario();
 //return Redirect::to('listarUsuario');
 // return redirect('registrarUsuario')->with('success','usuario registrado correctamente');
-
     }
 
     protected function getRegistrarControlCava(Request $request) {
 
-     $id_cava= $request['id'];
-     $usuarios=Usuario::all();
-      
-      return view('Cava/registrarControlCava', compact('id_cava','usuarios'));
+        $id_cava = $request['id'];
+        $usuarios = Usuario::all();
+
+        return view('Cava/registrarControlCava', compact('id_cava', 'usuarios'));
     }
-    
-protected function postRegistrarControlCava(Request $request) {
+
+    protected function postRegistrarControlCava(Request $request) {
         $this->validate($request, [
             'cava' => 'required',
             'fecha' => 'required',
             'humedad' => 'required',
             'temperatura' => 'required',
             'usuario_realizador' => 'required',
-        ]);        
+        ]);
 
         $controlDeCava = new ControlDeCava;
         $controlDeCava->cava = $request['cava'];
@@ -136,117 +128,111 @@ protected function postRegistrarControlCava(Request $request) {
         $controlDeCava->humedad = $request['humedad'];
         $controlDeCava->temperatura = $request['temperatura'];
         $controlDeCava->usuario_realizador = 'avillav@unal.edu.co';
-     
-       // $usuarioCreador=Session::get('usuario.correo');
-       // $cava->usuario_registrador = $usuarioCreador;
 
-try {
+        // $usuarioCreador=Session::get('usuario.correo');
+        // $cava->usuario_registrador = $usuarioCreador;
 
-  $controlDeCava->save();
-            
+        try {
+
+            $controlDeCava->save();
+
             //return redirect('listarCava')->with('success','cava registrada correctamente');
             return "exito";
-  
-} catch (Exception $e) {
-  return "FALLO";
-}   
-          
-  }
+        } catch (Exception $e) {
+            return "FALLO";
+        }
+    }
 
- protected function getBorrarControlCava(Request $request) {
+    protected function getBorrarControlCava(Request $request) {
 
-    $fecha= $request['fecha'];
-    $id_cava= $request['id_cava'];
+        $fecha = $request['fecha'];
+        $id_cava = $request['id_cava'];
 
 //return "$fecha, $id_cava";
 
-$controlCava=ControlDeCava::where('fecha',$fecha)->get();
-$controlCava=ControlDeCava::where('cava',$id_cava)->get();
+        $controlCava = ControlDeCava::where('fecha', $fecha)->get();
+        $controlCava = ControlDeCava::where('cava', $id_cava)->get();
 
 
-$affectedRows =ControlDeCava::where('fecha',$fecha)->delete();
+        $affectedRows = ControlDeCava::where('fecha', $fecha)->delete();
 
-$paginaAnterior="listarControlCava?id=$id_cava";
+        $paginaAnterior = "listarControlCava?id=$id_cava";
 
 //return $paginaAnterior;
 
-return redirect($paginaAnterior)->with('success','Control de cava borrado correctamente');
-
-
+        return redirect($paginaAnterior)->with('success', 'Control de cava borrado correctamente');
     }
 
- protected function getListarControlCava(Request $request) {
+    protected function getListarControlCava(Request $request) {
 
-     $id_cava= $request['id'];
+        $id_cava = $request['id'];
 
-      $controlDeCavas=ControlDeCava::all();
-
-   $controlDeCavaSeleccionado=ControlDeCava::where('cava',$id_cava)->get();
-
-   //PAGINACION  
+        $controlDeCavas = ControlDeCava::all();
 
 
-   return view('Cava/listarControlCava', compact('controlDeCavaSeleccionado','id_cava'));
+        $controlDeCavaSeleccionado = ControlDeCava::where('cava', $id_cava)->get();
 
+
+        //PAGINACION  
+
+        return view('Cava/listarControlCava', compact('controlDeCavaSeleccionado', 'id_cava'));
     }
-  protected function getRegistrarFlujoCava(){
 
-    $producto_derivado = ProductoDerivado::all();
+    protected function getRegistrarFlujoCava() {
 
-    return view('Cava/getRegistrarFlujoCava',compact('producto_derivado'));
-  }  
- /*protected function postRegistrarFlujoCava(Request $request)
- {
-     $this->validate([$request,s
 
-        'fecha'=>'required',
-        'entra'=>'required',
-        'sale'=>'required',
-        'total'=>'required',
-        'existencia'=>'required',
-        'motivo_de_salida'=>'required',
-        
-        'producto_derivado'=>'required',
-        'tamano'=>'required'=>'required',
-        
-        'usuario_responsable'=>'required',
-        ]
+        $producto_derivado = ProductoDerivado::all();
+
+
+        return view('Cava/getRegistrarFlujoCava', compact('producto_derivado'));
+    }
+
+
+    /* protected function postRegistrarFlujoCava(Request $request)
+      {
+      $this->validate([$request,s
+
+      'fecha'=>'required',
+      'entra'=>'required',
+      'sale'=>'required',
+      'total'=>'required',
+      'existencia'=>'required',
+      'motivo_de_salida'=>'required',
+
+      'producto_derivado'=>'required',
+      'tamano'=>'required'=>'required',
+
+      'usuario_responsable'=>'required',
+      ]
       );
 
- } */
-protected function getFiltrarListarCava(Request $request){
-/*
-     $tipo=$request['tipo'];
-     $en_uso=$request['en_uso'];
-     $codigo=$request['codigo'];
-     $temperatura_minima=$request['temperatura_minima'];
-     $temperatura_maxima=$request['temperatura_maxima'];
+      } */
 
-   dd($request->get('tipo'));
 
-     if(  $tipo!= "tipo" AND $en_uso != "-seleccionar uso-"){
+    protected function getFiltrarListarCava(Request $request) {
 
-          $cavas=Cava::where([
-                          'tipo' =>$tipo,
-                          'en_uso' => $en_uso,
-                          ])->paginate(10);
+        $tipo = $request['tipo'];
+        $en_uso = $request['en_uso'];
+        $codigo = $request['codigo'];
+        $temperatura_minima = $request['temperatura_minima'];
+        $temperatura_maxima = $request['temperatura_maxima'];
 
-        $cavas->setPath('listarCava');
-        return view('Cava/listarCava', compact('cavas'));
 
-     }else{
 
-      return redirect('listarCava')->with('success','ERROR : NO SE PUDO FILTRAR POR ESTADO');
-     }
 
-     */
-    
-     $cavas= Cava::filterAndPaginate($request->get('id'),$request->get('tipo'),$request->get('en_uso'));
-       $cavas->setPath('listarCava');
-     return view('Cava/listarCava', compact('cavas'));
-}
-   
+        if ($tipo != "--seleccionar tipo--" AND $en_uso != "-seleccionar uso-") {
+
+            $cavas = Cava::where([
+                        'tipo' => $tipo,
+                        'en_uso' => $en_uso,
+                    ])->paginate(10);
+
+            $cavas->setPath('listarCava');
+            return view('Cava/listarCava', compact('cavas'));
+        } else {
+
+            return redirect('listarCava')->with('success', 'ERROR : NO SE PUDO FILTRAR POR TIPO Y ESTADO');
+        }
+    }
 
 }
-
-

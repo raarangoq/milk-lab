@@ -14,21 +14,17 @@ use Input;
 //use Illuminate\Pipeline\Pipeline;
 use Illuminate\Support\ServiceProvider;
 use Redirect;
-
 use App\Http\Requests\RegistrarUsuarioRequest;
 use App\Http\Requests\EditarPerfilRequest;
-
-
 use App\Http\Controllers\ControllerSession;
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+
 //use Illuminate\Support\Facades\Crypt;
 //use Illuminate\Contracts\Encryption\DecryptException;
 
 
 class UsuarioControlador extends Controller {
-
 
     public function __construct(Guard $auth) {
         $this->auth = $auth;
@@ -38,303 +34,276 @@ class UsuarioControlador extends Controller {
     //MOSTRAR VISTA DE REGISTRAR USUARIO
     protected function getRegistrarUsuario() {
 // !!! *** verificacion del usuario logueado esta habilitado y sea un director -> carga combox de roles
-     
-     $roles=Usuario::distinct()->select('rol')->get();
 
-    //if((Session::get('usuario.rol') == "Director") && (Session::get('usuario.habilitado'))
+        $roles = Usuario::distinct()->select('rol')->get();
 
-      return view("Usuario/registrarUsuario");
+        //if((Session::get('usuario.rol') == "Director") && (Session::get('usuario.habilitado'))
+
+        return view("Usuario/registrarUsuario");
     }
 
     //RECIBIR DATOS DE VISTA (REGISTRAR USUARIO) PARA CREAR USUARIO
     protected function postRegistrarUsuario(Request $request) {
-     //!!! *** verifica que no exista otro usuario con el mismo correo ni otro usuario con la misma cédula  --> request !!
+        //!!! *** verifica que no exista otro usuario con el mismo correo ni otro usuario con la misma cédula  --> request !!
         $this->validate($request, [
-            'nombre'    => 'required',
-            'correo'    => 'required',
-            'password'  => 'required',
+            'nombre' => 'required',
+            'correo' => 'required',
+            'password' => 'required',
             'password2' => 'required',
-            'cedula'    => 'required',
-            'rol'       => 'required',
+            'cedula' => 'required',
+            'rol' => 'required',
+        ]);
 
-                    ]);
+        if ($request['password'] == $request['password2']) {
+            $data = $request;
 
-        if($request['password']==$request['password2']){
-              $data = $request;
+            $user = new Usuario;
+            $user->nombre = $data['nombre'];
+            $user->correo = $data['correo'];
+            $user->password = bcrypt($data['password']);
+            $user->cedula = $data['cedula'];
+            $user->rol = $data['rol'];
 
-              $user = new Usuario;
-              $user->nombre = $data['nombre'];
-              $user->correo = $data['correo'];
-              $user->password = bcrypt($data['password']);
-              $user->cedula = $data['cedula'];
-              $user->rol = $data['rol'];
-
-              $usuarioCreador=Session::get('usuario.correo');
-              $user->usuario_creador = $usuarioCreador;
+            $usuarioCreador = Session::get('usuario.correo');
+            $user->usuario_creador = $usuarioCreador;
 
 
-                if ($user->save())
-                 
-      return redirect('registrarUsuario')->with('success','usuario registrado correctamente');
-
+            if ($user->save())
+                return redirect('registrarUsuario')->with('success', 'usuario registrado correctamente');
         }
-      }
-
-
+    }
 
     protected function getEditarUsuario(Request $request) {
 
-      $correoUsuario= $request['correo'];
+        $correoUsuario = $request['correo'];
 
-      $usuarioSeleccionado=Usuario::where('correo',$correoUsuario)->get();
-    $usuario=$usuarioSeleccionado[0];
+        $usuarioSeleccionado = Usuario::where('correo', $correoUsuario)->get();
+        $usuario = $usuarioSeleccionado[0];
 
-       //$usuario = Session::get('usuario');
+        //$usuario = Session::get('usuario');
 
-      return view('Usuario/editarUsuario', compact('usuario'));
-
+        return view('Usuario/editarUsuario', compact('usuario'));
     }
-
 
     protected function postEditarUsuario(Request $request) {
 
-      
-      $this->validate($request, [
 
-            'nombre'     => 'required',    
-            'rol'        => 'required',
+        $this->validate($request, [
+
+            'nombre' => 'required',
+            'rol' => 'required',
             'habilitado' => 'required',
         ]);
 
-      //  $nombreNuevo = $request['nombre'];
-        $rolNuevo    = $request['rol'];
+        //  $nombreNuevo = $request['nombre'];
+        $rolNuevo = $request['rol'];
         $estadoNuevo = $request['habilitado'];
 
-        
+
         //$correo=Input::get('correo');//COJER CORREO DE LISTA DE SELECT
-      //prueba
-       
+        //prueba
+
 
         $usuarioEditor = Session::get('usuario.correo');
-        $correo= $request['correo'];
+        $correo = $request['correo'];
 
-        if($usuarioActualizado=Usuario::where('correo',$correo)
-                        ->update(['rol'=>  $rolNuevo,
-                                  'habilitado'=>  $estadoNuevo,
-                                  'usuario_editor'=>  $usuarioEditor,
+        if ($usuarioActualizado = Usuario::where('correo', $correo)
+                ->update(['rol' => $rolNuevo,
+            'habilitado' => $estadoNuevo,
+            'usuario_editor' => $usuarioEditor,
+                ])) {
 
-                          ])){
 
-
-            return redirect('listarUsuario')->with('success','usuario editado correctamente');
-
+            return redirect('listarUsuario')->with('success', 'usuario editado correctamente');
         }
 
-  //return $this->getListarUsuario();
-
+        //return $this->getListarUsuario();
 //return Redirect::to('listarUsuario');
 // return redirect('registrarUsuario')->with('success','usuario registrado correctamente');
-
-
     }
 
     //MOSTRAR VISTA DE EDITAR PERFIL
     protected function getEditarPerfil() {
 
 
+        $usuarioCorreo = Session::get('usuario.correo');
+        $usuario = Usuario::where('correo', $usuarioCorreo)->get();
+        $usuario = $usuario[0];
+
+        return view('Usuario/editarPerfil', compact('usuario'));
 
 
-           $usuarioHabilitado = Session::get('usuario.habilitado');
+        /*
+          $usuarioHabilitado = Session::get('usuario.habilitado');
 
 
-           if($usuarioHabilitado == 1){
+          if($usuarioHabilitado == 1){
 
-                $usuario = Session::get('usuario');
-     
-                 return view('Usuario/editarPerfil', compact('usuario'));
-             }else{
-                 return "Zona restringida, no tiene los permisos para acceder a esta funcionalidad";
-                   //return redirect('login')->with('success','Zona restringida, no tiene los permisos para acceder a esta funcionalidad');
-                }
+          $usuario = Session::get('usuario');
 
-                
-     
+          return view('Usuario/editarPerfil', compact('usuario'));
+          }else{
+          return "Zona restringida, no tiene los permisos para acceder a esta funcionalidad";
+          //return redirect('login')->with('success','Zona restringida, no tiene los permisos para acceder a esta funcionalidad');
+          }
+
+         */
     }
 
+    protected function postEditarPerfil(Request $request) {
 
-
-protected function postEditarPerfil(Request $request) {     
-        
-if($request['passwordAnterior']==="") {
+        if ($request['passwordAnterior'] === "") {
 //NO CAMBIAR PASSWORD 
-      $this->validate($request, [
+            $this->validate($request, [
 
-            'nombre' => 'required',
-            'cedula' => 'required',
-            'correo' => 'required',
-        ]);
-
-
-        $nombreNuevo = $request['nombre'];
-        $cedulaNuevo = $request['cedula'];
-        $correoNuevo = $request['correo'];
-        
-        $correo= Session::get('usuario.correo');
+                'nombre' => 'required',
+                'cedula' => 'required',
+                'correo' => 'required',
+            ]);
 
 
-        //actualizar usuario en base de datos
-        if($usuario=Usuario::where('correo',$correo)
-                        ->update(['nombre'=>  $nombreNuevo,
-                                  'cedula'=>  $cedulaNuevo,
-                                  'correo'=>  $correoNuevo,
-                          ]))
-        {                    
+            $nombreNuevo = $request['nombre'];
+            $cedulaNuevo = $request['cedula'];
+            $correoNuevo = $request['correo'];
 
-        //actualizar varibable de session
-        Session::put('usuario.correo',$correoNuevo);
-        Session::put('usuario.cedula',$cedulaNuevo);
-        Session::put('usuario.nombre',$nombreNuevo);       
-       
-        return redirect('editarPerfil')->with('success','usuario editado correctamente');
-     
-       }
+            $correo = Session::get('usuario.correo');
 
 
-}else{
+            //actualizar usuario en base de datos
+            if ($usuario = Usuario::where('correo', $correo)
+                    ->update(['nombre' => $nombreNuevo,
+                'cedula' => $cedulaNuevo,
+                'correo' => $correoNuevo,
+                    ])) {
+
+                //actualizar varibable de session
+                Session::put('usuario.correo', $correoNuevo);
+                Session::put('usuario.cedula', $cedulaNuevo);
+                Session::put('usuario.nombre', $nombreNuevo);
+
+                return redirect('editarPerfil')->with('success', 'usuario editado correctamente');
+            }
+        } else {
 //CAMBIAR PASSWORD
-      $this->validate($request, [
-            'nombre' => 'required',
-            'cedula' => 'required',
-            'correo' => 'required',
-            'passwordAnterior' => 'required',
-            'password' => 'required',
-            'password2' => 'required',
-        ]);
+            $this->validate($request, [
+                'nombre' => 'required',
+                'cedula' => 'required',
+                'correo' => 'required',
+                'passwordAnterior' => 'required',
+                'password' => 'required',
+                'password2' => 'required',
+            ]);
 //1-VERIFICAR SI PASSWORD = PASSWORD2
 //2-VERIFICAR PASSWORD ANTERIOR
 //3-ACTUALIZAR USUARIO
 //4-ACTUALIZAR VARIABLE DE SESSION 
 
-      if($request['password']==$request['password2']){
+            if ($request['password'] == $request['password2']) {
 
-        $correoAnterior= Session::get('usuario.correo');        
-     // $password = Hash::make($request['passwordAnterior']);
-      if ($password == Auth::usuarios()->password){
-        
+                $correoAnterior = Session::get('usuario.correo');
+                // $password = Hash::make($request['passwordAnterior']);
+                if ($password == Auth::usuarios()->password) {
+
 //Hash::check($value, Auth::user()->clave);
-          return "password anterior igual";
+                    return "password anterior igual";
 
-          //3-ACTUALIZAR USUARIO
-          //4-ACTUALIZAR VARIABLE DE SESSION 
+                    //3-ACTUALIZAR USUARIO
+                    //4-ACTUALIZAR VARIABLE DE SESSION 
+                } else {
 
-        }else{
+                    return "error password anterior DIFERENTE";
+                }
+            }
+        }//ELSE ERROR CAMPOS INCOMPLETOS
+    }
 
-          return "error password anterior DIFERENTE";
-        }
-      }
+    //FUNCION DE AJAX PARA EDITAR USUARIO
+    protected function getAjax() {
 
-      }//ELSE ERROR CAMPOS INCOMPLETOS
-          
-    }  
+        $correo = Input::get('correo'); //COJER CORREO DE LISTA DE SELECT
+        $usuarioSeleccionado = Usuario::where('correo', $correo)->get(); //BUSCAR TODOS LOS ATRIBUTOS DE USUARIO CON CORREO
 
-
-
-
-     //FUNCION DE AJAX PARA EDITAR USUARIO
-     protected function getAjax() {
-
-       $correo=Input::get('correo');//COJER CORREO DE LISTA DE SELECT
-       $usuarioSeleccionado=Usuario::where('correo',$correo)->get();//BUSCAR TODOS LOS ATRIBUTOS DE USUARIO CON CORREO
-
-       return $usuarioSeleccionado;//ENVIAR TODOS LOS DATOS DE USUARIO
-      } 
+        return $usuarioSeleccionado; //ENVIAR TODOS LOS DATOS DE USUARIO
+    }
 
     protected function getListarUsuario() {
 
-      $usuarioSession = Session::get('usuario.correo');
-      $usuarios=Usuario::where('correo','!=',$usuarioSession)->get();
 
-      $usuarios= Usuario::paginate(10);
-      $usuarios->setPath('listarUsuario');
+        $usuarioSession = Session::get('usuario.correo');
+        // $usuarios=Usuario::where('correo','!=',$usuarioSession)->get();
 
-         return view('Usuario/listarUsuario', compact('usuarios'));
-    }
-
-
-
-
-        protected function getFiltrarListarUsuario(Request $request){
-
-
-      $rol=$request['rol'];
-      $nombre=$request['nombre'];
-      $habilitado=$request['habilitado'];
-      $correo=$request['correo'];
-      $cedula=$request['cedula'];
-  
-
-if($rol != "--seleccionar rol--" AND $habilitado != "-seleccionar estado-" ){
-
-        $usuarios=Usuario::where([
-
-                          'rol' => $rol,
-                          'habilitado' => $habilitado,
-
-                          ])->paginate(10);
+        $usuarios = Usuario::paginate(10);
 
         $usuarios->setPath('listarUsuario');
+
+        /*  $usuarios = Usuario::paginate(2);
+          $usuarios->setPath('listarUsuario'); */
+
         return view('Usuario/listarUsuario', compact('usuarios'));
-}else{
-
-  return redirect('listarUsuario')->with('success','ERROR : NO SE PUDO FILTRAR POR ROL Y ESTADO');
-}
-
-/*
-if($rol=="--seleccionar rol--"){
-//NO HAGA NADA
-}else{
-$usuarios = Usuario::where('rol',$rol)->paginate(10); 
- $rol2=true;
-}
-
-if($habilitado=="-seleccionar estado-"){
-//NO HAGA NADA
-}else{
-//$usuarios = Usuario::where('habilitado',$habilitado)->paginate(10);  
-$habilitado2=true;
-}
-
-
-if(empty($nombre)==false){
-//$usuarios= Usuario::where('nombre',$nombre)->paginate(10);
-$nombre2=true;
-}
-
-if(empty($correo)==false){
-//$usuarios= Usuario::where('correo',$correo)->paginate(10);
-$correo2=true;
-}
-
-if(empty($cedula)==false){
-//$usuarios= Usuario::where('cedula',$cedula)->paginate(10);
-$cedula2=true;
-}
-
-*/ 
-
-      
-
-      //$usuariosRol = Usuario::where('rol',$rol)->paginate(10);
-      //$usuariosRol = Usuario::where('nombre',$nombre)->paginate(10);
-
-
-      
     }
 
+    protected function getFiltrarListarUsuario(Request $request) {
 
-    
 
+        $rol = $request['rol'];
+        $nombre = $request['nombre'];
+        $habilitado = $request['habilitado'];
+        $correo = $request['correo'];
+        $cedula = $request['cedula'];
+
+
+        if ($rol != "--seleccionar rol--" AND $habilitado != "-seleccionar estado-") {
+
+            $usuarios = Usuario::where([
+
+                        'rol' => $rol,
+                        'habilitado' => $habilitado,
+                    ])->paginate(10);
+
+            $usuarios->setPath('listarUsuario');
+            return view('Usuario/listarUsuario', compact('usuarios'));
+        } else {
+
+            return redirect('listarUsuario')->with('success', 'ERROR : NO SE PUDO FILTRAR POR ROL Y ESTADO');
+        }
+
+        /*
+          if($rol=="--seleccionar rol--"){
+          //NO HAGA NADA
+          }else{
+          $usuarios = Usuario::where('rol',$rol)->paginate(10);
+          $rol2=true;
+          }
+
+          if($habilitado=="-seleccionar estado-"){
+          //NO HAGA NADA
+          }else{
+          //$usuarios = Usuario::where('habilitado',$habilitado)->paginate(10);
+          $habilitado2=true;
+          }
+
+
+          if(empty($nombre)==false){
+          //$usuarios= Usuario::where('nombre',$nombre)->paginate(10);
+          $nombre2=true;
+          }
+
+          if(empty($correo)==false){
+          //$usuarios= Usuario::where('correo',$correo)->paginate(10);
+          $correo2=true;
+          }
+
+          if(empty($cedula)==false){
+          //$usuarios= Usuario::where('cedula',$cedula)->paginate(10);
+          $cedula2=true;
+          }
+
+         */
+
+
+
+        //$usuariosRol = Usuario::where('rol',$rol)->paginate(10);
+        //$usuariosRol = Usuario::where('nombre',$nombre)->paginate(10);
+    }
 
 }
-
-

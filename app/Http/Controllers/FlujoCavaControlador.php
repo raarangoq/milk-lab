@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Cava;
 use App\Models\ControlDeCava;
 use App\Models\Usuario;
+use App\Models\ProductoDerivado;
+use App\Models\Programa;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -21,10 +23,16 @@ class FlujoCavaControlador extends Controller
   	{
   		//traer todas las cavas cuyo valor este en uso
   		//$cavas = Cava::all();
-  		//$productosDerivados= ProductoDerivado::all();
+  	
   		//$tamanos= Tamano::all();
-         $codigoCava = $Request['id']; 
+      $codigoCava = $Request['id'];
+      $productosDerivados= ProductoDerivado::all();
+      $usuarios = Usuario::all();
+      $programas= Programa::all();
   		
-      return view("FlujoCava/registrarFlujoCava",compact('codigoCava'));
+      return view("FlujoCava/registrarFlujoCava",compact('codigoCava','productosDerivados','usuarios','programas'));
 	}
+  
+
+
 }

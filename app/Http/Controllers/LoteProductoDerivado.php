@@ -7,10 +7,7 @@ use App\Models\ProductoDerivado;
 use App\Models\Usuario;
 use App\Models\Programa;
 use App\Models\Tamano;
-
 use App\Models\FlujoDeCava;
-
-
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -21,55 +18,54 @@ use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Session;
 use Input;
-
 use Illuminate\Database\Eloquent\Builder;
 
 class FlujoProductoDerivadoControlador extends Controller {
 
-protected function getRegistrarLoteProductoDerivado(Request $request) {
+    protected function getRegistrarLoteProductoDerivado(Request $request) {
 
-	$productos_derivados=ProductoDerivado::all();
-    $tamanos = Tamano::all();
-    $cavas = Cava::all();
+        $productos_derivados = ProductoDerivado::all();
+        $tamanos = Tamano::all();
+        $cavas = Cava::all();
 
-return view("LoteProductoDerivado.registrarLoteProductoDerivado",compact('tamanos','productos_derivados','cavas'));
-}
-protected function postRegistrarLoteProductoDerivado(Resquest $request){
+        return view("LoteProductoDerivado.registrarLoteProductoDerivado", compact('tamanos', 'productos_derivados', 'cavas'));
+    }
 
-
-$loteProductoDerivado = new LoteDeProductoDerivado;
-
-$loteProductoDerivado->numero_de_lote=$request['numero_de_lote'];
-$loteProductoDerivado->flujo_de_cava=$request['flujo_de_cava'];
-
-$loteProductoDerivado->save();
+    protected function postRegistrarLoteProductoDerivado(Resquest $request) {
 
 
-}
-protected function getEditarLoteProductoDerivado(Request $request) {
+        $loteProductoDerivado = new LoteDeProductoDerivado;
 
-return view("LoteProductoDerivado.editarLoteProductoDerivado");
-}
-protected function postEditarLoteProductoDerivado(Resquest $request){
+        $loteProductoDerivado->numero_de_lote = $request['numero_de_lote'];
+        $loteProductoDerivado->flujo_de_cava = $request['flujo_de_cava'];
 
+        $loteProductoDerivado->save();
+    }
 
-}
-protected function getListarLoteProductoDerivado(Request $request) {
+    protected function getEditarLoteProductoDerivado(Request $request) {
 
-return view("LoteProductoDerivado.listarLoteProductoDerivado");
-}
-protected function postListarLoteProductoDerivado(Resquest $request){
+        return view("LoteProductoDerivado.editarLoteProductoDerivado");
+    }
 
+    protected function postEditarLoteProductoDerivado(Resquest $request) {
+        
+    }
 
-}
-protected function getEliminarLoteProductoDerivado(Request $request) {
+    protected function getListarLoteProductoDerivado(Request $request) {
 
+        return view("LoteProductoDerivado.listarLoteProductoDerivado");
+    }
 
-}
-protected function postEliminarLoteProductoDerivado(Resquest $request){
+    protected function postListarLoteProductoDerivado(Resquest $request) {
+        
+    }
 
+    protected function getEliminarLoteProductoDerivado(Request $request) {
+        
+    }
 
-}
-
+    protected function postEliminarLoteProductoDerivado(Resquest $request) {
+        
+    }
 
 }
