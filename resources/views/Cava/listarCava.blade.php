@@ -264,6 +264,12 @@
 
                 });
 
+                $(".inputVerFlujo").click(function(e){
+                    var id =e.target.id;
+
+                    document.location.href="listarFlujoCava?id" + id ;
+                });
+
                  $(".inputRegistrarFlujo").click(function (e) {
                     var id = e.target.id;
                     //alert(id);

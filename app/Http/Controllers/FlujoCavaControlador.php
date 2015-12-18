@@ -45,7 +45,7 @@ class FlujoCavaControlador extends Controller
             $flujoCava = new FlujoDeCava;
 
             $flujoCava->fecha = $flujo['fecha'];
-            $flujoCava->materia_prima = $flujo['producto_derivado'];
+            $flujoCava->producto_derivado = $flujo['producto_derivado'];
             $flujoCava->tamano =$flujo['tamano'];
             $flujoCava->entra = $flujo['entra'];
             $flujoCava->sale = $flujo['sale'];
@@ -57,7 +57,7 @@ class FlujoCavaControlador extends Controller
             $flujoCava->observaciones = $flujo['observaciones'];
             
             
-            $flujoCava->bodega = $flujo['bodega'];
+            $flujoCava->cava = $flujo['cava'];
 
 
             $flujoCava->save();
@@ -65,6 +65,32 @@ class FlujoCavaControlador extends Controller
 
 //MENSAJE DE FLUJOS DE BODEGA REGISTRADOS CORRECTAMENTE
     }
+  protected function getListarFlujoCava(Request $request)
+  {
+    $codigo_cava = $request['codigo_cava'];
+
+    $flujo_de_cava = FlujoDeCava::where('cava',$codigo_cava)->get();
+
+    return view('flujoCava/listarFlujoCava',compact('flujo_de_cava','codigo_cava'));
+  }
+
+  protected function getEditarFlujoCava(Request $request)
+  {
+    $codigo_cava =$request['codigo_cava'];
+    $id_flujo_cava=$request['id_flujo_cava'];
+
+    $flujo_de_cava = FlujoDeCava::where('cava',$codigo_cava)->get();
+    $flujo_de_cava = FlujoDeCava::where('id',$id_flujo_cava)->get();
+
+    $flujo_de_cava = $flujo_de_cava[0];
+
+    $tamanos = Tamano::all();
+    $productosDerivados= ProductoDerivado::all();
+    $usuarios = Usuario::all();
+    $cava = Cava::all();
+
+  }
+
 
 
   
