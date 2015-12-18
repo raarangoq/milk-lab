@@ -7,6 +7,7 @@ use App\Models\ControlDeCava;
 use App\Models\Usuario;
 use App\Models\ProductoDerivado;
 use App\Models\Programa;
+use App\Models\FlujoDeCava;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -69,9 +70,9 @@ class FlujoCavaControlador extends Controller
   {
     $codigo_cava = $request['codigo_cava'];
 
-    $flujo_de_cava = FlujoDeCava::where('cava',$codigo_cava)->get();
+    $flujos_de_cava = FlujoDeCava::where('cava',$codigo_cava)->get();
 
-    return view('flujoCava/listarFlujoCava',compact('flujo_de_cava','codigo_cava'));
+    return view('FlujoCava/listarFlujoCava',compact('flujos_de_cava','codigo_cava'));
   }
 
   protected function getEditarFlujoCava(Request $request)

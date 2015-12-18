@@ -106,7 +106,7 @@
                 <div class="cell">
                     <input class="inputBorrar" id='{{$flujo->id}}' type="submit" value="borrar" data-reactid=".0.0.7" >
                     </div>
-                </div>
+        </div>
 
 
 

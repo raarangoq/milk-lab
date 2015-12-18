@@ -264,7 +264,7 @@
 
                 });
 
-                $(".inputVerFlujo").click(function(e){
+                $(".inputVerFlujo").click(function (e) {
                     var id =e.target.id;
 
                     document.location.href="listarFlujoCava?id" + id ;
