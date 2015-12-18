@@ -286,7 +286,7 @@ $(".inputBorrar").click(function (e){
 var id_flujo = e.target.id;
         ConfirmacionBorrar(id_flujo);
 });
-        $(".inputEditar").click(function(e){
+$(".inputEditar").click(function(e){
 
 var id = e.target.id;
         var id_flujo_cava = id;
@@ -301,12 +301,7 @@ var id = e.target.id;
 
 
 
-$(".inputRegistrar").click(function(e){
 
-     var codigo_cava = {{$codigo_cava}};
-
-document.location.href = "registrarFlujoCava?codigo_cava="+'{{$codigo_cava}}' ;
-});
 
 
 
