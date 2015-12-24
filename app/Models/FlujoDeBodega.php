@@ -4,15 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class FlujoDeBodega extends Model
-{
+class FlujoDeBodega extends Model {
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
     protected $table = 'flujos_de_bodegas';
-
     protected $primaryKey = 'id';
 
     /**
@@ -21,7 +20,7 @@ class FlujoDeBodega extends Model
      * @var array
      */
     protected $fillable = [
-    	'id',
+        'id',
         'fecha',
         'entra',
         'sale',
@@ -34,4 +33,5 @@ class FlujoDeBodega extends Model
         'usuario_responsable',
         'bodega',
     ];
+
 }

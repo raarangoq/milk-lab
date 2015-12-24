@@ -4,15 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Programa extends Model
-{
+class Programa extends Model {
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
     protected $table = 'programas';
-
     protected $primaryKey = 'numero_de_programa';
 
     /**
@@ -21,11 +20,12 @@ class Programa extends Model
      * @var array
      */
     protected $fillable = [
-    	'numero_de_programa', 
-    	'nombre', 
-    	'tipo', 
-    	'en_ejecucion',
-    	'observaciones',
-    	'usuario_responsable',
+        'numero_de_programa',
+        'nombre',
+        'tipo',
+        'en_ejecucion',
+        'observaciones',
+        'usuario_responsable',
     ];
+
 }

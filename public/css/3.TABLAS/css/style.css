@@ -14,6 +14,24 @@
 
 }
 
+
+.borde{
+
+border: blue 5px solid;
+border-color: white;
+background: white;
+
+
+}
+
+.fuente{
+
+font-weight:bold;
+font-size: 15pt;
+
+}
+
+
 .table {
   margin: 0 0 20px 0;
   width: 100%;
@@ -58,12 +76,7 @@
   text-align: center;
 }
 
-.cell.red {
-  padding: 6px 12px;
-  display: table-cell;
-  color: #ffffff;
-  background: #ea6153;
-}
+
 @media screen and (max-width: 580px) {
   .cell {
     padding: 2px 12px;
@@ -71,10 +84,18 @@
   }
 }
 
-
-.inputRegistrar{
-
-
-
-
+.cell.red {
+  padding: 6px 12px;
+  display: table-cell;
+  color: #ffffff;
+  background: #ea6153;
 }
+
+.cell.green {
+  padding: 6px 12px;
+  display: table-cell;
+  color: #ffffff;
+  background: #27ae60;
+}
+
+

@@ -4,15 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ProductoDerivado extends Model
-{
-     /**
+class ProductoDerivado extends Model {
+
+    /**
      * The table associated with the model.
      *
      * @var string
      */
     protected $table = 'productos_derivados';
-
     protected $primaryKey = 'nombre';
 
     /**
@@ -21,7 +20,7 @@ class ProductoDerivado extends Model
      * @var array
      */
     protected $fillable = [
-    	'nombre',
+        'nombre',
         'tipo',
         'descripcion_fisica',
         'tiempo_de_vencimiento',
@@ -29,4 +28,6 @@ class ProductoDerivado extends Model
         'temperatura_de_almacenamiento',
         'unidad_de_medida',
     ];
+    public $timestamps = false;
+
 }

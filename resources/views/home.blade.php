@@ -1,6 +1,27 @@
 @extends('layout.principal')
 
 @section('footer')
+
+
+<style>
+    @import url(css/home.css);
+</style>
+
+<div class='content'>
+  <div class='visible'>
+    <p class="hello">
+      Bienvenido
+    </p>
+    <ul class="listaHello">
+      <li class="itemListaHello">{{$user->rol}}</li>
+      <li class="itemListaHello">{{$user->nombre}}</li>
+      <li class="itemListaHello">{{$user->correo}}</li>
+    </ul>
+  </div>
+</div>
+
+
+
         <footer>
             <ul class="social-ul">
                 <li class="social" title="Home"><a href="">&#8962;</a></li>
@@ -11,8 +32,6 @@
 
             </ul>
         </footer>
-
-
 
 
 @endsection

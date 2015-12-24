@@ -1,12 +1,19 @@
 <!DOCTYPE html>
-<html >
-    <head>
-        <meta charset="UTF-8">
-        <title>LOGIN</title>
-        
+
+@if(count($errors) > 0)
+<script>
+    alert("Correo y/o Contraseña incorrecta");
+</script>
+@endif
+
         <style>
             @import url(css/1.LOGIN/login_style.css);
         </style>
+
+
+    <head>
+        <meta charset="UTF-8">
+        <title>LOGIN</title>
 
     </head>
 
@@ -29,4 +36,4 @@
         </div>
 
     </body>
-</html>
+

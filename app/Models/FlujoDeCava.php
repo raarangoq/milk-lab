@@ -4,15 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class FlujoDeCava extends Model
-{
+class FlujoDeCava extends Model {
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
     protected $table = 'flujos_de_cavas';
-
     protected $primaryKey = 'id';
 
     /**
@@ -21,7 +20,7 @@ class FlujoDeCava extends Model
      * @var array
      */
     protected $fillable = [
-    	'id',
+        'id',
         'fecha',
         'entra',
         'sale',
@@ -33,6 +32,7 @@ class FlujoDeCava extends Model
         'tamano',
         'programa',
         'usuario_responsable',
-        'cava,
+        'cava',
     ];
+
 }

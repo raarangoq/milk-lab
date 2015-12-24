@@ -14,7 +14,6 @@ use Session;
 use Input;
 use Redirect;
 
-
 class AuthController extends Controller {
     /*
       |--------------------------------------------------------------------------
@@ -43,14 +42,9 @@ use AuthenticatesAndRegistersUsers,
         //$this->middleware('guest', ['except' => 'getLogout']);
     }
 
-
-
     public function getLogin() {
 
-         return view("login");
-
-     
-        
+        return view("login");
     }
 
     public function postLogin(Request $request) {
@@ -64,29 +58,31 @@ use AuthenticatesAndRegistersUsers,
 
         if ($this->auth->attempt($credentials, $request->has('remember'))) {
 
-          $correo=$request['correo']; 
-          $user=Usuario::where('correo',$correo)->get();
+            $correo = $request['correo'];
+            $user = Usuario::where('correo', $correo)->get();
 
 
-          $usuario['correo']=$user['0']['correo'];
-          $usuario['nombre']=$user['0']['nombre'];
-          $usuario['cedula']=$user['0']['cedula'];
-          $usuario['rol']=$user['0']['rol'];
-          $usuario['password']=$user['0']['password'];
-          $usuario['habilitado']=$user['0']['habilitado'];
-          $usuario['usuario_creador']=$user['0']['usuario_creador'];
+            $usuario['correo'] = $user['0']['correo'];
+            $usuario['nombre'] = $user['0']['nombre'];
+            $usuario['cedula'] = $user['0']['cedula'];
+            $usuario['rol'] = $user['0']['rol'];
+            $usuario['password'] = $user['0']['password'];
+            $usuario['habilitado'] = $user['0']['habilitado'];
+            $usuario['usuario_creador'] = $user['0']['usuario_creador'];
+
+            $user = $user['0'];
 
 
-          Session::put('usuario',$usuario);
-          
-           return view("home");
-            
+            Session::put('usuario', $usuario);
+
+            return view("home",compact('user'));
         } else {
             //return "credenciales incorrectas";
-            return Redirect::to('login')->withErrors("XXXXXX");
+            
+            //return "Nombre de usuario O contraseña incorrecta";
+            return redirect('login')->with('errors', 'error en teperatura minima y maxima');
         }
     }
-   
 
     //para terminar sesión
 
@@ -97,8 +93,6 @@ use AuthenticatesAndRegistersUsers,
 
         return redirect('login');
     }
-
-
 
     /**
      * Get a validator for an incoming registration request.
@@ -114,8 +108,6 @@ use AuthenticatesAndRegistersUsers,
         ]);
     }
 
-
-
     /**
      * Create a new user instance after a valid registration.
      *
@@ -130,7 +122,4 @@ use AuthenticatesAndRegistersUsers,
         ]);
     }
 
-
 }
-
-

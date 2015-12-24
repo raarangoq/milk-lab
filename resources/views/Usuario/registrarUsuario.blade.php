@@ -12,10 +12,10 @@
 <main>
     <article>
         <section>
-           
+
             <div id="stage" class="stage">
 
-                
+
 
                 <form action="registrarUsuario" method="post" data-reactid=".0">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"> 
@@ -52,19 +52,22 @@
 
                         <div class="control" data-reactid=".0.0.6">
                             <select name="rol" data-reactid=".0.0.´6.0" class="active">
-                              <option>Director</option>
-                              <option>Estudiante</option>
-                              <option>Microbiólogo</option>
-                              <option>Operario</option>
-                              <option>Profesor</option>
-                              <option>Técnico operativo</option>
+                                <option>Director</option>
+                                <option>Estudiante</option>
+                                <option>Microbiólogo</option>
+                                <option>Operario</option>
+                                <option>Profesor</option>
+                                <option>Técnico operativo</option>
                             </select>
                             <label data-reactid=".0.0.6.1">* Tipo de Rol</label>
-                        </div>                      
+                        </div>         
+
+                         <p>* campos obligatorios </p>
+                        <br>              
 
                         <input type="submit" value="registrar usuario" data-reactid=".0.0.7">
 
-                        
+
 
                     </fieldset>
                 </form>

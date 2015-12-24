@@ -1,10 +1,9 @@
 @extends('layout.principal')
 
 <style>
-    
+
     @import url(css/4.MENSAJES/style.css);
 </style>
-
 
 
 @section('contenido')
@@ -22,12 +21,12 @@
                         <div class="control" data-reactid=".0.0.2">
 
                             <select name="tipo" data-reactid=".0.0.2.0" class="active">
-                              <option>Congelamiento</option>
-                              <option>Maduración</option>
-                              <option>Producto terminado</option>
+                                <option>Congelamiento</option>
+                                <option>Maduración</option>
+                                <option>Producto terminado</option>
 
                             </select>
-                            
+
                             <label data-reactid=".0.0.2.1">* Tipo de Cava</label>
                         </div>
                         <div class="control" data-reactid=".0.0.3">
@@ -40,7 +39,10 @@
                             <label data-reactid=".0.0.4.1">* Temperatura maxima</label>
 
                         </div>
-                    
+
+                        <p>* campos obligatorios </p>
+                        <br>
+
 
                         <input type="submit" value="registrar cava" data-reactid=".0.0.5">
 
