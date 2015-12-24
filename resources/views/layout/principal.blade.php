@@ -132,6 +132,7 @@
                     <div class="link"><i class="fa fa"><img src="css/iconos/queso.png"></i>PRODUCTOS<i class="fa fa-chevron-down"></i></div>
                     <ul class="submenu">
                         <li><a href="#">Registrar Lote de PRODUCTO</a></li>
+                        <li><a href="#">Registrar Lote de PRODUCTO</a></li>
                         <li><a href="#">Analisis de Lote de PRODUCTO</a></li>
                     </ul>
                 </li>
